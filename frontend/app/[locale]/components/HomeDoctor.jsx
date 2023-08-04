@@ -17,7 +17,7 @@ function HomeDoctor() {
     (document.getElementById("home-doctor-video").pause())
   },[videoDoctorHover])
   return (
-    <div className='relative h-full w-1/2 bg-[#00ff00]' onMouseOver={()=>{
+    <div className='relative h-full w-1/2' onMouseOver={()=>{
         setVideoDoctorHover(true);
       }} onMouseOut={()=>{
         setVideoDoctorHover(false);

@@ -1,12 +1,13 @@
 import {useTranslations} from 'next-intl';
 import {getTranslator} from 'next-intl/server';
 
-import React from 'react'
+import React, {Suspense} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import HomeDoctor from './components/HomeDoctor';
 import HomeDistribuitor from './components/HomeDistribuitor';
+import Loading from './components/Loading';
 
 export async function generateMetadata({params: {locale}}) {
   const translation = await getTranslator(locale,'Index');
@@ -24,33 +25,38 @@ export default function Home() {
 
   return (
     <main>
-      <div className='w-full h-screen bg-[#a0a0f0]'>
-        <div className='relative w-full h-1/2 group'>
-          <video autoPlay loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.50] group-hover:brightness-[0.75]'>
-            <source src="/videos/home-hero.mp4" type='video/mp4' />
-          </video>
-          
-            <div className='relative h-4/5 pt-24 flex justify-center items-center z-10'>
-              <Image 
-                src="/images/renadyl_bottles.png"
-                width={350}
-                height={0}
-              />
-            </div>
-            <div className='relative flex flex-row gap-5 w-max mx-auto h-1/5 z-10'>
-              <Link href="#" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary'>{translation("comandaBtn")}</Link>
-              <Link href="/about" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary'>{translation("detaliiBtn")}</Link>
-            </div>
-          
+      <Suspense fallback={<Loading />}>
+        <div className='w-full h-screen'>
+          <div className='relative w-full h-1/2 group'>
+            <video autoPlay loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.50] group-hover:brightness-[0.75]'>
+              <source src="/videos/home-hero.mp4" type='video/mp4' />
+            </video>
+            
+              <div className='relative h-4/5 pt-24 flex justify-center items-center z-10'>
+                <Image 
+                  src="/images/renadyl_bottles.png"
+                  width={350}
+                  height={0}
+                />
+              </div>
+              <div className='relative flex flex-row gap-5 w-max mx-auto h-1/5 z-10'>
+                <Link href="#" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary'>{translation("comandaBtn")}</Link>
+                <Link href="/about" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary'>{translation("detaliiBtn")}</Link>
+              </div>
+            
 
-          
+            
+          </div>
+          <div className='w-full h-1/2 flex flex-row'>
+            <HomeDoctor />
+            <HomeDistribuitor />
+            
+          </div>
         </div>
-        <div className='w-full h-1/2 flex flex-row bg-[#ff0000]'>
-          <HomeDoctor />
-          <HomeDistribuitor />
-          
-        </div>
-      </div>
+
+
+      </Suspense>
+      
 
     </main>
   )
