@@ -6,6 +6,8 @@ import { Sofia_Sans } from 'next/font/google'
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 const sofiaSans = Sofia_Sans({ variable: '--font-sofia-sans',subsets: ['latin'] })
 
@@ -33,11 +35,15 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={locale}>
       <body className={`scroll-smooth ${sofiaSans.className}`}>
-        <NextIntlClientProvider locale={locale} messages={messages} >
-        <Navbar />
-        {children}
-        <Footer />
-        </NextIntlClientProvider>
+        <Suspense fallback={<Loading/>}>
+          <NextIntlClientProvider locale={locale} messages={messages} >
+          <Navbar />
+          {children}
+          <Footer />
+          </NextIntlClientProvider>
+
+
+        </Suspense>
       </body>
     </html>
   )
