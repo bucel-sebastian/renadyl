@@ -1,0 +1,28 @@
+{
+    "Index": {
+        "page-title": "Acasă",
+        "comandaBtn": "Comandă acum",
+        "detaliiBtn": "Află mai multe"
+    },
+    "Footer": {
+        "linkuri-utile": "Link-uri utile",
+        "linkU1": "Termeni și condiți",
+        "linkU2": "Politica de confidențialitate",
+        "linkU3": "Politica de livrare",
+        "linkU4": "Politica de retur",
+        "linkU5": "ANPC",
+        "linkU6": "Cookies",
+        "harta-website": "Hartă website",
+        "linkD1": "Acasă",
+        "linkD2": "Despre Renadyl",
+        "linkD3": "Autentificare",
+        "linkD4": "Autentificare"
+    },
+    "Navbar": {
+
+    },
+    "About": {
+        "page-title": "Despre Renadyl"
+
+    }
+}

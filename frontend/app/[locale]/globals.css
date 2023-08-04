@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-primary: #fafafa;
+  --background-secondary: #ffffff;
+
+  --foreground-primary: #1a1a1a;
+  --foreground-secondary: #54565a;
+
+  --accent-primary: #E7661B;
+  --accent-secondary: #F47425;
+  --accent-third: #F79A53;
+  --accent-fourth: #FFAB66;
+
+  --optional-primary: #454662;
+}
+
+
+
+body {
+  color: rgb(var(--foreground-primary));
+  background: var(--background-primary);
+}
