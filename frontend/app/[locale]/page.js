@@ -1,7 +1,7 @@
 import {useTranslations} from 'next-intl';
 import {getTranslator} from 'next-intl/server';
 
-import React, {Suspense} from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <main>
-      <Suspense fallback={<Loading />}>
+
         <div className='w-full h-screen'>
           <div className='relative w-full h-1/2 group'>
             <video autoPlay loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.50] group-hover:brightness-[0.75]'>
@@ -55,7 +55,6 @@ export default function Home() {
         </div>
 
 
-      </Suspense>
       
 
     </main>
