@@ -9,7 +9,7 @@ import {FaPhone,FaEnvelope} from 'react-icons/fa'
 
 function Footer() {
 
-const translation = useTranslations("Footer");
+    const translation = useTranslations("Footer");
   return (
     <footer className='w-full bg-foregroundPrimary text-backgroundPrimary py-7'>
         <div className='flex max-w-[1200px] w-full mx-auto gap-2 uppercase pb-5'>

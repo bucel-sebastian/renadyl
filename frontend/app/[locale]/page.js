@@ -5,6 +5,9 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import HomeDoctor from './components/HomeDoctor';
+import HomeDistribuitor from './components/HomeDistribuitor';
+
 export async function generateMetadata({params: {locale}}) {
   const translation = await getTranslator(locale,'Index');
 
@@ -14,6 +17,8 @@ export async function generateMetadata({params: {locale}}) {
 }
 
 export default function Home() {
+
+
 
   const translation = useTranslations('Index');
 
@@ -41,8 +46,24 @@ export default function Home() {
           
         </div>
         <div className='w-full h-1/2 flex flex-row bg-[#ff0000]'>
-          <div className='relative h-full w-1/2 bg-[#00ff00]'>
-            <video autoPlay loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.20] group-hover:brightness-[0.75]'>
+          <HomeDoctor />
+          <HomeDistribuitor />
+          
+        </div>
+      </div>
+
+    </main>
+  )
+}
+
+
+{/* <div className='relative h-full w-1/2 bg-[#00ff00]' onMouseOver={()=>{
+            setVideoDoctorHover(true);
+          }} onMouseOut={()=>{
+            setVideoDoctorHover(false);
+
+          }}>
+            <video autoPlay={videoDoctorHover ? true : false}  loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.20] group-hover:brightness-[0.75]'>
               <source src="/videos/home-doctor.mp4" type='video/mp4' />
             </video>
             <div className='relative z-10 h-1/2 flex items-end justify-center pb-7'>
@@ -55,8 +76,13 @@ export default function Home() {
             </div>
             
           </div>
-          <div className='relative h-full w-1/2'>
-            <video autoPlay loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.20] group-hover:brightness-[0.75]'>
+          <div className='relative h-full w-1/2' onMouseOver={()=>{
+            setVideoDistribuitorHover(true);
+          }} onMouseOut={()=>{
+            setVideoDistribuitorHover(false);
+
+          }}>
+            <video autoPlay={videoDistribuitorHover ? true : false} loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.20] group-hover:brightness-[0.75]'>
               <source src="/videos/home-distribuitor.mp4" type='video/mp4' />
             </video>
             <div className='relative z-10 h-1/2 flex items-end justify-center pb-7'>
@@ -68,10 +94,4 @@ export default function Home() {
               </Link>
             </div>
            
-          </div>
-        </div>
-      </div>
-
-    </main>
-  )
-}
+          </div> */}
