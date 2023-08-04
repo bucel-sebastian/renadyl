@@ -2,7 +2,10 @@
     "Index": {
         "page-title": "Acasă",
         "comandaBtn": "Comandă acum",
-        "detaliiBtn": "Află mai multe"
+        "detaliiBtn": "Află mai multe",
+        "inscrieteBtn": "Înscrie-te",
+        "doctor-heading": "Ești doctor?",
+        "distribuitor-heading": "Vrei să fii distribuitor?"
     },
     "Footer": {
         "linkuri-utile": "Link-uri utile",

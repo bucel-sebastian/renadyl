@@ -78,7 +78,7 @@ const translation = useTranslations("Footer");
         <div className='flex flex-row justify-center gap-5'>
             <Link href="https://anpc.ro/ce-este-sal/">
                 <Image 
-                    src="/anpc-sal.png"
+                    src="/images/anpc-sal.png"
                     width={250}
                     height={0}
                     alt='ANPC SAL'
@@ -86,7 +86,7 @@ const translation = useTranslations("Footer");
             </Link>
             <Link href="https://ec.europa.eu/consumers/odr">
                 <Image 
-                    src="/anpc-sol.png"
+                    src="/images/anpc-sol.png"
                     width={250}
                     height={0}
                     alt='ANPC SOL'
