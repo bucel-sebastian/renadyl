@@ -7,7 +7,6 @@ import Link from 'next/link'
 
 import HomeDoctor from './components/HomeDoctor';
 import HomeDistribuitor from './components/HomeDistribuitor';
-import Loading from './components/Loading';
 
 export async function generateMetadata({params: {locale}}) {
   const translation = await getTranslator(locale,'Index');
