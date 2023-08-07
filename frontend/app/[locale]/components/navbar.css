@@ -1,7 +1,17 @@
 
 
 .header-logo{
-  width: 200px;
+  width: 100%;
+  position: absolute;
+}
+
+.header-logo-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:200px;
+  height: 50px;
+  position: relative;
 }
 
 .menu-btn{
@@ -22,7 +32,7 @@
 .menu-btn .bar-3{
   width: 30px;
   height: 4px;
-  background: #54565a;
+  background: var(--background-primary);
   border-radius: 2px;
   transition: 0.3s ease;
 }
@@ -45,10 +55,15 @@
 
 .line {
   fill: none;
-  stroke: #54565a;
+  stroke: var(--background-primary);
   stroke-width: 7;
   transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
     stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-white .line{
+  stroke: var(--foreground-primary) !important;
+  transition: 0.3s ease;
 }
 .line1 {
   stroke-dasharray: 60 207;
@@ -75,3 +90,5 @@
   stroke-dasharray: 90 207;
   stroke-dashoffset: -134;
 }
+
+
