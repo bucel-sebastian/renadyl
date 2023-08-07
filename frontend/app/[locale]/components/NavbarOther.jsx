@@ -9,7 +9,7 @@ import {useTranslations} from 'next-intl'
 import renadylLogo from '../../../public/renadyl_logo.svg'
 import renadylLogoWhite from '../../../public/renadyl_logo_white.svg'
 
-function Navbar() {
+function NavbarOther() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [headerWhite, setHeaderWhite] = useState(false);
@@ -36,7 +36,7 @@ function Navbar() {
 
 
   return (
-    <header className={`fixed top-0 left-0 w-full py-2 z-50 duration-300 ${headerWhite ? 'bg-backgroundPrimary' : '' }`}>
+    <header className={`fixed top-0 left-0 w-full py-2 z-50 duration-300 bg-backgroundPrimary`}>
       <div className='flex flex-row max-w-[1200px] justify-between content-center items-center w-full mx-auto'>
         <div>
           <Link href="#" className='header-logo-container'>
@@ -45,16 +45,12 @@ function Navbar() {
               alt='Renadyl'
               className='header-logo'
             />
-            <Image 
-              src={renadylLogoWhite}
-              alt='Renadyl'
-              className={`duration-300 header-logo ${headerWhite ? 'opacity-0' : '' }`}
-            />
+            
 
           </Link>
         </div>
         <div>
-          <button className={`duration-300 menu-btn ${isMenuOpen ? 'menu-open' : ''} ${headerWhite ? 'header-white' : '' }`} onClick={handleMenuBtn}>
+          <button className={`duration-300 menu-btn ${isMenuOpen ? 'menu-open' : ''} header-white `} onClick={handleMenuBtn}>
 
             <svg width="100" height="100" viewBox="0 0 100 100" >
               <path className="duration-300 line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
@@ -72,4 +68,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default NavbarOther

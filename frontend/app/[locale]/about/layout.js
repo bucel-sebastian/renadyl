@@ -1,13 +1,13 @@
-import './globals.css'
+import '../globals.css'
 import {useLocale, NextIntlClientProvider} from 'next-intl'
 import {notFound} from 'next/navigation'
 import { Sofia_Sans } from 'next/font/google'
 
 
-import NavbarHome from './components/NavbarHome';
-import Footer from './components/Footer';
+import NavbarOther from '../components/NavbarOther';
+import Footer from '../components/Footer';
 import { Suspense } from 'react';
-import Loading from './loading';
+import Loading from '../loading';
 
 const sofiaSans = Sofia_Sans({ variable: '--font-sofia-sans',subsets: ['latin'] })
 
@@ -26,7 +26,7 @@ export default async function RootLayout({ children, params }) {
 
   let messages;
   try{
-    messages = (await import(`../../messages/${locale}.json`)).default;
+    messages = (await import(`../../../messages/${locale}.json`)).default;
   } catch (error) {
     notFound();
   }
@@ -37,7 +37,7 @@ export default async function RootLayout({ children, params }) {
       <body className={`scroll-smooth ${sofiaSans.className} bg-foregroundPrimary`}>
         <Suspense fallback={<Loading/>}>
           <NextIntlClientProvider locale={locale} messages={messages} >
-          <NavbarHome />
+          <NavbarOther />
           <div className='max-w-[1920px] mx-auto'>
             {children}
 
