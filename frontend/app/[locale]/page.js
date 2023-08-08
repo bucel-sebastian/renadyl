@@ -31,7 +31,7 @@ export default function Home() {
               <source src="/videos/home-hero.mp4" type='video/mp4' />
             </video>
             
-              <div className='relative h-4/5 pt-24 flex justify-center items-center z-10 mx-auto max-w-[350px] max-md:max-w-[250px] max-md:pt-24 max-md:h-3/5'>
+              <div className='relative h-4/5 pt-24 flex justify-center items-center z-10 mx-auto max-w-[350px] max-md:max-w-[200px] max-md:pt-32 max-md:h-3/5'>
                 <Image 
                   src="/images/renadyl_bottles.png"
                   width={350}
@@ -39,8 +39,8 @@ export default function Home() {
                 />
               </div>
               <div className='relative flex flex-row gap-5 w-max mx-auto h-1/5 z-10 max-md:flex-col max-md:h-2/5 max-md:pt-8'>
-                <Link href="#" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[250px]'>{translation("comandaBtn")}</Link>
-                <Link href="/about" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[250px]'>{translation("detaliiBtn")}</Link>
+                <Link href="#" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[250px] max-sm:text-xl'>{translation("comandaBtn")}</Link>
+                <Link href="/about" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[250px] max-sm:text-xl'>{translation("detaliiBtn")}</Link>
               </div>
             
 
