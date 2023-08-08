@@ -33,7 +33,7 @@ export default function Home() {
             
               <div className='relative h-4/5 pt-24 flex justify-center items-center z-10 mx-auto max-w-[350px] max-md:max-w-[200px] max-md:pt-32 max-md:h-3/5'>
                 <Image 
-                  src="/images/renadyl_bottles.png"
+                  src="/images/renadyl_bottles_1.png"
                   width={350}
                   height={0}
                 />

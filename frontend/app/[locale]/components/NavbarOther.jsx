@@ -6,8 +6,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 
-import renadylLogo from '../../../public/renadyl_logo.svg'
-import renadylLogoWhite from '../../../public/renadyl_logo_white.svg'
+import renadylLogo from '@/public/renadyl_logo.svg'
+import renadylLogoWhite from '@/public/renadyl_logo_white.svg'
 
 function NavbarOther() {
 

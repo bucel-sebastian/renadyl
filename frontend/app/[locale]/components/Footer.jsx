@@ -3,9 +3,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 
-import renadylLogoWhite from '../../../public/renadyl_logo_white.svg'
+import renadylLogoWhite from '@/public/renadyl_logo_white.svg'
 
-import {FaPhone,FaEnvelope} from 'react-icons/fa'
+import {FaPhone,FaEnvelope, FaFacebook,FaInstagram,FaPinterest,FaYoutube} from 'react-icons/fa'
 
 function Footer() {
 
@@ -19,29 +19,29 @@ function Footer() {
                 <br />
                 <p>Cal. Dorobanți nr. 111-131<br/>Bl. 9 Ap. 227, București<br/>România</p>
                 <br/>
-                <p className='flex flex-row items-center gap-1'><FaPhone /> - <Link href="#">0723 123 123</Link></p>
-                <p className='flex flex-row items-center gap-1'><FaEnvelope /> - <Link href="#">adresa@email.com</Link></p>
+                <p className='flex flex-row items-center gap-1'><FaPhone /> - <Link className='duration-150 hover:text-accentPrimary' href="#">0723 123 123</Link></p>
+                <p className='flex flex-row items-center gap-1'><FaEnvelope /> - <Link className='duration-150 hover:text-accentPrimary' href="#">adresa@email.com</Link></p>
             </div> 
             <div className='w-1/4  max-lg:w-2/2 max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:pt-10'>
                 <h5>{translation('linkuri-utile')}</h5>
                 <ul>
                     <li>
-                        <Link href="#">{translation('linkU1')}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="#">{translation('linkU1')}</Link>
                     </li>
                     <li>
-                        <Link href="#">{translation('linkU2')}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="#">{translation('linkU2')}</Link>
                     </li>
                     <li>
-                        <Link href="#">{translation('linkU3')}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="#">{translation('linkU3')}</Link>
                     </li>
                     <li>
-                        <Link href="#">{translation('linkU4')}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="#">{translation('linkU4')}</Link>
                     </li>
                     <li>
-                        <Link href="#">{translation('linkU5')}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="#">{translation('linkU5')}</Link>
                     </li>
                     <li>
-                        <Link href="#">{translation('linkU6')}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="#">{translation('linkU6')}</Link>
                     </li>
                     
                 </ul>
@@ -50,29 +50,43 @@ function Footer() {
                 <h5>{translation('harta-website')}</h5>
                 <ul>
                     <li>
-                        <Link href="/">{translation("linkD1")}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="/">{translation("linkD1")}</Link>
                     </li>
                     <li>
-                        <Link href="/about">{translation("linkD2")}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="/about">{translation("linkD2")}</Link>
                     </li>
                     <li>
-                        <Link href="#">{translation("linkD3")}</Link>
+                        <Link className='duration-150 hover:text-accentPrimary' href="#">{translation("linkD3")}</Link>
                     </li>
                 </ul>
             </div>
-            <div className='w-1/4 max-lg:w-2/2 max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:pt-10'>
+            <div className='w-1/4 max-lg:w-2/2 flex flex-col items-center max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:pt-10'>
                 
                 <Image 
                     src={renadylLogoWhite}
                     alt='Renadyl'
                     className=''
                 />
-                <div>
-                    <Link href="#"></Link>
-                    <Link href="#"></Link>
-                    <Link href="#"></Link>
-                    <Link href="#"></Link>
+                <div className='flex flex-row justify-around my-5 items-center gap-5 text-2xl'>
+                    <Link className='duration-150 hover:text-accentPrimary' href="#">
+                        <FaFacebook />
+                    </Link>
+                    <Link className='duration-150 hover:text-accentPrimary' href="#">
+                        <FaInstagram />
+                    </Link>
+                    <Link className='duration-150 hover:text-accentPrimary' href="#">
+                        <FaPinterest />
+                    </Link>
+                    <Link className='duration-150 hover:text-accentPrimary' href="#">
+                        <FaYoutube />
+                    </Link>
                 </div>
+
+                <Image 
+                    src="/images/kibow-logo-white.png"
+                    width={200}
+                    height={0}
+                /> 
             </div>
         </div>
         <div className='flex flex-row justify-center gap-5 max-sm:flex-col max-sm:items-center'>
