@@ -28,7 +28,7 @@ export default function Home() {
         <div className='w-full h-screen'>
           <div className='relative w-full h-1/2 group'>
             <video autoPlay loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.50] group-hover:brightness-[0.75]'>
-              <source src="/videos/hero_main_video_1.mp4" type='video/mp4' />
+              <source src="/videos/hero_main_video_V02.mp4" type='video/mp4' />
             </video>
             
               <div className='relative h-4/5 pt-24 flex justify-center items-center z-10 mx-auto max-w-[350px] max-md:max-w-[200px] max-md:pt-32 max-md:h-3/5'>
