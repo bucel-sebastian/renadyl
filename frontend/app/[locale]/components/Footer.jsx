@@ -6,6 +6,7 @@ import {useTranslations} from 'next-intl'
 import renadylLogoWhite from '@/public/renadyl_logo_white.svg'
 
 import {FaPhone,FaEnvelope, FaFacebook,FaInstagram,FaPinterest,FaYoutube} from 'react-icons/fa'
+import LocaleSwitcherFooter from './LocaleSwitcherFooter'
 
 function Footer() {
 
@@ -59,6 +60,10 @@ function Footer() {
                         <Link className='duration-150 hover:text-accentPrimary' href="#">{translation("linkD3")}</Link>
                     </li>
                 </ul>
+                <div>
+                    {/* Where should i place the buttons */}
+                    <LocaleSwitcherFooter />
+                </div>
             </div>
             <div className='w-1/4 max-lg:w-2/2 flex flex-col items-center max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:pt-10'>
                 
