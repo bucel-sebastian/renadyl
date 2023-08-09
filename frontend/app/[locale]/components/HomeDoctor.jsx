@@ -17,13 +17,13 @@ function HomeDoctor() {
     (document.getElementById("home-doctor-video").pause())
   },[videoDoctorHover])
   return (
-    <div className='relative h-full w-1/2' onMouseOver={()=>{
+    <div className='relative h-full w-1/2 group' onMouseOver={()=>{
         setVideoDoctorHover(true);
       }} onMouseOut={()=>{
         setVideoDoctorHover(false);
 
       }}>
-        <video id='home-doctor-video' loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[1] group-hover:brightness-[0.75]'>
+        <video id='home-doctor-video' loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.75] group-hover:brightness-[0.95]'>
           <source src="/videos/doctors_hero video_V02.mp4" type='video/mp4' />
         </video>
         <div className='relative z-10 h-full flex flex-col items-center justify-center pb-7 '>
