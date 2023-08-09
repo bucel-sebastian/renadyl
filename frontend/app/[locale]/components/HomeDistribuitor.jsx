@@ -28,7 +28,7 @@ function HomeDistribuitor() {
         setVideoDistribuitorHover(false);
 
       }}>
-        <video id="home-distribuitor-video" loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.75] group-hover:brightness-[0.75]'>
+        <video id="home-distribuitor-video" loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[1] group-hover:brightness-[0.75]'>
           <source src="/videos/supplier_hero video_V02.mp4" type='video/mp4' />
         </video>
         <div className='relative z-10 h-full flex flex-col items-center justify-center pb-7'>
