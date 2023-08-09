@@ -7,7 +7,6 @@
         "doctor-heading": "Ești doctor?",
         "distribuitor-heading": "Vrei să fii distribuitor?"
     },
-    
     "Footer": {
         "linkuri-utile": "Link-uri utile",
         "linkU1": "Termeni și condiți",
@@ -18,15 +17,16 @@
         "linkU6": "Cookies",
         "harta-website": "Hartă website",
         "linkD1": "Acasă",
-        "linkD2": "Despre Renadyl",
-        "linkD3": "Autentificare",
-        "linkD4": "Autentificare"
+        "linkD2": "Despre Renadyl™",
+        "linkD3": "Contact",
+        "linkD4": "Autentificare",
+        "linkD5": "Înregistrare"
     },
     "NavbarHome": {
 
     },
     "About": {
-        "page-title": "Despre Renadyl",
+        "page-title": "Despre Renadyl™",
         "comandaBtn": "Comandă acum",
         "hero-heading": "Renadyl™ - PROBIOTIC FOARTE EFICIENT PENTRU SĂNĂTATEA RINICHIILOR",
         "hero-description": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții. Este alcătuit din trei tulpini patentate de bacterii probiotice, care utilizează deșeurile azotoase ca hrană. Deșeurile azotoase se difuzează din fluxul sanguin în colon printr-un proces natural cunoscut sub numele de osmoză. ",

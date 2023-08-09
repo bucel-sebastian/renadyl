@@ -39,7 +39,7 @@ function NavbarOther() {
     <header className={`fixed top-0 left-0 w-full py-2 z-50 duration-300 bg-backgroundPrimary  ${headerWhite? 'shadow-lg' : ''} `}>
       <div className='flex flex-row max-w-[1200px] justify-between content-center items-center w-full mx-auto'>
         <div>
-          <Link href="#" className='header-logo-container w-[200px] max-md:w-[150px]'>
+          <Link href="/" className='header-logo-container w-[200px] max-md:w-[150px]'>
             <Image 
               src={renadylLogo}
               alt='Renadyl'
