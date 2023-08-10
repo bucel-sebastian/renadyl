@@ -18,15 +18,13 @@ export async function generateMetadata({params: {locale}}) {
 
 export default function Home() {
 
-
-
   const translation = useTranslations('Index');
 
   return (
     <main>
 
         <div className='w-full h-screen'>
-          <div className='relative w-full h-1/2 group'>
+          <div className='relative w-full h-3/5 group'>
             <video autoPlay loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0 ease-out duration-300 brightness-[0.50] group-hover:brightness-[0.75]'>
               <source src="/videos/hero_main_video_V02.mp4" type='video/mp4' />
             </video>
@@ -40,14 +38,14 @@ export default function Home() {
                 />
               </div>
               <div className='relative flex flex-row gap-5 w-max mx-auto h-1/5 z-10 max-md:flex-col max-md:h-2/5 max-md:pt-8'>
-                <Link href="#" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[250px] max-sm:text-xl'>{translation("comandaBtn")}</Link>
-                <Link href="/about" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-2xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[250px] max-sm:text-xl'>{translation("detaliiBtn")}</Link>
+                <Link href="#" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-3xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[300px] max-sm:text-2xl'>{translation("comandaBtn")}</Link>
+                <Link href="/about" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-3xl font-extrabold py-1.5 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[300px] max-sm:text-2xl'>{translation("detaliiBtn")}</Link>
               </div>
             
 
             
           </div>
-          <div className='w-full h-1/2 flex flex-row'>
+          <div className='w-full h-2/5 flex flex-row'>
             <HomeDoctor />
             <HomeDistribuitor />
             
