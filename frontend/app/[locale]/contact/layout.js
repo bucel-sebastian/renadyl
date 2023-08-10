@@ -7,7 +7,7 @@ import { Sofia_Sans } from 'next/font/google'
 import NavbarOther from '../components/NavbarOther';
 import Footer from '../components/Footer';
 import { Suspense } from 'react';
-import Loading from '../loading';
+import Loading from '../loading-blocked';
 
 const sofiaSans = Sofia_Sans({ variable: '--font-sofia-sans',subsets: ['latin'] })
 
