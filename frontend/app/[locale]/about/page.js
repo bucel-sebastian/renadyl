@@ -27,6 +27,7 @@ export default function About() {
               <div className='w-2/5'>
                   <Image
                     src="/images/renadyl_bottles_2_circle.png"
+                    alt="Renadyl Bottles"
                     width={1000}
                     height={1000}
                     className='w-full px-10'
@@ -108,6 +109,7 @@ export default function About() {
               <div className='w-1/2'>
                 <Image
                   src={renadylKidney}
+                  alt="Renadyl Kidney"
                   className='px-5 mx-auto'
                 />
               </div>

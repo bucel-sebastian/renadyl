@@ -37,12 +37,12 @@ export default async function RootLayout({ children, params }) {
       <body className={`scroll-smooth ${sofiaSans.className} bg-foregroundPrimary`}>
         <Suspense fallback={<Loading/>}>
           <NextIntlClientProvider locale={locale} messages={messages} >
-          <NavbarHome />
-          <div className='max-w-[1920px] mx-auto'>
-            {children}
+            <NavbarHome />
+            <div className='max-w-[1920px] mx-auto'>
+              {children}
 
-          </div>
-          <Footer />
+            </div>
+            <Footer />
           </NextIntlClientProvider>
 
 

@@ -91,6 +91,7 @@ function Footer() {
                     src="/images/kibow-logo-white.png"
                     width={200}
                     height={0}
+                    alt="Renadyl"
                 /> 
             </div>
         </div>
