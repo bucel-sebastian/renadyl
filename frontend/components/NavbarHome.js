@@ -55,7 +55,7 @@ function NavbarHome({children}) {
           loop: false,
           easing: 'easeInOutExpo',
           delay: function(el, i) {
-            return i * 200
+            return i * 150
           }
         });
         
@@ -76,6 +76,7 @@ function NavbarHome({children}) {
         loop: false,
         easing: 'easeInOutExpo',
         duration: 200,
+        delay:0,
         // delay: function(el, i) {
         //   return i * 200
         // }
