@@ -138,7 +138,7 @@ function NavbarHome({children}) {
 
       <div className={`relative z-10 duration-300 w-full mx-auto menu-container ${isMenuOpen ? 'menu-open' : ''}  `}>
         <nav className='w-full flex justify-center items-center'>
-          <ul className='text-center text-4xl font-extrabold'>
+          <ul className='text-center text-4xl font-extrabold max-sm:text-3xl '>
             <li className='navbar-el my-5 mx-auto px-3 before:duration-300 w-max relative hover:before:w-full before:absolute before:content-[""] before:w-0 before:h-[4px] before: before:bg-foregroundPrimary before:left-0 before:bottom-[-2px] before:origin-center-left '>
               <Link href="/">{t("home-link")}</Link>
             </li>
@@ -156,7 +156,7 @@ function NavbarHome({children}) {
             </li>
             
             <li className='navbar-el my-5 mx-auto px-3 w-max relative'>
-              <Link href="#" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-3xl font-extrabold py-1.5 px-8 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[300px] max-sm:text-2xl'>{t("order-link")}</Link>
+              <Link href="#" className='shadow-lg text-backgroundPrimary uppercase text-center rounded-full bg-accentPrimary w-[300px] text-3xl font-extrabold py-1.5 px-8 h-max ease-out duration-150 hover:bg-accentSecondary max-md:w-[300px] max-sm:text-3xl'>{t("order-link")}</Link>
             </li>
             
           </ul>
