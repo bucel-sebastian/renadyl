@@ -3,5 +3,13 @@
         "page-title": "Aushvitz",
 
         "title": "Shaizen world!"
+    },
+    "Navbar": {
+        "home-link": "Acasă",
+        "about-link": "Despre Renadyl™",
+        "contact-link": "Contact",
+        "login-link": "Autentificare",
+        "register-link": "Înregistrare",
+        "order-link": "Comandă acum"
     }
 }

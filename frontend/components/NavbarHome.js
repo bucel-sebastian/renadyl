@@ -12,6 +12,7 @@ import anime from 'animejs';
 
 import renadylLogo from '@/public/renadyl_logo.svg';
 import renadylLogoWhite from '@/public/renadyl_logo_white.svg';
+import LocaleSwitcher from './LocaleSwitcher';
 
 function NavbarHome({children}) {
 
@@ -136,6 +137,7 @@ function NavbarHome({children}) {
             <div className='bar-2'></div>
             <div className='bar-3'></div> */}
           </button>
+          <LocaleSwitcher />
           {/* <LocaleSwitcherFooter /> */}
         </div>
       </div>

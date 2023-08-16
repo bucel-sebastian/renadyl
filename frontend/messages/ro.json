@@ -52,5 +52,15 @@
         "section-2-step-2":"Odată ajunse în colon, microorganismele descoperă și metabolizează deșeurile azotoase uremice folosindu-le ca nutrienți pentru creștere.",
         "section-2-step-3":"Pe măsură ce microorganismele încep să se înmulțească, ele metabolizează progresiv tot mai multe toxine uremice, crescând astfel gradientul de concentrație și permitând o difuzie mai mare a acestor toxine în intestinul gros.",
         "section-2-step-4":"În cele din urmă, toxinele metabolizate sunt transportate prin intestin și sunt eliminate din organism ca reziduuri solide, ușurând astfel povara asupra rinichilor afectați."
+    },
+    "Contact": {
+        "page-title": "Contact",
+        "hero-heading": "Contactează-ne",
+        "contact-form-heading":"Lasă-ne un mesaj",
+        "contact-form-name": "Nume",
+        "contact-form-email": "Adresa de email",
+        "contact-form-phone": "Număr de telefon",
+        "contact-form-message": "Mesaj",
+        "contact-form-submit": "Trimite"
     }
 }

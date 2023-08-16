@@ -22,8 +22,13 @@
         "linkD4": "Autentificare",
         "linkD5": "Înregistrare"
     },
-    "NavbarHome": {
-        
+    "Navbar": {
+        "home-link": "Acasă",
+        "about-link": "Despre Renadyl™",
+        "contact-link": "Contact",
+        "login-link": "Autentificare",
+        "register-link": "Înregistrare",
+        "order-link": "Comandă acum"
     },
     "About": {
         "page-title": "About Renadyl™",

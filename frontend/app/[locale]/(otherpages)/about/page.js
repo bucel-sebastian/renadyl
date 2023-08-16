@@ -15,7 +15,7 @@ export default function About() {
     return(
 
         <main className="pt-[100px] bg-backgroundPrimary font-extrabold">
-<section className='block max-w-[1200px] mx-auto pt-4 pb-24 px-5'>
+          <section className='block max-w-[1200px] mx-auto pt-4 pb-24 px-5'>
             <div className='flex flex-row items-center'>
               <div className='w-2/5'>
                   <Image

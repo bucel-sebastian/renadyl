@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl';
 import anime from 'animejs';
 
 import renadylLogo from '@/public/renadyl_logo.svg';
+import LocaleSwitcher from './LocaleSwitcher';
 
 
 
@@ -130,7 +131,7 @@ function NavbarOther() {
             <div className='bar-2'></div>
             <div className='bar-3'></div> */}
           </button>
-          {/* <LocaleSwitcherFooter /> */}
+          <LocaleSwitcher />
         </div>
       </div>
 
