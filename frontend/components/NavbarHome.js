@@ -7,7 +7,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
 
 import anime from 'animejs';
 
@@ -23,6 +22,11 @@ function NavbarHome({children}) {
 
     const t = useTranslations("Navbar")
   
+
+    const handleMenuLinkClick = async (e) => {
+      setIsMenuOpen(false);
+    }
+
     const handleMenuBtn = () => {
       setButtonTimeout(true);
       if(!buttonTimeout){
@@ -140,19 +144,35 @@ function NavbarHome({children}) {
         <nav className='w-full flex justify-center items-center'>
           <ul className='text-center text-4xl font-extrabold max-sm:text-3xl '>
             <li className='navbar-el my-5 mx-auto px-3 before:duration-300 w-max relative hover:before:w-full before:absolute before:content-[""] before:w-0 before:h-[4px] before: before:bg-foregroundPrimary before:left-0 before:bottom-[-2px] before:origin-center-left '>
-              <Link href="/">{t("home-link")}</Link>
+              <Link href="/" >{t("home-link")}</Link>
             </li>
             <li className='navbar-el my-5 mx-auto px-3 before:duration-300 w-max relative hover:before:w-full before:absolute before:content-[""] before:w-0 before:h-[4px] before: before:bg-foregroundPrimary before:left-0 before:bottom-[-2px] before:origin-center-left '>
-              <Link href="/about">{t("about-link")}</Link>
+              <Link href="/about" legacyBehavior passHref prefetch={true}>
+                <a onClick={(e)=>handleMenuLinkClick(e)}>
+                  {t("about-link")}
+                </a>
+              </Link>
             </li>
             <li className='navbar-el my-5 mx-auto px-3 before:duration-300 w-max relative hover:before:w-full before:absolute before:content-[""] before:w-0 before:h-[4px] before: before:bg-foregroundPrimary before:left-0 before:bottom-[-2px] before:origin-center-left '>
-              <Link href="/contact">{t("contact-link")}</Link>
+              <Link href="/contact" legacyBehavior passHref prefetch={true}>
+                <a onClick={(e)=>handleMenuLinkClick(e)}>
+                  {t("contact-link")}
+                </a>
+              </Link>
             </li>
             <li className='navbar-el my-5 mx-auto px-3 before:duration-300 w-max relative hover:before:w-full before:absolute before:content-[""] before:w-0 before:h-[4px] before: before:bg-foregroundPrimary before:left-0 before:bottom-[-2px] before:origin-center-left '>
-              <Link href="/#">{t("login-link")}</Link>
+              <Link href="/#" legacyBehavior passHref prefetch={true}>
+                <a onClick={(e)=>handleMenuLinkClick(e)}>
+                  {t("login-link")}
+                </a>
+              </Link>
             </li>
             <li className='navbar-el my-5 mx-auto px-3 before:duration-300 w-max relative hover:before:w-full before:absolute before:content-[""] before:w-0 before:h-[4px] before: before:bg-foregroundPrimary before:left-0 before:bottom-[-2px] before:origin-center-left '>
-              <Link href="/#">{t("register-link")}</Link>
+              <Link href="/#" legacyBehavior passHref prefetch={true}>
+                <a onClick={(e)=>handleMenuLinkClick(e)}>
+                  {t("register-link")}
+                </a>
+              </Link>
             </li>
             
             <li className='navbar-el my-5 mx-auto px-3 w-max relative'>
