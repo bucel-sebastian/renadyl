@@ -35,7 +35,7 @@ function NavbarOther() {
     }
     setTimeout(() => {
       setButtonTimeout(false);
-    }, 450);
+    }, 550);
   }
 
   const handleScroll = () => {
@@ -89,23 +89,29 @@ function NavbarOther() {
    
   }
 
+const handleMenuBtnHover = () => {
+      if(!buttonTimeout){
+        setIsMenuOpen(true);
+        // keepMenuOpen(true);
+      }
+      
+    }
+
+
   useEffect(()=>{
     window.addEventListener("scroll",handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll",handleScroll);
-    }
-  },[]);
-
-  useEffect(()=>{
     isMenuOpen ? (setHeaderWhite(true)) : (window.scrollY >= 100 ? (setHeaderWhite(true)) : (setHeaderWhite(false)));
     
     isMenuOpen ? (handleMenuOpen()) : (handleMenuClose());
+    return () => {
+      window.removeEventListener("scroll",handleScroll);
+    }
   },[isMenuOpen]);
 
 
   return (
-    <header className={`fixed header-container transition-all ${isMenuOpen ? 'menu-open' : ''} top-0 left-0 w-full py-2 px-5 px-5 z-50 duration-300 ${headerWhite ? 'bg-backgroundPrimary shadow-lg' : '' }`}>
+    <header className={`fixed header-container transition-all ${isMenuOpen ? 'menu-open' : ''} top-0 left-0 w-full py-2 px-5 px-5 z-50 duration-300 ${headerWhite ? 'bg-backgroundPrimary70 shadow-lg backdrop-blur-md' : '' }`}>
       <div className='relative flex z-20 flex-row max-w-[1200px] justify-between content-center items-center w-full mx-auto'>
         <div>
           <Link href="/" className='header-logo-container w-[200px] max-md:w-[150px] '>
@@ -119,7 +125,7 @@ function NavbarOther() {
         </div>
         <div className='flex flex-row justify-center items-center
         '>
-          <button  className={`duration-300 menu-btn ${isMenuOpen ? 'menu-open' : ''} header-white mr-5`} onClick={handleMenuBtn} disabled={buttonTimeout}>
+          <button  className={`duration-300 menu-btn ${isMenuOpen ? 'menu-open' : ''} header-white mr-5`} onClick={handleMenuBtn} onMouseOver={handleMenuBtnHover} disabled={buttonTimeout}>
 
             <svg width="100" height="100" viewBox="0 0 100 100" >
               <path className="duration-300 line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
