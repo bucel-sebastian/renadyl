@@ -7,6 +7,8 @@ import { NextIntlClientProvider } from "next-intl";
 import {notFound} from 'next/navigation';
 import Footer from '@/components/Footer';
 import NavbarHome from '@/components/NavbarHome';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 export function generateStaticParams() {
     return [
@@ -36,13 +38,15 @@ export default async function LocaleLayout({children, params: {locale}}){
     return (
         <html lang={locale}>
             <body className={`scroll-smooth bg-foregroundPrimary ${sofiaSans.className}`}>
-                <NextIntlClientProvider locale={locale} messages={messages}>
-                    <NavbarHome />
-                    <div className='max-w-[1920px] mx-auto'>
-                    {children}
-                    </div>
-                    <Footer />
-                </NextIntlClientProvider>
+                <Suspense>
+                    <NextIntlClientProvider locale={locale} messages={messages}>
+                        <NavbarHome />
+                        <div className='max-w-[1920px] mx-auto'>
+                        {children}
+                        </div>
+                        <Footer />
+                    </NextIntlClientProvider>
+                </Suspense>
             </body>
         </html>
     )
