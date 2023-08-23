@@ -20,7 +20,7 @@ function HomeDistribuitor() {
     
       },[videoDistribuitorHover])
   return (
-    <div className='relative h-full w-1/2 group' onMouseOver={()=>{
+    <div className='relative h-full w-1/2 max-md:w-full max-md:h-3/5 group' onMouseOver={()=>{
         setVideoDistribuitorHover(true);
       }} onMouseOut={()=>{
         setVideoDistribuitorHover(false);

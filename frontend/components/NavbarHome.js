@@ -85,11 +85,14 @@ function NavbarHome({children}) {
     }
 
     const handleMenuBtnHover = () => {
-      if(!buttonTimeout){
+      // if(!buttonTimeout){
         setIsMenuOpen(true);
         // keepMenuOpen(true);
-      }
-      
+      // } 
+    }
+
+    const handleMenuBtnLeave = () => {
+      setIsMenuOpen(false)
     }
 
     
@@ -97,9 +100,9 @@ function NavbarHome({children}) {
       useEffect(()=>{
         window.addEventListener("scroll",handleScroll);
 
-        isMenuOpen ? (setHeaderWhite(true)) : (window.scrollY >= 100 ? (setHeaderWhite(true)) : (setHeaderWhite(false)));
+        // isMenuOpen ? (setHeaderWhite(true)) : (window.scrollY >= 100 ? (setHeaderWhite(true)) : (setHeaderWhite(false)));
         
-        isMenuOpen ? (handleMenuOpen()) : (handleMenuClose());
+        // isMenuOpen ? (handleMenuOpen()) : (handleMenuClose());
         return () => {
           window.removeEventListener("scroll",handleScroll);
         }
@@ -110,7 +113,7 @@ function NavbarHome({children}) {
       
 
   return (
-     <header className={`fixed header-container transition-all ${isMenuOpen ? 'menu-open' : ''} top-0 left-0 w-full py-2 px-5 px-5 z-50 duration-300 ${headerWhite ? 'bg-backgroundPrimary70 shadow-lg backdrop-blur-md' : '' }`}>
+     <header className={`fixed header-container transition-all ${isMenuOpen ? 'menu-open-2' : ''} top-0 left-0 w-full py-2 px-5 px-5 z-50 duration-300 ${headerWhite ? 'bg-backgroundPrimary70 shadow-lg backdrop-blur-md' : '' }`}>
       <div className='relative flex z-20 flex-row max-w-[1200px] justify-between content-center items-center w-full mx-auto'>
         <div>
           <Link href="/" className='header-logo-container w-[200px] max-md:w-[150px] '>
@@ -128,7 +131,7 @@ function NavbarHome({children}) {
         </div>
         <div className='flex flex-row justify-center items-center
         '>
-          <button  className={`duration-300 menu-btn ${isMenuOpen ? 'menu-open' : ''} ${headerWhite ? 'header-white' : ''} mr-5`} onClick={handleMenuBtn} onMouseOver={handleMenuBtnHover}  disabled={buttonTimeout}>
+          <button  className={`relative duration-300 menu-btn ${isMenuOpen ? 'menu-open' : ''} ${headerWhite ? 'header-white' : ''} mr-5`} onMouseOver={handleMenuBtnHover} onMouseLeave={handleMenuBtnLeave}  disabled={buttonTimeout}>
 
             <svg width="100" height="100" viewBox="0 0 100 100" >
               <path className="duration-300 line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
@@ -139,15 +142,9 @@ function NavbarHome({children}) {
             {/* <div className='bar-1'></div>
             <div className='bar-2'></div>
             <div className='bar-3'></div> */}
-          </button>
-          <LocaleSwitcher />
-          {/* <LocaleSwitcherFooter /> */}
-        </div>
-      </div>
-
-      <div className={`relative z-10 duration-300 w-full mx-auto menu-container ${isMenuOpen ? 'menu-open' : ''}  `} >
-        <nav className='w-full flex justify-center items-center'>
-          <ul className='text-center text-4xl font-extrabold max-sm:text-3xl '>
+      <div className={`absolute block overflow-hidden top-full left-1/2 transform -translate-x-1/2 w-max bg-backgroundPrimary rounded-xl duration-200 shadow-lg p-2.5 ${isMenuOpen ? 'menu-open menu-visible ' : 'menu-hidden pointer-events-none'}`} >
+        <nav className='relative'>
+          <ul className='text-2xl'>
             <li className='navbar-el my-5 mx-auto px-3 before:duration-300 w-max relative hover:before:w-full before:absolute before:content-[""] before:w-0 before:h-[4px] before: before:bg-foregroundPrimary before:left-0 before:bottom-[-2px] before:origin-center-left '>
               <Link href="/" >{t("home-link")}</Link>
             </li>
@@ -187,6 +184,14 @@ function NavbarHome({children}) {
           </ul>
         </nav>
       </div>
+
+          </button>
+          <LocaleSwitcher />
+          {/* <LocaleSwitcherFooter /> */}
+        </div>
+      </div>
+
+      
     </header>
   )
 }

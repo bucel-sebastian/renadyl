@@ -37,7 +37,7 @@ export default async function LocaleLayout({children, params: {locale}}){
 
     return (
         <html lang={locale}>
-            <body className={`scroll-smooth bg-foregroundPrimary ${sofiaSans.className}`}>
+            <body className={`scroll-smooth bg-backgroundPrimary ${sofiaSans.className}`}>
                 <Suspense>
                     <NextIntlClientProvider locale={locale} messages={messages}>
                         <NavbarHome />

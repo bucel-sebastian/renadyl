@@ -98,11 +98,20 @@
     transform: translateY(0) !important;
   }
 
+  .menu-hidden{
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  .menu-visible{
+    transform: translateY(0);
+    opacity: 1;
+  }
 
   .header-container{
     height: 66px;
     transition: 0.3s ease;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .header-container.menu-open{
