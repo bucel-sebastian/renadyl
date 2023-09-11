@@ -41,6 +41,7 @@ header{
   top:0;
   left: 0; */
   width: 100%;
+  padding: 15px 0;
 }
 
 .header-container{
@@ -73,6 +74,7 @@ header{
   align-items: center;
   align-content: center;
   gap: 35px;
+  flex-wrap: wrap;
 }
 .contact-links-container svg {
   margin-right: 5px;
@@ -97,9 +99,12 @@ a{
   align-items: center;
   align-content: center;
   background-image: linear-gradient(to right,#44ec9d, #7f5af8);
+  flex-direction: column;
 }
 
 .content-container{
+  padding-top: 15px;
+  height: 100%;
   text-align: center;
   color: #fafafa;
 }
@@ -163,4 +168,74 @@ a{
   background: none;
   cursor: pointer;
   color: #4a4a4a;
+}
+
+
+@media only screen and (max-width: 1200px){
+  .header-container{
+    margin:0 auto;
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 900px){
+  .image{
+    width: 95vw;
+    margin:0 auto;
+  }
+  
+}
+
+@media only screen and (max-width: 500px) {
+  .form-input-container-w-button{
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+}
+
+
+@media only screen and (max-width: 768px){
+  .App{
+    min-height: 100vh;
+    height: max-content;
+  }
+  .header-logo{
+    height: 45px;
+  }
+  h1{
+    font-size: 38px;
+  
+  }
+  h2{
+    font-size:24px;
+   
+  }
+  p{
+    font-size: 24px;
+  
+  }
+  a{
+    font-size: 20px;
+  }
+
+} 
+
+@media only screen and (max-width: 425px){
+  .contact-links-container{
+    gap:10px;
+  }
+  .header-logo{
+    height: 37px;
+  }
+}
+
+
+
+.form-deny{
+  border: 2px solid red;
+}
+
+.form-complete{
+  background: #e4fff2;
 }

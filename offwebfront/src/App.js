@@ -6,8 +6,8 @@ import { FaMailBulk, FaMobileAlt, FaFacebookF, FaTwitter, FaInstagram } from "re
 function App() {
   return (
     <div className="App">
-      
-      <div className='content-container'><Header/>
+      <Header/>
+      <div className='content-container'>
           <img src='/image.png' className='image' />
           <h1>Site-ul nostru se află în construcție.</h1>
           <p>Pentru mai multe informații sau comenzi vă rugăm să ne contactați utilizând:</p>
