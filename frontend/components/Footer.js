@@ -11,10 +11,12 @@ import renadylLogoWhite from '@/public/renadyl_logo_white.svg'
 import {FaPhone,FaEnvelope, FaFacebook,FaInstagram,FaPinterest,FaYoutube} from 'react-icons/fa'
 
 function Footer() {
+
     const t = useTranslations("Footer");
-    return (
-      <footer className='w-full bg-foregroundPrimary text-backgroundPrimary py-7 max-xl:px-5'>
-          <div className='flex max-w-[1200px] w-full mx-auto gap-2 uppercase pb-5 max-lg:flex-wrap'>
+
+  return (
+    <footer className='w-full bg-foregroundPrimary text-backgroundPrimary py-7 '>
+<div className='flex max-w-[1200px] w-full mx-auto gap-2 uppercase pb-5 max-lg:flex-wrap'>
               <div className='w-1/4 max-lg:w-1/2 max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center'>
                   <h5>S.C. Healty Medical S.R.L.</h5>
                   <p>RO 43590495</p>
@@ -100,26 +102,47 @@ function Footer() {
                   
               </div>
           </div>
-          <div className='flex flex-row justify-center gap-5 max-sm:flex-col max-sm:items-center'>
-              <Link href="https://anpc.ro/ce-este-sal/">
-                  <Image 
-                      src="/images/anpc-sal.png"
-                      width={250}
-                      height={0}
-                      alt='ANPC SAL'
-                  />
-              </Link>
-              <Link href="https://ec.europa.eu/consumers/odr">
-                  <Image 
-                      src="/images/anpc-sol.png"
-                      width={250}
-                      height={0}
-                      alt='ANPC SOL'
-                  />
-              </Link>
-          </div>
-      </footer>
-    )
+<div className='flex flex-row justify-center gap-5 max-sm:flex-col max-sm:items-center'>
+           <Link href="https://anpc.ro/ce-este-sal/">
+               <Image 
+                   src="/images/anpc-sal.png"
+                   width={250}
+                   height={0}
+                   alt='ANPC SAL'
+               />
+           </Link>
+           <Link href="https://ec.europa.eu/consumers/odr">
+               <Image 
+                   src="/images/anpc-sol.png"
+                   width={250}
+                   height={0}
+                   alt='ANPC SOL'
+               />
+           </Link>
+       </div>
+    </footer>
+    // <footer className='w-screen bg-foregroundPrimary text-backgroundPrimary py-7 max-xl:px-5'>
+          
+    //       <div className='flex flex-row justify-center gap-5 max-sm:flex-col max-sm:items-center'>
+    //           <Link href="https://anpc.ro/ce-este-sal/">
+    //               <Image 
+    //                   src="/images/anpc-sal.png"
+    //                   width={250}
+    //                   height={0}
+    //                   alt='ANPC SAL'
+    //               />
+    //           </Link>
+    //           <Link href="https://ec.europa.eu/consumers/odr">
+    //               <Image 
+    //                   src="/images/anpc-sol.png"
+    //                   width={250}
+    //                   height={0}
+    //                   alt='ANPC SOL'
+    //               />
+    //           </Link>
+    //       </div>
+    //   </footer>
+  )
 }
 
 export default Footer

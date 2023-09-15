@@ -1,0 +1,57 @@
+{
+    "Index": {
+        "page-title": "Home",
+        "comandaBtn": "Order now",
+        "detaliiBtn": "Learn more",
+        "inscrieteBtn": "Join now",
+        "doctor-heading": "Are you a doctor?",
+        "distribuitor-heading": "Do you want to be a distributor?"
+    },
+    "Footer": {
+        "linkuri-utile": "Link-uri utile",
+        "linkU1": "Termeni și condiți",
+        "linkU2": "Politica de confidențialitate",
+        "linkU3": "Politica de livrare",
+        "linkU4": "Politica de retur",
+        "linkU5": "ANPC",
+        "linkU6": "Cookies",
+        "harta-website": "Hartă website",
+        "linkD1": "Home",
+        "linkD2": "About Renadyl™",
+        "linkD3": "Contact",
+        "linkD4": "Autentificare",
+        "linkD5": "Înregistrare"
+    },
+    "Navbar": {
+        "home-link": "Acasă",
+        "about-link": "Despre Renadyl™",
+        "contact-link": "Contact",
+        "login-link": "Autentificare",
+        "register-link": "Înregistrare",
+        "order-link": "Comandă acum"
+    },
+    "About": {
+        "page-title": "About Renadyl™",
+        "comandaBtn": "Order now",
+        "hero-heading": "",
+        "hero-description": "",
+        "section-1-heading": "",
+        "section-1-description": "",
+        "section-1-box-1-heading": "",
+        "section-1-box-2-heading": "",
+        "section-1-box-3-heading": "",
+        "section-1-box-1-description": "",
+        "section-1-box-2-description": "",
+        "section-1-box-3-description": "",
+        "section-2-heading":"",
+        "section-2-description-1": "",
+        "section-2-description-2": "",
+        "section-2-description-3": "",
+        "section-2-description-4": "",
+        "section-2-step-1":"",
+        "section-2-step-2":"",
+        "section-2-step-3":"",
+        "section-2-step-4":""
+    }
+
+}

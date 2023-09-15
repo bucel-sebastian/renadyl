@@ -1,15 +1,14 @@
 {
-    "Index": {
-        "page-title": "Aushvitz",
-
-        "title": "Shaizen world!"
+    "Header": {
+        "home": "Acasă",
+        "product": "Produs",
+        "affiliates": "Afiliați",
+        "contact": "Contact",
+        "doctors": "Doctori",
+        "distributors": "Distribuitori",
+        "ambassadors": "Ambasadori"
     },
-    "Navbar": {
-        "home-link": "Acasă",
-        "about-link": "Despre Renadyl™",
-        "contact-link": "Contact",
-        "login-link": "Autentificare",
-        "register-link": "Înregistrare",
-        "order-link": "Comandă acum"
+    "Index": {
+        "page-title": "Acasă"
     }
 }

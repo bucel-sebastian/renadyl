@@ -51,92 +51,67 @@
   --foreground-secondary-10: #54565a1A;
   --foreground-secondary-0: #54565a00;
 
-  --accent-primary: #E7661B;
-  --accent-primary-90: #E7661BE6;
-  --accent-primary-80: #E7661BCC;
-  --accent-primary-70: #E7661BB3;
-  --accent-primary-60: #E7661B99;
-  --accent-primary-50: #E7661B80;
-  --accent-primary-40: #E7661B66;
-  --accent-primary-30: #E7661B4D;
-  --accent-primary-20: #E7661B33;
-  --accent-primary-10: #E7661B1A;
-  --accent-primary-0:  #E7661B00;
-
-  --accent-secondary: #F47425;
-  --accent-secondary-90: #F47425E6;
-  --accent-secondary-80: #F47425CC;
-  --accent-secondary-70: #F47425B3;
-  --accent-secondary-60: #F4742599;
-  --accent-secondary-50: #F4742580;
-  --accent-secondary-40: #F4742566;
-  --accent-secondary-30: #F474254D;
-  --accent-secondary-20: #F4742533;
-  --accent-secondary-10: #F474251A;
-  --accent-secondary-0:  #F4742500;
-
-  --accent-third: #F79A53;
-  --accent-third-90: #F79A53E6;
-  --accent-third-80: #F79A53CC;
-  --accent-third-70: #F79A53B3;
-  --accent-third-60: #F79A5399;
-  --accent-third-50: #F79A5380;
-  --accent-third-40: #F79A5366;
-  --accent-third-30: #F79A534D;
-  --accent-third-20: #F79A5333;
-  --accent-third-10: #F79A531A;
-  --accent-third-0:  #F79A5300;
-
-  --accent-fourth: #FFAB66;
-  --accent-fourth-90: #FFAB66E6;
-  --accent-fourth-80: #FFAB66CC;
-  --accent-fourth-70: #FFAB66B3;
-  --accent-fourth-60: #FFAB6699;
-  --accent-fourth-50: #FFAB6680;
-  --accent-fourth-40: #FFAB6666;
-  --accent-fourth-30: #FFAB664D;
-  --accent-fourth-20: #FFAB6633;
-  --accent-fourth-10: #FFAB661A;
-  --accent-fourth-0:  #FFAB6600;
-
-  --optional-primary: #454662;
-  --optional-primary-90: #454662E6;
-  --optional-primary-80: #454662CC;
-  --optional-primary-70: #454662B3;
-  --optional-primary-60: #45466299;
-  --optional-primary-50: #45466280;
-  --optional-primary-40: #45466266;
-  --optional-primary-30: #4546624D;
-  --optional-primary-20: #45466233;
-  --optional-primary-10: #4546621A;
-  --optional-primary-0:  #45466200;
+  --gradient-green: #44EC9D;
+  --gradient-purple: #7F5AF8;
 }
 
 
 
 body {
-  color: rgb(var(--foreground-primary));
-  background: var(--background-primary);
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
-.heading-decorations{
+@keyframes dottimmer {
+  from{
+    transform: scaleX(0);
+  }
+  to{
+    transform: scaleX(1);
+  }
+}
+
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  background: #fafafa75;
   position: relative;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
-.heading-decorations::after{
-  content: "";
-  position: absolute;
-  width: 30%;
-  height: 5px;
-  background-color: var(--accent-primary);
-  bottom: 0;left:0;
+
+.active-dot{
+  width: 50px;
+  background-color: #fafafa95;
+  position: relative;
 }
-.heading-decorations::before{
-  content: "";
+
+.active-dot .inner-dot{
   position: absolute;
-  width: 75%;
-  height: 5px;
-  background-color: var(--foreground-secondary);
-  bottom: 0;left:0;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  background-color: #fafafa;
+  transform-origin:center left;
+  animation-name: dottimmer; /* Added animation name */
+  animation-duration: 5s; /* Added animation duration */
+  animation-timing-function: ease; /* Added animation timing function */
+}
+
+
+.hero-slide{
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.active-slide{
+  opacity: 1;
 }

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from "react-icons/fa6";
 
 function Form() {
 
+  const {t,i18n} = useTranslation();
 
   const [isEmailValid, setIsEmailValid] = useState(true);
 
@@ -23,10 +25,13 @@ function Form() {
     for(let i=0;i<event.target.length;i++){
       formData.append(event.target[i].name,event.target[i].value);
     }
-    const response = await fetch('/api/contactform.php');
+    const response = await fetch('/api/contactform.php',{
+      method: "POST",
+      body: formData
+    });
     const data = await response.json();
     if(await data.status === "success"){
-      document.getElementById("input-email").value="Adresa de email a fost salvată!";
+      document.getElementById("input-email").value=t('Index.newsletterOK');
       document.getElementById("input-email").setAttribute("disabled","");
       document.getElementById("form-input-container-w-button").classList.add("form-complete");
       document.getElementById("form-submit").remove();
@@ -47,18 +52,18 @@ function Form() {
   return (
     <div>
         <h2>
-            Abonați-vă, pentru a afla când am lansat website-ul.
+        {t('Index.newsletter1')}
         </h2>
 
         <form className='form-container' id='email-form' onSubmit={handleFormSubmit}>
             <div className='form-input-container-w-button' id='form-input-container-w-button'>
-                <input type='email' placeholder='Adresa de email' name='email' id='input-email' onChange={validateEmail} />
+                <input type='email' placeholder={t('Index.newsletterPH')} name='email' id='input-email' onChange={validateEmail} />
                 <button type='submit' id='form-submit'>
                   <FaArrowRightLong />
                 </button>
             </div>
         </form>
-        <span>* Promitem să nu vă trimitem niciodată spam.</span>
+        <span>{t('Index.newsletter2')}</span>
     </div>
   )
 }

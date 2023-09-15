@@ -36,206 +36,145 @@ p{
 a{
   font-size: 24px;
 }
-header{
-  /* position: fixed;
-  top:0;
-  left: 0; */
+
+
+.App{
   width: 100%;
-  padding: 15px 0;
+  height: max-content;
+  min-height: 100vh;
+  background-image: linear-gradient(to right,#44ec9d, #7f5af8);
+
+
 }
 
+
+
+
 .header-container{
+  width: 100%;
   max-width: 1200px;
-  margin:0 auto;
+  height: 60px;
+  padding: 15px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+}
+.header-logo-container{
+  height: 100%;
 }
 .header-logo{
-  height: 55px;
+  height: 100%;
 }
-
 .language-switcher-container{
+  width: max-content;
+  height: 60%;
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
-.language-switcher img{
-  width: 30px;
-  height: 30px;
-  border-radius: 50px;
-  border: 1px solid #fafafa;
+.language-switcher{
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  border: 2px solid #fafafa;
+  border-radius: 100px;
+  cursor: pointer;
+  padding: 0;
+} 
+
+
+
+.content-container{
+  width: 100%;
+  max-width: 1200px;
+  width: 100%;
+  margin:0 auto;
+  overflow: hidden;
+  color: #fafafa;
+  text-align: center;
 }
+
+.image{
+  width: 80%;
+  display: block;
+  margin:0 auto;
+}
+
 
 .contact-links-container{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  align-content: center;
   gap: 35px;
   flex-wrap: wrap;
 }
-.contact-links-container svg {
-  margin-right: 5px;
-  padding: 0;
-  margin-bottom: 0;
-}
-a{
-  color: #3B3B3B;
+.contact-button{
+  color: #464646;
   text-decoration: none;
   display: flex;
+  flex-direction: row;
+  gap: 7px;
   align-items: center;
   align-content: center;
-  width: max-content;
-  margin:0; padding: 0;
-}
-
-.App{
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  background-image: linear-gradient(to right,#44ec9d, #7f5af8);
-  flex-direction: column;
-}
-
-.content-container{
-  padding-top: 15px;
-  height: 100%;
-  text-align: center;
-  color: #fafafa;
-}
-
-.image{
-  width: 900px;
-  margin:0;
-  padding: 0;
 }
 
 
 .social-icons-container{
   display: flex;
   flex-direction: row;
-  gap:10px;
   justify-content: center;
+  gap:15px;
 }
 
 .social-icon{
+  border: 2px solid #464646;
   border-radius: 100px;
-  border:2px solid #3B3B3B;
+  aspect-ratio:  1 / 1;
   width: 40px;
   height: 40px;
-  font-size: 22px;
   display: flex;
   justify-content: center;
-  align-content: center;
   align-items: center;
-  color: #fafafa;
+  align-content: center;
+  cursor:pointer;
+  color:#fafafa;
 }
 
-
-
-
 .form-input-container-w-button{
-  width: 500px;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  background: #fff;
-  height: 56px;
-  box-shadow: 0 10px 16px 0 #00000035;
-  border-left: 3px solid #998A76;
+  align-items: center;
+  align-content: center;
+  max-width: 450px;
+  width: 100%;
+  background-color: #fafafa;
+  margin: 0 auto;
+  padding-inline: 12px;
+  border-left: 2px solid #464646 ;
+  box-shadow: 0px 5px 15px 5px #1a1a1a55;
 }
 
 .form-input-container-w-button input{
-  font-family: 'Poppins', sans-serif;;
-  width: 90%;
-  font-weight: 300;
-  padding: 0 10px;
+  width: 100%;
   border: none;
-  outline: none;
-  background: none;
-  color: #4a4a4a;
-  font-size: 16px;
+  font-size: 20px;
+  outline:none;
+  padding: 11px 0;
+}
+
+.form-input-container-w-button button svg{
+  display: block;
 }
 .form-input-container-w-button button{
-  width: 10%;
-  border:none;
-  outline: none;
   background: none;
+  border: none;
+  color: #464646;
   cursor: pointer;
-  color: #4a4a4a;
+  font-size: 18px;
 }
-
-
-@media only screen and (max-width: 1200px){
-  .header-container{
-    margin:0 auto;
-    width: 95%;
-  }
-}
-
-@media only screen and (max-width: 900px){
-  .image{
-    width: 95vw;
-    margin:0 auto;
-  }
-  
-}
-
-@media only screen and (max-width: 500px) {
-  .form-input-container-w-button{
-    width: 95%;
-    margin: 0 auto;
-  }
-  
-}
-
-
-@media only screen and (max-width: 768px){
-  .App{
-    min-height: 100vh;
-    height: max-content;
-  }
-  .header-logo{
-    height: 45px;
-  }
-  h1{
-    font-size: 38px;
-  
-  }
-  h2{
-    font-size:24px;
-   
-  }
-  p{
-    font-size: 24px;
-  
-  }
-  a{
-    font-size: 20px;
-  }
-
-} 
-
-@media only screen and (max-width: 425px){
-  .contact-links-container{
-    gap:10px;
-  }
-  .header-logo{
-    height: 37px;
-  }
-}
-
-
 
 .form-deny{
-  border: 2px solid red;
-}
-
-.form-complete{
-  background: #e4fff2;
+  border-bottom: 2px solid red;
 }
