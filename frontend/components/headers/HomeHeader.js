@@ -1,11 +1,12 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { useTranslations } from "next-intl";
 
+import renadylLogo from '@/public/renadyl_logo.svg';
 import renadylLogoWhite from '@/public/renadyl_logo_white.svg';
 
 import roLocaleIcon from '@/public/images/ro-icon.svg'
@@ -16,10 +17,18 @@ import { FaUserCircle } from "react-icons/fa";
 
 function HomeHeader({currentLocale}) {
 
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [headerWhite, setHeaderWhite] = useState(false);
+
+    const [isAffiliatesOpenDesktop, setIsAffiliatesOpenDesktop] = useState(false);
+    const [isAffiliatesOpenMobile, setIsAffiliatesOpenMobile] = useState(false);
+
     const [languageSwitcherOpen, setLanguageSwitcherOpen] = useState(false);
 
     const t = useTranslations('Header');
 
+  
 
     const locales = {ro:roLocaleIcon,en:enLocaleIcon,de:deLocaleIcon};
 
@@ -38,14 +47,56 @@ function HomeHeader({currentLocale}) {
         setLanguageSwitcherOpen(false);
     }
 
+    const handleHoverAffiliates = () => {
+        setIsAffiliatesOpenDesktop(true);
+    }
+
+    const handleLeaveAffiliates = () => {
+        setIsAffiliatesOpenDesktop(false);
+    }
+
+    const handleClickAffiliates = () => {
+        setIsAffiliatesOpenMobile(!isAffiliatesOpenMobile);
+    }
+
+    const handleMenuBtnClick = () =>{
+        setIsMenuOpen(!isMenuOpen);
+    }
+
+
+    const handleScroll = () => {
+        if(window.scrollY >= 100){
+            setHeaderWhite(true);
+        } else {
+            isMenuOpen ? (setHeaderWhite(true)) : (setHeaderWhite(false));
+        }
+    }
+
+
+    useEffect(()=>{
+        window.addEventListener("scroll",handleScroll);
+        setHeaderWhite(isMenuOpen);
+        
+        return () => {
+            window.removeEventListener("scroll",handleScroll);
+        }
+    },[isMenuOpen]);
+
+    
+
   return (
-    <header className='fixed block top-0 left-0 w-full h-[75px]  text-backgroundPrimary z-10'>
+    <header className={`fixed block top-0 left-0 w-full h-[75px] z-10 ${headerWhite ? 'bg-backgroundPrimary90 shadow-lg' : 'text-backgroundPrimary'} transition-all duration-300 `}>
         <div className='relative flex max-w-[1200px] mx-auto justify-between items-center content-center h-full py-2 max-md:px-5'>
-            <div className='h-full w-1/5 max-md:w-1/2'>
+            <div className='h-full w-1/5 max-md:w-1/2 relative'>
                 <Image 
                     src={renadylLogoWhite}
                     alt='Renadyl'
-                    className='h-full w-max'
+                    className={`h-full w-max transition-all duration-300 ${headerWhite ? 'opacity-0' : 'opacity-1'}`}
+                /> 
+                <Image 
+                    src={renadylLogo}
+                    alt='Renadyl'
+                    className={`h-full w-max absolute top-0 left-0 transition-all duration-300 ${headerWhite ? 'opacity-1' : 'opacity-0'}`}
                 /> 
             </div>
             <div className='w-3/5 max-md:w-1/2'>
@@ -57,8 +108,28 @@ function HomeHeader({currentLocale}) {
                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
                             <Link href="/product">{t('product')}</Link>
                         </li>
-                        <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                        <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all flex justify-center" onMouseOver={handleHoverAffiliates} onMouseLeave={handleLeaveAffiliates}>
                             <Link href="#">{t('affiliates')}</Link>
+                            <div className={`absolute pt-1 transition-all duration-300 top-full drop-shadow-md  ${isAffiliatesOpenDesktop ? 'opacity-1 pointer-event-auto' : 'opacity-0 pointer-events-none'}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.59 28.73" className='w-[20px] mx-auto block'>
+                                <g >
+                                    <path className='fill-backgroundPrimary' d="m58.59,28.73H0L24.28,1.75c2.1-2.33,7.94-2.33,10.03,0l24.28,26.98Z"/>
+                                </g>
+                                </svg>
+                                <nav className='text-center py-3 px-4 rounded-lg bg-backgroundPrimary text-foregroundPrimary'>
+                                    <ul className='flex flex-col items-center content-center gap-[2px]'>
+                                        <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                                            <Link href="#">{t('ambassadors')}</Link>
+                                        </li>
+                                        <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                                            <Link href="#">{t('doctors')}</Link>
+                                        </li>
+                                        <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                                            <Link href="#">{t('distributors')}</Link>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                         </li>
                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
                             <Link href="#">{t('contact')}</Link>
@@ -66,7 +137,7 @@ function HomeHeader({currentLocale}) {
                     </ul>
                 </nav>
                 <div className='hidden max-md:flex justify-end'>
-                    <button >
+                    <button onClick={handleMenuBtnClick}>
                         x
                     </button>
                 </div>
@@ -83,7 +154,7 @@ function HomeHeader({currentLocale}) {
                         <Image 
                             src={locales[currentLocale]}
                             alt='Renadyl'
-                            className='h-[35px] w-[35px] block rounded-full border-2 border-backgroundPrimary'
+                            className={`h-[35px] w-[35px] block rounded-full border-2 transition-all duration-300 ${headerWhite ? 'border-foregroundPrimary' : 'border-backgroundPrimary'}`}
                         />
                     </Link>
                     <div className={`relative block  ${languageSwitcherOpen ? 'w-[76px]' : 'w-[0px]'} overflow-hidden   transition-all duration-500 ease-in-out`}>
@@ -93,7 +164,7 @@ function HomeHeader({currentLocale}) {
                                     <Image 
                                         src={value}
                                         alt='Renadyl'
-                                        className='h-[35px] w-[35px] rounded-full border-2 border-backgroundPrimary'
+                                        className={`h-[35px] w-[35px] rounded-full border-2  transition-all duration-300 ${headerWhite ? 'border-foregroundPrimary' : 'border-backgroundPrimary'}`}
                                     />
                                 </button>
                             ))}
@@ -102,8 +173,47 @@ function HomeHeader({currentLocale}) {
                 </div>
             </div>
         </div>
-        <div className='hidden max-md:block h-screen w-full bg-backgroundPrimary'>
-
+        <div className={`hidden max-md:block h-screen w-full bg-backgroundPrimary90 text-foregroundPrimary transition-all duration-300 ${isMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-[100vw] pointer-events-none'}`}>
+            <div className='relative'>
+                <nav className=''>
+                    <ul className='flex flex-col justify-center gap-[20px] px-5 pt-5'>
+                        <li className="text-4xl text-right relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                            <Link href="/">{t('home')}</Link>
+                        </li>
+                        <li className="text-4xl text-right relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                            <Link href="/product">{t('product')}</Link>
+                        </li>
+                        <li className="text-4xl text-right relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                            <Link href="#">{t('ambassadors')}</Link>
+                        </li>
+                        <li className="text-4xl text-right relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                            <Link href="#">{t('doctors')}</Link>
+                        </li>
+                        <li className="text-4xl text-right relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                            <Link href="#">{t('distributors')}</Link>
+                        </li>     
+                        <li className="text-4xl text-right relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                            <Link href="#">{t('contact')}</Link>
+                        </li>
+                        <li className="text-4xl text-right relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                            <Link href="#">{t('account')}</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <div className='relative mt-8 w-full flex justify-center flex-row gap-[10px]'>
+                    {
+                        Object.values(locales).map((locale,index)=>(
+                            <button key={index} className='w-[45px]'>
+                                    <Image 
+                                        src={locale}
+                                        alt='Renadyl'
+                                        className={`h-[45px] w-[45px] rounded-full border-2  transition-all duration-300 border-foregroundPrimary`}
+                                    />
+                                </button>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     </header>
   )
