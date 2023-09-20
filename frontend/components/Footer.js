@@ -15,7 +15,7 @@ function Footer() {
     const t = useTranslations("Footer");
 
   return (
-    <footer className='w-full bg-foregroundPrimary text-backgroundPrimary py-7 '>
+    <footer className='w-full bg-foregroundPrimary text-backgroundPrimary py-7 max-[1200px]:px-4 '>
 <div className='flex max-w-[1200px] w-full mx-auto gap-2 uppercase pb-5 max-lg:flex-wrap'>
               <div className='w-1/4 max-lg:w-1/2 max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center'>
                   <h5>S.C. Healty Medical S.R.L.</h5>
