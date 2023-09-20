@@ -5,9 +5,15 @@ import { useTranslations } from "next-intl"
 import Image from "next/image"
 import Link from "next/link"
 
+import { useEffect } from "react"
+
 export default function Index() {
 
     const t = useTranslations("Index");
+
+    useEffect(()=>{
+        document.title = `Renadyl™ - ${t("page-title")}`;
+    },[])
 
     return (
         <main className="bg-foregroundPrimary w-full h-screen relative">

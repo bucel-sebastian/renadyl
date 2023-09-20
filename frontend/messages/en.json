@@ -6,9 +6,131 @@
         "contact": "Contact",
         "doctors": "Doctori",
         "distributors": "Distribuitori",
-        "ambassadors": "Ambasadori"
+        "ambassadors": "Ambasadori",
+        "account": "Intră în cont"
+    },
+    "Footer": {
+        "linkuri-utile": "Link-uri utile",
+        "linkU1": "Termeni și condiți",
+        "linkU2": "Politica de confidențialitate",
+        "linkU3": "Politica de livrare",
+        "linkU4": "Politica de retur",
+        "linkU5": "ANPC",
+        "linkU6": "Cookies",
+        "harta-website": "Hartă website",
+        "linkD1": "Acasă",
+        "linkD2": "Despre Renadyl™",
+        "linkD3": "Contact",
+        "linkD4": "Autentificare",
+        "linkD5": "Înregistrare"
     },
     "Index": {
-        "page-title": "Acasă"
+        "page-title": "Acasă",
+        "buy-btn": "Cumpără",
+        "about-btn": "Despre produs"
+    },
+    "Product": {
+        "page-title": "Produs",
+        "buy-btn": "Cumpără",
+        "subscription-btn": "Abonament",
+        "hero-section": {
+            "product-name": "Renadyl™ - Supliment alimentar",
+            "product-desc": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții. Este alcătuit din trei tulpini patentate de bacterii probiotice, care utilizează deșeurile azotoase ca hrană. Deșeurile azotoase se difuzează din fluxul sanguin în colon printr-un proces natural cunoscut sub numele de osmoză. La persoanele cu funcție renală afectată, un numar crescut de toxine se difuzează în intestinul gros (colon). Odată ce toxinele se acumulează în concentrații ridicate în colon, Renadyl™ le metabolizează și reduce concentrația de toxine din corp. Datorită capacității Renadyl™ de a metaboliza produsele deșeurilor azotoase în intestin, acesta ajuta la menținerea funcției sănătoase a rinichilor și reduce stresul asupra acestora.",
+            "product-price": "Preț",
+            "product-unit": "buc.",
+            "product-buy-btn": "Cumpără",
+            "product-subscription-btn": "Abonament",
+            "product-shippment": "Livrare",
+            "product-shippment-green": "5 zile lucrătoare",
+            "product-return-tc": "Termeni și condiții pentru",
+            "product-return-tc-btn": "retur"
+        },
+        "about-section": {
+            "title": "Cum ajută Renadyl™",
+            "desc": "Renadyl™ este un supliment alimentar cu probiotice, formulat științific și testat clinic. Renadyl™ metabolizează deșeurile azotoase care s-au difuzat din fluxul sanguin în intestinul gros. Deșeurile azotoase sunt utilizate de Renadyl™ ca nutrienți. Pe măsură ce probioticele cresc și se înmulțesc, ele consumă mai multe deșeuri azotoase și astfel ajută eficient la menținerea funcției sănătoase a rinichilor. Metabolitii azotati sunt eliminați ca reziduuri solide/materii fecale.",
+            "about-tabs": {
+                "tab-1": {
+                    "number": "2",
+                    "title": "Fibre prebiotice",
+                    "text": "Pentru a promova creșterea probioticelor găsite în Renadyl™ și a microorganisme benefice existente in intestinul pacientului."
+                },
+                "tab-2": {
+                    "number": "45",
+                    "title": "Miliarde CFUs",
+                    "text": "Concentrație ridicată de microorganisme probiotice, cunoscute și sub denumirea de unități formatoare de colonii (CFU-uri)"
+                },
+                "tab-3": {
+                    "number": "3",
+                    "title": "Tulpini patentate",
+                    "text": "De bacterii utile, selectate datorită capacității lor de a metaboliza deșeurile azotoase."
+                }
+            }
+        },
+        "more-section": {
+            "title": "Renadyl™ - Stabilește echilibrul renal în mod natural",
+            "desc": {
+                "p-1": "În mod normal în corpul nostru există un echilibru de toxine uremice între sânge și lumenul colonului (tractul gastrointestinal).",
+                "p-2": "Această concentrație a toxinelor uremice în intestinul gros este de obicei mai mare în condițiile de boală. Tehnologia noastră patentată de probiotice enterice utilizează aceste toxine pentru creșterea cantitatii de bacterii sanatoase, generând astfel un gradient de concentrație care determină mai multe toxine din sânge să difuzeze pasiv în lumenul colonului.",
+                "p-3": "Procesul concret are loc în intestinul gros. Pe măsură ce funcția renală încetinește, deșeurile azotoase se acumulează în sânge și se difuzează în lichidul intestinal prin procesele fiziologice naturale.",
+                "p-4": "Atunci când rinichii devin afectați, toxinele uremice se acumulează în sânge. Un număr mare a acestor toxine se difuzează în colon datorită rețelei extinse de vase de sânge care-l înconjoară."
+            },
+            "list": {
+                "p-1": "După o călătorie în tractul gastrointestinal superior, microorganismele probiotice sunt eliberate dintr-o capsulă rezistentă la acid și pătrund în regiunea ileo-cecală a intestinului gros.",
+                "p-2": "Odată ajunse în colon, microorganismele descoperă și metabolizează deșeurile azotoase uremice folosindu-le ca nutrienți pentru creștere.",
+                "p-3": "Pe măsură ce microorganismele încep să se înmulțească, ele metabolizează progresiv tot mai multe toxine uremice, crescând astfel gradientul de concentrație și permitând o difuzie mai mare a acestor toxine în intestinul gros.",
+                "p-4": "În cele din urmă, toxinele metabolizate sunt transportate prin intestin și sunt eliminate din organism ca reziduuri solide, ușurând astfel povara asupra rinichilor afectați."
+            }
+        },
+        "steps-section": {
+            "title": "3 pași pentru sănătatea rinichilor tăi",
+            "desc": "Microbii din Renadyl™ ajută la metabolizarea deșeurilor azotate și a toxinelor, reducând astfel stresul asupra rinichilor",
+            "steps": {
+                "step-1": {
+                    "heading": "Îmbunătățește bacteriile intestinale",
+                    "title-1": "Fiecare capsulă conține 45 de miliarde de CFUs de bacterii benefice",
+                    "text-1": "3 tulpini de microbi testați clinic în capsulă rezistentă la acizi.",
+                    "title-2": "Microbii reducători uremici sunt eliberați în colon",
+                    "text-2": "Protejate de capsula rezistentă la acid, probioticele supraviețuiesc acidului din stomac și sunt eliberate în siguranță doar în colon."
+                },
+                "step-2": {
+                    "heading": "Metabolizează toxinele",
+                    "title": "Bacteriile intestinale îmbunătățite!",
+                    "text": "Probioticele se înmulțesc folosind toxine uremice și azotate ca sursă de hrană. Această creștere a bacteriilor benefice poate ajuta la îmbunătățirea sănătății intestinale"
+                },
+                "step-3": {
+                    "heading": "Reduce stresul asupra rinichilor",
+                    "title": "Reducerea toxinelor",
+                    "text": "Atunci când sunt luate în mod constant, acestea reduc nivelurile de uree, creatinină și acid uric, ajutând la eliminarea unei anumite sarcini de pe rinichi. Aceste toxine metabolizate sunt eliminate în timpul mișcărilor intestinale normale."
+                }
+            }
+        }
+    },
+    "Contact": {
+        "page-title": "Contact",
+        "title": "Contactează-ne",
+        "desc": "Nu ezitați să ne contactați pentru informații suplimentare!",
+        "contact-info": {
+            "title": "Informații de contact"
+        },
+        "contact-form": {
+            "first-name-label": "Prenume",
+            "last-name-label": "Nume",
+            "email-label": "Adresa de email",
+            "phone-label": "Număr de telefon",
+            "message-label": "Mesaj",
+            "": "",
+            "first-name-ph": "Introdu prenumele",
+            "last-name-ph": "Introdu numele",
+            "email-ph": "Introdu adresa de email",
+            "phone-ph": "Introdu numărul de telefon",
+            "message-ph": "Scrie-ți mesajul dvs.",
+            "submit-btn": "Trimite"
+        }
+    },
+    "Under-construction": {
+        "title": "Indisponibil",
+        "heading": "Momentan indisponibil",
+        "desc": "În acest moment această zona este indisponibilă",
+        "back-home-btn": "Înapoi acasă"
     }
 }
