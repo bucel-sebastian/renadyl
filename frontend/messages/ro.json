@@ -104,5 +104,26 @@
                 }
             }
         }
+    },
+    "Contact": {
+        "page-title": "Contact",
+        "title": "Contactează-ne",
+        "desc": "Nu ezitați să ne contactați pentru informații suplimentare!",
+        "contact-info": {
+            "title": "Informații de contact"
+        },
+        "contact-form": {
+            "first-name-label": "Prenume",
+            "last-name-label": "Nume",
+            "email-label": "Adresa de email",
+            "phone-label": "Număr de telefon",
+            "message-label": "Mesaj",
+            "first-name-ph": "Introdu prenumele",
+            "last-name-ph": "Introdu numele",
+            "email-ph": "Introdu adresa de email",
+            "phone-ph": "Introdu numărul de telefon",
+            "message-ph": "Scrie-ți mesajul dvs.",
+            "submit-btn": "Trimite"
+        }
     }
 }
