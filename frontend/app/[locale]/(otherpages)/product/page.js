@@ -129,8 +129,8 @@ export default function Product() {
                         />
                     </div>
                 </div>
-                <div className="w-[85%] mx-auto block mt-16 mb-4 max-md:w-full">
-                    <div className="flex flex-row items-center content-center gap-3 my-6 max-md:gap-8">
+                <div className="w-[85%] mx-auto block mt-16 mb-4 max-md:w-full max-md:gap-8">
+                    <div className="flex flex-row items-center content-center gap-3 my-6">
                         <div className="relative flex justify-center content-center items-center text-3xl font-bold w-[50px] h-[50px] aspect-square rounded-full bg-gradient-to-r from-gradientGreen to-gradientPurple p-1">
                             <span className="text-gradientGreen w-full text-center h-full bg-backgroundPrimary rounded-full flex justify-center content-center items-center">1</span>
                         </div>
