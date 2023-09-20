@@ -49,6 +49,16 @@ function ContactForm() {
                     <input placeholder={t("contact-form.phone-ph")} name='phone' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' />
                 </div>
             </div>
+            <div>
+                <div className='w-full flex flex-col'>
+                    <label className='px-1 text-foregroundPrimary70'>
+                        {t("contact-form.message-label")}
+                    </label>
+                    <select>
+                        
+                    </select>
+                </div>
+            </div>
             <div className='flex flex-row gap-2 '>
                 <div className='w-full flex flex-col'>
                     <label className='px-1 text-foregroundPrimary70'>
