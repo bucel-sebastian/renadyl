@@ -4,6 +4,8 @@ import { useTranslations } from "next-intl"
 import Image from "next/image";
 import Link from "next/link";
 
+import Head from "next/head";
+
 import {FaArrowDown, FaArrowRight} from "react-icons/fa6";
 import {FaShippingFast, FaUndoAlt} from "react-icons/fa";
 
@@ -12,13 +14,21 @@ import renadylKidneys from '@/public/images/renadyl_kidneys.svg';
 import renadylPill from '@/public/images/renadyl_pill.svg';
 import renadylStomach from '@/public/images/renadyl_stomach.svg';
 import ProductImageSlider from "@/components/ProductImageSlider";
+import { useEffect } from "react";
 
 
 export default function Product() {
+    
     const t = useTranslations("Product");
+
+
+    useEffect(()=>{
+        document.title = `Renadyl™ - ${t("page-title")}`;
+    },[])
 
     return(
         <main className=" block  pt-[90px] text-lg">
+                    
             <section className="flex flex-row max-w-[1200px] w-full mx-auto rounded-xl shadow-xl p-8 mb-12 border-foregroundPrimary10 border-[1px] max-md:flex-col max-md:px-2">
                 <div className="w-2/5 max-md:w-[80%] max-md:mx-auto max-sm:w-full">
                     <ProductImageSlider />

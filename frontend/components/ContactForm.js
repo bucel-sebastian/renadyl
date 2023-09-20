@@ -26,13 +26,13 @@ function ContactForm() {
                     <label className='px-1 text-foregroundPrimary70'>
                         {t("contact-form.first-name-label")}
                     </label>
-                    <input placeholder={t("contact-form.first-name-ph")} name='fname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' />
+                    <input placeholder={t("contact-form.first-name-ph")} name='fname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
                 </div>
                 <div className='w-1/2 flex flex-col max-md:w-full'>
                     <label className='px-1 text-foregroundPrimary70'>
                         {t("contact-form.last-name-label")}
                     </label>
-                    <input placeholder={t("contact-form.last-name-ph")} name='lname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 '/>
+                    <input placeholder={t("contact-form.last-name-ph")} name='lname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
                 </div>
             </div>
             <div className='flex flex-row gap-8 max-md:flex-col max-md:gap-4'>
@@ -40,7 +40,7 @@ function ContactForm() {
                     <label className='px-1 text-foregroundPrimary70'>
                         {t("contact-form.email-label")}
                     </label>
-                    <input placeholder={t("contact-form.email-ph")} name='email' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' />
+                    <input placeholder={t("contact-form.email-ph")} name='email' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required />
                 </div>
                 <div className='w-1/2 flex flex-col max-md:w-full'>
                     <label className='px-1 text-foregroundPrimary70'>
@@ -52,10 +52,21 @@ function ContactForm() {
             <div>
                 <div className='w-full flex flex-col'>
                     <label className='px-1 text-foregroundPrimary70'>
-                        {t("contact-form.message-label")}
+                        {t("contact-form.type-label")}
                     </label>
-                    <select>
-                        
+                    <select name='type' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required>
+                        <option value="" disabled selected>
+                            {t("contact-form.type-options.opt-0")}
+                        </option>
+                        <option value="client">
+                            {t("contact-form.type-options.opt-1")}
+                        </option>
+                        <option value="medic">
+                            {t("contact-form.type-options.opt-2")}
+                        </option>
+                        <option value="distribuitor">
+                            {t("contact-form.type-options.opt-3")}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -66,6 +77,9 @@ function ContactForm() {
                     </label>
                     <textarea rows={3} placeholder={t("contact-form.message-ph")} name='message' className='resize-none duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 h-max' />
                 </div>
+            </div>
+            <div className='flex flex-row gap-1'>
+                <input type='checkbox' name='gdpr' required /> Sunt de acord cu termenii și condițiile
             </div>
             <button type='submit' className='block bg-gradient-to-r w-[200px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2 ml-auto mr-0'>
                 {t("contact-form.submit-btn")}

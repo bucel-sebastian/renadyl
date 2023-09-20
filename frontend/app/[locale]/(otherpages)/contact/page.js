@@ -3,12 +3,18 @@
 import ContactForm from "@/components/ContactForm"
 import { useTranslations } from "next-intl"
 
+import { useEffect } from "react"
+
 import Link from 'next/link'
 
 import {FaPhone,FaEnvelope, FaFacebook,FaInstagram,FaPinterest,FaYoutube} from 'react-icons/fa'
 
 export default function Contact() {
     const t = useTranslations("Contact")
+
+    useEffect(()=>{
+        document.title = `Renadyl™ - ${t("page-title")}`;
+    },[])
 
     return (
         <main className="block pt-[90px] text-lg">

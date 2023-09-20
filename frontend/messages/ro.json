@@ -35,7 +35,7 @@
         "subscription-btn": "Abonament",
         "hero-section": {
             "product-name": "Renadyl™ - Supliment alimentar",
-            "product-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales elit id enim mattis commodo. Vestibulum pellentesque in augue non interdum. Donec blandit, magna sit amet gravida tempor, tortor turpis scelerisque odio, eget sodales tellus neque at urna. Quisque eget lacinia dui, at finibus purus. Vivamus porta convallis hendrerit. Curabitur vel neque finibus, viverra nulla vel, pretium purus. Donec id rutrum erat, ac tristique lectus. Sed finibus risus non ultricies viverra. Suspendisse efficitur, mauris ornare posuere suscipit, nibh leo tristique nibh, eu ultrices odio est et nunc. Nam neque nunc, convallis id consequat ut, finibus non libero. Vestibulum sollicitudin ut leo in convallis.",
+            "product-desc": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții. Este alcătuit din trei tulpini patentate de bacterii probiotice, care utilizează deșeurile azotoase ca hrană. Deșeurile azotoase se difuzează din fluxul sanguin în colon printr-un proces natural cunoscut sub numele de osmoză. La persoanele cu funcție renală afectată, un numar crescut de toxine se difuzează în intestinul gros (colon). Odată ce toxinele se acumulează în concentrații ridicate în colon, Renadyl™ le metabolizează și reduce concentrația de toxine din corp. Datorită capacității Renadyl™ de a metaboliza produsele deșeurilor azotoase în intestin, acesta ajuta la menținerea funcției sănătoase a rinichilor și reduce stresul asupra acestora.",
             "product-price": "Preț",
             "product-unit": "buc.",
             "product-buy-btn": "Cumpără",
@@ -118,13 +118,25 @@
             "email-label": "Adresa de email",
             "phone-label": "Număr de telefon",
             "message-label": "Mesaj",
-            "": "",
+            "type-label": "Categorie",
             "first-name-ph": "Introdu prenumele",
             "last-name-ph": "Introdu numele",
             "email-ph": "Introdu adresa de email",
             "phone-ph": "Introdu numărul de telefon",
             "message-ph": "Scrie-ți mesajul dvs.",
-            "submit-btn": "Trimite"
+            "submit-btn": "Trimite",
+            "type-options": {
+                "opt-0": "Selectează categoria",
+                "opt-1": "Client",
+                "opt-2": "Medic",
+                "opt-3": "Distribuitor"
+            }
         }
+    },
+    "Under-construction": {
+        "title": "Indisponibil",
+        "heading": "Momentan indisponibil",
+        "desc": "În acest moment această zona este indisponibilă",
+        "back-home-btn": "Înapoi acasă"
     }
 }

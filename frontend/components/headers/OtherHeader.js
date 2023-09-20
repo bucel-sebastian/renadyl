@@ -95,7 +95,7 @@ function OtherHeader({currentLocale}) {
                             <Link href="/product">{t('product')}</Link>
                         </li>
                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all flex justify-center" onMouseOver={handleHoverAffiliates} onMouseLeave={handleLeaveAffiliates}>
-                            <Link href="#">{t('affiliates')}</Link>
+                            <Link href="/under-construction">{t('affiliates')}</Link>
                             <div className={`absolute pt-1 transition-all duration-300 top-full drop-shadow-md  ${isAffiliatesOpenDesktop ? 'opacity-1 pointer-event-auto' : 'opacity-0 pointer-events-none'}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.59 28.73" className='w-[20px] mx-auto block'>
                                 <g >
@@ -105,13 +105,13 @@ function OtherHeader({currentLocale}) {
                                 <nav className='text-center py-3 px-4 rounded-lg bg-backgroundPrimary text-foregroundPrimary'>
                                     <ul className='flex flex-col items-center content-center gap-[2px]'>
                                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                                            <Link href="#">{t('ambassadors')}</Link>
+                                            <Link href="/under-construction">{t('ambassadors')}</Link>
                                         </li>
                                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                                            <Link href="#">{t('doctors')}</Link>
+                                            <Link href="/under-construction">{t('doctors')}</Link>
                                         </li>
                                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                                            <Link href="#">{t('distributors')}</Link>
+                                            <Link href="/under-construction">{t('distributors')}</Link>
                                         </li>
                                     </ul>
                                 </nav>
@@ -135,7 +135,7 @@ function OtherHeader({currentLocale}) {
             </div>
             <div className='w-1/5 flex row justify-end gap-[6px] max-md:hidden'>
                 <div>
-                    <Link href="#">
+                    <Link href="/under-construction">
                         <FaUserCircle className='text-[35px]'/>
                     </Link>
                 </div>
@@ -174,19 +174,19 @@ function OtherHeader({currentLocale}) {
                             <Link href="/product">{t('product')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="#">{t('ambassadors')}</Link>
+                            <Link href="/under-construction">{t('ambassadors')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="#">{t('doctors')}</Link>
+                            <Link href="/under-construction">{t('doctors')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="#">{t('distributors')}</Link>
+                            <Link href="/under-construction">{t('distributors')}</Link>
                         </li>     
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
                             <Link href="/contact">{t('contact')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="#">{t('account')}</Link>
+                            <Link href="/under-construction">{t('account')}</Link>
                         </li>
                     </ul>
                 </nav>
