@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --background-primary: #fafafa;
+    --background-primary-90: #fafafaE6;
+    --background-primary-80: #fafafaCC;
+    --background-primary-70: #fafafaB3;
+    --background-primary-60: #fafafa99;
+    --background-primary-50: #fafafa80;
+    --background-primary-40: #fafafa66;
+    --background-primary-30: #fafafa4D;
+    --background-primary-20: #fafafa33;
+    --background-primary-10: #fafafa1A;
+    --background-primary-0: #fafafa00;
+  
+    --background-secondary: #ffffff;
+    --background-secondary-90: #ffffffE6;
+    --background-secondary-80: #ffffffCC;
+    --background-secondary-70: #ffffffB3;
+    --background-secondary-60: #ffffff99;
+    --background-secondary-50: #ffffff80;
+    --background-secondary-40: #ffffff66;
+    --background-secondary-30: #ffffff4D;
+    --background-secondary-20: #ffffff33;
+    --background-secondary-10: #ffffff1A;
+    --background-secondary-0: #ffffff00;
+  
+    --foreground-primary: #1a1a1a;
+    --foreground-primary-90: #1a1a1aE6;
+    --foreground-primary-80: #1a1a1aCC;
+    --foreground-primary-70: #1a1a1aB3;
+    --foreground-primary-60: #1a1a1a99;
+    --foreground-primary-50: #1a1a1a80;
+    --foreground-primary-40: #1a1a1a66;
+    --foreground-primary-30: #1a1a1a4D;
+    --foreground-primary-20: #1a1a1a33;
+    --foreground-primary-10: #1a1a1a1A;
+    --foreground-primary-0: #1a1a1a00;
+  
+    --foreground-secondary: #54565a;
+    --foreground-secondary-90: #54565aE6;
+    --foreground-secondary-80: #54565aCC;
+    --foreground-secondary-70: #54565aB3;
+    --foreground-secondary-60: #54565a99;
+    --foreground-secondary-50: #54565a80;
+    --foreground-secondary-40: #54565a66;
+    --foreground-secondary-30: #54565a4D;
+    --foreground-secondary-20: #54565a33;
+    --foreground-secondary-10: #54565a1A;
+    --foreground-secondary-0: #54565a00;
+  
+    --gradient-green: #44EC9D;
+    --gradient-purple: #7F5AF8;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+  }
+  

@@ -59,7 +59,7 @@ export default function Product() {
                                 </span>
                             </p>
                         </div>
-                        <div className="flex flex-row gap-2 items-center content-center">
+                        {/* <div className="flex flex-row gap-2 items-center content-center">
                             <FaUndoAlt />
                             <p>
                                 {t("hero-section.product-return-tc")}
@@ -68,7 +68,7 @@ export default function Product() {
                                     {t("hero-section.product-return-tc-btn")}
                                 </Link>
                             </p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 
