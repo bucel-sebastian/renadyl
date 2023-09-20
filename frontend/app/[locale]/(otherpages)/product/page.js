@@ -31,25 +31,25 @@ export default function Product() {
                             <div className="max-md:mb-4">
                                 <div className="text-3xl mb-4">
                                     <span>{t("hero-section.product-price")}:</span>&nbsp;
-                                    <span className="font-extrabold">450 RON</span> /&nbsp; 
+                                    <span className="font-extrabold">460 RON</span> /&nbsp; 
                                     <span>{t("hero-section.product-unit")}</span>
                                 </div>
                                 <div className="flex flex-row gap-5 max-md:justify-center max-md:gap-2">
-                                    <button className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2.5">
+                                    <Link href="https://www.emag.ro/renadyl-pentru-insuficienta-renala-60-comprimate-rnd/pd/D1D5C3YBM/?cmpid=101143&gclid=CjwKCAjwsKqoBhBPEiwALrrqiI6-RpbKtsr_0UzHmEIo-6DLzegwvfrY7Lsg0TlhXC7_rcIdUbQIihoCoPgQAvD_BwE" className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2.5">
                                         {t("hero-section.product-buy-btn")}
-                                    </button>
-                                    <button className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-gradientGreen hover:text-gradientPurple rounded-2xl p-[3px]">
+                                    </Link>
+                                    {/* <button className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-gradientGreen hover:text-gradientPurple rounded-2xl p-[3px]">
                                         <div className="bg-backgroundPrimary rounded-xl py-2.5 ">
                                             {t("hero-section.product-subscription-btn")}
                                         </div>
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>                           
                         </div>
                         
                     </div>
                     <div className="flex flex-col gap-2  max-md:items-center max-md:mt-2">
-                        <div className="flex flex-row gap-2 items-center content-center">
+                        {/* <div className="flex flex-row gap-2 items-center content-center">
                             <FaShippingFast />
                             <p>
                                 {t("hero-section.product-shippment")}
@@ -58,17 +58,8 @@ export default function Product() {
                                     {t("hero-section.product-shippment-green")}
                                 </span>
                             </p>
-                        </div>
-                        {/* <div className="flex flex-row gap-2 items-center content-center">
-                            <FaUndoAlt />
-                            <p>
-                                {t("hero-section.product-return-tc")}
-                                &nbsp;
-                                <Link href="#" className="text-gradientGreen">
-                                    {t("hero-section.product-return-tc-btn")}
-                                </Link>
-                            </p>
                         </div> */}
+                        
                     </div>
                 </div>
                 
