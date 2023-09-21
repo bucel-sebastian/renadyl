@@ -3,11 +3,7 @@ const { Pool } = require("pg");
 class Database {
     constructor() {
         this.pool = new Pool({
-            user: process.env.POSTGRES_USER,
-            host: process.env.POSTGRES_HOST,
-            database: process.env.POSTGRES_DATABASE,
-            password: process.env.POSTGRES_PASSWORD,
-            port: 5432,
+            connectionString: process.env.POSTGRES_URL + "?sslmode=require",
         });
     }
 
@@ -32,7 +28,7 @@ class Database {
         const params = Object.values(values);
         const placeholders = Object.keys(values).map((_, index) => `$${index + 1}`).join(', ');
         const query = `INSERT INTO ${table} (${columns}) VALUES (${placeholders}) RETURNING *`;
-        return this.query(query(query, params));
+        return this.query(query, params);
     }
 
     async update(table, values, where) {

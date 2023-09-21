@@ -16,7 +16,7 @@ function ContactForm() {
         })
 
         try{
-            const response = await fetch('/api/submitContactForm',{
+            const response = await fetch('/api/submit-contact-form',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,8 +70,8 @@ function ContactForm() {
                     <label className='px-1 text-foregroundPrimary70'>
                         {t("contact-form.type-label")}
                     </label>
-                    <select name='type' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required>
-                        <option value="" disabled selected>
+                    <select name='type' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 '>
+                        <option value="" disabled defaultValue>
                             {t("contact-form.type-options.opt-0")}
                         </option>
                         <option value="client">

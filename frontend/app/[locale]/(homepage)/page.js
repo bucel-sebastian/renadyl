@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl"
 import Image from "next/image"
 import Link from "next/link"
 
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
+import Loading from "./loading"
 
 export default function Index() {
 
@@ -17,7 +18,9 @@ export default function Index() {
 
     return (
         <main className="bg-foregroundPrimary w-full h-screen relative">
-            <HomeSlider />
+            <Suspense fallback={<Loading/>}>
+                <HomeSlider />
+            </Suspense>
             <br/>
             <br/>
             <br/>
