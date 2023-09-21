@@ -7,7 +7,7 @@ import { useEffect } from "react"
 
 import Link from 'next/link'
 
-import {FaPhone,FaEnvelope, FaFacebook,FaInstagram,FaPinterest,FaYoutube} from 'react-icons/fa'
+import {FaPhone,FaEnvelope, FaFacebook,FaInstagram,FaPinterest,FaYoutube, FaTwitter} from 'react-icons/fa'
 
 export default function Contact() {
     const t = useTranslations("Contact")
@@ -36,31 +36,28 @@ export default function Contact() {
                     <div className="flex flex-col gap-2 ">
                         <div>
                             <p>
-                                S.C. Healty Medical S.R.L.
+                                S.C. Healthy Medical S.R.L.
                             </p>
                         </div>
                         <div className="flex flex-row items-center gap-1">
                             <FaPhone /> - <Link className='duration-150 hover:text-backgroundPrimary70' href="tel: 4073356600">+40 733 566 000</Link>
                         </div>
                         <div className="flex flex-row items-center gap-1">
-                            <FaEnvelope className='mt-0.5'/> - <Link className='duration-150 hover:text-backgroundPrimary70 break-all' href="mailto: cristian.tanasescu@healthymedical.ro">Cristian.tanasescu@healthymedical.ro</Link>
+                            <FaEnvelope className='mt-0.5'/> - <Link className='duration-150 hover:text-backgroundPrimary70 break-all' href="mailto: office@healthymedical.ro">office@healthymedical.ro</Link>
                         </div>
                         <div>
                             <p>Cal. Dorobanți nr. 111-131<br/>București, România</p>
                         </div>
                     </div>
                     <div className="flex flex-row justify-start items-center gap-4 text-3xl">
-                        <Link className='duration-150 hover:text-backgroundPrimary70' href="#">
+                        <Link className='duration-150 hover:text-backgroundPrimary70' href={t("contact-info.linkFb")}>
                             <FaFacebook />
                         </Link>
-                        <Link className='duration-150 hover:text-backgroundPrimary70' href="#">
+                        <Link className='duration-150 hover:text-backgroundPrimary70' href={t("contact-info.linkIg")}>
                             <FaInstagram />
                         </Link>
-                        <Link className='duration-150 hover:text-backgroundPrimary70' href="#">
-                            <FaPinterest />
-                        </Link>
-                        <Link className='duration-150 hover:text-backgroundPrimary70' href="#">
-                            <FaYoutube />
+                        <Link className='duration-150 hover:text-backgroundPrimary70' href={t("contact-info.linkTw")}>
+                            <FaTwitter />
                         </Link>
                     </div>
                 </div>

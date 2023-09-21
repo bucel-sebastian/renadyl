@@ -5,7 +5,7 @@ function ContactForm() {
 
     const t = useTranslations("Contact");
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const requestBody = new Object();
@@ -15,7 +15,23 @@ function ContactForm() {
             requestBody[key]=data;
         })
 
-        console.log("valorile:" ,requestBody)
+        try{
+            const response = await fetch('/api/submitContactForm',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if(response.ok) {
+                console.log("Formularul a fost trimis cu succes!");
+            } else {
+                console.error(`Eroare la trimiterea formularului: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error(`Eroare la trimiterea formularului: ${error}`)
+        }
     }
 
   return (
@@ -24,13 +40,13 @@ function ContactForm() {
             <div className='flex flex-row gap-8 max-md:flex-col max-md:gap-4'>
                 <div className='w-1/2 flex flex-col max-md:w-full '>
                     <label className='px-1 text-foregroundPrimary70'>
-                        {t("contact-form.first-name-label")}
+                        {t("contact-form.first-name-label")}*
                     </label>
                     <input placeholder={t("contact-form.first-name-ph")} name='fname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
                 </div>
                 <div className='w-1/2 flex flex-col max-md:w-full'>
                     <label className='px-1 text-foregroundPrimary70'>
-                        {t("contact-form.last-name-label")}
+                        {t("contact-form.last-name-label")}*
                     </label>
                     <input placeholder={t("contact-form.last-name-ph")} name='lname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
                 </div>
@@ -38,7 +54,7 @@ function ContactForm() {
             <div className='flex flex-row gap-8 max-md:flex-col max-md:gap-4'>
                 <div className='w-1/2 flex flex-col max-md:w-full'>
                     <label className='px-1 text-foregroundPrimary70'>
-                        {t("contact-form.email-label")}
+                        {t("contact-form.email-label")}*
                     </label>
                     <input placeholder={t("contact-form.email-ph")} name='email' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required />
                 </div>
@@ -73,9 +89,9 @@ function ContactForm() {
             <div className='flex flex-row gap-2 '>
                 <div className='w-full flex flex-col'>
                     <label className='px-1 text-foregroundPrimary70'>
-                        {t("contact-form.message-label")}
+                        {t("contact-form.message-label")}*
                     </label>
-                    <textarea rows={3} placeholder={t("contact-form.message-ph")} name='message' className='resize-none duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 h-max' />
+                    <textarea rows={3} placeholder={t("contact-form.message-ph")} name='message' className='resize-none duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 h-max' required />
                 </div>
             </div>
             <div className='flex flex-row gap-1'>

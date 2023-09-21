@@ -22,7 +22,10 @@
         "linkD2": "Despre Renadyl™",
         "linkD3": "Contact",
         "linkD4": "Autentificare",
-        "linkD5": "Înregistrare"
+        "linkD5": "Înregistrare",
+        "linkFb": "https://www.facebook.com/profile.php?id=61550720346995",
+        "linkIg": "https://www.instagram.com/renadyleurope/",
+        "linkTw": "https://twitter.com/RenadylEurope"
     },
     "Index": {
         "page-title": "Acasă",
@@ -110,7 +113,10 @@
         "title": "Contactează-ne",
         "desc": "Nu ezitați să ne contactați pentru informații suplimentare!",
         "contact-info": {
-            "title": "Informații de contact"
+            "title": "Informații de contact",
+            "linkFb": "https://www.facebook.com/profile.php?id=61550768614377",
+            "linkIg": "https://www.instagram.com/renadylromania/",
+            "linkTw": "https://twitter.com/RenadylEurope"
         },
         "contact-form": {
             "first-name-label": "Prenume",
@@ -118,13 +124,19 @@
             "email-label": "Adresa de email",
             "phone-label": "Număr de telefon",
             "message-label": "Mesaj",
-            "": "",
+            "type-label": "Categorie",
             "first-name-ph": "Introdu prenumele",
             "last-name-ph": "Introdu numele",
             "email-ph": "Introdu adresa de email",
             "phone-ph": "Introdu numărul de telefon",
             "message-ph": "Scrie-ți mesajul dvs.",
-            "submit-btn": "Trimite"
+            "submit-btn": "Trimite",
+            "type-options": {
+                "opt-0": "Selectează categoria",
+                "opt-1": "Client",
+                "opt-2": "Medic",
+                "opt-3": "Distribuitor"
+            }
         }
     },
     "Under-construction": {
