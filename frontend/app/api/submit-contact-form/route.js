@@ -1,7 +1,7 @@
 import { saveToDatabase, sendEmail } from "@/utils/frontpages/serverUtils";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req,res) {
     const formData = await req.json();
     delete formData.gdpr;
 
