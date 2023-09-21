@@ -6,7 +6,8 @@ export const saveToDatabase = async (formData) => {
     formData['date'] = new Date().toISOString();
 
     try{
-        await database.insert('renadyl_contact_form',formData);
+        const insertResp = await database.insert('renadyl_contact_form',formData);
+        console.log(insertResp);
     } catch (error) {
         console.error('Eroare: ',error)
     } finally {
