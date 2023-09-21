@@ -136,7 +136,8 @@
                 "opt-1": "Client",
                 "opt-2": "Medic",
                 "opt-3": "Distribuitor"
-            }
+            },
+            "message-success": "Mesajul dvs. a fost trimis!"
         }
     },
     "Under-construction": {

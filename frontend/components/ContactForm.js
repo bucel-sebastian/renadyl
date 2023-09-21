@@ -1,11 +1,13 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import React from 'react'
+import React, { useState } from 'react'
 
 function ContactForm() {
 
     const t = useTranslations("Contact");
+
+    const [submitBtnEnabled, setSubmitBtnEnabled] = useState(true);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -28,6 +30,9 @@ function ContactForm() {
 
             if(response.ok) {
                 console.log("Formularul a fost trimis cu succes!");
+
+                event.target.reset();
+                setSubmitBtnEnabled(false);
             } else {
                 console.error(`Eroare la trimiterea formularului: ${response.statusText}`);
             }
@@ -38,7 +43,9 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+        
         <div className='flex flex-col gap-4'>
+            
             <div className='flex flex-row gap-8 max-md:flex-col max-md:gap-4'>
                 <div className='w-1/2 flex flex-col max-md:w-full '>
                     <label className='px-1 text-foregroundPrimary70'>
@@ -72,8 +79,8 @@ function ContactForm() {
                     <label className='px-1 text-foregroundPrimary70'>
                         {t("contact-form.type-label")}
                     </label>
-                    <select name='type' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 '>
-                        <option value="" disabled defaultValue>
+                    <select name='type' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' defaultValue="">
+                        <option value="" disabled>
                             {t("contact-form.type-options.opt-0")}
                         </option>
                         <option value="client">
@@ -99,9 +106,11 @@ function ContactForm() {
             <div className='flex flex-row gap-1'>
                 <input type='checkbox' name='gdpr' required /> Sunt de acord cu termenii și condițiile
             </div>
-            <button type='submit' className='block bg-gradient-to-r w-[200px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2 ml-auto mr-0'>
+            {!submitBtnEnabled ? (<h3 className='text-right text-gradientPurple'>{t("contact-form.message-success")}</h3>) : (<button type='submit' className='block bg-gradient-to-r w-[200px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2 ml-auto mr-0'>
                 {t("contact-form.submit-btn")}
-            </button>
+            </button>)}
+            
+            
         </div>
         
     </form>
