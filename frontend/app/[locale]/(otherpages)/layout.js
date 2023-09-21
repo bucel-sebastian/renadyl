@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import Footer from '@/components/Footer'
 import OtherHeader from '@/components/headers/OtherHeader'
+import Loading from './loading'
 
 export function generateStaticParams() {
     return [
@@ -29,12 +30,13 @@ export default async function LocaleLayout({children, params: {locale}}){
     return(
         <html lang={locale}>
             <body className={`scroll-smoth ${sofiaSans.className}`}>
-                <NextIntlClientProvider locale={locale} messages={messages}>
-                    <OtherHeader currentLocale={locale}/>
-                    {children}
-                    <Footer/>
-                </NextIntlClientProvider>
-                    
+                <Suspense fallback={<Loading/>}>
+                    <NextIntlClientProvider locale={locale} messages={messages}>
+                        <OtherHeader currentLocale={locale}/>
+                        {children}
+                        <Footer/>
+                    </NextIntlClientProvider>
+                </Suspense>    
             </body>
         </html>
     )

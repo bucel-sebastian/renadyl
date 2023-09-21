@@ -61,6 +61,10 @@ function HomeHeader({currentLocale}) {
         setIsMenuOpen(!isMenuOpen);
     }
 
+    const handleMobileMenuClick = () => {
+        setIsMenuOpen(false);
+    }
+
 
     const handleScroll = () => {
         if(window.scrollY >= 100){
@@ -186,25 +190,25 @@ function HomeHeader({currentLocale}) {
                 <nav className=''>
                     <ul className='flex flex-col justify-center font-bold gap-[20px] px-5 pt-5'>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/">{t('home')}</Link>
+                            <Link href="/" onClick={handleMobileMenuClick}>{t('home')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/product">{t('product')}</Link>
+                            <Link href="/product" onClick={handleMobileMenuClick}>{t('product')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/under-construction">{t('ambassadors')}</Link>
+                            <Link href="/under-construction" onClick={handleMobileMenuClick}>{t('ambassadors')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/under-construction">{t('doctors')}</Link>
+                            <Link href="/under-construction" onClick={handleMobileMenuClick}>{t('doctors')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/under-construction">{t('distributors')}</Link>
+                            <Link href="/under-construction" onClick={handleMobileMenuClick}>{t('distributors')}</Link>
                         </li>     
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/contact">{t('contact')}</Link>
+                            <Link href="/contact" onClick={handleMobileMenuClick}>{t('contact')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/under-construction">{t('account')}</Link>
+                            <Link href="/under-construction" onClick={handleMobileMenuClick}>{t('account')}</Link>
                         </li>
                     </ul>
                 </nav>
