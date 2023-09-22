@@ -67,7 +67,7 @@ function Footer() {
                       
                       <LocaleSwitcherFooter />
                   </div> */}
-                  <h1 className='text-5xl font-extrabold'>HEALTY MEDICAL</h1>
+                  <h1 className='text-5xl font-extrabold'>HEALTHY MEDICAL</h1>
                   <div className='flex flex-row justify-start my-5 items-center gap-5 text-2xl'>
                       <Link className='duration-150 hover:text-accentPrimary' href={t("linkFb")}>
                           <FaFacebook />
