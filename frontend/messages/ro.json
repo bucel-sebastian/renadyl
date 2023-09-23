@@ -140,6 +140,8 @@
                 "opt-2": "Medic",
                 "opt-3": "Distribuitor"
             },
+"tc-label":"Sunt de acord cu ",
+"tc-link":"termenii și condițiile",
             "message-success": "Mesajul dvs. a fost trimis!"
         }
     },
