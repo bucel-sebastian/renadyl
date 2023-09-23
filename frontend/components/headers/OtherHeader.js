@@ -13,8 +13,12 @@ import enLocaleIcon from '@/public/images/en-icon.svg'
 import deLocaleIcon from '@/public/images/de-icon.svg'
 
 import { FaUserCircle } from "react-icons/fa";
+import { usePathname, useRouter } from 'next-intl/client';
 
 function OtherHeader({currentLocale}) {
+
+    const pathname = usePathname();
+    const router = useRouter();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [headerWhite, setHeaderWhite] = useState(false);
@@ -34,6 +38,14 @@ function OtherHeader({currentLocale}) {
             filteredLocales.push(locales[key]);
         }
     }
+
+    const localesDef = [];
+    for (const key in locales) {
+        if(key !== currentLocale) {
+            localesDef.push(key);
+        }
+    }
+
 
     const openLanguageSwitcher = () => {
         setLanguageSwitcherOpen(true);
@@ -78,6 +90,13 @@ function OtherHeader({currentLocale}) {
             window.removeEventListener("scroll",handleScroll);
         }
     },[isMenuOpen]);
+
+
+    const switchLocale = (locale) => {
+        // console.log(pathname,locale);
+        router.replace(pathname, {locale: locale});
+
+    }
 
   return (
     <header className={`fixed block top-0 left-0 w-full h-[75px]  text-foregroundPrimary z-10 bg-backgroundPrimary ${headerWhite ? 'shadow-lg' : ''} transition-all duration-300  header-white`}>
@@ -154,7 +173,7 @@ function OtherHeader({currentLocale}) {
                     <div className={`relative block  ${languageSwitcherOpen ? 'w-[76px]' : 'w-[0px]'} overflow-hidden   transition-all duration-500 ease-in-out`}>
                         <div className='absolute top-0 left-0 flex flex-row gap-[6px] w-content'>
                             {filteredLocales.map((value,index)=>(
-                                <button key={index} className='w-[35px]'>
+                                <button key={index} className='w-[35px]' onClick={()=>switchLocale(localesDef[index])}>
                                     <Image 
                                         src={value}
                                         alt='Renadyl'
@@ -197,7 +216,7 @@ function OtherHeader({currentLocale}) {
                 <div className='relative mt-8 w-full flex justify-center flex-row gap-[10px]'>
                     {
                         Object.values(locales).map((locale,index)=>(
-                            <button key={index} className='w-[45px]'>
+                            <button key={index} className='w-[45px]' onClick={()=>switchLocale(localesDef[index])}>
                                     <Image 
                                         src={locale}
                                         alt='Renadyl'

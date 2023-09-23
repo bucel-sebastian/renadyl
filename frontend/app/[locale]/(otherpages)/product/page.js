@@ -1,8 +1,7 @@
-'use client'
-
 import { useTranslations } from "next-intl"
 import Image from "next/image";
 import Link from "next/link";
+import { getTranslator } from "next-intl/server"
 
 import Head from "next/head";
 
@@ -14,17 +13,21 @@ import renadylKidneys from '@/public/images/renadyl_kidneys.svg';
 import renadylPill from '@/public/images/renadyl_pill.svg';
 import renadylStomach from '@/public/images/renadyl_stomach.svg';
 import ProductImageSlider from "@/components/ProductImageSlider";
-import { useEffect } from "react";
+
+
+export async function generateMetadata({params: {locale}}) {
+    const t = await getTranslator(locale, 'Product');
+   
+    return {
+      title: `Renadyl™ -  ${t('page-title')}`
+    };
+  }
 
 
 export default function Product() {
     
     const t = useTranslations("Product");
 
-
-    useEffect(()=>{
-        document.title = `Renadyl™ - ${t("page-title")}`;
-    },[])
 
     return(
         <main className=" block  pt-[90px] text-lg">
@@ -127,6 +130,7 @@ export default function Product() {
                             width={250}
                             height={300}
                             className="mx-auto block"
+                            alt="capsule"
                         />
                     </div>
                 </div>
@@ -168,7 +172,7 @@ export default function Product() {
             <section className="max-w-[1200px] mx-auto bg-[#F9F9F9] pt-12 pb-20 px-8">
                 <h2 className="text-3xl text-bold text-center">{t("steps-section.title")}</h2>
                 <p className="text-center">{t("steps-section.desc")}</p>
-                <Image src="" />
+                {/* <Image src="" /> */}
                 <div className="flex flex-row items-stretch items-center pt-8 max-md:flex-col">
                     <div className="w-1/3 flex flex-col items-center gap-8 max-md:w-full max-md:items-stretch">
                         <h3 className="text-center">
@@ -178,6 +182,7 @@ export default function Product() {
                             <Image 
                                 src={renadylPill}
                                 className="w-[50%] block mx-auto mb-8"
+                                alt='Pill'
                             />
                             <h3 className="text-[#555677] text-xl font-bold">{t("steps-section.steps.step-1.title-1")}</h3>
                             <p className="text-justify">{t("steps-section.steps.step-1.text-1")}</p>
@@ -191,6 +196,7 @@ export default function Product() {
                             <Image 
                                 src={renadylStomach}
                                 className="w-[50%] block mx-auto mb-8"
+                                alt="Stomach"
                             />
                             <h3 className="text-[#555677] text-xl font-bold">{t("steps-section.steps.step-1.title-1")}</h3>
                             <p className="text-justify">{t("steps-section.steps.step-1.text-2")}</p>
@@ -213,6 +219,7 @@ export default function Product() {
                                 <Image 
                                     src={renadylBody}
                                     className="w-[75%] block mx-auto h-1/2 max-md:w-[50%]"
+                                    alt="Body"
                                 />
                                 <div className="block h-1/2 mt-8">
                                     <h3 className="text-[#555677] text-xl font-bold">{t("steps-section.steps.step-2.title")}</h3>
@@ -239,6 +246,7 @@ export default function Product() {
                                 <Image 
                                     src={renadylKidneys}
                                     className="w-[60%] h-1/2 block mx-auto mt-24 max-md:w-[50%] max-md:mt-2"
+                                    alt="Kidneys"
                                 />
                                 <div className="block h-1/2 mt-8">
                                     <h3 className="text-[#555677] text-xl font-bold">{t("steps-section.steps.step-3.title")}</h3>
@@ -261,6 +269,7 @@ export default function Product() {
                                 width={150}
                                 height={150}
                                 className="w-full h-full bg-foregroundPrimary rounded-full"
+                                alt="Dr. Richard Snyder"
                                 />
                             </div>
                             <div className="w-3/5 max-md:w-full">

@@ -15,7 +15,7 @@ function Footer() {
     <footer className='w-full bg-foregroundPrimary text-backgroundPrimary py-7 max-xl:px-5'>
         <div className='flex max-w-[1200px] w-full mx-auto gap-2 uppercase pb-5 max-lg:flex-wrap'>
             <div className='w-1/4 max-lg:w-1/2 max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center'>
-                <h5>S.C. Healty Medical S.R.L.</h5>
+                <h5>S.C. Healthy Medical S.R.L.</h5>
                 <p>RO 43590495</p>
                 <br />
                 <p>Cal. Dorobanți nr. 111-131<br/>București România</p>

@@ -1,20 +1,30 @@
-'use client'
-
 import ContactForm from "@/components/ContactForm"
-import { useTranslations } from "next-intl"
-
-import { useEffect } from "react"
-
+import { NextIntlClientProvider, useMessages, useTranslations } from "next-intl"
+import { getTranslator } from "next-intl/server"
 import Link from 'next/link'
 
 import {FaPhone,FaEnvelope, FaFacebook,FaInstagram,FaPinterest,FaYoutube, FaTwitter} from 'react-icons/fa'
 
-export default function Contact() {
+
+export async function generateMetadata({params: {locale}}) {
+    const t = await getTranslator(locale, 'Contact');
+   
+    return {
+      title: `Renadyl™ -  ${t('page-title')}`
+    };
+  }
+
+
+export default function Contact({params: {locale}}) {
+    let messages = useMessages();
+
     const t = useTranslations("Contact")
 
-    useEffect(()=>{
-        document.title = `Renadyl™ - ${t("page-title")}`;
-    },[])
+    const locales = ['ro','en','de'];
+
+    const isValidLocale = locales.some((cur)=>cur === locale);
+    if(!isValidLocale) notFound();
+
 
     return (
         <main className="block pt-[90px] text-lg">
@@ -62,7 +72,9 @@ export default function Contact() {
                     </div>
                 </div>
                 <div className="w-3/5 py-8 px-8 max-md:w-full max-md:px-0" >
-                    <ContactForm />
+                    <NextIntlClientProvider locale={locale} messages={messages}>
+                        <ContactForm />
+                    </NextIntlClientProvider>
                 </div>
             </section>
         </main>

@@ -1,19 +1,23 @@
-'use client'
 
 import { useTranslations } from "next-intl"
 import Image from "next/image";
 import Link from "next/link";
+import { getTranslator } from "next-intl/server"
 
-import { useEffect } from "react";
 
+export async function generateMetadata({params: {locale}}) {
+    const t = await getTranslator(locale, 'Under-construction');
+   
+    return {
+      title: `Renadyl™ -  ${t('page-title')}`
+    };
+  }
 
 
 export default function UnderConstruction() {
     const t = useTranslations("Under-construction")
 
-    useEffect(()=>{
-        document.title = `Renadyl™ - ${t("page-title")}`;
-    },[])
+
 
     return(
         <main className=" block  text-lg">

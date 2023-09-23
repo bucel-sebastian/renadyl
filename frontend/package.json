@@ -12,7 +12,7 @@
     "animejs": "^3.2.1",
     "autoprefixer": "10.4.15",
     "next": "13.4.19",
-    "next-intl": "^2.20.0",
+    "next-intl": "^3.0.0-beta.19",
     "nodemailer": "^6.9.5",
     "pg": "^8.11.3",
     "postcss": "8.4.29",

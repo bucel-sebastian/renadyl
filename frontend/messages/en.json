@@ -11,20 +11,20 @@
      }, 
      "Footer": { 
          "linkuri-utile": "Link-uri utile", 
-         "linkU1": "Termeni și condiți", 
-         "linkU2": "Politica de confidențialitate", 
-         "linkU3": "Politica de livrare", 
+         "linkU1": "Terms and conditions", 
+         "linkU2": "Privacy policy", 
+         "linkU3": "Delivery policy", 
          "linkU4": "Politica de retur", 
          "linkU5": "ANPC", 
          "linkU6": "Cookies", 
-         "harta-website": "Hartă website", 
-         "linkD1": "Acasă", 
-         "linkD2": "Despre Renadyl™", 
+         "harta-website": "Website map", 
+         "linkD1": "Home", 
+         "linkD2": "About Renadyl™", 
          "linkD3": "Contact", 
-         "linkD4": "Autentificare", 
-         "linkD5": "Înregistrare", 
-         "linkFb": "https://www.facebook.com/profile.php?id=61550768614377", 
-         "linkIg": "https://www.instagram.com/renadylromania/", 
+         "linkD4": "Log in", 
+         "linkD5": "Register", 
+         "linkFb": "https://www.facebook.com/profile.php?id=61550720346995", 
+         "linkIg": "https://www.instagram.com/renadyleurope/", 
          "linkTw": "https://twitter.com/RenadylEurope" 
      }, 
      "Index": { 
@@ -37,7 +37,7 @@
          "buy-btn": "Buy", 
          "subscription-btn": "Subscription", 
          "hero-section": { 
-             "product-name": "Renadyl™ - Supliment alimentar", 
+             "product-name": "Renadyl™ - Nutritional supplement", 
              "product-desc": "Renadyl™ is a natural option for maintaining healthy kidney function and improving quality of life.  It consists of three patented strains of probiotic bacteria, which use nitrogenous waste as food.  Nitrogenous waste diffuses from the bloodstream into the colon through a natural process known as osmosis.  In people with impaired kidney function, an increased number of toxins diffuse into the large intestine (colon).  Once toxins accumulate in high concentrations in the colon, Renadyl™ metabolizes them and reduces the concentration of toxins in the body.  Due to Renadyl™'s ability to metabolize nitrogenous waste products in the gut, it helps maintain healthy kidney function and reduces stress on the kidneys.", 
              "product-price": "Price", 
              "product-unit": "pcs.", 
@@ -54,96 +54,96 @@
              "about-tabs": { 
                  "tab-1": { 
                      "number": "2", 
-                     "title": "Fibre prebiotice", 
-                     "text": "Pentru a promova creșterea probioticelor găsite în Renadyl™ și a microorganisme benefice existente in intestinul pacientului." 
+                     "title": "Prebiotic fibers", 
+                     "text": "To promote the growth of probiotics found in Renadyl™ and beneficial microorganisms existing in the patient's gut." 
                  }, 
                  "tab-2": { 
                      "number": "45", 
-                     "title": "Miliarde CFUs", 
-                     "text": "Concentrație ridicată de microorganisme probiotice, cunoscute și sub denumirea de unități formatoare de colonii (CFU-uri)" 
+                     "title": "Billions of CFUs", 
+                     "text": "High concentration of probiotic microorganisms, also known as colony-forming units (CFUs)" 
                  }, 
                  "tab-3": { 
                      "number": "3", 
-                     "title": "Tulpini patentate", 
-                     "text": "De bacterii utile, selectate datorită capacității lor de a metaboliza deșeurile azotoase." 
+                     "title": "Patented strains", 
+                     "text": "Of beneficial bacteria, selected for their ability to metabolize nitrogenous waste." 
                  } 
              } 
          }, 
          "more-section": { 
-             "title": "Renadyl™ - Stabilește echilibrul renal în mod natural", 
+             "title": "Renadyl™ - It balances the kidneys naturally", 
              "desc": { 
-                 "p-1": "În mod normal în corpul nostru există un echilibru de toxine uremice între sânge și lumenul colonului (tractul gastrointestinal).", 
-                 "p-2": "Această concentrație a toxinelor uremice în intestinul gros este de obicei mai mare în condițiile de boală. Tehnologia noastră patentată de probiotice enterice utilizează aceste toxine pentru creșterea cantitatii de bacterii sanatoase, generând astfel un gradient de concentrație care determină mai multe toxine din sânge să difuzeze pasiv în lumenul colonului.", 
-                 "p-3": "Procesul concret are loc în intestinul gros. Pe măsură ce funcția renală încetinește, deșeurile azotoase se acumulează în sânge și se difuzează în lichidul intestinal prin procesele fiziologice naturale.", 
-                 "p-4": "Atunci când rinichii devin afectați, toxinele uremice se acumulează în sânge. Un număr mare a acestor toxine se difuzează în colon datorită rețelei extinse de vase de sânge care-l înconjoară." 
+                 "p-1": "Normally in our body there is a balance of uremic toxins between the blood and the lumen of the colon (gastrointestinal tract).", 
+                 "p-2": "This concentration of uremic toxins in the large intestine is usually higher in disease conditions. Our patented enteric probiotic technology uses these toxins to increase the amount of healthy bacteria, thereby generating a concentration gradient that causes more toxins from the blood to passively diffuse into the lumen of the colon.", 
+                 "p-3": "The actual process takes place in the large intestine. As kidney function slows, nitrogenous wastes accumulate in the blood and diffuse into the intestinal fluid through natural physiological processes.", 
+                 "p-4": "When the kidneys become damaged, uremic toxins build up in the blood. A large number of these toxins diffuse into the colon due to the extensive network of blood vessels that surround it.." 
              }, 
              "list": { 
-                 "p-1": "După o călătorie în tractul gastrointestinal superior, microorganismele probiotice sunt eliberate dintr-o capsulă rezistentă la acid și pătrund în regiunea ileo-cecală a intestinului gros.", 
-                 "p-2": "Odată ajunse în colon, microorganismele descoperă și metabolizează deșeurile azotoase uremice folosindu-le ca nutrienți pentru creștere.", 
-                 "p-3": "Pe măsură ce microorganismele încep să se înmulțească, ele metabolizează progresiv tot mai multe toxine uremice, crescând astfel gradientul de concentrație și permitând o difuzie mai mare a acestor toxine în intestinul gros.", 
-                 "p-4": "În cele din urmă, toxinele metabolizate sunt transportate prin intestin și sunt eliminate din organism ca reziduuri solide, ușurând astfel povara asupra rinichilor afectați." 
+                 "p-1": "After a journey in the upper gastrointestinal tract, the probiotic microorganisms are released from an acid-resistant capsule and enter the ileo-cecal region of the large intestine.", 
+                 "p-2": "Once in the colon, microorganisms discover and metabolize uremic nitrogenous wastes using them as nutrients for growth.", 
+                 "p-3": "As the microorganisms begin to multiply, they progressively metabolize more and more uremic toxins, thus increasing the concentration gradient and allowing greater diffusion of these toxins into the large intestine.", 
+                 "p-4": "Finally, the metabolized toxins are transported through the intestine and eliminated from the body as solid waste, thereby easing the burden on the affected kidneys.." 
              } 
          }, 
          "steps-section": { 
-             "title": "3 pași pentru sănătatea rinichilor tăi", 
-             "desc": "Bacteriile din Renadyl™ ajută la metabolizarea deșeurilor azotate și a toxinelor, reducând astfel stresul asupra rinichilor", 
+             "title": "3 steps for your kidney health", 
+             "desc": "The bacteria in Renadyl™ help metabolize nitrogenous waste and toxins, reducing stress on the kidneys", 
              "steps": { 
                  "step-1": { 
-                     "heading": "Îmbunătățește bacteriile intestinale", 
-                     "title-1": "Fiecare capsulă conține 45 de miliarde de CFUs de bacterii benefice", 
-                     "text-1": "3 tulpini de microbi testați clinic în capsulă rezistentă la acizi.", 
-                     "title-2": "Microbii reducători uremici sunt eliberați în colon", 
-                     "text-2": "Protejate de capsula rezistentă la acid, probioticele supraviețuiesc acidului din stomac și sunt eliberate în siguranță doar în colon." 
+                     "heading": "Improves gut bacteria", 
+                     "title-1": "Each capsule contains 45 billion CFUs of beneficial bacteria", 
+                     "text-1": "3 clinically tested strains of microbes in acid-resistant capsule.", 
+                     "title-2": "Uremic reducing bacteria are released into the colon", 
+                     "text-2": "Protected by the acid-resistant capsule, the probiotics survive stomach acid and are safely released only into the colon." 
                  }, 
                  "step-2": { 
-                     "heading": "Metabolizează toxinele", 
-                     "title": "Bacteriile intestinale îmbunătățite!", 
-                     "text": "Probioticele se înmulțesc folosind toxine uremice și azotate ca sursă de hrană. Această creștere a bacteriilor benefice poate ajuta la îmbunătățirea sănătății intestinale" 
+                     "heading": "Metabolizes toxins", 
+                     "title": "Improved gut bacteria!", 
+                     "text": "Probiotics multiply using uremic and nitrogenous toxins as a food source. This increase in beneficial bacteria can help improve gut health" 
                  }, 
                  "step-3": { 
-                     "heading": "Reduce stresul asupra rinichilor", 
+                     "heading": "Reduces stress on the kidneys", 
                      "title": "Reducerea toxinelor", 
-                     "text": "Atunci când sunt luate în mod constant, acestea reduc nivelurile de uree, creatinină și acid uric, ajutând la eliminarea unei anumite sarcini de pe rinichi. Aceste toxine metabolizate sunt eliminate în timpul mișcărilor intestinale normale." 
+                     "text": "When taken consistently, they reduce the levels of urea, creatinine and uric acid, helping to remove a certain load from the kidneys. These metabolized toxins are eliminated during normal bowel movements." 
                  } 
              } 
          } 
      }, 
      "Contact": { 
          "page-title": "Contact", 
-         "title": "Contactează-ne", 
-         "desc": "Nu ezitați să ne contactați pentru informații suplimentare!", 
+         "title": "Contact us", 
+         "desc": "Do not hesitate to contact us for further information!", 
          "contact-info": { 
-             "title": "Informații de contact", 
+             "title": "Contact info", 
              "linkFb": "https://www.facebook.com/profile.php?id=61550768614377", 
              "linkIg": "https://www.instagram.com/renadylromania/", 
              "linkTw": "https://twitter.com/RenadylEurope" 
          }, 
          "contact-form": { 
-             "first-name-label": "Prenume", 
-             "last-name-label": "Nume", 
-             "email-label": "Adresa de email", 
-             "phone-label": "Număr de telefon", 
-             "message-label": "Mesaj", 
-             "type-label": "Categorie", 
-             "first-name-ph": "Introdu prenumele", 
-             "last-name-ph": "Introdu numele", 
-             "email-ph": "Introdu adresa de email", 
-             "phone-ph": "Introdu numărul de telefon", 
-             "message-ph": "Scrie-ți mesajul dvs.", 
-             "submit-btn": "Trimite", 
+             "first-name-label": "First name", 
+             "last-name-label": "Last name", 
+             "email-label": "Email address", 
+             "phone-label": "Phone number", 
+             "message-label": "Message", 
+             "type-label": "Category", 
+             "first-name-ph": "Enter first name", 
+             "last-name-ph": "Enter last name", 
+             "email-ph": "Enter email address", 
+             "phone-ph": "Enter phone number", 
+             "message-ph": "Write your message", 
+             "submit-btn": "Send", 
              "type-options": { 
-                 "opt-0": "Selectează categoria", 
+                 "opt-0": "Select category", 
                  "opt-1": "Client", 
-                 "opt-2": "Medic", 
-                 "opt-3": "Distribuitor" 
+                 "opt-2": "Doctor", 
+                 "opt-3": "Distributor" 
              }, 
-             "message-success": "Mesajul dvs. a fost trimis!" 
+             "message-success": "Your message has been sent!" 
          } 
      }, 
      "Under-construction": { 
-         "title": "Indisponibil", 
-         "heading": "Momentan indisponibil", 
-         "desc": "În acest moment această zona este indisponibilă", 
-         "back-home-btn": "Înapoi acasă" 
+         "title": "Unavailable", 
+         "heading": "Currently unavailable", 
+         "desc": "This area is currently unavailable", 
+         "back-home-btn": "Back home" 
      } 
  }

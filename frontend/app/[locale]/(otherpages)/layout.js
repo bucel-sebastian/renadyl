@@ -1,7 +1,7 @@
 import './globals.css'
 import { Sofia_Sans } from 'next/font/google'
 
-import { NextIntlClientProvider } from 'next-intl'
+import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import Footer from '@/components/Footer'
@@ -16,16 +16,14 @@ export function generateStaticParams() {
     ];
 }
 
+const locales = ['ro','en','de'];
 const sofiaSans = Sofia_Sans({ variable: '--font-sofia-sans',subsets: ['latin'] })
 
-export default async function LocaleLayout({children, params: {locale}}){
-    let messages;
+export default function LocaleLayout({children, params: {locale}}){
+    let messages = useMessages();
 
-    try{
-        messages = (await import(`@/messages/${locale}.json`)).default;
-    } catch (error) {
-        notFound();
-    }
+    const isValidLocale = locales.some((cur)=>cur === locale);
+    if(!isValidLocale) notFound();
 
     return(
         <html lang={locale}>
@@ -33,7 +31,9 @@ export default async function LocaleLayout({children, params: {locale}}){
                 <Suspense fallback={<Loading/>}>
                     <NextIntlClientProvider locale={locale} messages={messages}>
                         <OtherHeader currentLocale={locale}/>
-                        {children}
+                    </NextIntlClientProvider>
+                    {children}
+                    <NextIntlClientProvider locale={locale} messages={messages}>
                         <Footer/>
                     </NextIntlClientProvider>
                 </Suspense>    

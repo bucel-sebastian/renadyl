@@ -1,17 +1,20 @@
 {
     "Header": {
-        "home": "Acasă",
-        "product": "Produs",
-        "affiliates": "Afiliați",
-        "contact": "Contact",
-        "doctors": "Doctori",
-        "distributors": "Distribuitori",
-        "ambassadors": "Ambasadori",
-        "account": "Intră în cont"
+        
+            "home": "Acasă",
+            "product": "Produs",
+            "affiliates": "Afiliați",
+            "contact": "Contact",
+            "doctors": "Doctori",
+            "distributors": "Distribuitori",
+            "ambassadors": "Ambasadori",
+            "account": "Intră în cont"
+        
+        
     },
     "Footer": {
         "linkuri-utile": "Link-uri utile",
-        "linkU1": "Termeni și condiți",
+        "linkU1": "Termeni și condiții",
         "linkU2": "Politica de confidențialitate",
         "linkU3": "Politica de livrare",
         "linkU4": "Politica de retur",
@@ -92,7 +95,7 @@
                     "heading": "Îmbunătățește bacteriile intestinale",
                     "title-1": "Fiecare capsulă conține 45 de miliarde de CFUs de bacterii benefice",
                     "text-1": "3 tulpini de microbi testați clinic în capsulă rezistentă la acizi.",
-                    "title-2": "Microbii reducători uremici sunt eliberați în colon",
+                    "title-2": "Bacteriile reducătoare uremice sunt eliberate în colon",
                     "text-2": "Protejate de capsula rezistentă la acid, probioticele supraviețuiesc acidului din stomac și sunt eliberate în siguranță doar în colon."
                 },
                 "step-2": {

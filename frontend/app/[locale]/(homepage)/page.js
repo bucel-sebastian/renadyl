@@ -1,20 +1,24 @@
-'use client'
-
 import HomeSlider from "@/components/HomeSlider"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import Link from "next/link"
 
-import { Suspense, useEffect } from "react"
+import { Suspense } from "react"
 import Loading from "./loading"
+import { getTranslator } from "next-intl/server"
+
+
+export async function generateMetadata({params: {locale}}) {
+    const t = await getTranslator(locale, 'Index');
+   
+    return {
+      title: `Renadyl™ -  ${t('page-title')}`
+    };
+  }
 
 export default function Index() {
 
     const t = useTranslations("Index");
-
-    useEffect(()=>{
-        document.title = `Renadyl™ - ${t("page-title")}`;
-    },[])
 
     return (
         <main className="bg-foregroundPrimary w-full h-screen relative">

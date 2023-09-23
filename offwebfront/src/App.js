@@ -28,9 +28,9 @@ useEffect(()=>{
           <h1>{t('Index.header1')}</h1>
           <p>{t('Index.header2')}</p>
           <div className='contact-links-container'>
-            <a href="mailto: office@healtymedical.ro" className='contact-button'>
+            <a href="mailto: office@healthymedical.ro" className='contact-button'>
               <FaMailBulk />
-              office@healtymedical.ro
+              office@healthymedical.ro
             </a>
             <a href="tel: +40733566000" className='contact-button'>
               <FaMobileAlt />
