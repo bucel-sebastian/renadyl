@@ -130,10 +130,10 @@ function HomeHeader({currentLocale}) {
                 <nav className=' max-md:hidden'>
                     <ul className='flex row justify-center gap-[20px]'>
                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/">{t('home')}</Link>
+                            <Link href="/" locale={currentLocale} >{t('home')}</Link>
                         </li>
                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/product">{t('product')}</Link>
+                            <Link href="/product" locale={currentLocale}>{t('product')}</Link>
                         </li>
                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all flex justify-center" onMouseOver={handleHoverAffiliates} onMouseLeave={handleLeaveAffiliates}>
                             <Link href="/under-construction">{t('affiliates')}</Link>
