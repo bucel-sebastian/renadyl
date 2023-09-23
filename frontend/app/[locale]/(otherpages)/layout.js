@@ -8,13 +8,13 @@ import Footer from '@/components/Footer'
 import OtherHeader from '@/components/headers/OtherHeader'
 import Loading from './loading'
 
-export function generateStaticParams() {
-    return [
-        {locale: 'ro'},
-        {locale: 'en'},
-        {locale: 'de'}
-    ];
-}
+// export function generateStaticParams() {
+//     return [
+//         {locale: 'ro'},
+//         {locale: 'en'},
+//         {locale: 'de'}
+//     ];
+// }
 
 const locales = ['ro','en','de'];
 const sofiaSans = Sofia_Sans({ variable: '--font-sofia-sans',subsets: ['latin'] })

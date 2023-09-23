@@ -10,13 +10,13 @@ import Footer from '@/components/Footer'
 import Loading from './loading'
 
 
-export function generateStaticParams() {
-    return [
-        {locale: 'ro'},
-        {locale: 'en'},
-        {locale: 'de'}
-    ];
-}
+// export function generateStaticParams() {
+//     return [
+//         {locale: 'ro'},
+//         {locale: 'en'},
+//         {locale: 'de'}
+//     ];
+// }
 
 const locales = ['ro','en','de'];
 

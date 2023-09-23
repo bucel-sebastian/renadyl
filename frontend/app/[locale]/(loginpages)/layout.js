@@ -6,13 +6,13 @@ import { notFound } from 'next/navigation'
 import LoginHeader from '@/components/headers/LoginHeader';
 
 
-export function generateStaticParams() {
-    return [
-        {locale: 'ro'},
-        {locale: 'en'},
-        {locale: 'de'}
-    ];
-}
+// export function generateStaticParams() {
+//     return [
+//         {locale: 'ro'},
+//         {locale: 'en'},
+//         {locale: 'de'}
+//     ];
+// }
 
 const sofiaSans = Sofia_Sans({ variable: '--font-sofia-sans',subsets: ['latin'] })
 
