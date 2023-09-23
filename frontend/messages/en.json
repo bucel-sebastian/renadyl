@@ -10,11 +10,11 @@
          "account": "Log in" 
      }, 
      "Footer": { 
-         "linkuri-utile": "Link-uri utile", 
+         "linkuri-utile": "Useful links", 
          "linkU1": "Terms and conditions", 
          "linkU2": "Privacy policy", 
          "linkU3": "Delivery policy", 
-         "linkU4": "Politica de retur", 
+         "linkU4": "Return policy", 
          "linkU5": "ANPC", 
          "linkU6": "Cookies", 
          "harta-website": "Website map", 
@@ -137,6 +137,8 @@
                  "opt-2": "Doctor", 
                  "opt-3": "Distributor" 
              }, 
+"tc-label":"Sunt de acord cu ",
+"tc-link":"termenii și condițiile",
              "message-success": "Your message has been sent!" 
          } 
      }, 
