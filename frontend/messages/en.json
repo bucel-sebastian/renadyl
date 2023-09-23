@@ -137,8 +137,8 @@
                  "opt-2": "Doctor", 
                  "opt-3": "Distributor" 
              }, 
-"tc-label":"Sunt de acord cu ",
-"tc-link":"termenii și condițiile",
+"tc-label":"I agree with ",
+"tc-link":"terms and conditions",
              "message-success": "Your message has been sent!" 
          } 
      }, 
