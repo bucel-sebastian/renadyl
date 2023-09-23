@@ -52,7 +52,7 @@ function HomeHeader({currentLocale}) {
 
     const allLocalesDef = [];
     for (const key in locales) {
-        localesDef.push(key);
+        allLocalesDef.push(key);
     }
 
     const openLanguageSwitcher = () => {
@@ -115,16 +115,19 @@ function HomeHeader({currentLocale}) {
     <header className={`fixed block top-0 left-0 w-full h-[75px] z-10 ${headerWhite ? 'bg-backgroundPrimary90 shadow-lg header-white' : 'text-backgroundPrimary'} transition-all duration-300 `}>
         <div className='relative flex max-w-[1200px] mx-auto justify-between items-center content-center h-full py-2 max-md:px-5 max-[1200px]:px-4'>
             <div className='h-full w-1/5 max-md:w-1/2 relative'>
-                <Image 
-                    src={renadylLogoWhite}
-                    alt='Renadyl'
-                    className={`h-full w-max transition-all duration-300 ${headerWhite ? 'opacity-0' : 'opacity-1'}`}
-                /> 
-                <Image 
-                    src={renadylLogo}
-                    alt='Renadyl'
-                    className={`h-full w-max absolute top-0 left-0 transition-all duration-300 ${headerWhite ? 'opacity-1' : 'opacity-0'}`}
-                /> 
+                <Link href="/" locale={currentLocale} className="h-full w-full relative" >
+                    <Image 
+                        src={renadylLogoWhite}
+                        alt='Renadyl'
+                        className={`h-full w-max transition-all duration-300 ${headerWhite ? 'opacity-0' : 'opacity-1'}`}
+                    /> 
+                    <Image 
+                        src={renadylLogo}
+                        alt='Renadyl'
+                        className={`h-full w-max absolute top-0 left-0 transition-all duration-300 ${headerWhite ? 'opacity-1' : 'opacity-0'}`}
+                    /> 
+                
+                </Link>
             </div>
             <div className='w-3/5 max-md:w-1/2'>
                 <nav className=' max-md:hidden'>
@@ -136,7 +139,7 @@ function HomeHeader({currentLocale}) {
                             <Link href="/product" locale={currentLocale}>{t('product')}</Link>
                         </li>
                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all flex justify-center" onMouseOver={handleHoverAffiliates} onMouseLeave={handleLeaveAffiliates}>
-                            <Link href="/under-construction">{t('affiliates')}</Link>
+                            <Link href="/under-construction" locale={currentLocale} >{t('affiliates')}</Link>
                             <div className={`absolute pt-1 transition-all duration-300 top-full drop-shadow-md  ${isAffiliatesOpenDesktop ? 'opacity-1 pointer-event-auto' : 'opacity-0 pointer-events-none'}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.59 28.73" className='w-[20px] mx-auto block'>
                                 <g >
@@ -146,20 +149,20 @@ function HomeHeader({currentLocale}) {
                                 <nav className='text-center py-3 px-4 rounded-lg bg-backgroundPrimary text-foregroundPrimary'>
                                     <ul className='flex flex-col items-center content-center gap-[2px]'>
                                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                                            <Link href="/under-construction">{t('ambassadors')}</Link>
+                                            <Link href="/under-construction" locale={currentLocale} >{t('ambassadors')}</Link>
                                         </li>
                                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                                            <Link href="/under-construction">{t('doctors')}</Link>
+                                            <Link href="/under-construction" locale={currentLocale} >{t('doctors')}</Link>
                                         </li>
                                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                                            <Link href="/under-construction">{t('distributors')}</Link>
+                                            <Link href="/under-construction" locale={currentLocale} >{t('distributors')}</Link>
                                         </li>
                                     </ul>
                                 </nav>
                             </div>
                         </li>
                         <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/contact">{t('contact')}</Link>
+                            <Link href="/contact" locale={currentLocale} >{t('contact')}</Link>
                         </li>
                     </ul>
                 </nav>
@@ -176,7 +179,7 @@ function HomeHeader({currentLocale}) {
             </div>
             <div className='w-1/5 flex row justify-end gap-[6px] max-md:hidden'>
                 <div>
-                    <Link href="/under-construction">
+                    <Link href="/under-construction" locale={currentLocale} >
                         <FaUserCircle className='text-[35px]'/>
                     </Link>
                 </div>
@@ -209,25 +212,25 @@ function HomeHeader({currentLocale}) {
                 <nav className=''>
                     <ul className='flex flex-col justify-center font-bold gap-[20px] px-5 pt-5'>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/" onClick={handleMobileMenuClick}>{t('home')}</Link>
+                            <Link href="/" onClick={handleMobileMenuClick} locale={currentLocale} >{t('home')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/product" onClick={handleMobileMenuClick}>{t('product')}</Link>
+                            <Link href="/product" onClick={handleMobileMenuClick} locale={currentLocale} >{t('product')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/under-construction" onClick={handleMobileMenuClick}>{t('ambassadors')}</Link>
+                            <Link href="/under-construction" onClick={handleMobileMenuClick} locale={currentLocale} >{t('ambassadors')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/under-construction" onClick={handleMobileMenuClick}>{t('doctors')}</Link>
+                            <Link href="/under-construction" onClick={handleMobileMenuClick} locale={currentLocale} >{t('doctors')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/under-construction" onClick={handleMobileMenuClick}>{t('distributors')}</Link>
+                            <Link href="/under-construction" onClick={handleMobileMenuClick} locale={currentLocale} >{t('distributors')}</Link>
                         </li>     
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/contact" onClick={handleMobileMenuClick}>{t('contact')}</Link>
+                            <Link href="/contact" onClick={handleMobileMenuClick} locale={currentLocale} >{t('contact')}</Link>
                         </li>
                         <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                            <Link href="/under-construction" onClick={handleMobileMenuClick}>{t('account')}</Link>
+                            <Link href="/under-construction" onClick={handleMobileMenuClick} locale={currentLocale} >{t('account')}</Link>
                         </li>
                     </ul>
                 </nav>
