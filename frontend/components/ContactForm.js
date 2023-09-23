@@ -104,7 +104,7 @@ function ContactForm() {
                 </div>
             </div>
             <div className='flex flex-row gap-1'>
-                <input type='checkbox' name='gdpr' required /> Sunt de acord cu termenii și condițiile
+                <input type='checkbox' name='gdpr' required /> {t("contact-form.tc-label")} {t("contact-form.tc-link")}
             </div>
             {!submitBtnEnabled ? (<h3 className='text-right text-gradientPurple'>{t("contact-form.message-success")}</h3>) : (<button type='submit' className='block bg-gradient-to-r w-[200px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2 ml-auto mr-0'>
                 {t("contact-form.submit-btn")}
