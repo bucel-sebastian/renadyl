@@ -50,6 +50,11 @@ function HomeHeader({currentLocale}) {
         }
     }
 
+    const allLocalesDef = [];
+    for (const key in locales) {
+        localesDef.push(key);
+    }
+
     const openLanguageSwitcher = () => {
         setLanguageSwitcherOpen(true);
     }
@@ -70,10 +75,12 @@ function HomeHeader({currentLocale}) {
 
     const handleMenuBtnClick = () =>{
         setIsMenuOpen(!isMenuOpen);
+        handleScroll();
     }
 
     const handleMobileMenuClick = () => {
         setIsMenuOpen(false);
+        handleScroll();
     }
 
 
@@ -227,7 +234,7 @@ function HomeHeader({currentLocale}) {
                 <div className='relative mt-8 w-full flex justify-center flex-row gap-[10px]'>
                     {
                         Object.values(locales).map((locale,index)=>(
-                            <button key={index} className='w-[45px]' onClick={()=>switchLocale(localesDef[index])}>
+                            <button key={index} className='w-[45px]' onClick={()=>switchLocale(allLocalesDef[index])}>
                                     <Image 
                                         src={locale}
                                         alt='Renadyl'
