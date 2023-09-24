@@ -69,17 +69,17 @@ function HomeSlider() {
     <div className='relative h-full overflow-hidden'>
         <div className='relative h-full flex justify-center content-center items-center'>
             <div className='aspect-video absolute min-h-full w-content hero-slide active-slide'>
-              <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} disableFullScreen={true} className='h-full w-auto aspect-video pointer-events-none'>
+              <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} className='h-full w-auto aspect-video pointer-events-none'>
                 <source src="/videos/hero_banner-1.mp4" type='video/mp4' />
               </video>
             </div>
             <div className='aspect-video absolute min-h-full w-content hero-slide'>
-              <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} disableFullScreen={true} className='h-full w-auto aspect-video pointer-events-none'>
+              <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} className='h-full w-auto aspect-video pointer-events-none'>
                   <source src="/videos/hero_banner-1.mp4" type='video/mp4' />
                 </video>
             </div>
             <div className='aspect-video absolute min-h-full w-content hero-slide'>
-              <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} disableFullScreen={true} className='h-full w-auto aspect-video pointer-events-none' >
+              <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} className='h-full w-auto aspect-video pointer-events-none' >
                   <source src="/videos/hero_banner-1.mp4" type='video/mp4' />
                 </video>
             </div>
