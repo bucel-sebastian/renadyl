@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { getTranslator } from "next-intl/server"
 
-import Head from "next/head";
 
 import {FaArrowDown, FaArrowRight} from "react-icons/fa6";
 import {FaShippingFast, FaUndoAlt} from "react-icons/fa";
@@ -44,7 +43,7 @@ export default function Product() {
                             <div className="max-md:mb-4">
                                 <div className="text-3xl mb-4">
                                     <span>{t("hero-section.product-price")}:</span>&nbsp;
-                                    <span className="font-extrabold">460 RON</span> /&nbsp; 
+                                    <span className="font-extrabold">436 RON</span> /&nbsp; 
                                     <span>{t("hero-section.product-unit")}</span>
                                 </div>
                                 <div className="flex flex-row gap-5 max-md:justify-center max-md:gap-2">
@@ -274,7 +273,9 @@ export default function Product() {
                             </div>
                             <div className="w-3/5 max-md:w-full">
                                 <p className="text-justify">
-                                „Pentru pacienții mei, Renadyl™ a îmbunătățit calitatea vieții. Le-a îmbunătățit numărul celulelor renale, i-a făcut să se simtă mai bine și cred că ajută și alți markeri ai sănătății totale a corpului: scăderea acidului uric, ajutând în situația gutei, la scăderea tensiunii arteriale și generând o stare generală de bine.”
+                                „
+                                {t("review")}
+                                ”
                                 </p>
                             </div>
                             <div className="w-1/5 text-center max-md:w-full">

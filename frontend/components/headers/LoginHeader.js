@@ -2,7 +2,7 @@ import React from 'react'
 
 function LoginHeader() {
   return (
-    <header>
+    <header className='fixed'>
         Header
     </header>
   )

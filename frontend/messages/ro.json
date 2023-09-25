@@ -109,7 +109,8 @@
                     "text": "Atunci când sunt luate în mod constant, acestea reduc nivelurile de uree, creatinină și acid uric, ajutând la eliminarea unei anumite sarcini de pe rinichi. Aceste toxine metabolizate sunt eliminate în timpul mișcărilor intestinale normale."
                 }
             }
-        }
+        },
+        "review":"Pentru pacienții mei, Renadyl™ a îmbunătățit calitatea vieții. Le-a îmbunătățit numărul celulelor renale, i-a făcut să se simtă mai bine și cred că ajută și alți markeri ai sănătății totale a corpului: scăderea acidului uric, ajutând în situația gutei, la scăderea tensiunii arteriale și generând o stare generală de bine."
     },
     "Contact": {
         "page-title": "Contact",
@@ -140,15 +141,64 @@
                 "opt-2": "Medic",
                 "opt-3": "Distribuitor"
             },
-"tc-label":"Sunt de acord cu ",
-"tc-link":"termenii și condițiile",
+            "tc-label":"Sunt de acord cu ",
+            "tc-link":"termenii și condițiile",
             "message-success": "Mesajul dvs. a fost trimis!"
         }
     },
     "Under-construction": {
+        "page-title": "Indisponibil",
         "title": "Indisponibil",
         "heading": "Momentan indisponibil",
         "desc": "În acest moment această zona este indisponibilă",
         "back-home-btn": "Înapoi acasă"
+    },
+
+    "Login":{
+        "page-title": "Autentificare",
+        "heading": "Autentificare",
+        "desc": "Cumpara renadyl in 3 pasi simpli",
+        "login-form": {
+            "email-label":"Adresa de email",
+            "email-ph":"Introdu adresa de email",
+            "password-label":"Parola",
+            "password-ph":"Introdu parola",
+            "password-forgot-link":"Ai uitat parola?",
+            "remember-label":"Ține-mă minte",
+            "submit-btn":"Autentifică-te",
+            "other-options":"sau poți folosi",
+            "register-link":"Nu ai cont? Înregistrează-te"
+        }
+
+    },
+    "Register":{
+        "page-title": "Înregistrare",
+        "heading": "Înregistrare",
+        "desc": "",
+        "register-form": {
+            "fname-label":"Prenume",
+            "fname-ph":"Introdu prenumele",
+            "lname-label":"Nume",
+            "lname-ph":"Introdu numele",
+            "email-label":"Adresa de email",
+            "email-ph":"Introdu adresa de email",
+            "password-label":"Parola",
+            "password-ph":"Introdu parola",
+            "re-password-label":"Confirmă parola",
+            "re-password-ph":"Reintrodu parola",
+            "submit-btn":"Înregistrează-te",
+            "other-options":"sau poți folosi",
+            "login-link":"Ai deja cont? Autentifică-te"
+        }
+    },
+    "Forgot-pass":{
+        "page-title": "Indisponibil",
+        "heading": "Autentificare",
+        "desc": ""
+    },
+    "Reset-pass":{
+        "page-title": "Indisponibil",
+        "heading": "Autentificare",
+        "desc": ""
     }
 }

@@ -1,14 +1,201 @@
 {
     "Header": {
-        "home": "Acasă",
-        "product": "Produs",
-        "affiliates": "Afiliați",
-        "contact": "Contact",
-        "doctors": "Doctori",
-        "distributors": "Distribuitori",
-        "ambassadors": "Ambasadori"
+            "home": "Startseite",
+            "product": "Produkt",
+            "affiliates": "Verbundene Unternehmen",
+            "contact": "Kontakt",
+            "doctors": "Ärzte",
+            "distributors": "Vertriebspartner",
+            "ambassadors": "Botschafter",
+            "account": "Kontoanmeldung"
+    },
+    "Footer": {
+        "linkuri-utile": "Nützliche Links",
+        "linkU1": "Geschäftsbedingungen",
+        "linkU2": "Datenschutz",
+        "linkU3": "Lieferbedingungen",
+        "linkU4": "Rückgabe-Politik",
+        "linkU5": "ANPC - Nationale Behörde für Verbraucherschutz",
+        "linkU6": "Cookies",
+        "harta-website": "Websitekarte",
+        "linkD1": "Startseite",
+        "linkD2": "Über Renadyl™",
+        "linkD3": "Kontakt",
+        "linkD4": "Anmeldung",
+        "linkD5": "Registrierung",
+        "linkFb": "https://www.facebook.com/profile.php?id=61550768614377",
+        "linkIg": "https://www.instagram.com/renadylromania/",
+        "linkTw": "https://twitter.com/RenadylEurope"
     },
     "Index": {
-        "page-title": "Acasă"
+        "page-title": "Startseite",
+        "buy-btn": "Kaufen",
+        "about-btn": "Über das Produkt"
+    },
+    "Product": {
+        "page-title": "Produkt",
+        "buy-btn": "Kaufen",
+        "subscription-btn": "Abonnement",
+        "hero-section": {
+            "product-name": "Renadyl™ - Nahrungsergänzungsmittel",
+            "product-desc": "Renadyl™ ist eine natürliche Option zur Erhaltung einer gesunden Nierenfunktion und zur Verbesserung der Lebensqualität. Es besteht aus drei patentierten Stämmen probiotischer Bakterien, die stickstoffhaltige Abfälle als Nahrung nutzen. Stickstoffhaltige Abfälle diffundieren durch einen natürlichen Prozess, der als Osmose bekannt ist, aus dem Blutkreislauf in den Dickdarm. Bei Personen mit eingeschränkter Nierenfunktion diffundieren vermehrt Giftstoffe in den Dickdarm. Sobald sich Giftstoffe in hohen Konzentrationen im Dickdarm ansammeln, werden sie von Renadyl™ metabolisiert und die Konzentration der Giftstoffe im Körper verringert. Aufgrund der Fähigkeit von Renadyl™, stickstoffhaltige Abfallprodukte im Darm zu metabolisieren, trägt es zur Aufrechterhaltung einer gesunden Nierenfunktion bei und verringert die Belastung der Nieren.",
+            "product-price": "Preis",
+            "product-unit": "Stk.",
+            "product-buy-btn": "Kaufen",
+            "product-subscription-btn": "Abonnement",
+            "product-shippment": "Lieferung",
+            "product-shippment-green": "10 Arbeitstage",
+            "product-return-tc": "Geschäftsbedingungen für Rückgabe",
+            "product-return-tc-btn": "retur"
+        },
+        "about-section": {
+            "title": "Wie Renadyl™ hilft",
+            "desc": "Renadyl™ ist ein wissenschaftlich formuliertes und klinisch getestetes probiotisches Nahrungsergänzungsmittel. Renadyl™ metabolisiert stickstoffhaltige Abfallprodukte, die aus dem Blutkreislauf in den Dickdarm diffundiert sind. Die stickstoffhaltigen Abfallprodukte werden von Renadyl™ als Nährstoffe genutzt. Wenn die Probiotika wachsen und sich vermehren, verbrauchen sie mehr stickstoffhaltige Abfallstoffe und tragen so wirksam zur Erhaltung einer gesunden Nierenfunktion bei. Stickstoffhaltige Stoffwechselprodukte werden als fester Abfall bzw. als Fäkalien ausgeschieden.",
+            "about-tabs": {
+                "tab-1": {
+                    "number": "2",
+                    "title": "Präbiotische Ballaststoffe",
+                    "text": "Zur Förderung des Wachstums der in Renadyl™ enthaltenen Probiotika und der nützlichen Mikroorganismen im Darm des Patienten."
+                },
+                "tab-2": {
+                    "number": "45",
+                    "title": "Milliarden KBEs",
+                    "text": "Hohe Konzentration an probiotischen Mikroorganismen, auch bekannt als koloniebildende Einheiten (KBE)."
+                },
+                "tab-3": {
+                    "number": "3",
+                    "title": "Patentierte Stämme",
+                    "text": "Nützliche Bakterien, die aufgrund ihrer Fähigkeit ausgewählt wurden, stickstoffhaltige Abfälle zu metabolisieren."
+                }
+            }
+        },
+        "more-section": {
+            "title": "Renadyl™ - Natürliche Herstellung des Gleichgewichts der Nieren",
+            "desc": {
+                "p-1": "Normalerweise besteht in unserem Körper ein Gleichgewicht der urämischen Toxine zwischen dem Blut und dem Lumen des Dickdarms (Magen-Darm-Trakt).",
+                "p-2": "Diese Konzentration urämischer Toxine im Dickdarm ist bei Krankheiten in der Regel höher. Unsere patentierte enterische probiotische Technologie nutzt diese Toxine, um die Menge an gesunden Bakterien zu erhöhen und dadurch einen Konzentrationsgradienten zu erzeugen, der bewirkt, dass mehr Toxine aus dem Blut passiv in das Dickdarmlumen diffundieren.",
+                "p-3": "Der eigentliche Prozess findet im Dickdarm statt. Wenn die Nierenfunktion nachlässt, sammeln sich stickstoffhaltige Abfälle im Blut an und diffundieren durch natürliche physiologische Prozesse in die Darmflüssigkeit.",
+                "p-4": "Wenn die Nierenfunktion beeinträchtigt ist, reichern sich urämische Toxine im Blut an. Ein großer Teil dieser Toxine diffundiert in den Dickdarm, da dieser von einem ausgedehnten Netz von Blutgefäßen umgeben ist."
+            },
+            "list": {
+                "p-1": "Nach einer Reise durch den oberen Magen-Darm-Trakt werden die probiotischen Mikroorganismen aus einer säurebeständigen Kapsel freigesetzt und gelangen in die Ileo-Caecal-Region des Dickdarms.",
+                "p-2": "Im Dickdarm angekommen, entdecken und metabolisieren die Mikroorganismen urämische stickstoffhaltige Abfälle und nutzen sie als Nährstoffe für ihr Wachstum.",
+                "p-3": "Mit zunehmender Vermehrung der Mikroorganismen metabolisieren sie nach und nach immer mehr urämische Toxine, wodurch sich das Konzentrationsgefälle erhöht und eine größere Diffusion dieser Toxine in den Dickdarm ermöglicht wird.",
+                "p-4": "Schließlich werden die metabolisierten Toxine durch den Darm transportiert und als feste Rückstände aus dem Körper ausgeschieden, wodurch die betroffenen Nieren entlastet werden."
+            }
+        },
+        "steps-section": {
+            "title": "3 Schritte zu Ihrer Nierengesundheit",
+            "desc": "Die Bakterien in Renadyl™ helfen bei der Metabolosierung von stickstoffhaltigen Abfällen und Toxinen und verringern dadurch die Belastung der Nieren.",
+            "steps": {
+                "step-1": {
+                    "heading": "Verbessert die Darmbakterien.",
+                    "title-1": "Jede Kapsel enthält 45 Milliarden CFUs an nützlichen Bakterien.",
+                    "text-1": "3 Stämme klinisch getesteter Bakterien in säurebeständiger Kapsel.",
+                    "title-2": "Im Dickdarm werden harnsäuresenkende Bakterien freigesetzt.",
+                    "text-2": "Geschützt durch die säurebeständige Kapsel überleben die Probiotika die Magensäure und werden erst im Dickdarm sicher freigesetzt."
+                },
+                "step-2": {
+                    "heading": "Metabolisiert Toxine",
+                    "title": "Verbesserte Darmbakterien!",
+                    "text": "Probiotika vermehren sich und nutzen urämische und Stickstofftoxine als Nahrungsquelle. Dieses Wachstum der nützlichen Bakterien kann zur Verbesserung der Darmgesundheit beitragen."
+                },
+                "step-3": {
+                    "heading": "Reduziert die Belastung der Nieren",
+                    "title": "Reduziert Toxine",
+                    "text": "Bei konsequenter Einnahme senken sie die Werte von Harnstoff, Kreatinin und Harnsäure und helfen so, die Nieren zu entlasten. Diese metabolisierten Toxine werden mit dem normalen Stuhlgang ausgeschieden."
+                }
+            }
+        },
+        "review":"Für meine Patienten hat Renadyl™ ihre Lebensqualität verbessert. Es verbesserte die Anzahl ihrer Nierenzellen, sorgte dafür, dass sie sich besser fühlten, und ich denke, es hilft bei anderen Indikatoren der gesamten Körpergesundheit: Senkung der Harnsäure, Linderung von Gicht, Senkung des Blutdrucks und Schaffung eines allgemeinen Wohlbefindens."
+    },
+    "Contact": {
+        "page-title": "Kontakt",
+        "title": "Kontaktieren Sie uns",
+        "desc": "Für weitere Informationen können Sie uns gerne kontaktieren!",
+        "contact-info": {
+            "title": "Angaben zum Kontakt",
+            "linkFb": "https://www.facebook.com/profile.php?id=61550720346995",
+            "linkIg": "https://www.instagram.com/renadyleurope/",
+            "linkTw": "https://twitter.com/RenadylEurope"
+        },
+        "contact-form": {
+            "first-name-label": "Vorname",
+            "last-name-label": "Name",
+            "email-label": "E-Mail Adresse",
+            "phone-label": "Telefonnummer",
+            "message-label": "Nachricht",
+            "type-label": "Kategorie",
+            "first-name-ph": "Vornamen eingeben",
+            "last-name-ph": "Namen eingeben",
+            "email-ph": "Geben Sie Ihre E-Mail-Adresse ein",
+            "phone-ph": "Geben Sie Ihre Telefonnummer ein",
+            "message-ph": "Geben Sie Ihre Nachricht ein",
+            "submit-btn": "Senden",
+            "type-options": {
+                "opt-0": "Kategorie auswählen",
+                "opt-1": "Kunde",
+                "opt-2": "Arzt",
+                "opt-3": "Vertriebspartner"
+            },
+            "tc-label":"Ich bin einverstanden mit ",
+            "tc-link":"Geschäftsbedingungen",
+            "message-success": "Ihre Nachricht wurde gesendet!"
+        }
+    },
+    "Under-construction": {
+        "page-title": "Nicht verfügbar",
+        "title": "Nicht verfügbar",
+        "heading": "Zurzeit nicht verfügbar",
+        "desc": "Dieser Bereich ist derzeit nicht verfügbar",
+        "back-home-btn": "Zurück zur Startseite"
+    },
+
+    "Login":{
+        "page-title": "Autentificare",
+        "heading": "Autentificare",
+        "desc": "Cumpara renadyl in 3 pasi simpli",
+        "login-form": {
+            "email-label":"Adresa de email",
+            "email-ph":"Introdu adresa de email",
+            "password-label":"Parola",
+            "password-ph":"Introdu parola",
+            "password-forgot-link":"Ai uitat parola?",
+            "remember-label":"Ține-mă minte",
+            "submit-btn":"Autentifică-te",
+            "other-options":"sau poți folosi",
+            "register-link":"Nu ai cont? Înregistrează-te"
+        }
+
+    },
+    "Register":{
+        "page-title": "Înregistrare",
+        "heading": "Înregistrare",
+        "desc": "",
+        "register-form": {
+            "fname-label":"Prenume",
+            "fname-ph":"Introdu prenumele",
+            "lname-label":"Nume",
+            "lname-ph":"Introdu numele",
+            "email-label":"Adresa de email",
+            "email-ph":"Introdu adresa de email",
+            "password-label":"Parola",
+            "password-ph":"Introdu parola",
+            "re-password-label":"Confirmă parola",
+            "re-password-ph":"Reintrodu parola",
+            "submit-btn":"Înregistrează-te",
+            "other-options":"sau poți folosi",
+            "login-link":"Ai deja cont? Autentifică-te"
+        }
+    },
+    "Forgot-pass":{
+        "page-title": "Indisponibil",
+        "heading": "Autentificare",
+        "desc": ""
+    },
+    "Reset-pass":{
+        "page-title": "Indisponibil",
+        "heading": "Autentificare",
+        "desc": ""
     }
 }

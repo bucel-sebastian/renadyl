@@ -51,13 +51,13 @@ function ContactForm() {
                     <label className='px-1 text-foregroundPrimary70'>
                         {t("contact-form.first-name-label")}*
                     </label>
-                    <input placeholder={t("contact-form.first-name-ph")} name='fname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
+                    <input placeholder={t("contact-form.first-name-ph")} type='text' name='fname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
                 </div>
                 <div className='w-1/2 flex flex-col max-md:w-full'>
                     <label className='px-1 text-foregroundPrimary70'>
                         {t("contact-form.last-name-label")}*
                     </label>
-                    <input placeholder={t("contact-form.last-name-ph")} name='lname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
+                    <input placeholder={t("contact-form.last-name-ph")} type='text' name='lname' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
                 </div>
             </div>
             <div className='flex flex-row gap-8 max-md:flex-col max-md:gap-4'>
@@ -65,7 +65,7 @@ function ContactForm() {
                     <label className='px-1 text-foregroundPrimary70'>
                         {t("contact-form.email-label")}*
                     </label>
-                    <input placeholder={t("contact-form.email-ph")} name='email' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required />
+                    <input placeholder={t("contact-form.email-ph")} type='email' name='email' className='duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required />
                 </div>
                 <div className='w-1/2 flex flex-col max-md:w-full'>
                     <label className='px-1 text-foregroundPrimary70'>
