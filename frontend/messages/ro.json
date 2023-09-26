@@ -8,7 +8,9 @@
             "doctors": "Doctori",
             "distributors": "Distribuitori",
             "ambassadors": "Ambasadori",
-            "account": "Intră în cont"
+            "account": "Intră în cont",
+            "register-btn": "Creează cont",
+            "login-btn": "Autentificare"
         
         
     },
@@ -188,7 +190,9 @@
             "re-password-ph":"Reintrodu parola",
             "submit-btn":"Înregistrează-te",
             "other-options":"sau poți folosi",
-            "login-link":"Ai deja cont? Autentifică-te"
+            "login-link":"Ai deja cont? Autentifică-te",
+            "tc-label": "",
+            "tc-link": ""
         }
     },
     "Forgot-pass":{

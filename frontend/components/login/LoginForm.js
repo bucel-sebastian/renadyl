@@ -58,15 +58,15 @@ function LoginForm() {
                 <button type="submit" className="block bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2 mx-auto">
                     {t("login-form.submit-btn")}
                 </button>
-                <div className="flex flex-col items-center content-center gap-1 mt-2 mb-4">
+                {/* <div className="flex flex-col items-center content-center gap-1 mt-2 mb-4">
                     <Link href="/register" >
                         {t("login-form.register-link")}
                     </Link>
                     
-                </div>
+                </div> */}
                 
             </form>
-            <div>
+            <div className="mt-4">
                 <p className="text-center">
                     {t("login-form.other-options")}
                 </p>

@@ -27,29 +27,29 @@ function RegisterForm() {
         <form onSubmit={handleSubmit} className="min-w-[400px] mt-6">
             <div className="w-full flex flex-col mb-2">
                 <label className="px-1 text-foregroundPrimary70">
-                    {t("register-from.fname-label")}
+                    {t("register-form.fname-label")}
                 </label>
                 <input placeholder={t("register-form.fname-ph")} type="text" name='fname' className='bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
             </div>
             <div className="w-full flex flex-col mb-2">
                 <label className="px-1 text-foregroundPrimary70">
-                    {t("register-from.lname-label")}
+                    {t("register-form.lname-label")}
                 </label>
                 <input placeholder={t("register-form.lname-ph")} type="text" name='lname' className='bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
             </div>
             <div className="w-full flex flex-col mb-2">
                 <label className="px-1 text-foregroundPrimary70">
-                    {t("register-from.email-label")}
+                    {t("register-form.email-label")}
                 </label>
                 <input placeholder={t("register-form.email-ph")} type="email" name='lname' className='bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
             </div>
             <div className="w-full flex flex-col mb-2">
                 <label className='px-1 text-foregroundPrimary70'>
-                    {t("login-form.password-label")}
+                    {t("register-form.password-label")}
 
                 </label>
                 <div className="relative flex flex-row items-center content-center">
-                    <input placeholder={t("login-form.password-ph")} type={passwordVisible ? 'text' : 'password'} name='password' className='w-full bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
+                    <input placeholder={t("register-form.password-ph")} type={passwordVisible ? 'text' : 'password'} name='password' className='w-full bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
                     <button onClick={handlePasswordVisibleClick} type="button" className="absolute right-0">
                         {passwordVisible ? (<FaEyeSlash />) : (<FaEye />)}
                     </button>
@@ -57,25 +57,31 @@ function RegisterForm() {
             </div>
             <div className="w-full flex flex-col mb-2">
                 <label className='px-1 text-foregroundPrimary70'>
-                    {t("login-form.re-password-label")}
+                    {t("register-form.re-password-label")}
 
                 </label>
                 <div className="relative flex flex-row items-center content-center">
-                    <input placeholder={t("login-form.re-password-ph")} type={passwordVisible ? 'text' : 'password'} name='re-password' className='w-full bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
+                    <input placeholder={t("register-form.re-password-ph")} type={passwordVisible ? 'text' : 'password'} name='re-password' className='w-full bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ' required/>
                     <button onClick={handlePasswordVisibleClick} type="button" className="absolute right-0">
                         {passwordVisible ? (<FaEyeSlash />) : (<FaEye />)}
                     </button>
                 </div>                    
             </div>
+            <div className="flex flex-row items-center content-center gap-3  mb-4">
+                    <input type="checkbox" name="remember-me" id="login-remember-me" />
+                    <label htmlFor="login-remember-me">
+                        {t("register-form.tc-label")}
+                    </label>
+                </div>
             <button type="submit" className="block bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2 mx-auto">
                     {t("register-form.submit-btn")}
                 </button>
-                <div className="flex flex-col items-center content-center gap-1 mt-2 mb-4">
+                {/* <div className="flex flex-col items-center content-center gap-1 mt-2 mb-4">
                     <Link href="/login" >
                         {t("register-form.login-link")}
                     </Link>
                     
-                </div>
+                </div> */}
         </form>
         <div>
                 <p className="text-center">
