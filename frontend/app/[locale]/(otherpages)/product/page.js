@@ -43,7 +43,7 @@ export default function Product() {
                             <div className="max-md:mb-4">
                                 <div className="text-3xl mb-4">
                                     <span>{t("hero-section.product-price")}:</span>&nbsp;
-                                    <span className="font-extrabold">436 RON</span> /&nbsp; 
+                                    <span className="font-extrabold">460 RON</span> /&nbsp; 
                                     <span>{t("hero-section.product-unit")}</span>
                                 </div>
                                 <div className="flex flex-row gap-5 max-md:justify-center max-md:gap-2">
