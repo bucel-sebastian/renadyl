@@ -1,6 +1,10 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
+
+
+
+
 
 function HomeSlider() {
 
@@ -65,23 +69,28 @@ function HomeSlider() {
 
   }
 
+
+
   return (
     <div className='relative h-full overflow-hidden'>
         <div className='relative h-full flex justify-center content-center items-center'>
             <div className='aspect-video absolute min-h-full w-content hero-slide active-slide'>
               <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} className='h-full w-auto aspect-video pointer-events-none' playsInline>
-                <source src="/videos/hero_banner-1.mp4" type='video/mp4' />
+                <source src={'/videos/hero-banner-1.webm'} type='video/webm' />
+                <source src={'/videos/hero-banner-1.mp4'} type='video/mp4' />
               </video>
             </div>
             <div className='aspect-video absolute min-h-full w-content hero-slide'>
               <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} className='h-full w-auto aspect-video pointer-events-none' playsInline>
-                  <source src="/videos/hero_banner-1.mp4" type='video/mp4' />
-                </video>
+                <source src={'/videos/hero-banner-1.webm'} type='video/webm' />
+                <source src={'/videos/hero-banner-1.mp4'} type='video/mp4' />
+              </video>
             </div>
             <div className='aspect-video absolute min-h-full w-content hero-slide'>
               <video muted controls={false} disablePictureInPicture={true} disableRemotePlayback={true} className='h-full w-auto aspect-video pointer-events-none' playsInline>
-                  <source src="/videos/hero_banner-1.mp4" type='video/mp4' />
-                </video>
+                <source src={'/videos/hero-banner-1.webm'} type='video/webm' />
+                <source src={'/videos/hero-banner-1.mp4'} type='video/mp4' />
+              </video>
             </div>
         </div>
         <div className='absolute bottom-[10px] w-full flex flex-row justify-center content-center items-center gap-[5px]'>
