@@ -69,13 +69,13 @@ function Footer() {
                   </div> */}
                   <h1 className='text-5xl font-extrabold'>HEALTHY MEDICAL</h1>
                   <div className='flex flex-row justify-start my-5 items-center gap-5 text-2xl'>
-                      <Link className='duration-150 hover:text-accentPrimary' href={t("linkFb")}>
+                      <Link className='duration-150 hover:text-accentPrimary' href={t("linkFb")} aria-label='Facebook'>
                           <FaFacebook />
                       </Link>
-                      <Link className='duration-150 hover:text-accentPrimary' href={t("linkIg")}>
+                      <Link className='duration-150 hover:text-accentPrimary' href={t("linkIg")} aria-label='Instagram'>
                           <FaInstagram />
                       </Link>
-                      <Link className='duration-150 hover:text-accentPrimary' href={t("linkTw")}>
+                      <Link className='duration-150 hover:text-accentPrimary' href={t("linkTw")} aria-label='Twitter'>
                           <FaTwitter />
                       </Link>
                       
