@@ -54,6 +54,18 @@
   
     --gradient-green: #44EC9D;
     --gradient-purple: #7F5AF8;
+
+    --dashboard-blue: #197BBD;
+    --dashboard-blue-90: #197BBDE6;
+    --dashboard-blue-80: #197BBDCC;
+    --dashboard-blue-70: #197BBDB3;
+    --dashboard-blue-60: #197BBD99;
+    --dashboard-blue-50: #197BBD80;
+    --dashboard-blue-40: #197BBD66;
+    --dashboard-blue-30: #197BBD4D;
+    --dashboard-blue-20: #197BBD33;
+    --dashboard-blue-10: #197BBD1A;
+    --dashboard-blue-0: #197BBD00;
   }
 
   body {

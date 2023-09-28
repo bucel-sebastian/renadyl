@@ -1,18 +1,15 @@
 {
     "Header": {
-        
-            "home": "Acasă",
-            "product": "Produs",
-            "affiliates": "Afiliați",
-            "contact": "Contact",
-            "doctors": "Doctori",
-            "distributors": "Distribuitori",
-            "ambassadors": "Ambasadori",
-            "account": "Intră în cont",
-            "register-btn": "Creează cont",
-            "login-btn": "Autentificare"
-        
-        
+        "home": "Acasă",
+        "product": "Produs",
+        "affiliates": "Afiliați",
+        "contact": "Contact",
+        "doctors": "Doctori",
+        "distributors": "Distribuitori",
+        "ambassadors": "Ambasadori",
+        "account": "Intră în cont",
+        "register-btn": "Creează cont",
+        "login-btn": "Autentificare"
     },
     "Footer": {
         "linkuri-utile": "Link-uri utile",
@@ -112,7 +109,7 @@
                 }
             }
         },
-        "review":"Pentru pacienții mei, Renadyl™ a îmbunătățit calitatea vieții. Le-a îmbunătățit numărul celulelor renale, i-a făcut să se simtă mai bine și cred că ajută și alți markeri ai sănătății totale a corpului: scăderea acidului uric, ajutând în situația gutei, la scăderea tensiunii arteriale și generând o stare generală de bine."
+        "review": "Pentru pacienții mei, Renadyl™ a îmbunătățit calitatea vieții. Le-a îmbunătățit numărul celulelor renale, i-a făcut să se simtă mai bine și cred că ajută și alți markeri ai sănătății totale a corpului: scăderea acidului uric, ajutând în situația gutei, la scăderea tensiunii arteriale și generând o stare generală de bine."
     },
     "Contact": {
         "page-title": "Contact",
@@ -143,8 +140,8 @@
                 "opt-2": "Medic",
                 "opt-3": "Distribuitor"
             },
-            "tc-label":"Sunt de acord cu ",
-            "tc-link":"termenii și condițiile",
+            "tc-label": "Sunt de acord cu ",
+            "tc-link": "termenii și condițiile",
             "message-success": "Mesajul dvs. a fost trimis!"
         }
     },
@@ -155,54 +152,72 @@
         "desc": "În acest moment această zona este indisponibilă",
         "back-home-btn": "Înapoi acasă"
     },
-
-    "Login":{
+    "Login": {
         "page-title": "Autentificare",
         "heading": "Autentificare",
         "desc": "Cumpara renadyl in 3 pasi simpli",
         "login-form": {
-            "email-label":"Adresa de email",
-            "email-ph":"Introdu adresa de email",
-            "password-label":"Parola",
-            "password-ph":"Introdu parola",
-            "password-forgot-link":"Ai uitat parola?",
-            "remember-label":"Ține-mă minte",
-            "submit-btn":"Autentifică-te",
-            "other-options":"sau poți folosi",
-            "register-link":"Nu ai cont? Înregistrează-te"
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "password-label": "Parola",
+            "password-ph": "Introdu parola",
+            "password-forgot-link": "Ai uitat parola?",
+            "remember-label": "Ține-mă minte",
+            "submit-btn": "Autentifică-te",
+            "other-options": "sau poți folosi",
+            "register-link": "Nu ai cont? Înregistrează-te"
         }
-
     },
-    "Register":{
+    "Register": {
         "page-title": "Înregistrare",
         "heading": "Înregistrare",
         "desc": "",
         "register-form": {
-            "fname-label":"Prenume",
-            "fname-ph":"Introdu prenumele",
-            "lname-label":"Nume",
-            "lname-ph":"Introdu numele",
-            "email-label":"Adresa de email",
-            "email-ph":"Introdu adresa de email",
-            "password-label":"Parola",
-            "password-ph":"Introdu parola",
-            "re-password-label":"Confirmă parola",
-            "re-password-ph":"Reintrodu parola",
-            "submit-btn":"Înregistrează-te",
-            "other-options":"sau poți folosi",
-            "login-link":"Ai deja cont? Autentifică-te",
+            "fname-label": "Prenume",
+            "fname-ph": "Introdu prenumele",
+            "lname-label": "Nume",
+            "lname-ph": "Introdu numele",
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "password-label": "Parola",
+            "password-ph": "Introdu parola",
+            "re-password-label": "Confirmă parola",
+            "re-password-ph": "Reintrodu parola",
+            "submit-btn": "Înregistrează-te",
+            "other-options": "sau poți folosi",
+            "login-link": "Ai deja cont? Autentifică-te",
             "tc-label": "",
             "tc-link": ""
         }
     },
-    "Forgot-pass":{
+    "Forgot-pass": {
         "page-title": "Indisponibil",
         "heading": "Autentificare",
         "desc": ""
     },
-    "Reset-pass":{
+    "Reset-pass": {
         "page-title": "Indisponibil",
         "heading": "Autentificare",
         "desc": ""
+    },
+    "Dashboard": {
+        "client": {
+            "header": {
+                "/dashboard/client": "General",
+                "/dashboard/client/buy": "Cumpără",
+                "/dashboard/client/orders": "Comenzile mele",
+                "/dashboard/client/subscription": "Abonament",
+                "/dashboard/client/invoices": "Facturi",
+                "/dashboard/client/settings": "Setări"
+            },
+            "navbar": {
+                "general": "General",
+                "buy": "Cumpără",
+                "orders": "Comenzile mele",
+                "subscription": "Abonament",
+                "invoices": "Facturi",
+                "settings": "Setări"
+            }
+        }
     }
 }

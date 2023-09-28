@@ -58,6 +58,18 @@ module.exports = {
         
         gradientGreen: "var(--gradient-green)",
         gradientPurple: "var(--gradient-purple)",
+
+        dashboardBlue: "var(--dashboard-blue)",
+        dashboardBlue90: "var(--dashboard-blue-90)",
+        dashboardBlue80: "var(--dashboard-blue-80)",
+        dashboardBlue70: "var(--dashboard-blue-70)",
+        dashboardBlue60: "var(--dashboard-blue-60)",
+        dashboardBlue50: "var(--dashboard-blue-50)",
+        dashboardBlue40: "var(--dashboard-blue-40)",
+        dashboardBlue30: "var(--dashboard-blue-30)",
+        dashboardBlue20: "var(--dashboard-blue-20)",
+        dashboardBlue10: "var(--dashboard-blue-10)",
+        dashboardBlue0: "var(--dashboard-blue-0)",
       }
     },
   },

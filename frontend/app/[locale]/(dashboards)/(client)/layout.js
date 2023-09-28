@@ -19,19 +19,19 @@ export default function LocaleLayout({children, params: {locale}}){
 
     return(
         <html lang={locale}>
-            <body>
-                <div className='flex flex-col'>
-                    <div>
-                        <NextIntlClientProvider locale={locale} messages={messages} >
-                            <Header />
-                        </NextIntlClientProvider>      
-                    </div>
-                    <div className='flex flex-row'>
-                        <NextIntlClientProvider locale={locale} messages={messages} >
-                            <Navbar />
-                        </NextIntlClientProvider>    
+            <body className={`scroll-smoth ${sofiaSans.className} relative bg-gradient-to-r from-gradientGreen to-gradientPurple p-4 h-screen`}>
+                <div className='flex flex-row bg-backgroundPrimary rounded-2xl h-full'>
+                    <NextIntlClientProvider locale={locale} messages={messages}>
+                        <Navbar />
+                    </NextIntlClientProvider>
+                    
+                    <div className='flex flex-col px-8 py-6 w-full'>
+                        <NextIntlClientProvider locale={locale} messages={messages}>
+                            <Header  />
+                        </NextIntlClientProvider>
                         {children}
                     </div>
+                
                 </div>
                               
             </body>
