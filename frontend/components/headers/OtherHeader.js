@@ -166,7 +166,7 @@ function OtherHeader({currentLocale}) {
             </div>
             <div className='w-1/5 flex row justify-end gap-[6px] max-md:hidden'>
                 <div>
-                    <Link href="/under-construction" locale={currentLocale} >
+                    <Link href="/under-construction" locale={currentLocale} aria-label='Account'>
                         <FaUserCircle className='text-[35px]'/>
                     </Link>
                 </div>
