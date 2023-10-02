@@ -78,6 +78,11 @@ export default function Product() {
             </section>
             <section className="max-w-[1200px] mx-auto px-4">
                 <h2 className="font-bold text-gradientGreen uppercase text-3xl text-center whitespace-normal">{t("about-section.title")}</h2>
+
+                <video className="aspect-">
+                    <source src="#"></source>
+                </video>
+
                 <p className="text-justify">
                     {t("about-section.desc")}
                 </p>

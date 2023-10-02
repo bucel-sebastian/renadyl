@@ -1,152 +1,152 @@
-{ 
-     "Header": { 
-         "home": "Home", 
-         "product": "Product", 
-         "affiliates": "Affiliates", 
-         "contact": "Contact", 
-         "doctors": "Doctors", 
-         "distributors": "Distributors", 
-         "ambassadors": "Ambassadors", 
-         "account": "Log in" 
-     }, 
-     "Footer": { 
-         "linkuri-utile": "Useful links", 
-         "linkU1": "Terms and conditions", 
-         "linkU2": "Privacy policy", 
-         "linkU3": "Delivery policy", 
-         "linkU4": "Return policy", 
-         "linkU5": "ANPC", 
-         "linkU6": "Cookies", 
-         "harta-website": "Website map", 
-         "linkD1": "Home", 
-         "linkD2": "About Renadyl™", 
-         "linkD3": "Contact", 
-         "linkD4": "Log in", 
-         "linkD5": "Register", 
-         "linkFb": "https://www.facebook.com/profile.php?id=61550720346995", 
-         "linkIg": "https://www.instagram.com/renadyleurope/", 
-         "linkTw": "https://twitter.com/RenadylEurope" 
-     }, 
-     "Index": { 
-         "page-title": "Home", 
-         "buy-btn": "Buy", 
-         "about-btn": "About product" 
-     }, 
-     "Product": { 
-         "page-title": "Product", 
-         "buy-btn": "Buy", 
-         "subscription-btn": "Subscription", 
-         "hero-section": { 
-             "product-name": "Renadyl™ - Nutritional supplement", 
-             "product-desc": "Renadyl™ is a natural option for maintaining healthy kidney function and improving quality of life.  It consists of three patented strains of probiotic bacteria, which use nitrogenous waste as food.  Nitrogenous waste diffuses from the bloodstream into the colon through a natural process known as osmosis.  In people with impaired kidney function, an increased number of toxins diffuse into the large intestine (colon).  Once toxins accumulate in high concentrations in the colon, Renadyl™ metabolizes them and reduces the concentration of toxins in the body.  Due to Renadyl™'s ability to metabolize nitrogenous waste products in the gut, it helps maintain healthy kidney function and reduces stress on the kidneys.", 
-             "product-price": "Price", 
-             "product-unit": "pcs.", 
-             "product-buy-btn": "Buy", 
-             "product-subscription-btn": "Subscription", 
-             "product-shippment": "Shpping", 
-             "product-shippment-green": "10 working days", 
-             "product-return-tc": "Termeni și condiții pentru", 
-             "product-return-tc-btn": "retur" 
-         }, 
-         "about-section": { 
-             "title": "How Renadyl™ helps", 
-             "desc": "Renadyl™ is a scientifically formulated and clinically tested probiotic dietary supplement. Renadyl™ metabolizes nitrogenous wastes that have diffused from the bloodstream into the large intestine. Nitrogenous wastes are used by Renadyl™ as nutrients. As probiotics grow and multiply, they consume more nitrogenous waste and thus effectively help maintain healthy kidney function. Nitrogenous metabolites are eliminated as solid waste/faeces.", 
-             "about-tabs": { 
-                 "tab-1": { 
-                     "number": "2", 
-                     "title": "Prebiotic fibers", 
-                     "text": "To promote the growth of probiotics found in Renadyl™ and beneficial microorganisms existing in the patient's gut." 
-                 }, 
-                 "tab-2": { 
-                     "number": "45", 
-                     "title": "Billions of CFUs", 
-                     "text": "High concentration of probiotic microorganisms, also known as colony-forming units (CFUs)" 
-                 }, 
-                 "tab-3": { 
-                     "number": "3", 
-                     "title": "Patented strains", 
-                     "text": "Of beneficial bacteria, selected for their ability to metabolize nitrogenous waste." 
-                 } 
-             } 
-         }, 
-         "more-section": { 
-             "title": "Renadyl™ - It balances the kidneys naturally", 
-             "desc": { 
-                 "p-1": "Normally in our body there is a balance of uremic toxins between the blood and the lumen of the colon (gastrointestinal tract).", 
-                 "p-2": "This concentration of uremic toxins in the large intestine is usually higher in disease conditions. Our patented enteric probiotic technology uses these toxins to increase the amount of healthy bacteria, thereby generating a concentration gradient that causes more toxins from the blood to passively diffuse into the lumen of the colon.", 
-                 "p-3": "The actual process takes place in the large intestine. As kidney function slows, nitrogenous wastes accumulate in the blood and diffuse into the intestinal fluid through natural physiological processes.", 
-                 "p-4": "When the kidneys become damaged, uremic toxins build up in the blood. A large number of these toxins diffuse into the colon due to the extensive network of blood vessels that surround it.." 
-             }, 
-             "list": { 
-                 "p-1": "After a journey in the upper gastrointestinal tract, the probiotic microorganisms are released from an acid-resistant capsule and enter the ileo-cecal region of the large intestine.", 
-                 "p-2": "Once in the colon, microorganisms discover and metabolize uremic nitrogenous wastes using them as nutrients for growth.", 
-                 "p-3": "As the microorganisms begin to multiply, they progressively metabolize more and more uremic toxins, thus increasing the concentration gradient and allowing greater diffusion of these toxins into the large intestine.", 
-                 "p-4": "Finally, the metabolized toxins are transported through the intestine and eliminated from the body as solid waste, thereby easing the burden on the affected kidneys.." 
-             } 
-         }, 
-         "steps-section": { 
-             "title": "3 steps for your kidney health", 
-             "desc": "The bacteria in Renadyl™ help metabolize nitrogenous waste and toxins, reducing stress on the kidneys", 
-             "steps": { 
-                 "step-1": { 
-                     "heading": "Improves gut bacteria", 
-                     "title-1": "Each capsule contains 45 billion CFUs of beneficial bacteria", 
-                     "text-1": "3 clinically tested strains of microbes in acid-resistant capsule.", 
-                     "title-2": "Uremic reducing bacteria are released into the colon", 
-                     "text-2": "Protected by the acid-resistant capsule, the probiotics survive stomach acid and are safely released only into the colon." 
-                 }, 
-                 "step-2": { 
-                     "heading": "Metabolizes toxins", 
-                     "title": "Improved gut bacteria!", 
-                     "text": "Probiotics multiply using uremic and nitrogenous toxins as a food source. This increase in beneficial bacteria can help improve gut health" 
-                 }, 
-                 "step-3": { 
-                     "heading": "Reduces stress on the kidneys", 
-                     "title": "Reducerea toxinelor", 
-                     "text": "When taken consistently, they reduce the levels of urea, creatinine and uric acid, helping to remove a certain load from the kidneys. These metabolized toxins are eliminated during normal bowel movements." 
-                 } 
-             } 
-         },
-         "review":"For my patients, Renadyl™ has improved their quality of life. It improved their kidney cell count, made them feel better, and I think it helps other markers of total body health: lowering uric acid, helping with gout, lowering blood pressure, and creating a general sense of well-being."
-     }, 
-     "Contact": { 
-         "page-title": "Contact", 
-         "title": "Contact us", 
-         "desc": "Do not hesitate to contact us for further information!", 
-         "contact-info": { 
-             "title": "Contact info", 
-             "linkFb": "https://www.facebook.com/profile.php?id=61550768614377", 
-             "linkIg": "https://www.instagram.com/renadylromania/", 
-             "linkTw": "https://twitter.com/RenadylEurope" 
-         }, 
-         "contact-form": { 
-             "first-name-label": "First name", 
-             "last-name-label": "Last name", 
-             "email-label": "Email address", 
-             "phone-label": "Phone number", 
-             "message-label": "Message", 
-             "type-label": "Category", 
-             "first-name-ph": "Enter first name", 
-             "last-name-ph": "Enter last name", 
-             "email-ph": "Enter email address", 
-             "phone-ph": "Enter phone number", 
-             "message-ph": "Write your message", 
-             "submit-btn": "Send", 
-             "type-options": { 
-                 "opt-0": "Select category", 
-                 "opt-1": "Client", 
-                 "opt-2": "Doctor", 
-                 "opt-3": "Distributor" 
-             }, 
-"tc-label":"I agree with ",
-"tc-link":"terms and conditions",
-             "message-success": "Your message has been sent!" 
-         } 
-     }, 
-     "Under-construction": { 
-         "title": "Unavailable", 
-         "heading": "Currently unavailable", 
-         "desc": "This area is currently unavailable", 
-         "back-home-btn": "Back home" 
-     } 
- }
+{
+    "Header": {
+        "home": "Home",
+        "product": "Product",
+        "affiliates": "Affiliates",
+        "contact": "Contact",
+        "doctors": "Doctors",
+        "distributors": "Distributors",
+        "ambassadors": "Ambassadors",
+        "account": "Log in"
+    },
+    "Footer": {
+        "linkuri-utile": "Useful links",
+        "linkU1": "Terms and conditions",
+        "linkU2": "Privacy policy",
+        "linkU3": "Delivery policy",
+        "linkU4": "Return policy",
+        "linkU5": "ANPC",
+        "linkU6": "Cookies",
+        "harta-website": "Website map",
+        "linkD1": "Home",
+        "linkD2": "About Renadyl™",
+        "linkD3": "Contact",
+        "linkD4": "Log in",
+        "linkD5": "Register",
+        "linkFb": "https://www.facebook.com/profile.php?id=61550720346995",
+        "linkIg": "https://www.instagram.com/renadyleurope/",
+        "linkTw": "https://twitter.com/RenadylEurope"
+    },
+    "Index": {
+        "page-title": "Home",
+        "buy-btn": "Buy",
+        "about-btn": "About product"
+    },
+    "Product": {
+        "page-title": "Product",
+        "buy-btn": "Buy",
+        "subscription-btn": "Subscription",
+        "hero-section": {
+            "product-name": "Renadyl™ - Nutritional supplement",
+            "product-desc": "Renadyl™ is a natural option for maintaining healthy kidney function and improving quality of life.  It consists of three patented strains of probiotic bacteria, which use nitrogenous waste as food.  Nitrogenous waste diffuses from the bloodstream into the colon through a natural process known as osmosis.  In people with impaired kidney function, an increased number of toxins diffuse into the large intestine (colon).  Once toxins accumulate in high concentrations in the colon, Renadyl™ metabolizes them and reduces the concentration of toxins in the body.  Due to Renadyl™'s ability to metabolize nitrogenous waste products in the gut, it helps maintain healthy kidney function and reduces stress on the kidneys.",
+            "product-price": "Price",
+            "product-unit": "pcs.",
+            "product-buy-btn": "Buy",
+            "product-subscription-btn": "Subscription",
+            "product-shippment": "Shpping",
+            "product-shippment-green": "10 working days",
+            "product-return-tc": "Termeni și condiții pentru",
+            "product-return-tc-btn": "retur"
+        },
+        "about-section": {
+            "title": "How Renadyl™ helps",
+            "desc": "Renadyl™ is a scientifically formulated and clinically tested probiotic dietary supplement. Renadyl™ metabolizes nitrogenous wastes that have diffused from the bloodstream into the large intestine. Nitrogenous wastes are used by Renadyl™ as nutrients. As probiotics grow and multiply, they consume more nitrogenous waste and thus effectively help maintain healthy kidney function. Nitrogenous metabolites are eliminated as solid waste/faeces.",
+            "about-tabs": {
+                "tab-1": {
+                    "number": "2",
+                    "title": "Prebiotic fibers",
+                    "text": "To promote the growth of probiotics found in Renadyl™ and beneficial microorganisms existing in the patient's gut."
+                },
+                "tab-2": {
+                    "number": "45",
+                    "title": "Billions of CFUs",
+                    "text": "High concentration of probiotic microorganisms, also known as colony-forming units (CFUs)"
+                },
+                "tab-3": {
+                    "number": "3",
+                    "title": "Patented strains",
+                    "text": "Of beneficial bacteria, selected for their ability to metabolize nitrogenous waste."
+                }
+            }
+        },
+        "more-section": {
+            "title": "Renadyl™ - It balances the kidneys naturally",
+            "desc": {
+                "p-1": "Normally in our body there is a balance of uremic toxins between the blood and the lumen of the colon (gastrointestinal tract).",
+                "p-2": "This concentration of uremic toxins in the large intestine is usually higher in disease conditions. Our patented enteric probiotic technology uses these toxins to increase the amount of healthy bacteria, thereby generating a concentration gradient that causes more toxins from the blood to passively diffuse into the lumen of the colon.",
+                "p-3": "The actual process takes place in the large intestine. As kidney function slows, nitrogenous wastes accumulate in the blood and diffuse into the intestinal fluid through natural physiological processes.",
+                "p-4": "When the kidneys become damaged, uremic toxins build up in the blood. A large number of these toxins diffuse into the colon due to the extensive network of blood vessels that surround it.."
+            },
+            "list": {
+                "p-1": "After a journey in the upper gastrointestinal tract, the probiotic microorganisms are released from an acid-resistant capsule and enter the ileo-cecal region of the large intestine.",
+                "p-2": "Once in the colon, microorganisms discover and metabolize uremic nitrogenous wastes using them as nutrients for growth.",
+                "p-3": "As the microorganisms begin to multiply, they progressively metabolize more and more uremic toxins, thus increasing the concentration gradient and allowing greater diffusion of these toxins into the large intestine.",
+                "p-4": "Finally, the metabolized toxins are transported through the intestine and eliminated from the body as solid waste, thereby easing the burden on the affected kidneys.."
+            }
+        },
+        "steps-section": {
+            "title": "3 steps for your kidney health",
+            "desc": "The bacteria in Renadyl™ help metabolize nitrogenous waste and toxins, reducing stress on the kidneys",
+            "steps": {
+                "step-1": {
+                    "heading": "Improves gut bacteria",
+                    "title-1": "Each capsule contains 45 billion CFUs of beneficial bacteria",
+                    "text-1": "3 clinically tested strains of microbes in acid-resistant capsule.",
+                    "title-2": "Uremic reducing bacteria are released into the colon",
+                    "text-2": "Protected by the acid-resistant capsule, the probiotics survive stomach acid and are safely released only into the colon."
+                },
+                "step-2": {
+                    "heading": "Metabolizes toxins",
+                    "title": "Improved gut bacteria!",
+                    "text": "Probiotics multiply using uremic and nitrogenous toxins as a food source. This increase in beneficial bacteria can help improve gut health"
+                },
+                "step-3": {
+                    "heading": "Reduces stress on the kidneys",
+                    "title": "Reducing toxins",
+                    "text": "When taken consistently, they reduce the levels of urea, creatinine and uric acid, helping to remove a certain load from the kidneys. These metabolized toxins are eliminated during normal bowel movements."
+                }
+            }
+        },
+        "review": "For my patients, Renadyl™ has improved their quality of life. It improved their kidney cell count, made them feel better, and I think it helps other markers of total body health: lowering uric acid, helping with gout, lowering blood pressure, and creating a general sense of well-being."
+    },
+    "Contact": {
+        "page-title": "Contact",
+        "title": "Contact us",
+        "desc": "Do not hesitate to contact us for further information!",
+        "contact-info": {
+            "title": "Contact info",
+            "linkFb": "https://www.facebook.com/profile.php?id=61550768614377",
+            "linkIg": "https://www.instagram.com/renadylromania/",
+            "linkTw": "https://twitter.com/RenadylEurope"
+        },
+        "contact-form": {
+            "first-name-label": "First name",
+            "last-name-label": "Last name",
+            "email-label": "Email address",
+            "phone-label": "Phone number",
+            "message-label": "Message",
+            "type-label": "Category",
+            "first-name-ph": "Enter first name",
+            "last-name-ph": "Enter last name",
+            "email-ph": "Enter email address",
+            "phone-ph": "Enter phone number",
+            "message-ph": "Write your message",
+            "submit-btn": "Send",
+            "type-options": {
+                "opt-0": "Select category",
+                "opt-1": "Client",
+                "opt-2": "Doctor",
+                "opt-3": "Distributor"
+            },
+            "tc-label": "I agree with ",
+            "tc-link": "terms and conditions",
+            "message-success": "Your message has been sent!"
+        }
+    },
+    "Under-construction": {
+        "title": "Unavailable",
+        "heading": "Currently unavailable",
+        "desc": "This area is currently unavailable",
+        "back-home-btn": "Back home"
+    }
+}

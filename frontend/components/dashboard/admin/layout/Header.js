@@ -15,7 +15,7 @@ function Header({currentLocale}) {
             <div className='h-[75px] flex flex-row items-center content-center justify-between'>
                 <div>
                     <h1 className='text-3xl font-bold'>
-                        {t(`client.header.${pathname}`)}
+                        {t(`admin.header.${pathname}`)}
                     </h1>
                 </div>
                 <div>

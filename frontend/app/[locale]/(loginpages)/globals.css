@@ -66,6 +66,31 @@
     --dashboard-blue-20: #197BBD33;
     --dashboard-blue-10: #197BBD1A;
     --dashboard-blue-0: #197BBD00;
+
+
+    --dashboard-green: #53D769;
+    --dashboard-green-90: #53D769E6;
+    --dashboard-green-80: #53D769CC;
+    --dashboard-green-70: #53D769B3;
+    --dashboard-green-60: #53D76999;
+    --dashboard-green-50: #53D76980;
+    --dashboard-green-40: #53D76966;
+    --dashboard-green-30: #53D7694D;
+    --dashboard-green-20: #53D76933;
+    --dashboard-green-10: #53D7691A;
+    --dashboard-green-0: #53D76900;
+;
+    --dashboard-red: #FC3D39;
+    --dashboard-red-90: #FC3D39E6;
+    --dashboard-red-80: #FC3D39CC;
+    --dashboard-red-70: #FC3D39B3;
+    --dashboard-red-60: #FC3D3999;
+    --dashboard-red-50: #FC3D3980;
+    --dashboard-red-40: #FC3D3966;
+    --dashboard-red-30: #FC3D394D;
+    --dashboard-red-20: #FC3D3933;
+    --dashboard-red-10: #FC3D391A;
+    --dashboard-red-0: #FC3D3900;
   }
 
   body {

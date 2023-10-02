@@ -11,7 +11,7 @@ import { useTranslations } from 'use-intl';
 
 
 import {FaHome, FaShoppingCart, FaListUl } from 'react-icons/fa'
-import {FaGear, FaFileInvoiceDollar} from 'react-icons/fa6'
+import {FaGear, FaFileInvoiceDollar,FaRepeat} from 'react-icons/fa6'
 import { usePathname } from 'next-intl/client';
 
 function Navbar({currentLocale}) {
@@ -56,7 +56,7 @@ function Navbar({currentLocale}) {
                         </li>
                         <li className='list-none'>
                             <Link href='/dashboard/client/subscription' locale={currentLocale} className={`flex flex-row items-center content-center gap-4 text-lg px-3 py-2 rounded-lg ${pathname === '/dashboard/client/subscription' ? 'bg-dashboardBlue20 text-dashboardBlue' : 'text-foregroundPrimary90 hover:bg-dashboardBlue10'} `}>
-                                <FaHome className='text-2xl'/>
+                                <FaRepeat className='text-2xl'/>
                                 {t("client.navbar.subscription")}
 
                             </Link>

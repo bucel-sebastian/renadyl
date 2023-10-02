@@ -201,6 +201,149 @@
         "desc": ""
     },
     "Dashboard": {
+        "admin": {
+            "header": {
+                "/admin/dashboard": "General",
+                "/admin/dashboard/orders": "Comenzi",
+                "/admin/dashboard/subscriptions": "Abonamente",
+                "/admin/dashboard/invoices": "Facturi",
+                "/admin/dashboard/analytics": "Rapoarte",
+                "/admin/dashboard/clients": "Clienți",
+                "/admin/dashboard/medics": "Medici",
+                "/admin/dashboard/distributors": "Distribuitori",
+                "/admin/dashboard/affiliates": "Afiliați",
+                "/admin/dashboard/product": "Produs",
+                "/admin/dashboard/settings": "Setări"
+            },
+            "navbar": {
+                "general": "General",
+                "orders": "Comenzi",
+                "subscriptions": "Abonamente",
+                "invoices": "Facturi",
+                "analytics": "Rapoarte",
+                "clients": "Clienți",
+                "medics": "Medici",
+                "distributors": "Distribuitori",
+                "affiliates": "Afiliați",
+                "product": "Produs",
+                "settings": "Setări"
+            },
+            "tables": {
+                "rows-per-page-label": "Rânduri per pagină",
+                "all-label": "Toate",
+                "of-label": "din",
+                "elements-label": "elemente"
+            },
+            "orders": {
+                "last-orders": {
+                    "title": "Ultimele comenzi",
+                    "table-heads": {
+                        "id": "ID",
+                        "status": "Status",
+                        "date": "Dată",
+                        "value": "Valoare"
+                    }
+                },
+                "orders-list": {
+                    "table-heads": {
+                        "id": "ID",
+                        "status": "Status",
+                        "date": "Dată",
+                        "client": "Client",
+                        "quantity": "Cantitate",
+                        "currency": "Monedă",
+                        "value": "Valoare",
+                        "transport": "Transport",
+                        "actions": "Acțiuni"
+                    }
+                }
+            },
+            "invoices": {
+                "invoices-list": {
+                    "table-heads": {
+                        "order-id": "ID comandă",
+                        "invoice-number": "Nr. factură",
+                        "client": "Client",
+                        "value": "Valoare",
+                        "currency": "Monedă",
+                        "status": "Status",
+                        "date": "Dată",
+                        "actions": "Acțiuni"
+                    }
+                }
+            },
+            "product": {
+                "edit-form": {
+                    "ron": {
+                        "title": "Configurare RON",
+                        "prp-label": "PRP (Prețul recomandat de producător)",
+                        "price-label": "Prețul produsului",
+                        "offer-label": "Procent ofertă (%)",
+                        "offer-toggle": "Activează ofertă"
+                    },
+                    "eur": {
+                        "title": "Configurare EUR",
+                        "prp-label": "EURO PRP (Prețul recomandat de producător)",
+                        "price-label": "EURO Prețul produsului",
+                        "offer-label": "EURO Procent ofertă (%)",
+                        "offer-toggle": "Activează ofertă"
+                    },
+                    "save-btn": "Salvează",
+                    "leave-btn": "Renunță"
+                },
+                "stocks-form": {},
+                "stocks-list": {
+                    "date": "Dată",
+                    "quantity": "Cantitate",
+                    "buy-price": "Preț achiziție",
+                    "actions": "Acțiuni"
+                }
+            },
+            "clients": {
+                "clients-list": {
+                    "id": "ID",
+                    "fname": "Prenume",
+                    "lname": "Nume",
+                    "orders": "Comenzi",
+                    "register-date": "Data înregistrării",
+                    "last-login-date": "Ultima autentificare",
+                    "actions": "Acțiuni"
+                }
+            },
+            "affiliates": {
+                "affiliates-list": {
+                    "id": "ID",
+                    "fname": "Prenume",
+                    "lname": "Nume",
+                    "actions": "Acțiuni"
+                }
+            },
+            "analytics": {
+                "actual-month-sales": {
+                    "title": "Vânzări luna actuală",
+                    "total": "Total"
+                },
+                "monthly-people": {
+                    "clients": "Clienți",
+                    "medics": "Medici",
+                    "distributors": "Distribuitori",
+                    "affiliates": "Afiliați"
+                },
+                "monthly-sales": {
+                    "title": "Vânzări în ultimele 6 luni",
+                    "month": "Luna",
+                    "total-sales": "Total vânzări",
+                    "value-ron": "Total RON",
+                    "value-eur": "Total EUR"
+                },
+                "cart-pie": {
+                    "title": "Raport coșuri finalizate/abandonate"
+                },
+                "clients-pie": {
+                    "title": "Raport clienți autentificați/anonimi"
+                }
+            }
+        },
         "client": {
             "header": {
                 "/dashboard/client": "General",

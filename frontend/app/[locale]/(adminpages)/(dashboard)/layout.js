@@ -25,7 +25,7 @@ export default function LocaleLayout({children, params: {locale}}){
                         <Navbar />
                     </NextIntlClientProvider>
                     
-                    <div className='flex flex-col px-8 py-6 w-full'>
+                    <div className='flex flex-col px-8 py-6 w-5/6 h-full max-h-full overflow-x-hidden overflow-y-auto'>
                         <NextIntlClientProvider locale={locale} messages={messages}>
                             <Header  />
                         </NextIntlClientProvider>
