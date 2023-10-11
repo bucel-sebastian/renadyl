@@ -42,7 +42,7 @@ export default function Product() {
                         <h1 className="text-4xl mb-4">{t("hero-section.product-name")}</h1>
                         <div  className="block max-md:flex max-md:flex-col-reverse ">
                             <p className="text-justify mb-4">{t("hero-section.product-desc")}</p>
-                            <div className="max-md:mb-4 w-max">
+                            <div className="max-md:mb-4 w-max max-md:mx-auto">
                                 <div className="text-3xl mb-4 w-max flex items-end">
                                     <span className="mb-[1px]">{t("hero-section.product-price")}:</span>&nbsp;
                                     <div>
