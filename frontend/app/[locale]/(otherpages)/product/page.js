@@ -14,6 +14,8 @@ import renadylStomach from '@/public/images/renadyl_stomach.svg';
 import ProductImageSlider from "@/components/ProductImageSlider";
 
 
+
+
 export async function generateMetadata({params: {locale}}) {
     const t = await getTranslator(locale, 'Product');
    
@@ -39,12 +41,23 @@ export default function Product() {
                     <div>
                         <h1 className="text-4xl mb-4">{t("hero-section.product-name")}</h1>
                         <div  className="block max-md:flex max-md:flex-col-reverse ">
-                            <p className="text-justify mb-6">{t("hero-section.product-desc")}</p>
-                            <div className="max-md:mb-4">
-                                <div className="text-3xl mb-4">
-                                    <span>{t("hero-section.product-price")}:</span>&nbsp;
-                                    <span className="font-extrabold">460 RON</span> /&nbsp; 
-                                    <span>{t("hero-section.product-unit")}</span>
+                            <p className="text-justify mb-4">{t("hero-section.product-desc")}</p>
+                            <div className="max-md:mb-4 w-max">
+                                <div className="text-3xl mb-4 w-max flex items-end">
+                                    <span className="mb-[1px]">{t("hero-section.product-price")}:</span>&nbsp;
+                                    <div>
+                                        <div className="flex justify-between items-center content-center text-lg">
+                                            <span><del>580 RON</del></span>
+                                            <span className="bg-gradient-to-r from-gradientGreen to-gradientPurple text-backgroundPrimary ml-2 rounded-full px-4">
+                                                -130 RON
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span className="font-extrabold">460 RON</span> /&nbsp; 
+                                            <span>{t("hero-section.product-unit")}</span>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div className="flex flex-row gap-5 max-md:justify-center max-md:gap-2">
                                     <Link href="https://www.emag.ro/renadyl-pentru-insuficienta-renala-60-comprimate-rnd/pd/D1D5C3YBM/?cmpid=101143&gclid=CjwKCAjwsKqoBhBPEiwALrrqiI6-RpbKtsr_0UzHmEIo-6DLzegwvfrY7Lsg0TlhXC7_rcIdUbQIihoCoPgQAvD_BwE" className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2.5">
@@ -79,30 +92,47 @@ export default function Product() {
             <section className="max-w-[1200px] mx-auto px-4">
                 <h2 className="font-bold text-gradientGreen uppercase text-3xl text-center whitespace-normal">{t("about-section.title")}</h2>
 
-                <video className="aspect-">
-                    <source src="#"></source>
-                </video>
 
                 <p className="text-justify">
                     {t("about-section.desc")}
                 </p>
+
+                <video controls={true} poster="/images/kibow_video_thumbnail.png" className="aspect-video w-[80%] mx-auto my-8 rounded-xl">
+                    <source src={'/videos/kibow_video.webm'}></source>
+                    <source src={'/videos/kibow_video.mp4'}></source>
+                </video>
+
                 <div className="flex flex-row justify-between items-stretch content-stretch gap-3 max-md:flex-col max-md:items-center">
-                    <div className='relative w-1/3 rounded-lg bg-gradient-to-r from-gradientGreen to-gradientPurple p-[3px] my-2  max-md:max-w-[450px] max-md:w-[90%]'>
+                    <div className='relative w-1/3 rounded-lg bg-[#C0DFEF] p-[3px] my-2  max-md:max-w-[450px] max-md:w-[90%]'>
                         <div className="bg-backgroundPrimary rounded-md px-4 py-6 h-full">
+                            <Image 
+                                src={renadylStomach}
+                                className="aspect-square max-w-[125px] mx-auto mb-4"
+                            />
                             <h2 className="text-center text-5xl font-bold text-gradientGreen">{t("about-section.about-tabs.tab-1.number")}</h2>
                             <h3 className="text-center text-2xl font-bold">{t("about-section.about-tabs.tab-1.title")}</h3>
                             <p className="text-justify ">{t("about-section.about-tabs.tab-1.text")}</p>                    
                         </div>
                     </div>
-                    <div className='relative w-1/3 rounded-lg bg-gradientPurple from-gradientGreen to-gradientPurple p-[3px] max-md:max-w-[500px] max-md:w-[100%]'>
+                    <div className='relative w-1/3 rounded-lg bg-[#C0DFEF] p-[3px] max-md:max-w-[500px] max-md:w-[100%]'>
                         <div className="bg-backgroundPrimary rounded-md px-4 py-6 h-full">
+                            <Image 
+                                src={renadylPill}
+                                className="aspect-square max-w-[125px] mx-auto mb-4"
+
+                            />
                             <h2 className="text-center text-5xl font-bold text-gradientGreen">{t("about-section.about-tabs.tab-2.number")}</h2>
                             <h3 className="text-center text-2xl font-bold">{t("about-section.about-tabs.tab-2.title")}</h3>
                             <p className="text-justify ">{t("about-section.about-tabs.tab-2.text")}</p>                    
                         </div>
                     </div>
-                    <div className='relative w-1/3 rounded-lg bg-gradient-to-r from-gradientPurple to-gradientGreen p-[3px] my-2 max-md:max-w-[450px] max-md:w-[90%]'>
+                    <div className='relative w-1/3 rounded-lg bg-[#C0DFEF] p-[3px] my-2 max-md:max-w-[450px] max-md:w-[90%]'>
                         <div className="bg-backgroundPrimary rounded-md px-4 py-6 h-full">
+                            <Image 
+                                src={renadylKidneys}
+                                className="aspect-square max-w-[125px] mx-auto mb-4"
+
+                            />
                             <h2 className="text-center text-5xl font-bold text-gradientGreen">{t("about-section.about-tabs.tab-3.number")}</h2>
                             <h3 className="text-center text-2xl font-bold">{t("about-section.about-tabs.tab-3.title")}</h3>
                             <p className="text-justify ">{t("about-section.about-tabs.tab-3.text")}</p>                    
