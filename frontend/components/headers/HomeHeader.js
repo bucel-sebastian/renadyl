@@ -116,6 +116,7 @@ function HomeHeader({ currentLocale }) {
             <Image
               src={renadylLogoWhite}
               alt="Renadyl"
+              priority={true}
               className={`h-full w-max transition-all duration-300 ${
                 headerWhite ? "opacity-0" : "opacity-1"
               }`}
