@@ -4,6 +4,7 @@
         "product": "Produs",
         "affiliates": "Afiliați",
         "contact": "Contact",
+        "faq": "FAQ",
         "doctors": "Doctori",
         "distributors": "Distribuitori",
         "ambassadors": "Ambasadori",
@@ -31,6 +32,12 @@
     },
     "Index": {
         "page-title": "Acasă",
+        "page-desc": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții.",
+        "page-keywords": {
+            "1": "Renadyl",
+            "2": "rinichi",
+            "3": "sanatate"
+        },
         "buy-btn": "Cumpără",
         "about-btn": "Despre produs"
     },
@@ -143,6 +150,119 @@
             "tc-label": "Sunt de acord cu ",
             "tc-link": "termenii și condițiile",
             "message-success": "Mesajul dvs. a fost trimis!"
+        }
+    },
+    "Faq": {
+        "page-title": "FAQ",
+        "title": "F.A.Q.",
+        "desc": "Întrebări adresate frecvent",
+        "questions": {
+            "q1": "Există efecte secundare asociate cu Renadyl™?",
+            "a1": "Singurele efecte secundare experimentate de pacienții în studiile de siguranță au fost balonarea minoră, care a dispărut în aproximativ o săptămână, în timp ce au continuat să ia suplimentul. În general, efectele secundare ale probioticelor sunt ușoare și pot include simptome precum gaze și balonare. Efectele secundare ale prebioticelor sunt puțin mai frecvente, așa că consultați un medic dacă observați un ingredient prebiotic necunoscut.",
+            "q2": "Sunt acești microbi modificați genetic?",
+            "a2": "Nu, Renadyl™ folosește probiotice naturale, special selectate, care au o afinitate mare pentru toxinele care se acumulează în sânge din cauza rinichilor afectați sau deteriorați. Renadyl™ este non-OMG",
+            "q3": "Pot lua antibiotice cu Renadyl™?",
+            "a3": "Puteți lua probiotice în timpul tratamentului cu antibiotice. Suplimentele probiotice trebuie luate la 4 ore după antibiotice. Utilizarea probioticelor nu trebuie să interfereze cu eficacitatea antibioticelor.",
+            "q4": "Renadyl™ poate înlocui dializa?",
+            "a4": "Renadyl™ nu este menit să înlocuiască dializa sau orice alte medicamente prescrise de un medic. Renadyl™ nu este un medicament, medicament sau dispozitiv. Funcționează împreună cu alte tratamente pentru a menține funcția sănătoasă a rinichilor.",
+            "q5": "Cum este fabricat Renadyl™?",
+            "a5": "Renadyl este fabricat respectând bunele practici curente de fabricație (cGMPs). Reglementările cGMP sunt aplicate de FDA. cGMP-urile oferă sisteme care asigură proiectarea, monitorizarea și controlul adecvat al proceselor și instalațiilor de producție. Respectarea reglementărilor cGMP asigură identitatea, rezistența, calitatea și puritatea produselor, cerând producătorilor să controleze în mod adecvat operațiunile de producție. Vă rugăm să consultați medicul dumneavoastră/profesionalul din domeniul sănătății înainte de a lua acest produs sau orice alt produs supliment alimentar de pe piață.",
+            "q6": "Este Renadyl™ aprobat de FDA?",
+            "a6": "Administrația SUA pentru Alimente și Medicamente (FDA) reglementează suplimentele alimentare în conformitate cu un set diferit de reglementări față de cele care acoperă alimentele „convenționale” și produsele medicamentoase (prescripție și fără prescripție medicală). În conformitate cu Legea privind sănătatea și educația suplimentelor alimentare din 1994 (DSHEA), producătorul de suplimente alimentare este responsabil să se asigure că un supliment alimentar este sigur înainte de a fi comercializat. FDA este responsabilă pentru luarea de măsuri împotriva oricărui produs supliment alimentar nesigur după ce acesta ajunge pe piață. În general, producătorii nu trebuie să-și înregistreze produsele la FDA sau să obțină aprobarea FDA înainte de a produce sau de a vinde suplimente alimentare. Tulpinile probiotice utilizate în formula noastră brevetată brevetată sunt considerate sigure în conformitate cu clasificarea General Recognized as Safe (GRAS) de către FDA. * Producătorii trebuie să se asigure că informațiile de pe eticheta produsului sunt veridice și nu induc în eroare.",
+            "q7": "Este Renadyl™ toxic?",
+            "a7": "Rezultatele recent finalizate din studiile clinice pe oameni au reafirmat siguranța Renadyl™.10 În plus, o formulare animală a fost pe piață pentru pisici și câini care trăiesc cu rinichi compromisi din 2006. Nu au fost observate efecte adverse la aceste animale.",
+            "q8": "Care sunt unele dintre toxinele metabolizate de Renadyl™?",
+            "a8": "Probioticele găsite în Renadyl™ demonstrează o afinitate puternică pentru multe dintre deșeurile azotate și metaboliții toxici care se acumulează în sânge în cazul insuficienței renale. Aceste toxine includ ureea, acidul uric, creatinina, indolii și fenolii și nitrozaminele și precursorii acestora.",
+            "q9": "De ce microbii din Renadyl™ sunt mai eficienți la ingerarea toxinelor uremice decât alte probiotice?",
+            "a9": "Studiile clinice au arătat că cele 3 tulpini de probiotice din Renadyl™ au o afinitate ridicată pentru uree și acizii uremici. Aceste 3 tulpini sunt special selectate și vor metaboliza deșeurile azotate și toxinele uremice din organism. De asemenea, sunt capsule rezistente la acidul gastric, ceea ce înseamnă că nu sunt afectați de acizii din stomac care pot ucide probioticele în drumul lor prin tractul gastrointestinal, îmbunătățind astfel eficiența.",
+            "q10": "Cum acţionează Renadyl?",
+            "a10": "„Renadyl™ este un supliment natural pentru sănătatea rinichilor, formulat pentru a menține funcția sănătoasă a rinichilor. Este compus din trei tulpini brevetate de bacterii probiotice, care utilizează deșeurile azotate ca hrană. Deșeurile azotate difuzează din fluxul sanguin în colon printr-un proces natural cunoscut sub numele de osmoză. La persoanele cu funcție renală afectată, mai multe toxine difuzează în intestinul gros (colon). Odată ce toxinele se acumulează în concentrații mari în colon, Renadyl™ este capabil să le metabolizeze și să scadă concentrația de toxine în organism. Deoarece Renadyl™ este capabil să metabolizeze reziduurile azotate din intestin, știm că menține funcția sănătoasă a rinichilor și reduce sarcina plasată asupra rinichilor. Știm acest lucru deoarece am efectuat 3 studii clinice cu Renadyl™ în universități de top din întreaga lume. Pentru mai multe informații despre studiile clinice și studiile efectuate cu Renadyl™, consultați www.kibowbiotech.com/rd.",
+            "q11": "Unde se fabrică Renadyl?",
+            "a11": "Renadyl este fabricat în S.U.A. Unele ingrediente sunt originare de peste mări și avem controale stricte de calitate. Și, vorbind de strict... menținem, de asemenea, respectarea strictă a bunelor practici de fabricație (GMP) în producția fiecărei capsule.",
+            "q12": "Renadyl se eliberează fără rețetă?",
+            "a12": "Renadyl este disponibil fără prescripție medicală și este disponibil online la www.renadyleurope.ro sau pe Emag",
+            "q13": "Care sunt beneficiile luării Kibow Fortis împreună cu Renadyl?",
+            "a13": "Renadyl este o formulă de elită a tulpinilor brevetate de microorganisme probiotice. Acești microbi benefici (probiotice) vizează și metabolizează deșeurile azotate uremice din intestinul gros ca nutrienți pentru creștere și, făcând acest lucru, elimină indirect deșeurile toxice din sânge pentru a fi eliminate din organism sub formă de materii fecale. Pe măsură ce aceste probiotice metabolizează deșeurile azotate, ele încep să se înmulțească și să crească în concentrație, permițând o difuzare și mai mare a toxinelor în intestin. Acest lucru poate ajuta la menținerea funcției sănătoase a rinichilor prin reducerea cantității de toxine care intră în rinichi.Acest proces se bazează în mare măsură pe supraviețuirea microbilor benefici din Renadyl. Probioticele au nevoie de fibre funcționale PREbiotice pentru a rămâne în viață și pentru a se dezvolta. Atunci când probioticele sunt asociate cu prebioticele, relația lor este sinergică, iar combinația este cunoscută sub numele de simbiotic. Formulele sibiotice maximizează eficiența microbilor benefici, deoarece promovează creșterea probioticelor. Asocierea dintre Renadyl și Fortis este o formulă simbiotică deosebit de avantajoasă. Motivul pentru aceasta este că Fortis (un supliment alimentar prebiotic cu mai multe fibre) conține două fibre (xilooligozaharidă și arabinogalactan) care s-a dovedit științific că promovează creșterea lactobacililor și a Bifidobacteriumului. Acest lucru este semnificativ pentru utilizatorii Renadyl, deoarece Renadyl conține ingrediente probiotice din fiecare comandă: Lactobacillus acidophilis și Bifidobacterium longum. Secretul abilităților prebiotice ale acestor două ingrediente se află în acizii grași cu lanț scurt (SCFA) în care sunt fermentați. Bacteriile probiotice din colon sunt capabile să utilizeze aceste produse din fibre și să le metabolizeze, iar produsul secundar al acestei metabolizări sunt SCFA. Aceste SCFA sunt apoi utilizate de organism pentru a îmbunătăți fluxul sanguin, pentru a scădea pH-ul colonului, pentru a furniza energie colonocitelor (celulele membranei colonice), pentru a inhiba sinteza colesterolului și pentru a regla sistemul imunitar. Proprietățile lactogene (capacitatea de a promova creșterea lactobacililor) și bifidogenice (abilitatea de a promova creșterea bifidobacteriumului) ale Kibow Fortis sunt doar o parte din ceea ce face ca produsul să fie atât de mare, dar este deosebit de avantajos pentru utilizatorii Renadyl pentru acest potențial sinergic . Kibow Fortis maximizează în esență eficiența Renadyl."
+        }
+    },
+    "Buy": {
+        "product-name": "Renadyl™ - Supliment alimentar",
+        "product-desc": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții",
+        "product-unit": "buc.",
+        "product-price": "Preț",
+        "total-products-value": "Valoarea totală a produselor",
+        "quantity-label": "Alegeți cantitatea",
+        "product-sale-economy": "Ați economisit",
+        "product-details-loading": "Se încarcă",
+        "doctor-details": {
+            "name-label": "Doctorul care v-a recomandat Renadyl™",
+            "name-ph": "Introdu denumirea doctorului"
+        },
+        "login-form": {
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "password-label": "Parola",
+            "password-ph": "Introdu parola",
+            "password-forgot-link": "Ai uitat parola?",
+            "remember-label": "Ține-mă minte",
+            "submit-btn": "Autentifică-te",
+            "other-options": "sau poți folosi",
+            "register-link": "Nu ai cont? Înregistrează-te"
+        },
+        "register-form": {
+            "fname-label": "Prenume",
+            "fname-ph": "Introdu prenumele",
+            "lname-label": "Nume",
+            "lname-ph": "Introdu numele",
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "phone-label": "Număr de telefon",
+            "phone-ph": "Introdu numărul de telefon",
+            "password-label": "Parola",
+            "password-ph": "Introdu parola",
+            "re-password-label": "Confirmă parola",
+            "re-password-ph": "Reintrodu parola",
+            "submit-btn": "Înregistrează-te",
+            "other-options": "sau poți folosi",
+            "login-link": "Ai deja cont? Autentifică-te",
+            "tc-label": "",
+            "tc-link": "",
+            "want-account": "Doriți să vă creăm cont?"
+        },
+        "shipping-form": {
+            "shipping-title": "Detalii de livrare",
+            "shipping-desc": "Completați datele de livrare și facturare pentru a putea finaliza comanda",
+            "country-label": "Țara",
+            "country-ph": "Selectează țara",
+            "region-label": "Județ",
+            "region-ph": "Selectează județul",
+            "city-label": "Oraș",
+            "city-ph": "Introdu orașul",
+            "address-label": "Adresa",
+            "address-ph": "Introdu adresa"
+        },
+        "billing-form": {
+            "billing-title": "Detalii de facturare",
+            "billing-same-as-shipping-label": "Detaliile de facturare sunt la fel cu cele de livrare",
+            "new-billing-details-label": "Detalii de facturare noi"
+        },
+        "order-details": {
+            "title": "Sumar comandă",
+            "products-total": "Cost produse",
+            "shipping-total": "Taxa de transport",
+            "promo-code": {
+                "input-label": "Cod promoțional",
+                "input-ph": "Introdu codul promoțional",
+                "apply-btn": "Aplică reducerea"
+            },
+            "promo-total": "Reduceri promoționale",
+            "order-total": "Total de plată",
+            "tc": "Sunt de acord cu termenii si conditiile",
+            "place-order-btn": "Plasează comanda",
+            "add-promocode-success": "Success",
+            "add-promocode-doesnt-exist": "Nu exista",
+            "add-promocode-already-added": "Deja exista",
+            "loading": "Se încarcă"
         }
     },
     "Under-construction": {
@@ -276,20 +396,23 @@
                 "edit-form": {
                     "ron": {
                         "title": "Configurare RON",
-                        "prp-label": "PRP (Prețul recomandat de producător)",
-                        "price-label": "Prețul produsului",
-                        "offer-label": "Procent ofertă (%)",
+                        "base-price-label": "Prețul de bază",
+                        "vat-label": "Cota TVA",
+                        "offer-label": "Valoare ofertă",
+                        "percentage-label": "Ofertă procentuală",
                         "offer-toggle": "Activează ofertă"
                     },
                     "eur": {
                         "title": "Configurare EUR",
-                        "prp-label": "EURO PRP (Prețul recomandat de producător)",
-                        "price-label": "EURO Prețul produsului",
-                        "offer-label": "EURO Procent ofertă (%)",
-                        "offer-toggle": "Activează ofertă"
+                        "base-price-label": "Prețul de bază (EURO)",
+                        "vat-label": "Cota TVA (EURO)",
+                        "offer-label": "Valoare ofertă",
+                        "percentage-label": "Ofertă procentuală",
+                        "offer-toggle": "Activează ofertă (EURO)"
                     },
                     "save-btn": "Salvează",
-                    "leave-btn": "Renunță"
+                    "leave-btn": "Renunță",
+                    "loading": "Se încarcă"
                 },
                 "stocks-form": {},
                 "stocks-list": {
