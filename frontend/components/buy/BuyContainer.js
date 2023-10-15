@@ -278,7 +278,13 @@ function BuyContainer() {
       <section className="max-w-[1200px] w-full mx-auto px-4 max-md:px-2">
         <div className="flex flex-row max-md:flex-col">
           <div className="w-1/3 p-6 max-md:p-0 max-md:w-full max-md:mx-auto max-md:max-w-[300px]">
-            <Image src={productImg} width={800} height={800} alt="Renadyl™" />
+            <Image
+              src={productImg}
+              width={800}
+              height={800}
+              alt="Renadyl™"
+              priority={true}
+            />
           </div>
           <div className="w-2/3 p-8 max-md:px-0 max-md:w-full">
             <h2 className="text-2xl text-bold">{t("product-name")}</h2>

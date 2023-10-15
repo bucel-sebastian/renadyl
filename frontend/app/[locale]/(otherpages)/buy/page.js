@@ -9,8 +9,12 @@ import {
   useTranslations,
 } from "next-intl";
 
-export function generateMetadata({ params: { locale } }) {
-  // const t = getTranslator("Buy");
+export async function generateMetadata({ params: { locale } }) {
+  const t = await getTranslator(locale, "Buy");
+  return {
+    title: `Renadyl™ -  ${t("page-title")}`,
+    desc: "",
+  };
 }
 
 export default function Buy({ params: { locale } }) {

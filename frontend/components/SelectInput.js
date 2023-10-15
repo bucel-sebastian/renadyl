@@ -99,7 +99,7 @@ function SelectInput({
           onBlur={handleInputBlur}
           disabled={disabled}
           name={name}
-          autoComplete="off"
+          autoComplete="new-password"
           // onClick={handlSelectInputFocus}
         />
         {inputValue !== "" ? (
