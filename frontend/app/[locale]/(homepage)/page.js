@@ -25,7 +25,7 @@ export default function Index({ params: { locale } }) {
   const t = useTranslations("Index");
 
   return (
-    <main className="bg-foregroundPrimary w-full h-screen relative">
+    <main className="bg-foregroundPrimary w-full h-screen relative overflow-hidden">
       <Suspense fallback={<Loading />}>
         <HomeSlider />
       </Suspense>
