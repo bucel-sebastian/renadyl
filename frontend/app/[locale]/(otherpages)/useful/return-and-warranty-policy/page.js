@@ -1,6 +1,5 @@
-import { useMessages } from "next-intl";
+import { useMessages, useTranslations } from "next-intl";
 import { getTranslator } from "next-intl/server";
-import { useTranslations } from "use-intl";
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "");
