@@ -55,34 +55,52 @@ function Footer() {
         </div>
         <div className="w-1/4  max-lg:w-2/2 max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:pt-10">
           <h5 className="pb-3">{t("linkuri-utile")}</h5>
-          <ul>
+          <ul className="gap-[3px] flex flex-col">
             <li>
-              <Link className="duration-150 hover:text-accentPrimary" href="#">
+              <Link
+                className="duration-150 hover:text-accentPrimary"
+                href="/useful/terms-and-conditions"
+              >
                 {t("linkU1")}
               </Link>
             </li>
             <li>
-              <Link className="duration-150 hover:text-accentPrimary" href="#">
+              <Link
+                className="duration-150 hover:text-accentPrimary"
+                href="/useful/privacy-policy"
+              >
                 {t("linkU2")}
               </Link>
             </li>
             <li>
-              <Link className="duration-150 hover:text-accentPrimary" href="#">
+              <Link
+                className="duration-150 hover:text-accentPrimary"
+                href="/useful/shipping-and-payment"
+              >
                 {t("linkU3")}
               </Link>
             </li>
             <li>
-              <Link className="duration-150 hover:text-accentPrimary" href="#">
+              <Link
+                className="duration-150 hover:text-accentPrimary"
+                href="/useful/return-and-warranty-policy"
+              >
                 {t("linkU4")}
               </Link>
             </li>
             <li>
-              <Link className="duration-150 hover:text-accentPrimary" href="#">
+              <Link
+                className="duration-150 hover:text-accentPrimary"
+                href="/useful/cookie-policy"
+              >
                 {t("linkU5")}
               </Link>
             </li>
             <li>
-              <Link className="duration-150 hover:text-accentPrimary" href="#">
+              <Link
+                className="duration-150 hover:text-accentPrimary"
+                href="https://anpc.ro/"
+              >
                 {t("linkU6")}
               </Link>
             </li>
