@@ -4,10 +4,13 @@
         "product": "Product",
         "affiliates": "Affiliates",
         "contact": "Contact",
+        "faq": "FAQ",
         "doctors": "Doctors",
         "distributors": "Distributors",
         "ambassadors": "Ambassadors",
-        "account": "Log in"
+        "account": "Log in",
+        "register-btn": "Register",
+        "login-btn": "Log in"
     },
     "Footer": {
         "linkuri-utile": "Useful links",
@@ -29,6 +32,12 @@
     },
     "Index": {
         "page-title": "Home",
+        "page-desc": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții.",
+        "page-keywords": {
+            "1": "Renadyl",
+            "2": "rinichi",
+            "3": "sanatate"
+        },
         "buy-btn": "Buy",
         "about-btn": "About product"
     },
@@ -141,6 +150,39 @@
             "tc-label": "I agree with ",
             "tc-link": "terms and conditions",
             "message-success": "Your message has been sent!"
+        }
+    },
+    "Faq": {
+        "page-title": "FAQ",
+        "title": "F.A.Q.",
+        "desc": "Întrebări adresate frecvent",
+        "questions": {
+            "q1": "Are there any side effects associated with Renadyl™?",
+            "a1": "The only side effects experienced by patients in safety trials was minor bloating that disappeared in about a week while they continued taking the supplement. Generally, side effects of probiotics are mild, and may include symptoms such as gas and bloating. Side effects of prebiotics are slightly more common, so check with a medical professional if you notice an unfamiliar prebiotic ingredient.",
+            "q2": "Are these genetically modified microbes?",
+            "a2": "No, Renadyl™ uses naturally occurring, specially selected probiotics that have a high affinity for the toxins that build up in the blood due to impaired or damaged kidneys. Renadyl™ is non-GMO",
+            "q3": "Can I take antibiotics with Renadyl™?",
+            "a3": "You can take probiotics during treatment with antibiotics. Probiotic supplements should be taken 4 hours after the antibiotics. Probiotic use should not interfere with the efficacy of antibiotics.",
+            "q4": "Can Renadyl™ replace dialysis?",
+            "a4": "Renadyl™ is not meant to replace dialysis or any other medications prescribed by a physician. Renadyl™ is not a drug, medicine, or device. It works in conjunction with other treatments to maintain healthy kidney function.",
+            "q5": "How is Renadyl™ manufactured?",
+            "a5": "Renadyl is manufactured adhering to Current Good Manufacturing Practices (cGMPs). cGMP regulations are enforced by the FDA. cGMPs provide for systems that assure proper design, monitoring, and control of manufacturing processes and facilities. Adherence to the cGMP regulations assures the identity, strength, quality, and purity of products by requiring that manufacturers adequately control manufacturing operations. Please consult your doctor/healthcare professional prior to taking this product or any other dietary supplement product on the market.",
+            "q6": "Is Renadyl™ FDA approved?",
+            "a6": "The US Food and Drug Administration (FDA) regulates dietary supplements under a different set of regulations than those covering “conventional” foods and drug products (prescription and over-the-counter). Under the Dietary Supplement Health and Education Act of 1994 (DSHEA), the dietary supplement manufacturer is responsible for ensuring that a dietary supplement is safe before it is marketed. The FDA is responsible for taking action against any unsafe dietary supplement product after it reaches the market. Generally, manufacturers do not need to register their products with the FDA or get FDA approved before producing or selling dietary supplements. The probiotic strains used in our proprietary, patented formulation are considered to be safe under the Generally Recognized as Safe (GRAS) classification by the FDA. *Manufacturers must ensure that the product label information is truthful and not misleading.",
+            "q7": "Is Renadyl™ toxic?",
+            "a7": "Recently completed results from human clinical trials have reaffirmed the safety of Renadyl™.10 Additionally, an animal formulation has been on the market for cats and dogs living with compromised kidneys since 2006. No adverse effects in these animals have been observed.",
+            "q8": "What are some of the toxins metabolized by Renadyl™?",
+            "a8": "The probiotics found in Renadyl™ demonstrate a strong affinity for many of the nitrogenous wastes and toxic metabolites that accumulate in the blood in the event of kidney failure. These toxins include urea, uric acid, creatinine, indoles and phenols, and nitrosamines and their precursors.",
+            "q9": "Why are the microbes in Renadyl™ more effective at ingesting uremic toxins than other probiotics?",
+            "a9": "Clinical studies have shown that the 3 strains of probiotics in Renadyl™ have a high affinity for urea and uremic acids. These 3 strains are specially selected and will metabolize the nitrogenous waste and uremic toxins in the body. They are also gastric acid resistant capsule, which means that they are unaffected by stomach acids that can kill probiotics on their way through the gastrointestinal tract, thus improving efficiency.",
+            "q10": "How does Renadyl work?",
+            "a10": "Renadyl™ is a natural kidney health supplement formulated to maintain healthy kidney function. It is comprised of three proprietary strains of probiotic bacteria, which utilize nitrogenous waste as food. Nitrogenous waste diffuses from the bloodstream into the colon by a naturally occurring process known as osmosis. In people with impaired renal function, more toxins diffuse into the large intestine (colon). Once the toxins accumulate in high concentrations within the colon, Renadyl™ is able to metabolize them and lower the concentration of toxins in the body. Because Renadyl™ is able to metabolize nitrogenous waste products in the gut, we know it maintains healthy kidney function and reduces the burden placed on the kidneys. We know this because we’ve conducted 3 clinical trials with Renadyl™ in leading Universities around the world. For more information about clinical trials and studies conducted with Renadyl™ check out www.kibowbiotech.com/rd.",
+            "q11": "Where is Renadyl made?",
+            "a11": "Renadyl is made in the U.S.A. Some ingredients do originate overseas, and we have strict quality controls. And, speaking of strict…we also maintain strict adherence to Good Manufacturing Practices (GMP) in the production of each capsule.",
+            "q12": "Is Renadyl over-the-counter?",
+            "a12": "Renadyl is available without a prescription and is readily available online at www.renadyleurope.com or on Emag.",
+            "q13": "What are the benefits of taking Kibow Fortis along with Renadyl?",
+            "a13": "Renadyl is an elite formulation of proprietary strains of probiotic microorganisms.  These beneficial microbes (probiotics) target and metabolize uremic nitrogenous waste in the large intestine as nutrients for growth, and in doing so, indirectly remove toxic wastes from the blood to be eliminated from the body as fecal matter.  As these probiotics metabolize nitrogenous waste, they begin to multiply and increase in concentration, allowing for even greater diffusion of toxins into the bowel.  This can help to maintain healthy kidney function by reducing the amount of toxins that enter the kidneys. This process relies heavily on the survivability of the beneficial microbes in Renadyl.  Probiotics need functional PREbiotic fibers to stay alive and thrive.  When probiotics are paired together with prebiotics, their relationship is synergistic, and the combination is known as a synbiotic.  Synbiotic formulas maximize the efficiency of beneficial microbes as they promote the growth of probiotics. The pairing of Renadyl and Fortis is a particularly advantageous synbiotic formula.  The reason for this is that Fortis (a multifiber prebiotic dietary supplement) contains two fibers (xylooligosaccharide and arabinogalactan) which have been scientifically proven to promote the growth of lactobacilli and Bifidobacterium.  This is significant for Renadyl users because Renadyl contains probiotic ingredients from each order: Lactobacillus acidophilis, and Bifidobacterium longum. The secret to these two ingredients prebiotic abilities is in the Short Chain Fatty Acids (SCFA) that they are fermented into.  Probiotic bacteria in the colon are able to utilize these fiber products and metabolize them, and the byproduct of this metabolization are SCFAs.  These SCFAs are then utilized by the body to enhance blood flow, lower colonic pH, provide energy for colonocytes (colonic membrane cells), inhibit cholesterol synthesis, and regulate the immune system. The lactogenic (ability to promote the growth of lactobacilli) and bifidogenic (ability to promote the growth of bifidobacterium) properties of Kibow Fortis are only a part of what make the product so great, but it is especially advantageous for Renadyl users for this synergistic potential.  Kibow Fortis essentially maximizes the efficiency of Renadyl."
         }
     },
     "Under-construction": {
