@@ -1,11 +1,17 @@
 import HomeSlider from "@/components/HomeSlider";
-import { useTranslations } from "next-intl";
+import {
+  NextIntlClientProvider,
+  useMessages,
+  useTranslations,
+} from "next-intl";
 import Image from "next/image";
 import Link from "next-intl/link";
 
 import { Suspense } from "react";
 import Loading from "./loading";
 import { getTranslator } from "next-intl/server";
+import { useDispatch } from "react-redux";
+import AddToCartButtonHome from "@/components/buy/AddToCartButtonHome";
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Index");
@@ -22,6 +28,12 @@ export async function generateMetadata({ params: { locale } }) {
 }
 
 export default function Index({ params: { locale } }) {
+  let messages = useMessages();
+
+  const locales = ["ro", "en", "de"];
+
+  const isValidLocale = locales.some((cur) => cur === locale);
+  if (!isValidLocale) notFound();
   const t = useTranslations("Index");
 
   return (
@@ -34,13 +46,10 @@ export default function Index({ params: { locale } }) {
       <br />
       <br />
       <div className="flex flex-row gap-[50px] absolute bottom-10 w-content w-full justify-center max-sm:flex-col max-sm:gap-2 max-sm:items-center max-sm:bottom-20">
-        <Link
-          href="/buy"
-          // href="https://www.emag.ro/renadyl-pentru-insuficienta-renala-60-comprimate-rnd/pd/D1D5C3YBM/?cmpid=101143&gclid=CjwKCAjwsKqoBhBPEiwALrrqiI6-RpbKtsr_0UzHmEIo-6DLzegwvfrY7Lsg0TlhXC7_rcIdUbQIihoCoPgQAvD_BwE"
-          className="block bg-gradient-to-r w-[300px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-3xl text-backgroundPrimary rounded-2xl py-3"
-        >
-          {t("buy-btn")}
-        </Link>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <AddToCartButtonHome currentLocale={locale} />
+        </NextIntlClientProvider>
+
         <Link
           href="/product"
           locale={locale}

@@ -11,7 +11,7 @@ import { useState } from "react";
 import roLocaleIcon from "@/public/images/ro-icon.svg";
 import enLocaleIcon from "@/public/images/en-icon.svg";
 import deLocaleIcon from "@/public/images/de-icon.svg";
-import { FaUserCircle } from "react-icons/fa";
+import { FaCircleUser } from "react-icons/fa6";
 import { usePathname, useRouter } from "next-intl/client";
 
 function LoginHeader({ currentLocale }) {

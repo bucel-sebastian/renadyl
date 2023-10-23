@@ -51,12 +51,14 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS renadyl_users (
         id VARCHAR(50) NOT NULL PRIMARY KEY,
-        type VARCHAR(25) NOT NULL,
+        role VARCHAR(25) NOT NULL,
         f_name VARCHAR(50),
         l_name VARCHAR(50),
         email VARCHAR(100) NOT NULL,
         phone VARCHAR(100),
-        password VARCHAR(255) NOT NULL
+        password VARCHAR(255) NOT NULL,
+        register_date TIMESTAMP NOT NULL,
+        last_login TIMESTAMP
     );
 
 -- users shipping addresses

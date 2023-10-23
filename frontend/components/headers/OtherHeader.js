@@ -12,8 +12,9 @@ import roLocaleIcon from "@/public/images/ro-icon.svg";
 import enLocaleIcon from "@/public/images/en-icon.svg";
 import deLocaleIcon from "@/public/images/de-icon.svg";
 
-import { FaUserCircle } from "react-icons/fa";
+import { FaCircleUser } from "react-icons/fa6";
 import { usePathname, useRouter } from "next-intl/client";
+import CartBtn from "../CartBtn";
 
 function OtherHeader({ currentLocale }) {
   const pathname = usePathname();
@@ -97,7 +98,7 @@ function OtherHeader({ currentLocale }) {
 
   return (
     <header
-      className={`fixed block top-0 left-0 w-full h-[75px]  text-foregroundPrimary z-10 bg-backgroundPrimary ${
+      className={`fixed block top-0 left-0 w-full h-[75px]  text-foregroundPrimary z-50 bg-backgroundPrimary ${
         headerWhite ? "shadow-lg" : ""
       } transition-all duration-300  header-white`}
     >
@@ -204,14 +205,17 @@ function OtherHeader({ currentLocale }) {
             </button>
           </div>
         </div>
-        <div className="w-1/5 flex row justify-end gap-[6px] max-md:hidden">
+        <div className="w-1/5 flex row justify-end gap-4 max-md:hidden">
+          <div>
+            <CartBtn currentLocale={currentLocale} />
+          </div>
           <div>
             <Link
               href="/under-construction"
               locale={currentLocale}
               aria-label="Account"
             >
-              <FaUserCircle className="text-[35px]" />
+              <FaCircleUser className="text-[35px]" />
             </Link>
           </div>
           <div

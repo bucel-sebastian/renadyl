@@ -43,14 +43,14 @@
     },
     "Product": {
         "page-title": "Produs",
-        "buy-btn": "Cumpără",
+        "buy-btn": "Adaugă în coș",
         "subscription-btn": "Abonament",
         "hero-section": {
             "product-name": "Renadyl™ - Supliment alimentar",
             "product-desc": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții. Este alcătuit din trei tulpini patentate de bacterii probiotice, care utilizează deșeurile azotoase ca hrană. Deșeurile azotoase se difuzează din fluxul sanguin în colon printr-un proces natural cunoscut sub numele de osmoză. La persoanele cu funcție renală afectată, un numar crescut de toxine se difuzează în intestinul gros (colon). Odată ce toxinele se acumulează în concentrații ridicate în colon, Renadyl™ le metabolizează și reduce concentrația de toxine din corp. Datorită capacității Renadyl™ de a metaboliza produsele deșeurilor azotoase în intestin, acesta ajuta la menținerea funcției sănătoase a rinichilor și reduce stresul asupra acestora.",
             "product-price": "Preț",
             "product-unit": "buc.",
-            "product-buy-btn": "Cumpără",
+            "product-buy-btn": "Adaugă în coș",
             "product-subscription-btn": "Abonament",
             "product-shippment": "Livrare",
             "product-shippment-green": "5 zile lucrătoare",
@@ -183,6 +183,111 @@
             "a12": "Renadyl este disponibil fără prescripție medicală și este disponibil online la www.renadyleurope.ro sau pe Emag",
             "q13": "Care sunt beneficiile luării Kibow Fortis împreună cu Renadyl?",
             "a13": "Renadyl este o formulă de elită a tulpinilor brevetate de microorganisme probiotice. Acești microbi benefici (probiotice) vizează și metabolizează deșeurile azotate uremice din intestinul gros ca nutrienți pentru creștere și, făcând acest lucru, elimină indirect deșeurile toxice din sânge pentru a fi eliminate din organism sub formă de materii fecale. Pe măsură ce aceste probiotice metabolizează deșeurile azotate, ele încep să se înmulțească și să crească în concentrație, permițând o difuzare și mai mare a toxinelor în intestin. Acest lucru poate ajuta la menținerea funcției sănătoase a rinichilor prin reducerea cantității de toxine care intră în rinichi.Acest proces se bazează în mare măsură pe supraviețuirea microbilor benefici din Renadyl. Probioticele au nevoie de fibre funcționale PREbiotice pentru a rămâne în viață și pentru a se dezvolta. Atunci când probioticele sunt asociate cu prebioticele, relația lor este sinergică, iar combinația este cunoscută sub numele de simbiotic. Formulele sibiotice maximizează eficiența microbilor benefici, deoarece promovează creșterea probioticelor. Asocierea dintre Renadyl și Fortis este o formulă simbiotică deosebit de avantajoasă. Motivul pentru aceasta este că Fortis (un supliment alimentar prebiotic cu mai multe fibre) conține două fibre (xilooligozaharidă și arabinogalactan) care s-a dovedit științific că promovează creșterea lactobacililor și a Bifidobacteriumului. Acest lucru este semnificativ pentru utilizatorii Renadyl, deoarece Renadyl conține ingrediente probiotice din fiecare comandă: Lactobacillus acidophilis și Bifidobacterium longum. Secretul abilităților prebiotice ale acestor două ingrediente se află în acizii grași cu lanț scurt (SCFA) în care sunt fermentați. Bacteriile probiotice din colon sunt capabile să utilizeze aceste produse din fibre și să le metabolizeze, iar produsul secundar al acestei metabolizări sunt SCFA. Aceste SCFA sunt apoi utilizate de organism pentru a îmbunătăți fluxul sanguin, pentru a scădea pH-ul colonului, pentru a furniza energie colonocitelor (celulele membranei colonice), pentru a inhiba sinteza colesterolului și pentru a regla sistemul imunitar. Proprietățile lactogene (capacitatea de a promova creșterea lactobacililor) și bifidogenice (abilitatea de a promova creșterea bifidobacteriumului) ale Kibow Fortis sunt doar o parte din ceea ce face ca produsul să fie atât de mare, dar este deosebit de avantajos pentru utilizatorii Renadyl pentru acest potențial sinergic . Kibow Fortis maximizează în esență eficiența Renadyl."
+        }
+    },
+    "Cart": {
+        "order-steps": {
+            "step-1": "Coșul meu",
+            "step-2": "Detalii comandă",
+            "step-3": "Comandă plasată"
+        },
+        "product-name": "Renadyl™ - Supliment alimentar",
+        "product-unit": "buc.",
+        "product-price": "Preț",
+        "quantity-label": "Cantitatea",
+        "product-sale-economy": "Ați economisit",
+        "product-details-loading": "Se încarcă"
+    },
+    "Checkout": {
+        "order-steps": {
+            "step-1": "Coșul meu",
+            "step-2": "Detalii comandă",
+            "step-3": "Comandă plasată"
+        },
+        "doctor-details": {
+            "name-label": "Doctorul care v-a recomandat Renadyl™",
+            "name-ph": "Introdu denumirea doctorului"
+        },
+        "login-form": {
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "password-label": "Parola",
+            "password-ph": "Introdu parola",
+            "password-forgot-link": "Ai uitat parola?",
+            "remember-label": "Ține-mă minte",
+            "submit-btn": "Autentifică-te",
+            "other-options": "sau poți folosi",
+            "register-link": "Nu ai cont? Înregistrează-te"
+        },
+        "register-form": {
+            "fname-label": "Prenume",
+            "fname-ph": "Introdu prenumele",
+            "lname-label": "Nume",
+            "lname-ph": "Introdu numele",
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "phone-label": "Număr de telefon",
+            "phone-ph": "Introdu numărul de telefon",
+            "password-label": "Parola",
+            "password-ph": "Introdu parola",
+            "re-password-label": "Confirmă parola",
+            "re-password-ph": "Reintrodu parola",
+            "submit-btn": "Înregistrează-te",
+            "other-options": "sau poți folosi",
+            "login-link": "Ai deja cont? Autentifică-te",
+            "tc-label": "",
+            "tc-link": "",
+            "want-account": "Doriți să vă creăm cont?"
+        },
+        "shipping-form": {
+            "shipping-title": "Detalii de livrare",
+            "shipping-desc": "Completați datele de livrare și facturare pentru a putea finaliza comanda",
+            "country-label": "Țara",
+            "country-ph": "Selectează țara",
+            "region-label": "Județ",
+            "region-ph": "Selectează județul",
+            "city-label": "Oraș",
+            "city-ph": "Introdu orașul",
+            "address-label": "Adresa",
+            "address-ph": "Introdu adresa",
+            "shipping-type": {
+                "courier": "Livrare prin curier",
+                "easybox": "Ridicare personală de la EasyBox"
+            }
+        },
+        "billing-form": {
+            "billing-title": "Detalii de facturare",
+            "same-details-as-shipping": "Detaliile de facturare sunt la fel cu cele de livrare",
+            "new-details": "Detalii de facturare noi",
+            "fname-label": "Prenume",
+            "fname-ph": "Introdu prenumele",
+            "lname-label": "Nume",
+            "lname-ph": "Introdu numele",
+            "cui-label": "CUI (opțional)",
+            "cui-ph": "Introdu CUI-ul",
+            "phone-label": "Număr de telefon",
+            "phone-ph": "Introdu numărul de telefon",
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "country-label": "Țara",
+            "country-ph": "Selectează țara",
+            "region-label": "Județ",
+            "region-ph": "Selectează județul",
+            "city-label": "Oraș",
+            "city-ph": "Introdu orașul",
+            "address-label": "Adresa",
+            "address-ph": "Introdu adresa",
+            "": "",
+            "": "",
+            "": "",
+            "": ""
+        },
+        "summary": {
+            "title": "Sumar comandă",
+            "total-products": "Cost produse",
+            "total-shipping": "Cost livrare",
+            "total-order": "Total",
+            "place-order": "Plasează comanda"
         }
     },
     "Buy": {

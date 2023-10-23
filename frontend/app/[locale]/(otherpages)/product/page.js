@@ -307,7 +307,7 @@ export default function Product({ params: { locale } }) {
         <div className="mx-auto max-w-[1200px] text-backgroundPrimary py-10">
           <div>
             <div className="flex flex-row items-center content-center gap-5 max-md:flex-col">
-              <div className="w-1/5 aspect-square p-5 max-md:w-[50%]">
+              {/* <div className="w-1/5 aspect-square p-5 max-md:w-[50%]">
                 <Image
                   src="/images/Dr.Richard-Snyder-HCP-Testimonial.png"
                   width={150}
@@ -315,11 +315,11 @@ export default function Product({ params: { locale } }) {
                   className="w-full h-full bg-foregroundPrimary rounded-full"
                   alt="Dr. Richard Snyder"
                 />
-              </div>
-              <div className="w-3/5 max-md:w-full">
+              </div> */}
+              <div className="w-3/4 max-md:w-full pl-8">
                 <p className="text-justify">„{t("review")}”</p>
               </div>
-              <div className="w-1/5 text-center max-md:w-full">
+              <div className="w-1/4 text-right pr-8 max-md:w-full">
                 <span>(D.O., Nephrology)</span>
               </div>
 

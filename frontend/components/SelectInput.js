@@ -116,7 +116,7 @@ function SelectInput({
         <FaAngleDown className="absolute right-2" />
       </div>
       <div
-        className={`absolute z-50 bg-backgroundPrimary flex-col w-full items-start mt-2 border-[1px] rounded-md border-foregroundPrimary40 shadow-md overflow-auto max-h-[220px] ${
+        className={`absolute z-10 bg-backgroundPrimary flex-col w-full items-start mt-2 border-[1px] rounded-md border-foregroundPrimary40 shadow-md overflow-auto max-h-[220px] ${
           isFocused ? "flex" : "hidden"
         }`}
       >
@@ -124,7 +124,9 @@ function SelectInput({
           dataArray.map(([key, value]) => {
             if (
               inputValue !== "" &&
-              String(value).toLowerCase().includes(inputValue.toLowerCase())
+              String(value)
+                .toLowerCase()
+                .includes(String(inputValue).toLowerCase())
             ) {
               return (
                 <button

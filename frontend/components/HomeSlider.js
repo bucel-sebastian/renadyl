@@ -50,7 +50,6 @@ function HomeSlider() {
 
   useEffect(() => {
     changeSlide(currentSlide);
-    console.log(currentSlide);
   }, [currentSlide]);
 
   const handleDotClick = (index) => {
@@ -85,12 +84,12 @@ function HomeSlider() {
             playsInline
           >
             <source
-              src={"/videos/hero-banner-1.webm"}
+              src={"/videos/hero-banner-2.webm"}
               type="video/webm"
               loading="lazy"
             />
             <source
-              src={"/videos/hero-banner-1.mp4"}
+              src={"/videos/hero-banner-2.mp4"}
               type="video/mp4"
               loading="lazy"
             />
@@ -106,12 +105,12 @@ function HomeSlider() {
             playsInline
           >
             <source
-              src={"/videos/hero-banner-1.webm"}
+              src={"/videos/hero-banner-3.webm"}
               type="video/webm"
               loading="lazy"
             />
             <source
-              src={"/videos/hero-banner-1.mp4"}
+              src={"/videos/hero-banner-3.mp4"}
               type="video/mp4"
               loading="lazy"
             />
