@@ -447,7 +447,7 @@ function CheckoutNotLoggedIn() {
     const clientId = "5dbfed90-acb7-4708-9827-1fb06527a3c1";
     const countryCode = "RO";
     const langCode = "ro";
-    const apiUsername = "6CM9t*iP";
+    const apiUsername = "healthymedicalAPI";
     window.LockerPlugin.init({
       clientId: clientId,
       countryCode: countryCode,
