@@ -8,7 +8,9 @@ function SelectInput({
   name,
   placeholder,
   onChange,
+  // onClear,
   disabled = false,
+  required = false,
 }) {
   const dataArray = Object.entries(data);
 
@@ -36,7 +38,7 @@ function SelectInput({
   const handleResetInput = (event) => {
     event.preventDefault();
     event.stopPropagation();
-
+    // onClear;
     setInputValue("");
     onChange("", "");
   };
@@ -100,6 +102,7 @@ function SelectInput({
           disabled={disabled}
           name={name}
           autoComplete="new-password"
+          required={required}
           // onClick={handlSelectInputFocus}
         />
         {inputValue !== "" ? (

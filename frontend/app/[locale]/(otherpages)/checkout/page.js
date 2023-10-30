@@ -9,6 +9,7 @@ import {
   useTranslations,
 } from "next-intl";
 import Checkout from "@/components/buy/Checkout";
+// import CheckoutNotLoggedIn from "@/components/buy/CheckoutNotLoggedIn";
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Checkout");
@@ -57,9 +58,19 @@ export default function CheckoutPage({ params: { locale } }) {
             {t("order-steps.step-3")}
           </span>
         </div>
+        <div className="w-[100px] h-[2px] bg-foregroundPrimary20"></div>
+        <div className="text-xl relative flex justify-center">
+          <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-foregroundPrimary30 rounded-full">
+            4
+          </span>
+          <span className="absolute top-full text-sm text-center w-max">
+            {t("order-steps.step-4")}
+          </span>
+        </div>
       </div>
       <NextIntlClientProvider locale={locale} messages={messages}>
         <Checkout />
+        {/* <CheckoutNotLoggedIn /> */}
       </NextIntlClientProvider>
     </main>
   );

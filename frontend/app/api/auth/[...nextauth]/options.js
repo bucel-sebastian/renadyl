@@ -25,7 +25,7 @@ export const authOptions = {
           credentials?.password
         );
         const user = await response;
-        console.log("autorize ", { user });
+        // console.log("autorize ", { user });
         if (user !== null) {
           return user;
         }

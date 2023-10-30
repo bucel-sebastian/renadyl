@@ -22,15 +22,30 @@ CREATE TABLE `bank_data` ( )
 
 CREATE TABLE
     IF NOT EXISTS renadyl_contact_form (
-        id integer NOT NULL,
+        id serial PRIMARY KEY,
         fname character varying(100) NOT NULL,
         lname character varying(100) NOT NULL,
         email character varying(255) NOT NULL,
         phone character varying(50),
         type character varying(100),
         message text NOT NULL,
+        date timestamp without time zone NOT NULL
+    ) -- Distributors form
+
+CREATE TABLE
+    IF NOT EXISTS renadyl_distributors_form (
+        id serial PRIMARY KEY,
+        fname character varying(100) NOT NULL,
+        lname character varying(100) NOT NULL,
+        email character varying(255) NOT NULL,
+        phone character varying(50),
+        company_name character varying(255),
+        company_cif character varying(255),
+        message text NOT NULL,
         date timestamp without time zone NOT NULL,
-        CONSTRAINT renadyl_contact_form_pkey PRIMARY KEY (id)
+        status CHARACTER varying(50),
+        status_update_date TIMESTAMP without time zone,
+        observations text
     ) -- product data
 CREATE TABLE
     IF NOT EXISTS renadyl_product_data (
@@ -110,10 +125,42 @@ CREATE TABLE
 
 -- Orders
 
-CREATE TABLE IF NOT EXISTS renadyl_orders ( 
-
-) 
+CREATE TABLE
+    IF NOT EXISTS renadyl_orders (
+        id VARCHAR(50) NOT NULL PRIMARY KEY,
+        date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+        client_details text NOT NULL,
+        doctor VARCHAR(100),
+        shipping_details TEXT NOT NULL,
+        billing_details TEXT NOT NULL,
+        product_quantity INTEGER NOT NULL,
+        product_price VARCHAR(50) NOT NULL,
+        currency VARCHAR(50) NOT NULL,
+        is_bundle BOOLEAN NOT NULL,
+        product_totals VARCHAR(50) NOT NULL,
+        order_promotion VARCHAR(50) NOT NULL,
+        order_total VARCHAR(50) NOT NULL,
+        invoice VARCHAR(100),
+        shipping_awb VARCHAR(255) NOT NULL,
+        promo_code VARCHAR(100) REFERENCES renadyl_promo_codes(code),
+        promo_code_details VARCHAR(100),
+        status VARCHAR(50) NOT NULL,
+        logs TEXT NOT NULL,
+        observations TEXT
+    )
 
 -- Invoices
 
-CREATE TABLE IF NOT EXISTS renadyl_invoices ( ) 
+CREATE TABLE
+    IF NOT EXISTS renadyl_invoices (
+        id VARCHAR(50) NOT NULL PRIMARY KEY,
+        date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+        order_id VARCHAR(50) NOT NULL
+
+) -- promo codes
+CREATE TABLE
+    IF NOT EXISTS renadyl_promo_codes (
+        code VARCHAR(100) NOT NULL PRIMARY KEY,
+        user_id VARCHAR(255) NOT NULL,
+        value VARCHAR(100) NOT NULL
+    )

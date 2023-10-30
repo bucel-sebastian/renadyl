@@ -2,53 +2,69 @@ import Database from "../Database";
 
 const nodemailer = require("nodemailer");
 
-export const saveToDatabase = async (formData) => {
-    const database = new Database();
-    
-    formData['date'] = new Date().toISOString();
+export const saveContactFormToDatabase = async (formData) => {
+  const database = new Database();
 
-    try{
-        const insertResp = await database.insert('renadyl_contact_form',formData);
-        console.log(insertResp);
-    } catch (error) {
-        console.error('Eroare: ',error)
-    } finally {
-        await database.pool.end();
-    }
+  formData["date"] = new Date().toISOString();
 
+  try {
+    const insertResp = await database.insert("renadyl_contact_form", formData);
+    console.log(insertResp);
+  } catch (error) {
+    console.error("Eroare: ", error);
+  } finally {
+    await database.pool.end();
+  }
 };
 
-export const sendEmail = async (formData) => {
-    const transporter = nodemailer.createTransport({
-        host: "mail.renadyleurope.com",
-        port: "465",
-        secure: true,
-        auth: {
-            user: process.env.NODEMAILER_EMAIL,
-            pass: process.env.NODEMAILER_PW
-        }
-    });
+export const saveDistributorFormToDatabase = async (formData) => {
+  const database = new Database();
 
-    const mailOptions = {
-        from: '"Renadyl.ro "<no-reply@renadyleurope.com>',
-        to: "office@healthymedical.ro",
-        subject: "Renadyl - Mesaj nou din formularul de contact",
-        text: `Mesaj nou din formularul de contact\r\n
+  formData["date"] = new Date().toISOString();
+
+  try {
+    const insertResp = await database.insert(
+      "renadyl_distributors_form",
+      formData
+    );
+    console.log(insertResp);
+  } catch (error) {
+    console.error("Eroare: ", error);
+  } finally {
+    await database.pool.end();
+  }
+};
+
+export const sendContactFormEmail = async (formData) => {
+  const transporter = nodemailer.createTransport({
+    host: "mail.renadyleurope.com",
+    port: "465",
+    secure: true,
+    auth: {
+      user: process.env.NODEMAILER_EMAIL,
+      pass: process.env.NODEMAILER_PW,
+    },
+  });
+
+  const mailOptions = {
+    from: '"Renadyl.ro "<no-reply@renadyleurope.com>',
+    to: "office@healthymedical.ro",
+    subject: "Renadyl - Mesaj nou din formularul de contact",
+    text: `Mesaj nou din formularul de contact\r\n
         nume - ${formData["lname"]}\r\n
         prenume - ${formData["fname"]}\r\n
         email - ${formData["email"]}\r\n
         phone - ${formData["phone"]}\r\n
         categorie - ${formData["type"]} \r\n
-        mesaj - ${formData["message"]}`
-    };
+        mesaj - ${formData["message"]}`,
+  };
 
-    transporter.sendMail(mailOptions, function (error,info) {
-        if (error){
-            throw new Error(error);
-        } else {
-            console.log("Email sent!");
-            return true;
-        }
-    })
-    
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      throw new Error(error);
+    } else {
+      console.log("Email sent!");
+      return true;
+    }
+  });
 };

@@ -91,7 +91,7 @@ function Cart({ currentLocale }) {
               <span class="loader"></span>
             </div>
           </>
-        ) : (
+        ) : cartQuantity > 0 ? (
           <>
             <div className="flex flex-row gap-4 h-full">
               <div className="w-2/3 ">
@@ -220,6 +220,13 @@ function Cart({ currentLocale }) {
                   Checkout
                 </Link>
               </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <h1 className="text-3xl font-bold mb-4 px-2">Coșul meu</h1>
+            <div className="h-[200px] flex justify-center items-center content-center">
+              <h2>Coșul este gol...</h2>
             </div>
           </>
         )}

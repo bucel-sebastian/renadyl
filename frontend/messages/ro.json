@@ -152,6 +152,33 @@
             "message-success": "Mesajul dvs. a fost trimis!"
         }
     },
+    "Distributors": {
+        "page-title": "Distribuitori",
+        "title": "Distribuitori",
+        "desc": "Doriți să deveniți distribuitor Renadyl™?",
+        "desc-2": "Completați formularul de mai jos și te vom contacta cât mai curând.",
+        "form": {
+            "first-name-label": "Prenume",
+            "last-name-label": "Nume",
+            "email-label": "Adresa de email",
+            "phone-label": "Număr de telefon",
+            "message-label": "De ce doriți să comercializați Renadyl™",
+            "type-label": "Categorie",
+            "first-name-ph": "Introdu prenumele",
+            "last-name-ph": "Introdu numele",
+            "email-ph": "Introdu adresa de email",
+            "phone-ph": "Introdu numărul de telefon",
+            "company-name-label": "Denumire societate",
+            "company-name-ph": "Introdu numele societății",
+            "company-cif-label": "CUI",
+            "company-cif-ph": "Introdu CUI-ul",
+            "message-ph": "Scrie-ți mesajul dvs.",
+            "submit-btn": "Trimite",
+            "tc-label": "Sunt de acord cu ",
+            "tc-link": "termenii și condițiile",
+            "message-success": "Cererea dvs. a fost trimisă!"
+        }
+    },
     "Faq": {
         "page-title": "FAQ",
         "title": "F.A.Q.",
@@ -189,7 +216,8 @@
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",
-            "step-3": "Comandă plasată"
+            "step-3": "Sumar comandă",
+            "step-4": "Comandă plasată"
         },
         "product-name": "Renadyl™ - Supliment alimentar",
         "product-unit": "buc.",
@@ -199,10 +227,18 @@
         "product-details-loading": "Se încarcă"
     },
     "Checkout": {
+        "page-title": "Checkout",
+        "section-1-title": "Recomandare",
+        "section-2-1-title": "Autentificare",
+        "section-2-2-title": "Detalii de livrare",
+        "section-3-title": "Detalii de facturare",
+        "is-already-client": "Sunt deja client",
+        "is-new-client": "Sunt client nou",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",
-            "step-3": "Comandă plasată"
+            "step-3": "Sumar comandă",
+            "step-4": "Comandă plasată"
         },
         "doctor-details": {
             "name-label": "Doctorul care v-a recomandat Renadyl™",
@@ -237,22 +273,31 @@
             "login-link": "Ai deja cont? Autentifică-te",
             "tc-label": "",
             "tc-link": "",
-            "want-account": "Doriți să vă creăm cont?"
+            "want-account": "Doriți să vă creăm cont?",
+            "wants-account-yes": "Da",
+            "wants-account-no": "Nu"
         },
         "shipping-form": {
             "shipping-title": "Detalii de livrare",
             "shipping-desc": "Completați datele de livrare și facturare pentru a putea finaliza comanda",
             "country-label": "Țara",
             "country-ph": "Selectează țara",
-            "region-label": "Județ",
-            "region-ph": "Selectează județul",
+            "state-label": "Județ",
+            "state-ph": "Selectează județul",
             "city-label": "Oraș",
-            "city-ph": "Introdu orașul",
+            "city-ph": "Selectează orașul",
+            "postalcode-label": "Cod poștal",
+            "postalcode-ph": "Introdu codul poștal",
             "address-label": "Adresa",
             "address-ph": "Introdu adresa",
+            "shipping-method": "Modalitate de livrare",
             "shipping-type": {
                 "courier": "Livrare prin curier",
                 "easybox": "Ridicare personală de la EasyBox"
+            },
+            "easybox": {
+                "label": "Selectează locul de livrare",
+                "button-text": "Deschide harta"
             }
         },
         "billing-form": {
@@ -263,31 +308,52 @@
             "fname-ph": "Introdu prenumele",
             "lname-label": "Nume",
             "lname-ph": "Introdu numele",
-            "cui-label": "CUI (opțional)",
+            "cui-label": "CUI",
             "cui-ph": "Introdu CUI-ul",
+            "company-name-label": "Denumire societate",
+            "company-name-ph": "Introdu numele societății",
             "phone-label": "Număr de telefon",
             "phone-ph": "Introdu numărul de telefon",
             "email-label": "Adresa de email",
             "email-ph": "Introdu adresa de email",
             "country-label": "Țara",
             "country-ph": "Selectează țara",
-            "region-label": "Județ",
-            "region-ph": "Selectează județul",
+            "state-label": "Județ",
+            "state-ph": "Selectează județul",
             "city-label": "Oraș",
             "city-ph": "Introdu orașul",
+            "postal-code-label": "Cod poștal",
+            "postal-code-ph": "Introdu codul poștal",
             "address-label": "Adresa",
             "address-ph": "Introdu adresa",
-            "": "",
-            "": "",
-            "": "",
-            "": ""
+            "pf-or-pj-label": "Sunteți persoană fizică sau persoană juridică?",
+            "pf": "Persoană fizică",
+            "pj": "Persoană juridică"
         },
-        "summary": {
-            "title": "Sumar comandă",
-            "total-products": "Cost produse",
-            "total-shipping": "Cost livrare",
-            "total-order": "Total",
-            "place-order": "Plasează comanda"
+        "next-step-btn": "Pasul următor"
+    },
+    "Order-summary": {
+        "page-title": "Sumar comandă",
+        "order-steps": {
+            "step-1": "Coșul meu",
+            "step-2": "Detalii comandă",
+            "step-3": "Sumar comandă",
+            "step-4": "Comandă plasată"
+        },
+        "title": "Sumar comandă",
+        "total-products": "Cost produse",
+        "total-shipping": "Cost livrare",
+        "total-order": "Total",
+        "tc-1": "",
+        "tc-2": "",
+        "place-order": "Plasează comanda"
+    },
+    "Order-placed": {
+        "order-steps": {
+            "step-1": "Coșul meu",
+            "step-2": "Detalii comandă",
+            "step-3": "Sumar comandă",
+            "step-4": "Comandă plasată"
         }
     },
     "Buy": {

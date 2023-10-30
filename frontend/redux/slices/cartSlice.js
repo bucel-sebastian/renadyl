@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
-// const initialState = {
-//   loading: true,
-//   cartQuantity: 0,
-// };
-
 const initialState = Cookies.get("cart")
   ? {
       ...JSON.parse(Cookies.get("cart")),
@@ -14,6 +9,7 @@ const initialState = Cookies.get("cart")
   : {
       loading: true,
       cartQuantity: 0,
+      cartCode: null,
     };
 
 const cartSlice = createSlice({
@@ -21,8 +17,10 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      state.cartQuantity = state.cartQuantity + 1;
-      Cookies.set("cart", JSON.stringify(state));
+      if (state.cartQuantity + 1 < 11) {
+        state.cartQuantity = state.cartQuantity + 1;
+        Cookies.set("cart", JSON.stringify(state));
+      }
     },
     removeFromCart: (state, action) => {
       console.log(state.cartQuantity - 1 > 0);
