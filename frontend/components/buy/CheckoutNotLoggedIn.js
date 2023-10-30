@@ -444,13 +444,15 @@ function CheckoutNotLoggedIn() {
   };
 
   const initSamedayLocker = () => {
-    const clientId = process.env.SAMEDAY_EASYBOX_PLUGIN_CLIENTID; //each integrator will have an unique clientId
-    const countryCode = "RO"; //country for which the plugin is used
-    const langCode = "ro"; //language of the plugin
+    const clientId = process.env.SAMEDAY_EASYBOX_PLUGIN_CLIENTID;
+    const countryCode = "RO";
+    const langCode = "ro";
+    const apiUsername = process.env.SAMEDAY_API_USERNAME;
     window.LockerPlugin.init({
       clientId: clientId,
       countryCode: countryCode,
       langCode: langCode,
+      apiUsername: apiUsername,
     });
     setSamedayLockerInstance(window.LockerPlugin.getInstance());
   };
