@@ -458,7 +458,7 @@ function CheckoutNotLoggedIn() {
   };
   const handleSameDayLockerSelect = (msg) => {
     setSamedayLockerMsg(msg);
-
+    console.log("Sameday Easybox plugin response: ", msg);
     samedayLockerInstance.close();
   };
   const openSamedayLockerMap = (event) => {
