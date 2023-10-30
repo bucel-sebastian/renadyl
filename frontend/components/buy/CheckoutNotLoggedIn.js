@@ -444,10 +444,10 @@ function CheckoutNotLoggedIn() {
   };
 
   const initSamedayLocker = () => {
-    const clientId = process.env.SAMEDAY_EASYBOX_PLUGIN_CLIENTID;
+    const clientId = "5dbfed90-acb7-4708-9827-1fb06527a3c1";
     const countryCode = "RO";
     const langCode = "ro";
-    const apiUsername = process.env.SAMEDAY_API_USERNAME;
+    const apiUsername = "6CM9t*iP";
     window.LockerPlugin.init({
       clientId: clientId,
       countryCode: countryCode,
