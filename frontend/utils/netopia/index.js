@@ -9,24 +9,12 @@ const crypto = require("crypto");
 
 const rc4 = require("./encrypt.js");
 const fs = require("fs");
-
-const path = require("path");
-
-const certificatesDir = path.join(
-  process.cwd(),
-  ".next/server/app/api/certificates"
-);
-const privateKeyPath = path.join(
-  certificatesDir,
-  "sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
-);
-const publicKeyPath = path.join(
-  certificatesDir,
-  "sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
-);
-
-const privateKey = fs.readFileSync(privateKeyPath).toString();
-const publicKey = fs.readFileSync(publicKeyPath).toString();
+const privateKey = fs
+  .readFileSync("sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
+  .toString();
+const publicKey = fs
+  .readFileSync("sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
+  .toString();
 const xml2js = require("xml2js");
 var builder = new xml2js.Builder({
   cdata: true,
@@ -101,4 +89,4 @@ function decodeResponse(data) {
   });
 }
 
-// console.log(getRequest(1111));
+console.log(getRequest(1111));
