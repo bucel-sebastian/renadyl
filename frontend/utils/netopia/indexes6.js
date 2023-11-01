@@ -1,7 +1,7 @@
 "use strict";
 
 import crypto from "crypto";
-import rc4 from "./encryptes6";
+import { encrypt, decrypt } from "./encryptes6";
 import xml2js from "xml2js";
 
 const privateKey = `-----BEGIN CERTIFICATE-----
@@ -100,13 +100,13 @@ export function getRequest(orderId, amount, currency, orderData) {
   let xml = builder.buildObject(
     getPayment(orderId, amount, currency, orderData)
   );
-  return rc4.encrypt(publicKey, xml);
+  return encrypt(publicKey, xml);
 }
 
 export function decodeResponse(data) {
   return new Promise(function (resolve, reject) {
     parser.parseString(
-      rc4.decrypt(privateKey, data.env_key, data.data),
+      decrypt(privateKey, data.env_key, data.data),
       function (err, result) {
         if (err) {
           reject(err);
