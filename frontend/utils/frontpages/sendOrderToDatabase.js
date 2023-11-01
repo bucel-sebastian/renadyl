@@ -1,5 +1,5 @@
 import Database from "../Database";
-import { getRequest } from "../netopia";
+// import { getRequest } from "../netopia";
 
 export const checkIfIDExists = async (id) => {
   const database = new Database();
