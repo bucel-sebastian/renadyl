@@ -9,12 +9,20 @@ const crypto = require("crypto");
 
 const rc4 = require("./encrypt.js");
 const fs = require("fs");
-const privateKey = fs
-  .readFileSync("./certificates/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
-  .toString();
-const publicKey = fs
-  .readFileSync("./certificates/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
-  .toString();
+
+const path = require("path");
+
+const privateKeyPath = path.join(
+  __dirname,
+  "../certificates/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
+);
+const publicKeyPath = path.join(
+  __dirname,
+  "../certificates/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
+);
+
+const privateKey = fs.readFileSync(privateKeyPath).toString();
+const publicKey = fs.readFileSync(publicKeyPath).toString();
 const xml2js = require("xml2js");
 var builder = new xml2js.Builder({
   cdata: true,
