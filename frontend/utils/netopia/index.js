@@ -12,13 +12,17 @@ const fs = require("fs");
 
 const path = require("path");
 
+const certificatesDir = path.join(
+  process.cwd(),
+  ".next/server/app/api/certificates"
+);
 const privateKeyPath = path.join(
-  __dirname,
-  "../certificates/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
+  certificatesDir,
+  "sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
 );
 const publicKeyPath = path.join(
-  __dirname,
-  "../certificates/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
+  certificatesDir,
+  "sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
 );
 
 const privateKey = fs.readFileSync(privateKeyPath).toString();
