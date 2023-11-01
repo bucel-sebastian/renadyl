@@ -101,4 +101,4 @@ function decodeResponse(data) {
   });
 }
 
-console.log(getRequest(1111));
+// console.log(getRequest(1111));
