@@ -1,5 +1,5 @@
 import Database from "../Database";
-import getRequest from "../netopia";
+import { getRequest } from "../netopia";
 
 export const checkIfIDExists = async (id) => {
   const database = new Database();
@@ -102,8 +102,8 @@ export const sendOrderToDatabase = async (formData) => {
 
   // console.log("netopia - ", getRequest(values["id"]));
   // return 0;
-  const getNetopiaData = getRequest(values["id"]);
-  console.log("netopia - ", getRequest(values["id"]));
+  const getNetopiaData = getRequest(111);
+  console.log("netopia - ", getNetopiaData);
   return getNetopiaData;
 };
 

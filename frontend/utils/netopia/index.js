@@ -7,17 +7,13 @@ module.exports = {
 
 const crypto = require("crypto");
 
-const arc4 = require("./encrypt.js");
+const rc4 = require("./encrypt.js");
 const fs = require("fs");
 const privateKey = fs
-  .readFileSync(
-    process.cwd() + "/utils/netopia/sandbox.2VZR-GOQH-7A8W-VLRB-UOOWprivate.key"
-  )
+  .readFileSync("sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
   .toString();
 const publicKey = fs
-  .readFileSync(
-    process.cwd() + "/utils/netopia/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer"
-  )
+  .readFileSync("sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
   .toString();
 const xml2js = require("xml2js");
 var builder = new xml2js.Builder({
@@ -76,14 +72,13 @@ function getPayment(orderId, amount, currency) {
 
 function getRequest(orderId) {
   let xml = builder.buildObject(getPayment(orderId, 1, "RON"));
-  // console.log(xml);
-  return arc4.encrypt(publicKey, xml);
+  return rc4.encrypt(publicKey, xml);
 }
 
 function decodeResponse(data) {
   return new Promise(function (resolve, reject) {
     parser.parseString(
-      arc4.decrypt(privateKey, data.env_key, data.data),
+      rc4.decrypt(privateKey, data.env_key, data.data),
       function (err, result) {
         if (err) {
           reject(err);
@@ -94,7 +89,4 @@ function decodeResponse(data) {
   });
 }
 
-console.log(getRequest(123));
-// console.log("decode - ", decodeResponse(getRequest(123)));
-
-// export default getRequest;
+console.log(getRequest(111));

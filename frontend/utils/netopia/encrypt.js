@@ -1,7 +1,6 @@
 "use strict";
-
 const crypto = require("crypto");
-const arc4 = require("arc4");
+const rc4 = require("arc4");
 
 const constants = require("constants");
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
 
 function encrypt(publicKey, data) {
   let key = crypto.randomBytes(32);
-  var cipher = arc4("arc4", key);
+  var cipher = rc4("arc4", key);
   let encrypted = cipher.encode(data, "binary", "base64");
 
   let envKey = crypto.publicEncrypt(
@@ -36,7 +35,7 @@ function decrypt(privateKey, envKey, data) {
     },
     buffer
   );
-  var cipher = arc4("arc4", decrypted);
+  var cipher = rc4("arc4", decrypted);
   let dec = cipher.decode(Buffer.from(data, "base64"), "utf8");
   return dec;
 }
