@@ -1,6 +1,6 @@
 import Database from "../Database";
-
-const netopia = require("../netopia");
+import { getRequest, decodeResponse } from "../netopia/indexes6";
+// const netopia = require("../netopia");
 
 export const checkIfIDExists = async (id) => {
   const database = new Database();
@@ -103,11 +103,12 @@ export const sendOrderToDatabase = async (formData) => {
 
   // console.log("netopia - ", getRequest(values["id"]));
   // return 0;
-  const getNetopiaData = netopia.getRequest(
+  const getNetopiaData = getRequest(
     values["id"],
     values["order_total"],
     // values["currency"]
-    "EUR"
+    "EUR",
+    formData
   );
   console.log("netopia - ", getNetopiaData);
   // console.log("netopia Request - ", await sendPostRequest(getNetopiaData));
