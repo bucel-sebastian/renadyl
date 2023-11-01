@@ -89,4 +89,4 @@ function decodeResponse(data) {
   });
 }
 
-console.log(getRequest(1111));
+console.log("run on build - ", getRequest(1111));
