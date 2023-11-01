@@ -35,7 +35,7 @@ function getPayment(orderId, amount, currency) {
       signature: "2VZR-GOQH-7A8W-VLRB-UOOW",
       url: {
         return: "https://www.google.ro",
-        confirm: "https://www.google.ro",
+        confirm: "https://www.google.com",
       },
       invoice: {
         $: {
@@ -70,8 +70,8 @@ function getPayment(orderId, amount, currency) {
   };
 }
 
-function getRequest(orderId) {
-  let xml = builder.buildObject(getPayment(orderId, 1, "RON"));
+function getRequest(orderId, amount, currency) {
+  let xml = builder.buildObject(getPayment(orderId, amount, currency));
   return rc4.encrypt(publicKey, xml);
 }
 

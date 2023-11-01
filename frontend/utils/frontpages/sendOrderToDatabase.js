@@ -1,5 +1,6 @@
 import Database from "../Database";
-import { getRequest } from "../netopia";
+
+const netopia = require("../netopia");
 
 export const checkIfIDExists = async (id) => {
   const database = new Database();
@@ -91,8 +92,8 @@ export const sendOrderToDatabase = async (formData) => {
   values["product_totals"] = formData.orderData.products;
   values["order_promotion"] = formData.orderData.promo;
   values["order_total"] = formData.orderData.total;
-  values["promo_code"] = formData.promocodeData.code;
-  values["promo_code_details"] = formData.promocodeData;
+  values["promo_code"] = formData?.promocodeData?.code;
+  values["promo_code_details"] = formData?.promocodeData;
   values["status"] = "1";
 
   console.log("values", values);
@@ -102,9 +103,36 @@ export const sendOrderToDatabase = async (formData) => {
 
   // console.log("netopia - ", getRequest(values["id"]));
   // return 0;
-  const getNetopiaData = getRequest(111);
+  const getNetopiaData = netopia.getRequest(
+    values["id"],
+    values["order_total"],
+    // values["currency"]
+    "EUR"
+  );
   console.log("netopia - ", getNetopiaData);
+  // console.log("netopia Request - ", await sendPostRequest(getNetopiaData));
   return getNetopiaData;
+};
+
+const sendPostRequest = async (netopiaData) => {
+  const response = await fetch("https://sandboxsecure.mobilpay.ro", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      env_key: netopiaData?.env_key,
+      data: netopiaData?.data,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.text();
+
+  return JSON.stringify(response, null, 4);
 };
 
 const obj = {

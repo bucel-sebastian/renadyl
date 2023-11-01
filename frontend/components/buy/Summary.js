@@ -10,6 +10,7 @@ import Image from "next/image";
 
 import { FaXmark } from "react-icons/fa6";
 import Link from "next-intl/link";
+import RedirectToPayment from "./RedirectToPayment";
 
 function Summary() {
   const router = useRouter();
@@ -18,7 +19,7 @@ function Summary() {
 
   console.log(checkoutData);
 
-  const [promocode, setPromocode] = useState(null);
+  const [promocode, setPromocode] = useState("");
   const [promocodeData, setPromocodeData] = useState(null);
   const [promocodeError, setPromocodeError] = useState(false);
 
@@ -51,6 +52,10 @@ function Summary() {
       promocode: 0,
     },
   });
+
+  const [havePaymentData, setHavePaymentData] = useState(false);
+  const [netopiaEnvKey, setNetopiaEnvKey] = useState(null);
+  const [netopiaData, setNetopiaData] = useState(null);
 
   const t = useTranslations("Order-summary");
 
@@ -198,10 +203,21 @@ function Summary() {
       body: JSON.stringify(formData),
     });
 
+    console.log("response - ", response);
+
     if (response.ok) {
       const responseJson = await response.json();
+      console.log("response", responseJson.body);
       const body = await responseJson.body;
-      console.log(body);
+      console.log("body", body);
+      const { env_key, data } = await body;
+      // co;
+      console.log("env si data", env_key, data);
+      if (env_key !== null && data !== null) {
+        setNetopiaEnvKey(env_key);
+        setNetopiaData(data);
+        setHavePaymentData(true);
+      }
     }
   };
 
@@ -369,6 +385,14 @@ function Summary() {
                   {t("place-order")}
                 </button>
               </form>
+              {havePaymentData ? (
+                <RedirectToPayment
+                  netopiaEnvKey={netopiaEnvKey}
+                  netopiaData={netopiaEnvKey}
+                />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>
