@@ -34,7 +34,7 @@ export const sendOrderToDatabase = async (formData) => {
 
   values["date"] = new Date().toISOString();
 
-  values["id"] = await generateUniqID();
+  // values["id"] = await generateUniqID();
   values["doctor"] = formData.checkoutData.doctor;
   values["client_details"] = {
     fname: formData.checkoutData.shipping.fname,
