@@ -98,16 +98,18 @@ export const sendOrderToDatabase = async (formData) => {
 
   console.log("values", values);
 
-  const response = await database.insert("renadyl_orders", values);
-  console.log("db response - ", response);
+  // const response = await database.insert("renadyl_orders", values);
+  // console.log("db response - ", response);
 
   // console.log("netopia - ", getRequest(values["id"]));
   // return 0;
   const getNetopiaData = getRequest(
-    values["id"],
-    values["order_total"],
+    // values["id"],
+    // values["order_total"],
     // values["currency"]
-    "EUR",
+    "0001",
+    "100",
+    "RON",
     formData
   );
   console.log("netopia - ", getNetopiaData);
