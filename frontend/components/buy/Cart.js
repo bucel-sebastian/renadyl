@@ -57,7 +57,6 @@ function Cart({ currentLocale }) {
       },
     });
     const data = await response.json();
-
     await setProductData({
       currency: data.body[0].currency,
       price: data.body[0].price,
@@ -65,6 +64,9 @@ function Cart({ currentLocale }) {
       salePrice: data.body[0].sale_price,
       salePercentage: data.body[0].sale_percentage,
       saleValue: data.body[0].sale_value,
+      bundleSaleValue: data.body[0].bundle_sale_value,
+      bundleQuantity: data.body[0].bundle_quantity,
+      bundlePercentage: data.body[0].bundle_sale_percentage,
     });
   };
 
@@ -88,7 +90,7 @@ function Cart({ currentLocale }) {
           <>
             <h1 className="text-3xl font-bold mb-4 px-2">Coșul meu</h1>
             <div className="h-[200px] flex justify-center items-center content-center">
-              <span class="loader"></span>
+              <span className="loader"></span>
             </div>
           </>
         ) : cartQuantity > 0 ? (
@@ -96,6 +98,11 @@ function Cart({ currentLocale }) {
             <div className="flex flex-row gap-4 h-full">
               <div className="w-2/3 ">
                 <h1 className="text-3xl font-bold mb-4 px-2">Coșul meu</h1>
+                <div className="before:rounded-xl relative w-full flex flex-row  flex items-center content-center justify-center bg-backgroundPrimary p-1 z-10 before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-r before:z-0 before:from-gradientGreen before:to-gradientPurple ">
+                  <div className="relative z-10 p-2 bg-backgroundPrimary content-['']  rounded-lg w-full h-full ">
+                    <h2 className="text-center w-full">{t("promo-bundle")}</h2>
+                  </div>
+                </div>
                 <div className="w-full flex flex-row max-md:flex-col">
                   <div className="w-1/3 p-2 max-md:p-0 max-md:w-full max-md:mx-auto max-md:max-w-[300px]">
                     <Image
@@ -199,17 +206,71 @@ function Cart({ currentLocale }) {
                         {productData.currency}{" "}
                       </td>
                     </tr>
+                    {cartQuantity >= productData.bundleQuantity ? (
+                      <>
+                        <tr>
+                          <td className="">
+                            {t("product-sale-economy-bundle")}
+                          </td>
+                          <td className=" text-right">
+                            {cartQuantity *
+                              (productData.bundlePercentage
+                                ? parseInt(
+                                    productData.onSale
+                                      ? productData.salePrice
+                                      : productData.price
+                                  ) -
+                                  (parseInt(
+                                    productData.onSale
+                                      ? productData.salePrice
+                                      : productData.price
+                                  ) *
+                                    productData.bundleSaleValue) /
+                                    100
+                                : productData.bundleSaleValue)}{" "}
+                            {productData.currency}{" "}
+                          </td>
+                        </tr>
+                      </>
+                    ) : (
+                      <></>
+                    )}
                   </tbody>
                 </table>
 
                 <h3 className="w-full text-right text-2xl font-bold">Total</h3>
                 <h3 className="w-full text-right text-2xl font-bold">
-                  {parseInt(cartQuantity) *
+                  {cartQuantity *
+                    (cartQuantity >= productData.bundleQuantity
+                      ? productData.bundlePercentage
+                        ? parseInt(
+                            productData.onSale
+                              ? productData.salePrice
+                              : productData.price
+                          ) -
+                          (parseInt(
+                            productData.onSale
+                              ? productData.salePrice
+                              : productData.price
+                          ) *
+                            productData.bundleSaleValue) /
+                            100
+                        : parseInt(
+                            productData.onSale
+                              ? productData.salePrice
+                              : productData.price
+                          ) - productData.bundleSaleValue
+                      : parseInt(
+                          productData.onSale
+                            ? productData.salePrice
+                            : productData.price
+                        ))}
+                  {/* {parseInt(cartQuantity) *
                     parseInt(
                       productData.onSale
                         ? productData.salePrice
                         : productData.price
-                    )}{" "}
+                    )}{" "} */}{" "}
                   {productData.currency}
                 </h3>
                 <Link

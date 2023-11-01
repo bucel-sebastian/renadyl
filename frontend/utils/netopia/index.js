@@ -10,10 +10,10 @@ const crypto = require("crypto");
 const rc4 = require("./encrypt.js");
 const fs = require("fs");
 const privateKey = fs
-  .readFileSync("live.JM4B-T2Q5-67WU-EEUH-8C4L.public.cer")
+  .readFileSync("live.2VZR-GOQH-7A8W-VLRB-UOOWprivate.key")
   .toString();
 const publicKey = fs
-  .readFileSync("live.JM4B-T2Q5-67WU-EEUH-8C4L.public.cer")
+  .readFileSync("live.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
   .toString();
 const xml2js = require("xml2js");
 var builder = new xml2js.Builder({
@@ -32,7 +32,7 @@ function getPayment(orderId, amount, currency) {
         timestamp: date.getTime(),
         type: "card",
       },
-      signature: "JM4B-T2Q5-67WU-EEUH-8C4L",
+      signature: "2VZR-GOQH-7A8W-VLRB-UOOW",
       url: {
         return: "https://www.google.ro",
         confirm: "https://www.google.ro",
@@ -72,6 +72,7 @@ function getPayment(orderId, amount, currency) {
 
 function getRequest(orderId) {
   let xml = builder.buildObject(getPayment(orderId, 1, "RON"));
+  // console.log(xml);
   return rc4.encrypt(publicKey, xml);
 }
 
@@ -89,4 +90,7 @@ function decodeResponse(data) {
   });
 }
 
-console.log(getRequest(111));
+console.log(getRequest(123));
+// console.log("decode - ", decodeResponse(getRequest(123)));
+
+// export default getRequest;

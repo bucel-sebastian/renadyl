@@ -213,6 +213,7 @@
         }
     },
     "Cart": {
+        "page-title": "Coș de cumpărături",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",
@@ -224,7 +225,9 @@
         "product-price": "Preț",
         "quantity-label": "Cantitatea",
         "product-sale-economy": "Ați economisit",
-        "product-details-loading": "Se încarcă"
+        "product-sale-economy-bundle": "Reducere bundle",
+        "product-details-loading": "Se încarcă",
+        "promo-bundle": "Achiziționați 3 sau mai multe flacoane și beneficiați de o reducere suplimentară!"
     },
     "Checkout": {
         "page-title": "Checkout",
@@ -234,6 +237,7 @@
         "section-3-title": "Detalii de facturare",
         "is-already-client": "Sunt deja client",
         "is-new-client": "Sunt client nou",
+        "promo-account": "Utilizatorii autentificati beneficiază de trasport gratuit",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",
@@ -334,18 +338,27 @@
     },
     "Order-summary": {
         "page-title": "Sumar comandă",
+        "product-name": "Renadyl™ - Supliment alimentar",
+        "product-unit": "buc.",
+        "product-desc": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții. Este alcătuit din trei tulpini patentate de bacterii probiotice, care utilizează deșeurile azotoase ca hrană. ",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",
             "step-3": "Sumar comandă",
             "step-4": "Comandă plasată"
         },
+        "promocode-label": "Cod de reducere",
+        "promocode-ph": "Introdu codul de reducere",
+        "promocode-btn": "Aplică",
+        "promocode-form-error": "Codul introdus este greșit",
         "title": "Sumar comandă",
         "total-products": "Cost produse",
         "total-shipping": "Cost livrare",
+        "total-promocode": "Reducere cod promoțional",
+        "total-bundle-sale": "Reducere bundle",
         "total-order": "Total",
-        "tc-1": "",
-        "tc-2": "",
+        "tc-1": "Sunt de acord cu ",
+        "tc-2": "Termenii și condițiile",
         "place-order": "Plasează comanda"
     },
     "Order-placed": {

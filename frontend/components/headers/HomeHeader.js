@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next-intl/link";
 
-import { useTranslations } from "next-intl";
+import { NextIntlClientProvider, useTranslations } from "next-intl";
 
 import renadylLogo from "@/public/renadyl_logo.svg";
 import renadylLogoWhite from "@/public/renadyl_logo_white.svg";
@@ -226,7 +226,9 @@ function HomeHeader({ currentLocale }) {
         </div>
         <div className="w-1/5 flex row justify-end gap-4 max-md:hidden">
           <div>
+            {/* <NextIntlClientProvider locale={currentLocale}> */}
             <CartBtn currentLocale={currentLocale} />
+            {/* </NextIntlClientProvider> */}
           </div>
           <div>
             <Link

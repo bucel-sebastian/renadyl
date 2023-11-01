@@ -81,7 +81,6 @@ function CheckoutNotLoggedIn() {
       shippingService: "",
       shippingCost: "",
       productsCost: "",
-      currency: "",
     },
   });
 
@@ -214,6 +213,9 @@ function CheckoutNotLoggedIn() {
       salePrice: data.body[0].sale_price,
       salePercentage: data.body[0].sale_percentage,
       saleValue: data.body[0].sale_value,
+      bundleSaleValue: data.body[0].bundle_sale_value,
+      bundleQuantity: data.body[0].bundle_quantity,
+      bundlePercentage: data.body[0].bundle_sale_percentage,
     });
   };
 
@@ -228,6 +230,15 @@ function CheckoutNotLoggedIn() {
   useEffect(() => {
     if (productData.price) {
       setProductDetailsLoading(false);
+      setcheckoutFormData((prevData) => {
+        const updatedData = { ...prevData };
+        console.log("before", prevData);
+
+        updatedData["order"]["productData"] = productData;
+
+        console.log(updatedData);
+        return updatedData;
+      });
     }
   }, [productData]);
 
@@ -444,10 +455,10 @@ function CheckoutNotLoggedIn() {
   };
 
   const initSamedayLocker = () => {
-    const clientId = "5dbfed90-acb7-4708-9827-1fb06527a3c1";
+    const clientId = process.env.SAMEDAY_EASYBOX_PLUGIN_CLIENTID;
     const countryCode = "RO";
     const langCode = "ro";
-    const apiUsername = "healthymedicalAPI";
+    const apiUsername = process.env.SAMEDAY_API_PASSWORD;
     window.LockerPlugin.init({
       clientId: clientId,
       countryCode: countryCode,
@@ -459,6 +470,27 @@ function CheckoutNotLoggedIn() {
   const handleSameDayLockerSelect = (msg) => {
     setSamedayLockerMsg(msg);
     console.log("Sameday Easybox plugin response: ", msg);
+    setcheckoutFormData((prevData) => {
+      const updatedData = { ...prevData };
+
+      updatedData["shipping"]["easybox"] = msg;
+
+      console.log(updatedData);
+
+      return updatedData;
+    });
+    // RESPONSE {
+    //     "lockerId": 1150,
+    //     "name": "easybox Canal S",
+    //     "address": "Str. Zorelelor, Nr. 45-47",
+    //     "cityId": 9384,
+    //     "city": "Constanta",
+    //     "countyId": 15,
+    //     "county": "Constanta",
+    //     "supportedPayment": 1,
+    //     "postalCode": "900553"
+    // }
+
     samedayLockerInstance.close();
   };
   const openSamedayLockerMap = (event) => {
@@ -544,6 +576,14 @@ function CheckoutNotLoggedIn() {
             >
               {t("is-new-client")}
             </button>
+          </div>
+        </section>
+
+        <section className="relative max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max overflow-hidden ">
+          <div className="relative w-full flex flex-row  flex items-center content-center justify-center bg-backgroundPrimary p-1 z-10 before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-r before:z-0 before:from-gradientGreen before:to-gradientPurple ">
+            <div className="relative z-10 p-6 bg-backgroundPrimary content-['']  rounded-lg w-full h-full ">
+              <h2 className="text-center w-full">{t("promo-account")}</h2>
+            </div>
           </div>
         </section>
 

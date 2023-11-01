@@ -56,7 +56,12 @@ CREATE TABLE
         sale_price varchar(100),
         sale_value varchar(100),
         sale_percentage bool,
+        bundle_quantity int DEFAULT 0,
+        bundle_sale_price varchar(100),
+        bundle_sale_value varchar(100),
+        bundle_sale_percentage bool,
         currency varchar(100) NOT NULL,
+        vat int DEFAULT 0,
         change_date timestamp without time zone NOT NULL,
         CONSTRAINT renadyl_product_data_pkey PRIMARY KEY (id)
     )
