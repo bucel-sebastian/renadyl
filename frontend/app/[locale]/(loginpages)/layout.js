@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { notFound, redirect } from "next/navigation";
 import LoginHeader from "@/components/headers/LoginHeader";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 const sofiaSans = Sofia_Sans({
   variable: "--font-sofia-sans",
