@@ -10,10 +10,10 @@ const crypto = require("crypto");
 const rc4 = require("./encrypt.js");
 const fs = require("fs");
 const privateKey = fs
-  .readFileSync("sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
+  .readFileSync("./public/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
   .toString();
 const publicKey = fs
-  .readFileSync("sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
+  .readFileSync("./public/sandbox.2VZR-GOQH-7A8W-VLRB-UOOW.public.cer")
   .toString();
 const xml2js = require("xml2js");
 var builder = new xml2js.Builder({
