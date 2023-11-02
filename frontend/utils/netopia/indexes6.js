@@ -57,10 +57,10 @@ function getPayment(orderId, amount, currency, orderData) {
         timestamp: date.getTime(),
         type: "card",
       },
-      signature: signature,
+      signature: "JM4B-T2Q5-67WU-EEUH-8C4L",
       url: {
         return: "https://www.google.ro",
-        confirm: "https://www.google.com",
+        confirm: "https://www.google.ro",
       },
       invoice: {
         $: {
