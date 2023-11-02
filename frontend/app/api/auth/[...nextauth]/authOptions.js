@@ -7,7 +7,6 @@ import { checkLoginDetails } from "@/utils/user/auth/login";
 import { checkAdminLoginDetails } from "@/utils/admin/auth/login";
 
 export const authOptions = {
-  secret: "123AUTH1234SECRET123",
   session: {
     strategy: "jwt",
   },
