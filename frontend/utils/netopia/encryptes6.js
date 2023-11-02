@@ -4,7 +4,7 @@ import crypto from "crypto";
 import rc4 from "arc4";
 import { RSA_PKCS1_PADDING } from "constants";
 
-export function encrypt(publicKey, data) {
+rc4.encrypt = function (publicKey, data) {
   let key = crypto.randomBytes(32);
   var cipher = rc4("arc4", key);
   let encrypted = cipher.encode(data, "binary", "base64");
@@ -16,13 +16,14 @@ export function encrypt(publicKey, data) {
     },
     key
   );
+  console.log("RSA THING ", RSA_PKCS1_PADDING);
   return {
     env_key: envKey.toString("base64"),
     data: encrypted,
   };
-}
+};
 
-export function decrypt(privateKey, envKey, data) {
+rc4.decrypt = function (privateKey, envKey, data) {
   let buffer = Buffer.from(envKey, "base64");
   var decrypted = crypto.privateDecrypt(
     {
@@ -34,4 +35,6 @@ export function decrypt(privateKey, envKey, data) {
   var cipher = rc4("arc4", decrypted);
   let dec = cipher.decode(buffer.from(data, "base64"), "utf8");
   return dec;
-}
+};
+
+export default rc4;

@@ -112,8 +112,12 @@ export const sendOrderToDatabase = async (formData) => {
     "RON",
     formData
   );
+
   console.log("netopia - ", getNetopiaData);
   // console.log("netopia Request - ", await sendPostRequest(getNetopiaData));
+
+  console.log(decodeResponse(getNetopiaData));
+
   return getNetopiaData;
 };
 
