@@ -1,6 +1,6 @@
 import Database from "../Database";
-import { getRequest, decodeResponse } from "../netopia/indexes6";
-// const netopia = require("../netopia");
+
+// const index = require("../netopia/index.js");
 
 export const checkIfIDExists = async (id) => {
   const database = new Database();
@@ -34,7 +34,7 @@ export const sendOrderToDatabase = async (formData) => {
 
   values["date"] = new Date().toISOString();
 
-  // values["id"] = await generateUniqID();
+  values["id"] = await generateUniqID();
   values["doctor"] = formData.checkoutData.doctor;
   values["client_details"] = {
     fname: formData.checkoutData.shipping.fname,
@@ -96,29 +96,22 @@ export const sendOrderToDatabase = async (formData) => {
   values["promo_code_details"] = formData?.promocodeData;
   values["status"] = "1";
 
-  console.log("values", values);
+  // console.log("values", values);
 
-  // const response = await database.insert("renadyl_orders", values);
+  const response = await database.insert("renadyl_orders", values);
+
+  return response;
   // console.log("db response - ", response);
 
   // console.log("netopia - ", getRequest(values["id"]));
-  // return 0;
-  const getNetopiaData = getRequest(
-    // values["id"],
-    // values["order_total"],
-    // values["currency"]
-    "0001",
-    "100",
-    "RON",
-    formData
-  );
-
-  console.log("netopia - ", getNetopiaData);
   // console.log("netopia Request - ", await sendPostRequest(getNetopiaData));
 
-  console.log(decodeResponse(getNetopiaData));
+  // console.log(decodeResponse(getNetopiaData));
 
-  return getNetopiaData;
+  console.log("Netopia Request - ", index.getRequest(111));
+  return index.getRequest(111);
+
+  // return getNetopiaData;
 };
 
 const sendPostRequest = async (netopiaData) => {

@@ -1,10 +1,14 @@
 "use strict";
+const crypto = require("crypto");
+const rc4 = require("arc4");
 
-import crypto from "crypto";
-import rc4 from "arc4";
-import { RSA_PKCS1_PADDING } from "constants";
+const constants = require("constants");
+module.exports = {
+  encrypt: encrypt,
+  decrypt: decrypt,
+};
 
-rc4.encrypt = function (publicKey, data) {
+function encrypt(publicKey, data) {
   let key = crypto.randomBytes(32);
   var cipher = rc4("arc4", key);
   let encrypted = cipher.encode(data, "binary", "base64");
@@ -12,29 +16,26 @@ rc4.encrypt = function (publicKey, data) {
   let envKey = crypto.publicEncrypt(
     {
       key: publicKey,
-      padding: RSA_PKCS1_PADDING,
+      padding: constants.RSA_PKCS1_PADDING,
     },
     key
   );
-  console.log("RSA THING ", RSA_PKCS1_PADDING);
   return {
     env_key: envKey.toString("base64"),
     data: encrypted,
   };
-};
+}
 
-rc4.decrypt = function (privateKey, envKey, data) {
+function decrypt(privateKey, envKey, data) {
   let buffer = Buffer.from(envKey, "base64");
   var decrypted = crypto.privateDecrypt(
     {
       key: privateKey,
-      padding: RSA_PKCS1_PADDING,
+      padding: constants.RSA_PKCS1_PADDING,
     },
     buffer
   );
   var cipher = rc4("arc4", decrypted);
-  let dec = cipher.decode(buffer.from(data, "base64"), "utf8");
+  let dec = cipher.decode(Buffer.from(data, "base64"), "utf8");
   return dec;
-};
-
-export default rc4;
+}

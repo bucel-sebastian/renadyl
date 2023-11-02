@@ -195,6 +195,7 @@ function Summary() {
     formData["promocodeData"] = promocodeData;
     formData["cartQuantity"] = cartQuantity;
 
+    console.log("formData", formData);
     const response = await fetch("/api/place-order", {
       method: "POST",
       headers: {
@@ -203,15 +204,12 @@ function Summary() {
       body: JSON.stringify(formData),
     });
 
-    console.log("response - ", response);
-
     if (response.ok) {
       const responseJson = await response.json();
       console.log("response", responseJson.body);
       const body = await responseJson.body;
       console.log("body", body);
-      const { env_key, data } = await body;
-      // co;
+      const { env_key, data } = await body.paymentData;
       console.log("env si data", env_key, data);
       if (env_key !== null && data !== null) {
         setNetopiaEnvKey(env_key);

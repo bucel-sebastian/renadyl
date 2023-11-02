@@ -20,7 +20,6 @@ function encrypt(publicKey, data) {
     },
     key
   );
-  console.log("RSA THING", constants.RSA_PKCS1_PADDING);
   return {
     env_key: envKey.toString("base64"),
     data: encrypted,

@@ -61,10 +61,14 @@ function getPayment(orderId, amount, currency, orderData) {
         timestamp: date.getTime(),
         type: "card",
       },
+<<<<<<< HEAD
       signature: "2VZR-GOQH-7A8W-VLRB-UOOW",
+=======
+      signature: signature,
+>>>>>>> parent of e9f6205 (try fix signature)
       url: {
         return: "https://www.google.ro",
-        confirm: "https://www.google.ro",
+        confirm: "https://www.google.com",
       },
       invoice: {
         $: {
