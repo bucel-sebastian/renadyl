@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(req, res) {
   const paymentData = await req;
 
+  console.log(paymentData);
   try {
     const {
       decodeResponse,
