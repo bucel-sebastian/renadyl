@@ -8,7 +8,13 @@ export async function POST(req, res) {
   try {
     const databaseResponse = await sendOrderToDatabase(formData);
     const { getRequest } = require("@/utils/frontpages/netopia/getPaymentData");
-    const getPaymentData = await getRequest(111);
+
+    const getPaymentData = await getRequest(
+      databaseResponse[0].id,
+      databaseResponse[0].order_total,
+      databaseResponse[0].currency,
+      formData
+    );
 
     responseData["databaseResponse"] = await databaseResponse;
     responseData["paymentData"] = await getPaymentData;

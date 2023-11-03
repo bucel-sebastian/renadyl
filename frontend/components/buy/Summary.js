@@ -210,7 +210,8 @@ function Summary() {
       const body = await responseJson.body;
       console.log("body", body);
       const { env_key, data } = await body.paymentData;
-      console.log("env si data", env_key, data);
+      console.log("env ", env_key);
+      console.log(" data", data);
       if (env_key !== null && data !== null) {
         setNetopiaEnvKey(env_key);
         setNetopiaData(data);
@@ -386,7 +387,7 @@ function Summary() {
               {havePaymentData ? (
                 <RedirectToPayment
                   netopiaEnvKey={netopiaEnvKey}
-                  netopiaData={netopiaEnvKey}
+                  netopiaData={netopiaData}
                 />
               ) : (
                 <></>

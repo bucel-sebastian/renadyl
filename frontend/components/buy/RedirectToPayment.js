@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 function RedirectToPayment({ netopiaEnvKey, netopiaData }) {
   useEffect(() => {
     document.getElementById("netopiaDataFrom").submit();
+    console.log("din redirect env", netopiaEnvKey);
+    console.log("din redirect data", netopiaData);
   }, []);
   return (
     <>
