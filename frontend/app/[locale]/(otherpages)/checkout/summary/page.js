@@ -11,10 +11,10 @@ import {
   FaMoneyBills,
   FaFileInvoiceDollar,
 } from "react-icons/fa6";
-import ShippingBox from "@/components/buy/checkout/order-summary/ShippingBox";
-import BillingBox from "@/components/buy/checkout/order-summary/BillingBox";
-import PaymentBox from "@/components/buy/checkout/order-summary/PaymentBox";
-import OrderSummaryBox from "@/components/buy/checkout/order-summary/OrderSummaryBox";
+import ShippingBox from "@/components/buy/order-summary/ShippingBox";
+import BillingBox from "@/components/buy/order-summary/BillingBox";
+import PaymentBox from "@/components/buy/order-summary/PaymentBox";
+import OrderSummaryBox from "@/components/buy/order-summary/OrderSummaryBox";
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Order-summary");
