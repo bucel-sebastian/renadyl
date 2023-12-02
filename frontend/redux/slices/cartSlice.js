@@ -5,7 +5,7 @@ const cartSlice = createSlice({
   initialState: {
     cart: [],
     checkoutData: {
-      promocode: {},
+      promocode: null,
       shipping: {},
       billing: {},
       order: {},
