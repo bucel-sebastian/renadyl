@@ -28,6 +28,3 @@ function ShippingBox() {
 }
 
 export default ShippingBox;
-
-
-2caa1e06428fa784a68b799c6a42bcb81545f1a2
