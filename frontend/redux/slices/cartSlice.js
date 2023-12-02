@@ -5,12 +5,12 @@ const cartSlice = createSlice({
   initialState: {
     cart: [],
     checkoutData: {
-      promocode: null,
-      shipping: null,
-      billing: null,
-      order: null,
-      doctor: null,
-      payment: null,
+      promocode: {},
+      shipping: {},
+      billing: {},
+      order: {},
+      doctor: {},
+      payment: {},
     },
   },
   reducers: {
