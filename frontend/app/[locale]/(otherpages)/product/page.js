@@ -16,6 +16,7 @@ import renadylPill from "@/public/images/renadyl_pill.svg";
 import renadylStomach from "@/public/images/renadyl_stomach.svg";
 import ProductImageSlider from "@/components/ProductImageSlider";
 import AddToCartButton from "@/components/buy/AddToCartButton";
+import { Suspense } from "react";
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Product");
@@ -47,6 +48,7 @@ export default function Product({ params: { locale } }) {
               <p className="text-justify mb-4">
                 {t("hero-section.product-desc")}
               </p>
+
               <NextIntlClientProvider locale={locale} messages={messages}>
                 <AddToCartButton />
               </NextIntlClientProvider>

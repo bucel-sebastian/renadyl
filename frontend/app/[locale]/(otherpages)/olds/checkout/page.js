@@ -1,12 +1,15 @@
 import { getTranslator } from "next-intl/server";
+import Image from "next/image";
+
+import img1 from "@/public/images/product_image_1.png";
+import BuyContainer from "@/components/buy/BuyContainer";
 import {
-  Link,
   NextIntlClientProvider,
   useMessages,
   useTranslations,
 } from "next-intl";
 import Checkout from "@/components/buy/checkout/Checkout";
-import LinkWithRef from "next-intl/link";
+// import CheckoutNotLoggedIn from "@/components/buy/CheckoutNotLoggedIn";
 
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Checkout");
@@ -26,22 +29,22 @@ export default function CheckoutPage({ params: { locale } }) {
 
   const t = useTranslations("Checkout");
 
+  console.log("locale si mesaje din page", locale, messages);
+
   return (
-    <main className="relative block pt-[90px] text-lg min-h-screen h-full checkout-background pb-12">
-      <div className="relative flex flex-row items-center content-center justify-center mb-8 z-10">
-        <Link href="/cart" locale={locale}>
-          <div className="relative text-xl relative flex justify-center ">
-            <span className="relative flex items-center content-center justify-center bg-backgroundPrimary w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full ">
-              1
-            </span>
-            <span className="absolute top-full text-sm text-center w-max">
-              {t("order-steps.step-1")}
-            </span>
-          </div>
-        </Link>
+    <main className="block pt-[90px] text-lg">
+      <div className="flex flex-row items-center content-center justify-center mb-8">
+        <div className="text-xl relative flex justify-center">
+          <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full">
+            1
+          </span>
+          <span className="absolute top-full text-sm text-center w-max">
+            {t("order-steps.step-1")}
+          </span>
+        </div>
         <div className="w-[100px] h-[2px] bg-gradientGreen"></div>
         <div className="text-xl relative flex justify-center">
-          <span className="relative flex items-center content-center justify-center bg-backgroundPrimary w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full ">
+          <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full">
             2
           </span>
           <span className="absolute top-full text-sm text-center w-max">
@@ -50,7 +53,7 @@ export default function CheckoutPage({ params: { locale } }) {
         </div>
         <div className="w-[100px] h-[2px] bg-foregroundPrimary20"></div>
         <div className="text-xl relative flex justify-center">
-          <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-foregroundPrimary30 rounded-full bg-backgroundPrimary">
+          <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-foregroundPrimary30 rounded-full">
             3
           </span>
           <span className="absolute top-full text-sm text-center w-max">
@@ -59,7 +62,7 @@ export default function CheckoutPage({ params: { locale } }) {
         </div>
         <div className="w-[100px] h-[2px] bg-foregroundPrimary20"></div>
         <div className="text-xl relative flex justify-center">
-          <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-foregroundPrimary30 rounded-full bg-backgroundPrimary">
+          <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-foregroundPrimary30 rounded-full">
             4
           </span>
           <span className="absolute top-full text-sm text-center w-max">
@@ -67,9 +70,8 @@ export default function CheckoutPage({ params: { locale } }) {
           </span>
         </div>
       </div>
-      <section className="block relative max-w-[1200px] w-full mx-auto z-10 max-[1200px]:px-2">
-        <Checkout locale={locale} messages={messages} />
-      </section>
+      {/* <Checkout locale={locale} messages={messages} /> */}
+      {/* <CheckoutNotLoggedIn /> */}
     </main>
   );
 }

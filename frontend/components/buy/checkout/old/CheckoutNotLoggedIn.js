@@ -4,7 +4,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import Link from "next-intl/link";
 
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
-import SelectInput from "../SelectInput";
+import SelectInput from "../../../SelectInput";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,14 +13,17 @@ import Script from "next/script";
 import { useRouter } from "next-intl/client";
 import PhoneInput from "react-phone-input-2";
 import { getSession, signIn } from "next-auth/react";
-
-import { setCheckoutInfo } from "@/redux/slices/checkoutInfoSlice";
+import { saveCheckoutData } from "@/redux/slices/cartSlice";
 
 function CheckoutNotLoggedIn() {
   const router = useRouter();
 
-  const { checkoutData } = useSelector((state) => state.checkoutData);
+  const { cart } = useSelector((state) => state.cart);
+  const { checkoutData } = useSelector((state) => state.cart);
+  console.log(checkoutData);
   const dispatch = useDispatch();
+
+  const [orderTotal, setTotalOrder] = useState(0);
 
   const [loginDetails, setLoginDetails] = useState({
     email: "",
@@ -82,6 +85,7 @@ function CheckoutNotLoggedIn() {
       shippingCost: "",
       productsCost: "",
     },
+    payment: "card",
   });
 
   const handlePhoneChange = (value, data, event, formattedValue) => {
@@ -107,24 +111,7 @@ function CheckoutNotLoggedIn() {
     });
   };
 
-  const [productDetailsLoading, setProductDetailsLoading] = useState(true);
-
   const [countryCode, setCountryCode] = useState(null);
-
-  const { cartQuantity } = useSelector((state) => state.cart);
-
-  if (cartQuantity === 0) {
-    router.push("/");
-  }
-
-  const [productData, setProductData] = useState({
-    currency: "",
-    price: "",
-    onSale: false,
-    salePrice: "",
-    salePercentage: false,
-    saleValue: "",
-  });
 
   const [shippingPrice, setShippingPrice] = useState(25);
 
@@ -197,28 +184,6 @@ function CheckoutNotLoggedIn() {
     setCountryCode(data.country_code);
   };
 
-  const getProductData = async (countryCode) => {
-    const response = await fetch(`/api/data/json/product/${countryCode}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-
-    await setProductData({
-      currency: data.body[0].currency,
-      price: data.body[0].price,
-      onSale: data.body[0].on_sale,
-      salePrice: data.body[0].sale_price,
-      salePercentage: data.body[0].sale_percentage,
-      saleValue: data.body[0].sale_value,
-      bundleSaleValue: data.body[0].bundle_sale_value,
-      bundleQuantity: data.body[0].bundle_quantity,
-      bundlePercentage: data.body[0].bundle_sale_percentage,
-    });
-  };
-
   useEffect(() => {
     getIpCountry();
   }, []);
@@ -226,21 +191,6 @@ function CheckoutNotLoggedIn() {
   useEffect(() => {
     if (countryCode !== null) getProductData(countryCode);
   }, [countryCode]);
-
-  useEffect(() => {
-    if (productData.price) {
-      setProductDetailsLoading(false);
-      setcheckoutFormData((prevData) => {
-        const updatedData = { ...prevData };
-        console.log("before", prevData);
-
-        updatedData["order"]["productData"] = productData;
-
-        console.log(updatedData);
-        return updatedData;
-      });
-    }
-  }, [productData]);
 
   useEffect(() => {
     const statesOfCountry = new Object();
@@ -361,11 +311,6 @@ function CheckoutNotLoggedIn() {
     }
   };
 
-  // const handleOrderSubmitButton = (e) => {
-  //   e.preventDefault();
-  //   console.log("S-a triggeruit order buton");
-  // };
-
   const handleCountryChange = (key, value) => {
     setCountryValue(value);
     setCountryKey(key);
@@ -454,6 +399,7 @@ function CheckoutNotLoggedIn() {
     setRoDeliveryType(type);
   };
 
+  // SAMEDAY LOCKER FUNCTIONS START
   const initSamedayLocker = () => {
     const clientId = process.env.SAMEDAY_EASYBOX_PLUGIN_CLIENTID;
     const countryCode = "RO";
@@ -504,6 +450,7 @@ function CheckoutNotLoggedIn() {
   useEffect(() => {
     if (samedayLockerInstance !== null) setSamedayLockerInstanceLoading(false);
   }, [samedayLockerInstance]);
+  // SAMEDAY LOCKER FUNCTIONS END
 
   const changeBillingDetailsAsShipping = (value) => {
     setcheckoutFormData((prevData) => {
@@ -533,11 +480,30 @@ function CheckoutNotLoggedIn() {
 
   const handleCheckoutSubmit = (e) => {
     e.preventDefault();
-    const formData = checkoutFormData;
-    dispatch(setCheckoutInfo(formData));
+    const formData = {
+      shipping: checkoutFormData.shipping,
+      billing: checkoutFormData.billing,
+      doctor: checkoutFormData.doctor,
+      order: {
+        shippingCost: shippingPrice,
+        orderTotal: orderTotal,
+      },
+    };
+    dispatch(saveCheckoutData(formData));
     router.push(`/checkout/summary`);
   };
 
+  const handleChangePaymentMethod = (e) => {
+    setcheckoutFormData((prevData) => {
+      const updatedData = { ...prevData };
+      updatedData.payment = e.target.value;
+      return updatedData;
+    });
+  };
+
+  useEffect(() => {
+    setTotalOrder(checkoutData.order.cartTotal + shippingPrice);
+  }, [shippingPrice]);
   return (
     <>
       <Suspense
@@ -715,13 +681,7 @@ function CheckoutNotLoggedIn() {
                         <label className="px-1 text-foregroundPrimary70">
                           {t("register-form.phone-label")}
                         </label>
-                        {/* <input
-                          placeholder={t("register-form.phone-ph")}
-                          type="number"
-                          name="shipping-phone"
-                          className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                          required
-                        /> */}
+
                         <PhoneInput
                           value={checkoutFormData.shipping.phone}
                           placeholder={t("register-form.phone-ph")}
@@ -1230,7 +1190,7 @@ function CheckoutNotLoggedIn() {
                                 </label>
                                 <input
                                   placeholder={t(
-                                    "billing-form.company-name-ph"
+                                    "bililling-form.company-name-ph"
                                   )}
                                   type="text"
                                   name="billing.companyName"
@@ -1377,14 +1337,80 @@ function CheckoutNotLoggedIn() {
                   )}
                 </div>
               </section>
-              <section className="relative block max-w-[1200px] w-full mx-auto mt-8 mb-12 h-max overflow-hidden">
-                <button
-                  type="submit"
-                  // onClick={handleFormSubmit}
-                  className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
-                >
-                  {t("next-step-btn")}
-                </button>
+              <section className="relative block max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max">
+                <div className="p-8 bg-backgroundPrimary rounded-xl">
+                  <h2 className="text-2xl">4. Metoda de plată</h2>
+                  <div>
+                    <label>
+                      <input
+                        type="radio"
+                        name="payment-method"
+                        checked={checkoutFormData.payment === "cash"}
+                        value="cash"
+                        onChange={handleChangePaymentMethod}
+                        disabled
+                      />
+                      Cash
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="payment-method"
+                        value="card"
+                        checked={checkoutFormData.payment === "card"}
+                        onChange={handleChangePaymentMethod}
+                      />
+                      Card
+                    </label>
+                  </div>
+                </div>
+              </section>
+              <section className="relative block max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max">
+                <div className="p-8 bg-backgroundPrimary rounded-xl">
+                  <h2 className="text-2xl">Sumar comanda</h2>
+
+                  <div className="flex flex-row mb-4 pb-2 border-b-[1px] border-b-foregroundPrimary20">
+                    <div className="w-1/2 flex items-end">
+                      <table className="w-full">
+                        <tbody>
+                          {cart.map((item) => (
+                            <tr>
+                              <td>
+                                {item.productName === "renal_single"
+                                  ? t("renal-single-short-name")
+                                  : t("renal-bundle-short-name")}
+                              </td>
+                              <td>
+                                {item.quantity} {t("product-unit")}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="w-1/2">
+                      <p className="text-right">
+                        {t("total-products")}: {checkoutData.order.cartTotal}{" "}
+                        {cart[0]?.currency}
+                      </p>
+
+                      <p className="text-right">
+                        {t("total-products")}: {shippingPrice}{" "}
+                        {cart[0]?.currency}
+                      </p>
+                      <h2 className="text-right text-2xl font-bold">
+                        {t("total-order")}: {orderTotal} {cart[0]?.currency}
+                      </h2>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    // onClick={handleFormSubmit}
+                    className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
+                  >
+                    {t("next-step-btn")}
+                  </button>
+                </div>
               </section>
             </form>
           </>

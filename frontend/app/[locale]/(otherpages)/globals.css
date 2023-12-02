@@ -264,3 +264,18 @@ body {
   }
 }
   
+
+
+
+.checkout-background::after{
+  content: "";
+  position: absolute;
+  top:0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  background-image: linear-gradient(45deg,#44EC9D,#7F5AF8) ;
+  mask-image: url('/images/pastilute_pattern.png');
+  z-index: 0;
+  opacity: 0.1;
+}

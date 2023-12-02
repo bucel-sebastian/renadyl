@@ -22,7 +22,7 @@ function SelectInput({
   const [inputFocused, setInputFocused] = useState(false);
 
   const handleInputChange = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setInputValue(event.target.value);
   };
 
@@ -119,7 +119,7 @@ function SelectInput({
         <FaAngleDown className="absolute right-2" />
       </div>
       <div
-        className={`absolute z-10 bg-backgroundPrimary flex-col w-full items-start mt-2 border-[1px] rounded-md border-foregroundPrimary40 shadow-md overflow-auto max-h-[220px] ${
+        className={`absolute z-50 bg-backgroundPrimary flex-col w-full items-start mt-2 border-[1px] rounded-md border-foregroundPrimary40 shadow-md overflow-auto max-h-[220px] ${
           isFocused ? "flex" : "hidden"
         }`}
       >

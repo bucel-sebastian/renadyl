@@ -1,0 +1,1196 @@
+{
+    "total": 13,
+    "currentPage": 1,
+    "pages": 1,
+    "perPage": 500,
+    "data": [
+        {
+            "id": 7,
+            "name": "24H",
+            "serviceCode": "24",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": true,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178367,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178368,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178369,
+                    "tax": 2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181647,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215079,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178364,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178365,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178366,
+                    "tax": 2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181646,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215078,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178370,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178371,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178372,
+                    "tax": 2.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197467,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215080,
+                    "tax": 0.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Retur Standard",
+            "serviceCode": "RS",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178367,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178368,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178369,
+                    "tax": 2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181647,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215079,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178364,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178365,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178366,
+                    "tax": 2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181646,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215078,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178370,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178371,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178372,
+                    "tax": 2.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197467,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215080,
+                    "tax": 0.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Locker Home Delivery",
+            "serviceCode": "LH",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178367,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178368,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178369,
+                    "tax": 2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181647,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215079,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178364,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178365,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178366,
+                    "tax": 2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181646,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215078,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178370,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178371,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178372,
+                    "tax": 2.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197467,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 215080,
+                    "tax": 0.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Locker NextDay",
+            "serviceCode": "LN",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 201957,
+                    "tax": -2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 201956,
+                    "tax": -2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 201958,
+                    "tax": -2.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "name": "Colet la schimb",
+            "serviceCode": "CS",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178376,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178377,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178378,
+                    "tax": 2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 193360,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178373,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178374,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178375,
+                    "tax": 2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 189264,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178379,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178380,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178381,
+                    "tax": 2.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197469,
+                    "tax": 0.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "name": "Retur Documente",
+            "serviceCode": "RD",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178376,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178377,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178378,
+                    "tax": 2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 193360,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178373,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178374,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178375,
+                    "tax": 2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 189264,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 178379,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 178380,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 178381,
+                    "tax": 2.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197469,
+                    "tax": 0.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "name": "Locker Retur",
+            "serviceCode": "LR",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181537,
+                    "tax": -1.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181536,
+                    "tax": -1.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197468,
+                    "tax": -1.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "name": "Crossborder HD 24H",
+            "serviceCode": "XB",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325294,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325295,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325296,
+                    "tax": 2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325301,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325304,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325291,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325292,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325293,
+                    "tax": 2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325300,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325303,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325297,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325298,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325299,
+                    "tax": 2.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325302,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325305,
+                    "tax": 0.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "name": "Crossborder Retur standard",
+            "serviceCode": "XS",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325294,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325295,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325296,
+                    "tax": 2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325301,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325304,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325291,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325292,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325293,
+                    "tax": 2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325300,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325303,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325297,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325298,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325299,
+                    "tax": 2.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325302,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325305,
+                    "tax": 0.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "name": "Crossborder Locker delivery",
+            "serviceCode": "XL",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181537,
+                    "tax": -1.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181536,
+                    "tax": -1.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197468,
+                    "tax": -1.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "name": "Crossborder Locker retur",
+            "serviceCode": "XR",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181537,
+                    "tax": -1.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181536,
+                    "tax": -1.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197468,
+                    "tax": -1.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "name": "Crossborder Locker HD",
+            "serviceCode": "XD",
+            "deliveryType": {
+                "id": 2,
+                "name": "NextDay"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325294,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325295,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325296,
+                    "tax": 2.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325301,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325304,
+                    "tax": 0.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325291,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325292,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325293,
+                    "tax": 2.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325300,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325303,
+                    "tax": 0.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Colet la schimb",
+                    "taxCode": "SWAP",
+                    "id": 325297,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Retur documente",
+                    "taxCode": "RDOC",
+                    "id": 325298,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Deschidere colet",
+                    "taxCode": "OPCG",
+                    "id": 325299,
+                    "tax": 2.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 325302,
+                    "tax": 0.0,
+                    "packageType": 2
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Produse din tutun",
+                    "taxCode": "TBC",
+                    "id": 325305,
+                    "tax": 0.0,
+                    "packageType": 2
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Locker Sameday",
+            "serviceCode": "LS",
+            "deliveryType": {
+                "id": 1,
+                "name": "Sameday"
+            },
+            "defaultServices": false,
+            "serviceOptionalTaxes": [
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181537,
+                    "tax": -1.0,
+                    "packageType": 1
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 181536,
+                    "tax": -1.0,
+                    "packageType": 0
+                },
+                {
+                    "costType": "Fix",
+                    "name": "Predare personala in punct fix",
+                    "taxCode": "PDO",
+                    "id": 197468,
+                    "tax": -1.0,
+                    "packageType": 2
+                }
+            ]
+        }
+    ]
+}

@@ -155,29 +155,6 @@ function Summary() {
 
     const formData = new Object();
     formData["code"] = promocode;
-
-    const response = await fetch("/api/check-promocode", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    if (response.ok) {
-      const responseJson = await response.json();
-      console.log("response JSON ", responseJson);
-      const body = await responseJson.body;
-      if (body !== null) {
-        console.log(body[0]);
-        setPromocodeData(body[0]);
-        e.target.reset();
-        setPromocodeError(false);
-      } else {
-        setPromocodeError(true);
-      }
-    } else {
-      setPromocodeError(true);
-    }
   };
 
   const removePromocode = (e) => {

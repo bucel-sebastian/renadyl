@@ -48,22 +48,15 @@ CREATE TABLE
         observations text
     ) -- product data
 CREATE TABLE
-    IF NOT EXISTS renadyl_product_data (
-        id integer NOT NULL,
-        country varchar(100) NOT NULL,
-        price varchar(100) NOT NULL,
-        on_sale bool NOT NULL,
-        sale_price varchar(100),
-        sale_value varchar(100),
-        sale_percentage bool,
-        bundle_quantity int DEFAULT 0,
-        bundle_sale_price varchar(100),
-        bundle_sale_value varchar(100),
-        bundle_sale_percentage bool,
-        currency varchar(100) NOT NULL,
-        vat int DEFAULT 0,
-        change_date timestamp without time zone NOT NULL,
-        CONSTRAINT renadyl_product_data_pkey PRIMARY KEY (id)
+    IF NOT EXISTS renadyl_products_data (
+        id serial PRIMARY KEY,
+        product_name VARCHAR(255) NOT NULL,
+        price varchar(150) NOT NULL,
+        on_sale VARCHAR(150) NOT NULL,
+        sale_price VARCHAR(150) NOT NULL,
+        sale_value varchar(150) NOT NULL,
+        sale_percentage VARCHAR(150) NOT NULL,
+        change_date timestamp without time zone NOT NULL
     )
 
 -- users

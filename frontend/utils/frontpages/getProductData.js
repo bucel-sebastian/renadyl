@@ -1,10 +1,12 @@
 import Database from "../Database";
 
-export const getProductData = async (countryCode) => {
+export const getProductData = async (productName) => {
   const database = new Database();
   let data = null;
   try {
-    data = database.select("renadyl_product_data", { country: countryCode });
+    data = database.select("renadyl_products_data", {
+      product_name: productName,
+    });
   } catch (error) {
     console.error(`Error - ${error}`);
   } finally {
