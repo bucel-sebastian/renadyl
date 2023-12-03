@@ -204,6 +204,13 @@ function CheckoutNotLoggedIn({ locale }) {
   //   Sameday locker functions - End
 
   const authSameday = async () => {
+    console.log(
+      "Sameday auth ",
+      process.env.NEXT_PUBLIC_SAMEDAY_API_USERNAME,
+      process.env.NEXT_PUBLIC_SAMEDAY_API_PASSWORD,
+      process.env.NEXT_PUBLIC_SAMEDAY_API_AUTH_URL,
+      process.env.NEXT_PUBLIC_SAMEDAY_EASYBOX_PLUGIN_CLIENTID
+    );
     if (
       samedayAuthData === null ||
       new Date(samedayAuthData?.expire_at) < new Date()
