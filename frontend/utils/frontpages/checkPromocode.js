@@ -1,9 +1,9 @@
 import Database from "../Database";
 
-export const checkPromocode = async (formData) => {
+export const checkPromocode = async (promocode) => {
   const database = new Database();
   const where = new Object();
-  where["code"] = formData.code;
+  where["code"] = promocode;
 
   const response = await database.select("renadyl_promo_codes", where);
 

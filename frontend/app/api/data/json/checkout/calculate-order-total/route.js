@@ -25,13 +25,6 @@ export async function POST(req, { params }) {
     const sale_value = JSON.parse(data[0].sale_value);
     const sale_percentage = JSON.parse(data[0].sale_percentage);
     const sale_price = JSON.parse(data[0].sale_price);
-    // console.log(item.productName, " - ", [
-    //   price,
-    //   on_sale,
-    //   sale_value,
-    //   sale_percentage,
-    //   sale_price,
-    // ]);
 
     if (countryCode === "RO") {
       if (on_sale.nat) {
@@ -63,9 +56,7 @@ export async function POST(req, { params }) {
   }
 
   if (checkoutData.promocode !== null) {
-    const promocodeData = await checkPromocode({
-      code: checkoutData.promocode,
-    });
+    const promocodeData = await checkPromocode(checkoutData.promocode);
     promoTotal = (productsTotal * promocodeData.value) / 100;
   }
 
