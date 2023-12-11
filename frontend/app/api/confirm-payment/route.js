@@ -8,9 +8,9 @@ export async function POST(req, res) {
   const reqParams = new URLSearchParams(reqData);
   try {
     const paymentData = {
-      env_key: reqParams.get(env_key),
-      data: reqParams.get(data),
-      cipher: reqParams.get(cipher),
+      env_key: reqParams.get("env_key"),
+      data: reqParams.get("data"),
+      cipher: reqParams.get("cipher"),
     };
     console.log("data JSON - ", paymentData);
     const {
@@ -33,3 +33,11 @@ export async function POST(req, res) {
     body: "ok",
   });
 }
+
+
+
+
+ERROR -  ReferenceError: env_key is not defined
+    at POST (/var/task/frontend/.next/server/app/api/confirm-payment/route.js:1:951)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /var/task/frontend/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:14:39709
