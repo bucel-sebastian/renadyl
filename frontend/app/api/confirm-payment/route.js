@@ -17,12 +17,17 @@ export async function POST(req, res) {
       decodeResponse,
     } = require("@/utils/frontpages/netopia/getPaymentData");
     const decodedPaymentData = await decodeResponse(paymentData);
-    console.log(decodedPaymentData);
+    console.log("decoded data - ", decodedPaymentData);
 
     database.update(
       "renadyl_orders",
-      { payment_status: decodedPaymentData },
-      { id: "order00001" }
+      {
+        payment_status: {
+          status: decodedPaymentData.order.mobilpay.action,
+          timestamp: decodedPaymentData.order.$.timestamp,
+        },
+      },
+      { id: decodedPaymentData.order.$.id }
     );
   } catch (error) {
     console.log("ERROR - ", error);
