@@ -6,7 +6,7 @@ export async function POST(req, res) {
   const paymentData = await req;
 
   try {
-    console.log("data JSON - ", paymentData);
+    console.log("data JSON - ", await paymentData.text());
     const {
       decodeResponse,
     } = require("@/utils/frontpages/netopia/getPaymentData");
