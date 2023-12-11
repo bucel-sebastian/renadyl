@@ -37,7 +37,7 @@ function AddToCartButtonHome({ currentLocale }) {
   // const { cartQuantity } = useSelector((state) => state.cart);
   const handleAddToCart = () => {
     setIsDisabled(true);
-    dispatch(addToCart(productData));
+    dispatch(addToCart({ productName: productData.productName }));
     toast.success(t("add-to-cart-success"), {
       position: "bottom-right",
       autoClose: 2500,

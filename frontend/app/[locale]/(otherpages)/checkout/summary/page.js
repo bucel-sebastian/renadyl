@@ -90,8 +90,8 @@ export default function CheckoutPage({ params: { locale } }) {
               </h2>
               <BillingBox />
             </div>
-            <div className="w-1/3 border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6">
-              <h2 className="flex flex-row justify-center items-center content-center gap-2 text-xl font-bold">
+            <div className="w-1/3 border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 flex flex-col justify-between">
+              <h2 className="flex flex-row justify-center items-center content-center gap-2 text-xl font-bold h-1/5">
                 <FaMoneyBills className="text-gradientPurple text-2xl" />
                 {t("summary-payment-title")}
               </h2>
@@ -100,7 +100,9 @@ export default function CheckoutPage({ params: { locale } }) {
           </div>
           <div className="w-full border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6">
             <h1 className="text-2xl font-bold mb-4 ">{t("summary-title")}</h1>
-            <OrderSummaryBox />
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              <OrderSummaryBox />
+            </NextIntlClientProvider>
           </div>
         </div>
       </section>

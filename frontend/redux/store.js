@@ -16,6 +16,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { encryptTransform } from "redux-persist-transform-encrypt";
 
 const persistConfig = {
   key: "root",

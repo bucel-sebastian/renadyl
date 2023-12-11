@@ -6,10 +6,11 @@ export async function POST(req, res) {
 
   console.log(formData);
 
-  let response;
+  let response = null;
 
   try {
     response = await checkPromocode(formData);
+    console.log(response);
   } catch (error) {
     console.log(`Error - ${error}`);
 
@@ -19,7 +20,7 @@ export async function POST(req, res) {
     });
   }
 
-  if (response.length > 0) {
+  if (response !== null) {
     return NextResponse.json({
       status: 200,
       body: response,

@@ -10,11 +10,32 @@ import { removePromocode, setPromocode } from "@/redux/slices/cartSlice";
 function CartPromocodeBox() {
   const { promocode } = useSelector((state) => state.cart.checkoutData);
 
+  const [promocodeValue, setPromocodeValue] = useState(null);
   const [promocodeInput, setPromocodeInput] = useState("");
 
   const dispatch = useDispatch();
 
   const t = useTranslations("Cart");
+
+  const checkPromocode = async (code) => {
+    const formData = new Object();
+
+    formData["code"] = code;
+    const response = await fetch("/api/check-promocode", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    if (response.ok) {
+      const responseJson = await response.json();
+      const body = await responseJson.body;
+      setPromocodeValue(body.value);
+    } else {
+      dispatch(removePromocode());
+    }
+  };
 
   const handleSubmitPromocode = async (e) => {
     e.preventDefault();
@@ -32,14 +53,13 @@ function CartPromocodeBox() {
     });
     if (response.ok) {
       const responseJson = await response.json();
-      console.log("response JSON ", responseJson);
       const body = await responseJson.body;
 
       if (body !== null) {
-        console.log(body[0]);
         e.target.reset();
         setPromocodeInput("");
-        dispatch(setPromocode(body[0]));
+        dispatch(setPromocode(body.code));
+        setPromocodeValue(body.value);
         toast.success(t("promocode-success"), {
           position: "bottom-right",
           autoClose: 2500,
@@ -87,6 +107,9 @@ function CartPromocodeBox() {
 
   useEffect(() => {
     console.log(promocode);
+    if (promocode !== null && promocodeValue === null) {
+      checkPromocode(promocode);
+    }
   }, [promocode]);
 
   return (
@@ -117,7 +140,7 @@ function CartPromocodeBox() {
               <tbody>
                 <tr>
                   <td>
-                    {promocode?.code} - {promocode?.value}%
+                    {promocode} - {promocodeValue}%
                   </td>
                   <td align="right">
                     <button onClick={handleRemovePromocode}>

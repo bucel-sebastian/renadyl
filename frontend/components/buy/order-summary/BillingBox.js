@@ -7,7 +7,7 @@ function BillingBox() {
   console.log(billing);
   return (
     <>
-      <div className="h-full flex flex-col justify-between">
+      <div className="flex flex-col justify-between gap-4">
         <div>
           {billing.asShipping === true ? (
             <>

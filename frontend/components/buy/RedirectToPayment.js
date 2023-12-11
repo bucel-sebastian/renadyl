@@ -13,7 +13,6 @@ function RedirectToPayment({ netopiaEnvKey, netopiaData }) {
         id="netopiaDataFrom"
         action="https://sandboxsecure.mobilpay.ro"
         method="POST"
-        target="_blank"
       >
         <input type="hidden" name="env_key" value={netopiaEnvKey} />
         <input type="hidden" name="data" value={netopiaData} />

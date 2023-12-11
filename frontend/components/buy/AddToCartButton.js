@@ -36,7 +36,7 @@ function AddToCartButton() {
 
   const handleAddToCart = () => {
     // setIsDisabled(true);
-    dispatch(addToCart(productData));
+    dispatch(addToCart({ productName: productData.productName }));
     // router.push("/cart", { locale: currentLocale });
     toast.success(t("add-to-cart-success"), {
       position: "bottom-right",

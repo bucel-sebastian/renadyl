@@ -1,4 +1,4 @@
-CREATE DATABASE `renadyl_database` 
+CREATE DATABASE `renadyl_database`
 
 CREATE TABLE
     `users` (
@@ -14,7 +14,7 @@ CREATE TABLE
         password VARCHAR(255) NOT NULL,
     )
 
-CREATE TABLE `bank_data` ( ) 
+CREATE TABLE `bank_data` ()
 
 -- POSTGRESQL
 
@@ -76,17 +76,17 @@ CREATE TABLE
 
 -- users shipping addresses
 
-CREATE TABLE IF NOT EXISTS renadyl_shipping_details ( ) 
+CREATE TABLE IF NOT EXISTS renadyl_shipping_details ()
 
 -- users billing addresses
 
-CREATE TABLE IF NOT EXISTS renadyl_billing_details ( ) 
+CREATE TABLE IF NOT EXISTS renadyl_billing_details ()
 
 -- subscriptions
 
-CREATE TABLE IF NOT EXISTS renadyl_subscriptions ( 
+CREATE TABLE IF NOT EXISTS renadyl_subscriptions (
 
-) 
+)
 
 -- admins
 
@@ -131,17 +131,20 @@ CREATE TABLE
         doctor VARCHAR(100),
         shipping_details TEXT NOT NULL,
         billing_details TEXT NOT NULL,
-        product_quantity INTEGER NOT NULL,
-        product_price VARCHAR(50) NOT NULL,
-        currency VARCHAR(50) NOT NULL,
-        is_bundle BOOLEAN NOT NULL,
-        product_totals VARCHAR(50) NOT NULL,
-        order_promotion VARCHAR(50) NOT NULL,
-        order_total VARCHAR(50) NOT NULL,
+        cart TEXT NOT NULL,
+        currency VARCHAR(10) NOT NULL,
+        country_code VARCHAR(5) NOT NULL,
+        payment varchar(10) NOT NULL,
+        payment_status text,
         invoice VARCHAR(100),
         shipping_awb VARCHAR(255) NOT NULL,
-        promo_code VARCHAR(100) REFERENCES renadyl_promo_codes(code),
-        promo_code_details VARCHAR(100),
+        promo_code TEXT,
+        order_total FLOAT NOT NULL,
+        products_total FLOAT NOT NULL,
+        vat_procent FLOAT NOT NULL,
+        vat_total FLOAT NOT NULL,
+        shipping_total FLOAT NOT NULL,
+        promo_total FLOAT NOT NULL,
         status VARCHAR(50) NOT NULL,
         logs TEXT NOT NULL,
         observations TEXT

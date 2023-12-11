@@ -41,7 +41,7 @@ function getPayment(orderId, amount, currency, orderData) {
       },
       signature: "2VZR-GOQH-7A8W-VLRB-UOOW",
       url: {
-        return: "https://renadyleurope.com/checkout",
+        return: "https://renadyleurope.com/order-placed",
         confirm: "https://renadyleurope.com/api/confirm-payment",
       },
       invoice: {

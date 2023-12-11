@@ -37,7 +37,7 @@ function CartOffersBox() {
 
   const handleConvertToBundle = () => {
     dispatch(removeFromCart("renal_single"));
-    dispatch(addToCart(bundleProductData));
+    dispatch(addToCart({ productName: bundleProductData.productName }));
   };
 
   const getProductData = async (countryCode, productName) => {
@@ -85,9 +85,9 @@ function CartOffersBox() {
 
   const addProductToCart = (productName) => {
     if (productName === "renal_bundle") {
-      dispatch(addToCart(bundleProductData));
+      dispatch(addToCart({ productName: bundleProductData.productName }));
     } else if (productName === "renal_single") {
-      dispatch(addToCart(singleProductData));
+      dispatch(addToCart({ productName: singleProductData.productName }));
     }
     toast.success(t("add-to-cart-success"), {
       position: "bottom-right",

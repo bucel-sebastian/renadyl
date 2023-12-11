@@ -1,4 +1,5 @@
 import Database from "../Database";
+import { getProductData } from "./getProductData";
 
 // const index = require("../netopia/index.js");
 
@@ -32,175 +33,188 @@ export const sendOrderToDatabase = async (formData) => {
   const database = new Database();
   const values = new Object();
 
+  console.log(formData);
+
   values["date"] = new Date().toISOString();
 
   values["id"] = await generateUniqID();
-  values["doctor"] = formData.checkoutData.doctor;
-  values["client_details"] = {
-    fname: formData.checkoutData.shipping.fname,
-    lname: formData.checkoutData.shipping.lname,
-    phone: formData.checkoutData.shipping.phone,
-    email: formData.checkoutData.shipping.email,
-  };
-  values["shipping_details"] = {
-    type: formData.checkoutData.shipping.type,
-    shippingService: formData.checkoutData.shipping.shippingService,
-    fname: formData.checkoutData.shipping.fname,
-    lname: formData.checkoutData.shipping.lname,
-    phone: formData.checkoutData.shipping.phone,
-    email: formData.checkoutData.shipping.email,
-    country: formData.checkoutData.shipping.country,
-    state: formData.checkoutData.shipping.state,
-    city: formData.checkoutData.shipping.city,
-    postalCode: formData.checkoutData.shipping.postalCode,
-    address: formData.checkoutData.shipping.address,
-    easybox: formData.checkoutData.shipping.easybox,
-  };
-  values["billing_details"] = formData.checkoutData.billing.sameAsShipping
-    ? {
-        fname: formData.checkoutData.shipping.fname,
-        lname: formData.checkoutData.shipping.lname,
-        phone: formData.checkoutData.shipping.phone,
-        email: formData.checkoutData.shipping.email,
-        country: formData.checkoutData.shipping.country,
-        state: formData.checkoutData.shipping.state,
-        city: formData.checkoutData.shipping.city,
-        postalCode: formData.checkoutData.shipping.postalCode,
-        address: formData.checkoutData.shipping.address,
-      }
-    : {
-        pf: formData.checkoutData.billing.pf,
-        fname: formData.checkoutData.billing.fname,
-        lname: formData.checkoutData.billing.lname,
-        phone: formData.checkoutData.billing.phone,
-        email: formData.checkoutData.billing.email,
-        country: formData.checkoutData.billing.country,
-        state: formData.checkoutData.billing.state,
-        city: formData.checkoutData.billing.city,
-        postalCode: formData.checkoutData.billing.postalCode,
-        address: formData.checkoutData.billing.address,
-        companyName: formData.checkoutData.billing.companyName,
-        companyCif: formData.checkoutData.billing.companyCif,
-      };
-
-  values["product_quantity"] = formData.cartQuantity;
-  values["product_price"] = formData.checkoutData.order.productData.onSale
-    ? formData.checkoutData.order.productData.salePrice
-    : formData.checkoutData.order.productData.price;
-  values["currency"] = formData.checkoutData.order.productData.currency;
-  values["is_bundle"] = formData.orderData.promo.bundle > 0 ? true : false;
-  values["product_totals"] = formData.orderData.products;
-  values["order_promotion"] = formData.orderData.promo;
-  values["order_total"] = formData.orderData.total;
-  values["promo_code"] = formData?.promocodeData?.code;
-  values["promo_code_details"] = formData?.promocodeData;
   values["status"] = "1";
 
+  for (const item of formData.cart) {
+    const data = await getProductData(item.productName);
+
+    const price = JSON.parse(data[0].price);
+    const on_sale = JSON.parse(data[0].on_sale);
+    const sale_price = JSON.parse(data[0].sale_price);
+
+    if (on_sale) {
+      item.price =
+        formData.checkoutData.countryCode === "RO"
+          ? sale_price.nat
+          : sale_price.int;
+    } else {
+      item.price =
+        formData.checkoutData.countryCode === "RO" ? price.nat : price.int;
+    }
+
+    item.lotNumber = "";
+    item.expDate = "";
+  }
+
+  values["cart"] = formData.cart;
+
+  values["doctor"] = formData.checkoutData.doctor;
+  values["currency"] = formData.checkoutData.currency;
+  values["country_code"] = formData.checkoutData.countryCode;
+  values["payment"] = formData.checkoutData.payment;
+
+  values["client_details"] = {
+    isLoggedIn: formData.checkoutData.isLoggedIn,
+    clientId:
+      formData.checkoutData.isLoggedIn === true
+        ? formData.checkoutData.clientId
+        : "",
+  };
+  values["shipping_details"] = {
+    address: formData.checkoutData.shipping.address,
+    city: formData.checkoutData.shipping.city,
+    cityKey: formData.checkoutData.shipping.cityKey,
+    country: formData.checkoutData.shipping.country,
+    countryKey: formData.checkoutData.shipping.countryKey,
+    email: formData.checkoutData.shipping.email,
+    fname: formData.checkoutData.shipping.fname,
+    lname: formData.checkoutData.shipping.lname,
+    phone: formData.checkoutData.shipping.phone,
+    postalCode: formData.checkoutData.shipping.postalCode,
+    state: formData.checkoutData.shipping.state,
+    stateKey: formData.checkoutData.shipping.stateKey,
+    type: formData.checkoutData.shipping.type,
+    provider: formData.checkoutData.shipping.provider,
+  };
+  values["billing_details"] = {
+    address: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.address
+      : formData.checkoutData.billing.address,
+    city: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.city
+      : formData.checkoutData.billing.city,
+    cityKey: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.cityKey
+      : formData.checkoutData.billing.cityKey,
+    country: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.country
+      : formData.checkoutData.billing.country,
+    countryKey: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.countryKey
+      : formData.checkoutData.billing.countryKey,
+    email: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.email
+      : formData.checkoutData.billing.email,
+    entity: formData.checkoutData.billing.asShipping
+      ? "pf"
+      : formData.checkoutData.billing.entity,
+    fname: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.fname
+      : formData.checkoutData.billing.fname,
+    lname: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.lname
+      : formData.checkoutData.billing.lname,
+    phone: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.phone
+      : formData.checkoutData.billing.phone,
+    postalCode: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.postalCode
+      : formData.checkoutData.billing.postalCode,
+    state: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.state
+      : formData.checkoutData.billing.state,
+    stateKey: formData.checkoutData.billing.asShipping
+      ? formData.checkoutData.shipping.stateKey
+      : formData.checkoutData.billing.stateKey,
+    companyCif: formData.checkoutData.billing.asShipping
+      ? ""
+      : formData.checkoutData.billing.entity === "pj"
+      ? formData.checkoutData.billing.companyCif
+      : "",
+    companyName: formData.checkoutData.billing.asShipping
+      ? ""
+      : formData.checkoutData.billing.entity === "pj"
+      ? formData.checkoutData.billing.companyName
+      : "",
+  };
+
+  values["promo_code"] = formData.checkoutData.promocode;
+  values["order_total"] = formData.summaryData.orderTotal;
+  values["products_total"] = formData.summaryData.productsTotal;
+  values["vat_procent"] = formData.summaryData.vatProcent;
+  values["vat_total"] = formData.summaryData.vatTotal;
+  values["shipping_total"] = formData.summaryData.shippingTotal;
+  values["promo_total"] = formData.summaryData.promoTotal;
+
+  console.log("Values - ", values);
+
   // console.log("values", values);
+  // return false;
 
   const response = await database.insert("renadyl_orders", values);
 
   return response;
-  // console.log("db response - ", response);
-
-  // console.log("netopia - ", getRequest(values["id"]));
-  // console.log("netopia Request - ", await sendPostRequest(getNetopiaData));
-
-  // console.log(decodeResponse(getNetopiaData));
-
-  console.log("Netopia Request - ", index.getRequest(111));
-  return index.getRequest(111);
-
-  // return getNetopiaData;
-};
-
-const sendPostRequest = async (netopiaData) => {
-  const response = await fetch("https://sandboxsecure.mobilpay.ro", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      env_key: netopiaData?.env_key,
-      data: netopiaData?.data,
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
-  const data = await response.text();
-
-  return JSON.stringify(response, null, 4);
 };
 
 const obj = {
-  orderData: {
-    total: 1634,
-    products: 1840,
-    shipping: 0,
-    promo: {
-      bundle: 120,
-      promocode: 86,
-    },
-  },
+  cart: [{ productName: "renal_single", quantity: 1 }],
   checkoutData: {
-    doctor: "test",
+    currency: "RON",
+    countryCode: "RO",
+    promocode: null,
+    isLoggedIn: false,
     shipping: {
+      address: "str nr.",
+      city: "Constanţa",
+      cityKey: "93595",
+      country: "Romania",
+      countryKey: "RO",
+      email: "bucel.ionsebastian@gmail.com",
+      fname: "Ion-Sebastian",
+      lname: "Ion-Sebastian",
+      password: "",
+      phone: "+40 774 689 080",
+      postalCode: "900294",
+      rePassword: "",
+      state: "Constanța ",
+      stateKey: "CT",
       type: "courier",
-      shippingService: "",
+      provider: "Sameday",
+    },
+    billing: {
+      asShipping: false,
+      address: "asdfasdf asdfadsf",
+      city: "Bucharest",
+      cityKey: "90347",
+      country: "Romania",
+      countryKey: "RO",
+      email: "bucel.ionsebastian@gmail.com",
+      entity: "pj",
       fname: "Ion-Sebastian",
       lname: "Bucel",
       phone: "+40 774 689 080",
-      email: "bucel.ionsebastian@gmail.com",
-      country: "Belgium",
-      state: "Brussels-Capital Region",
-      city: "Brussels",
       postalCode: "900294",
-      address: "str nr.",
-      wantsAccount: false,
-      password: "",
-      rePassword: "",
-      easybox: "",
+      state: "Bucharest",
+      stateKey: "B",
+      companyCif: "48945873",
+      companyName: "sdfgsdfg",
     },
-    billing: {
-      sameAsShipping: true,
-      pf: true,
-      type: "",
-      fname: "",
-      lname: "",
-      companyName: "",
-      companyCif: "",
-      phone: "",
-      email: "",
-      country: "",
-      state: "",
-      city: "",
-      postalCode: "",
-      address: "",
-    },
-    order: {
-      productData: {
-        currency: "RON",
-        price: "590",
-        onSale: true,
-        salePrice: "460",
-        salePercentage: false,
-        saleValue: "130",
-        bundleSaleValue: "30",
-        bundleQuantity: 3,
-        bundlePercentage: false,
-      },
-      shippingService: "",
-      shippingCost: "",
-      productsCost: "",
-    },
+    doctor: "DR TESTESCU",
+    payment: "card",
   },
-  promocodeData: {
-    code: "test",
-    user_id: "user123",
-    value: "5",
+  summaryData: {
+    productsTotal: 460,
+    productsTotalWithoutVat: 418.6,
+    productsSaleTotal: 130,
+    vatProcent: 9,
+    vatTotal: 41.4,
+    shippingTotal: 17,
+    promoTotal: 0,
+    orderTotal: 477,
   },
-  cartQuantity: 4,
 };

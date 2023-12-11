@@ -1,10 +1,11 @@
 import { getTranslator } from "next-intl/server";
 import {
-  Link,
   NextIntlClientProvider,
   useMessages,
   useTranslations,
 } from "next-intl";
+
+import Link from "next-intl/link";
 import Checkout from "@/components/buy/checkout/Checkout";
 import LinkWithRef from "next-intl/link";
 

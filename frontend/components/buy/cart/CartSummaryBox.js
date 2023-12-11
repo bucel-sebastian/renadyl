@@ -4,79 +4,56 @@ import React, { Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveOrderData } from "@/redux/slices/cartSlice";
 import { useRouter } from "next-intl/client";
+import Link from "next-intl/link";
 
 function CartSummaryBox({ currentLocale }) {
   const router = useRouter();
 
   const { cart } = useSelector((state) => state.cart);
-  const { promocode } = useSelector((state) => state.cart.checkoutData);
-  const vatValue = 9;
+  const { checkoutData } = useSelector((state) => state.cart);
 
-  const [cartTotal, setCartTotal] = useState(0);
-  const [promocodeTotal, setPromocodeTotal] = useState(0);
-  const [vatTotal, setVatTotal] = useState(0);
-  const [cartProductsTotalWithoutVat, setCartProductsTotalWithoutVat] =
-    useState(0);
-  const [productsSaleTotal, setProductsSaleTotal] = useState(0);
+  const [summaryData, setSummaryData] = useState({
+    orderTotal: 0,
+    productsTotal: 0,
+    productsSaleTotal: 0,
+    promoTotal: 0,
+    shippingTotal: 0,
+    vatProcent: 0,
+    vatTotal: 0,
+  });
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const t = useTranslations("Cart");
-  const calculateCartSummary = () => {
-    let cartProductsTotal = 0;
-    let cartProductsSaleTotal = 0;
-    cart.forEach((item) => {
-      if (item.onSale) {
-        cartProductsTotal += item.salePrice * item.quantity;
-        cartProductsSaleTotal += (item.salePrice - item.price) * item.quantity;
-      } else {
-        cartProductsTotal += item.price * item.quantity;
+  const calculateCartSummary = async () => {
+    const requestBody = {
+      cart: cart,
+      checkoutData: checkoutData,
+    };
+
+    const response = await fetch(
+      "/api/data/json/checkout/calculate-order-total",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
       }
-    });
+    );
+    const data = await response.json();
 
-    let promocodeProductsSaleTotal = 0;
-    if (promocode !== null) {
-      promocodeProductsSaleTotal = (cartProductsTotal * promocode.value) / 100;
-    }
-
-    let cartTotalVat = (cartProductsTotal * vatValue) / 100;
-    let cartProductsTotalWithoutVat = cartProductsTotal - cartTotalVat;
-
-    let cartCalculatedTotal = cartProductsTotal - promocodeProductsSaleTotal;
-
-    setCartTotal(cartCalculatedTotal);
-    setPromocodeTotal(promocodeProductsSaleTotal);
-    setVatTotal(cartTotalVat);
-    setCartProductsTotalWithoutVat(cartProductsTotalWithoutVat);
-    setProductsSaleTotal(cartProductsSaleTotal);
-
-    // console.log(
-    //   "summary caculator: ",
-    //   cartProductsTotal,
-    //   cartProductsSaleTotal,
-    //   cartTotalVat,
-    //   promocodeProductsSaleTotal,
-    //   cartProductsTotalWithoutVat
-    // );
+    setSummaryData(data.body);
   };
 
   const handleNextStep = (e) => {
     e.preventDefault();
 
-    dispatch(
-      saveOrderData({
-        cartTotal: cartTotal,
-        promocodeTotal: promocodeTotal,
-        vatTotal: vatTotal,
-        cartProductsTotalWithoutVat: cartProductsTotalWithoutVat,
-        productsSaleTotal: productsSaleTotal,
-      })
-    );
     router.push("/checkout", { locale: currentLocale });
   };
 
   useEffect(() => {
     calculateCartSummary();
-  }, [cart, promocode]);
+  }, [cart, checkoutData]);
 
   return (
     <>
@@ -101,14 +78,14 @@ function CartSummaryBox({ currentLocale }) {
                 ))}
               </tbody>
             </table>
-            {productsSaleTotal !== 0 ? (
+            {summaryData.productsSaleTotal !== 0 ? (
               <>
                 <table className="w-full">
                   <tbody>
                     <tr>
                       <td>{t("total-sale")}</td>
                       <td align="right">
-                        {productsSaleTotal} {cart[0]?.currency}
+                        {summaryData.productsSaleTotal} {checkoutData.currency}
                       </td>
                     </tr>
                   </tbody>
@@ -119,16 +96,18 @@ function CartSummaryBox({ currentLocale }) {
             )}
             <div>
               <p className="text-right">
-                {t("total-products")}: {cartProductsTotalWithoutVat}{" "}
-                {cart[0]?.currency}
+                {t("total-products")}: {summaryData.productsTotalWithoutVat}{" "}
+                {checkoutData.currency}
               </p>
               <p className="text-right">
-                {t("total-vat")} {vatValue}%: {vatTotal} {cart[0]?.currency}
+                {t("total-vat")} {summaryData.vatProcent}%:{" "}
+                {summaryData.vatTotal} {checkoutData.currency}
               </p>
-              {promocodeTotal !== 0 ? (
+              {summaryData.promoTotal !== 0 ? (
                 <>
                   <p className="text-right">
-                    {t("total-promocode")}: {promocodeTotal} {cart[0]?.currency}
+                    {t("total-promocode")}: {summaryData.promoTotal}{" "}
+                    {checkoutData.currency}
                   </p>
                 </>
               ) : (
@@ -136,12 +115,19 @@ function CartSummaryBox({ currentLocale }) {
               )}
             </div>
             <h2 className="text-right text-2xl font-bold">
-              {t("total-order")}: {cartTotal} {cart[0]?.currency}
+              {t("total-order")}: {summaryData.orderTotal}{" "}
+              {checkoutData.currency}
             </h2>
             <div>
               <form onSubmit={handleNextStep}>
-                <label>
+                <label className="flex flex-row gap-2 leading-4 items-start">
                   <input type="checkbox" required />
+                  <span>
+                    {t("tc-label")}{" "}
+                    <Link href="/useful/terms-and-conditions">
+                      {t("tc-link")}
+                    </Link>
+                  </span>
                 </label>
                 <button className="block bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-3xl text-backgroundPrimary rounded-2xl py-3 mt-4">
                   {t("order-next-button")}

@@ -232,9 +232,12 @@
         "renal-bundle-long-name": "Bundle 3x Renadyl - Supliment alimentar",
         "renal-bundle-short-name": "Bundle 3x Renadyl",
         "summary-title": "Sumar comandă",
+        "tc-label": "Am citit și sunt de acord cu ",
+        "tc-link": "termenii și condițiile",
         "total-sale": "Ați economisit",
         "total-products": "Produse",
         "total-vat": "TVA",
+        "total-promocode": "Reducere cod promoțional / afiliat",
         "total-order": "Total",
         "order-next-button": "Continuă",
         "add-to-cart-btn": "Adaugă în coș",
@@ -260,7 +263,9 @@
         "renal-bundle-long-name": "Bundle 3x Renadyl - Supliment alimentar",
         "renal-bundle-short-name": "Bundle 3x Renadyl",
         "product-unit": "buc.",
-        "total-products": "Produse",
+        "total-products": "Cost produse",
+        "total-promocode": "Reducere cod promoțional / afiliat",
+        "total-shipping": "Cost livrare",
         "total-vat": "TVA",
         "total-order": "Total",
         "is-already-client": "Sunt deja client",
@@ -330,7 +335,8 @@
             "easybox": {
                 "label": "Selectează locul de livrare",
                 "button-text": "Deschide harta"
-            }
+            },
+            "provider-label": "Livrator"
         },
         "billing-form": {
             "billing-title": "Detalii de facturare",
@@ -370,6 +376,11 @@
         "summary-billing-title": "Detalii facturare",
         "summary-payment-title": "Metoda de plată",
         "summary-title": "Sumar comandă",
+        "renal-single-long-name": "Renadyl - Supliment alimentar",
+        "renal-single-short-name": "Renadyl",
+        "renal-bundle-long-name": "Bundle 3x Renadyl - Supliment alimentar",
+        "renal-bundle-short-name": "Bundle 3x Renadyl",
+        "product-unit": "buc.",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",

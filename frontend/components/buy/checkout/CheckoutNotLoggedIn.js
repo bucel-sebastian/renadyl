@@ -19,6 +19,16 @@ function CheckoutNotLoggedIn({ locale }) {
   const { cart } = useSelector((state) => state.cart);
   const { checkoutData } = useSelector((state) => state.cart);
 
+  const [summaryData, setSummaryData] = useState({
+    orderTotal: 0,
+    productsTotal: 0,
+    productsSaleTotal: 0,
+    promoTotal: 0,
+    shippingTotal: 0,
+    vatProcent: 0,
+    vatTotal: 0,
+  });
+
   const dispatch = useDispatch();
 
   const [isClient, setIsClient] = useState(true);
@@ -78,9 +88,10 @@ function CheckoutNotLoggedIn({ locale }) {
     handleChangeCheckoutData(event);
   };
 
-  const [wantsAccount, setWantsAccount] = useState(false);
   const handleWantsAccount = (value) => {
-    setWantsAccount(value);
+    dispatch(
+      updateCheckoutData({ name: "shipping.wantsAccount", value: value })
+    );
   };
 
   const [newPasswordVisible, setNewPasswordVisible] = useState(false);
@@ -95,19 +106,27 @@ function CheckoutNotLoggedIn({ locale }) {
     router.push("/checkout/summary", { locale: locale });
   };
 
-  useEffect(() => {
-    console.log(checkoutData);
-    if (!checkoutData?.order?.shippingPrice) {
-      dispatch(updateCheckoutData({ name: "order.shippingPrice", value: 0 }));
-    }
+  const calculateCartSummary = async () => {
+    const requestBody = {
+      cart: cart,
+      checkoutData: checkoutData,
+    };
 
-    dispatch(
-      updateCheckoutData({
-        name: "order.orderTotal",
-        value: checkoutData.order.shippingPrice + checkoutData.order.cartTotal,
-      })
+    const response = await fetch(
+      "/api/data/json/checkout/calculate-order-total",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      }
     );
-  }, [checkoutData]);
+    const data = await response.json();
+
+    console.log("summary data - ", data.body);
+    setSummaryData(data.body);
+  };
 
   useEffect(() => {
     dispatch(updateCheckoutData({ name: "shipping.rePassword", value: "" }));
@@ -143,8 +162,6 @@ function CheckoutNotLoggedIn({ locale }) {
   };
 
   //   Sameday locker functions - Start
-
-  const [samedayAuthData, setSamedayAuthData] = useState(null);
 
   const [samedayLockerInstance, setSamedayLockerInstance] = useState(null);
   const [samedayLockerMsg, setSamedayLockerMsg] = useState(null);
@@ -203,31 +220,22 @@ function CheckoutNotLoggedIn({ locale }) {
   }, [samedayLockerInstance]);
   //   Sameday locker functions - End
 
-  const authSameday = async () => {
-    console.log(
-      "Sameday auth ",
-      process.env.NEXT_PUBLIC_SAMEDAY_API_USERNAME,
-      process.env.NEXT_PUBLIC_SAMEDAY_API_PASSWORD,
-      process.env.NEXT_PUBLIC_SAMEDAY_API_AUTH_URL,
-      process.env.NEXT_PUBLIC_SAMEDAY_EASYBOX_PLUGIN_CLIENTID
-    );
-    if (
-      samedayAuthData === null ||
-      new Date(samedayAuthData?.expire_at) < new Date()
-    ) {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_SAMEDAY_API_AUTH_URL,
-        {
-          method: "POST",
-          headers: {
-            "X-Auth-Username": process.env.NEXT_PUBLIC_SAMEDAY_API_USERNAME,
-            "X-Auth-X-Auth-Password":
-              process.env.NEXT_PUBLIC_SAMEDAY_API_PASSWORD,
-          },
-        }
-      );
-      console.log(response);
-    }
+  const calculateShippingPrice = async (
+    paymentMethod,
+    shippingType,
+    currency
+  ) => {
+    // const response = await fetch(
+    //   `/api/data/sameday/estimate-cost/?paymentMethod=${paymentMethod}&shippingType=${shippingType}&currency=${currency}`
+    // );
+    // const body = await response.json();
+    // console.log("Response from backend ", body.body.amount);
+    // dispatch(
+    //   updateCheckoutData({
+    //     name: "order.shippingPrice",
+    //     value: body.body.amount,
+    //   })
+    // );
   };
 
   const [statesOfSelectedCountry, setStatesOfSelectedCountry] = useState([]);
@@ -241,9 +249,6 @@ function CheckoutNotLoggedIn({ locale }) {
         statesOfCountry[state.state_code] = state.name;
       });
       setStatesOfSelectedCountry(statesOfCountry);
-      if (checkoutData.shipping.countryKey === "RO") {
-        authSameday();
-      }
     } else {
       setStatesOfSelectedCountry([]);
       handleStateChange("", "");
@@ -251,6 +256,7 @@ function CheckoutNotLoggedIn({ locale }) {
   }, [checkoutData?.shipping?.country, checkoutData?.shipping?.countryKey]);
 
   const handleStateChange = (key, value) => {
+    console.log("State change ", value, key);
     dispatch(updateCheckoutData({ name: "shipping.state", value: value }));
     dispatch(updateCheckoutData({ name: "shipping.stateKey", value: key }));
   };
@@ -348,16 +354,27 @@ function CheckoutNotLoggedIn({ locale }) {
     dispatch(updateCheckoutData({ name: "payment", value: value }));
   };
 
-  const calculateShippingPrice = async () => {
-    const response = fetch(
-      "https://api.sameday.ro/api/awb/basic-estimate-cost"
-    );
-  };
-
   useEffect(() => {
-    calculateShippingPrice();
-  }, []);
-
+    if (checkoutData.shipping.countryKey === "RO") {
+      calculateShippingPrice(
+        checkoutData?.payment,
+        checkoutData?.shipping?.type,
+        checkoutData.currency
+      );
+      dispatch(
+        updateCheckoutData({ name: "shipping.provider", value: "Sameday" })
+      );
+    }
+    console.log("Se schimba paymentul sau tara");
+  }, [
+    checkoutData?.payment,
+    checkoutData?.shipping?.countryKey,
+    checkoutData?.shipping?.type,
+  ]);
+  useEffect(() => {
+    console.log(checkoutData);
+    calculateCartSummary();
+  }, [checkoutData]);
   return (
     <>
       <section className="relative max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max overflow-hidden">
@@ -563,7 +580,7 @@ function CheckoutNotLoggedIn({ locale }) {
                     <div className="relative w-full flex flex-row bg-backgroundPrimary border-[1px] border-foregroundPrimary20 rounded-xl overflow-hidden mb-4">
                       <div
                         className={`absolute w-1/2 top-0 "left-0" ${
-                          wantsAccount
+                          checkoutData?.shipping?.wantsAccount
                             ? "translate-x-full bg-right rounded-l-lg"
                             : "translate-x-0 bg-left rounded-r-lg"
                         }  h-full bg-gradient-to-r from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%]  transition-all duration-300`}
@@ -571,7 +588,7 @@ function CheckoutNotLoggedIn({ locale }) {
                       <button
                         type="button"
                         className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
-                          wantsAccount
+                          checkoutData?.shipping?.wantsAccount
                             ? "text-foregroundPrimary"
                             : "text-backgroundPrimary"
                         }`}
@@ -582,7 +599,7 @@ function CheckoutNotLoggedIn({ locale }) {
                       <button
                         type="button"
                         className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
-                          wantsAccount
+                          checkoutData?.shipping?.wantsAccount
                             ? "text-backgroundPrimary"
                             : "text-foregroundPrimary"
                         }`}
@@ -592,7 +609,7 @@ function CheckoutNotLoggedIn({ locale }) {
                       </button>
                     </div>
 
-                    {wantsAccount ? (
+                    {checkoutData?.shipping?.wantsAccount ? (
                       <div className="flex flex-row gap-8 max-sm:flex-col max-sm:gap-2">
                         <div className="w-full flex flex-col mb-2">
                           <label className="px-1 text-foregroundPrimary70">
@@ -729,7 +746,7 @@ function CheckoutNotLoggedIn({ locale }) {
                               </label>
                               <SelectInput
                                 data={statesOfSelectedCountry}
-                                value={checkoutData?.shipping?.state}
+                                value={checkoutData?.shipping.state}
                                 name={"shipping.state"}
                                 onChange={handleStateChange}
                                 // onClear={handleClearState}
@@ -866,7 +883,35 @@ function CheckoutNotLoggedIn({ locale }) {
                         />
                       </div>
                     </div>
-                    <div>Provider</div>
+                    <div>
+                      <label className="px-1 text-foregroundPrimary70">
+                        {t("shipping-form.provider-label")}
+                      </label>
+                      <div className="flex flex-col ">
+                        <label>
+                          <input
+                            type="radio"
+                            name="shipping.provider"
+                            value="DHL"
+                            onChange={handleChangeCheckoutData}
+                            checked={checkoutData?.shipping?.provider === "DHL"}
+                            required
+                          />{" "}
+                          DHL
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="shipping.provider"
+                            value="UPS"
+                            onChange={handleChangeCheckoutData}
+                            checked={checkoutData?.shipping?.provider === "UPS"}
+                            required
+                          />{" "}
+                          UPS
+                        </label>
+                      </div>
+                    </div>
                   </>
                 )}
               </div>
@@ -1323,17 +1368,27 @@ function CheckoutNotLoggedIn({ locale }) {
                   </div>
                   <div className="w-1/2">
                     <p className="text-right">
-                      {t("total-products")}: {checkoutData.order.cartTotal}{" "}
-                      {cart[0]?.currency}
+                      {t("total-products")}: {summaryData.productsTotal}{" "}
+                      {checkoutData.currency}
                     </p>
+                    {summaryData.promoTotal === 0 ? (
+                      <></>
+                    ) : (
+                      <>
+                        <p className="text-right">
+                          {t("total-promocode")}: -{summaryData.promoTotal}{" "}
+                          {checkoutData.currency}
+                        </p>
+                      </>
+                    )}
 
                     <p className="text-right">
-                      {t("total-products")}:{" "}
-                      {checkoutData?.order?.shippingPrice} {cart[0]?.currency}
+                      {t("total-shipping")}: {summaryData.shippingTotal}{" "}
+                      {checkoutData.currency}
                     </p>
                     <h2 className="text-right text-2xl font-bold">
-                      {t("total-order")}: {checkoutData?.order?.orderTotal}{" "}
-                      {cart[0]?.currency}
+                      {t("total-order")}: {summaryData.orderTotal}{" "}
+                      {checkoutData.currency}
                     </h2>
                   </div>
                 </div>

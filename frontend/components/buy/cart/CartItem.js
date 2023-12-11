@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   addToCart,
   removeFromCart,
@@ -12,8 +12,33 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 
-function CartItem({ itemData, lastItem }) {
+function CartItem({ itemName, countryCode, lastItem, itemQuantity }) {
   const dispatch = useDispatch();
+
+  const [itemData, setProductData] = useState({});
+
+  const getProductData = async (countryCode, itemName) => {
+    const response = await fetch(
+      `/api/data/json/product/${countryCode}/${itemName}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+
+    setProductData({
+      productName: data?.body?.product_name,
+      currency: data?.body?.currency,
+      price: data?.body?.price,
+      onSale: data?.body?.on_sale,
+      salePrice: data?.body?.sale_price,
+      salePercentage: data?.body?.sale_percentage,
+      saleValue: data?.body?.sale_value,
+    });
+  };
 
   const t = useTranslations("Cart");
 
@@ -51,6 +76,10 @@ function CartItem({ itemData, lastItem }) {
       dispatch(removeFromCart(itemData.productName));
   };
 
+  useEffect(() => {
+    getProductData(countryCode, itemName);
+  }, []);
+
   return (
     <div
       className={`w-full py-4 flex flex-row ${
@@ -64,6 +93,7 @@ function CartItem({ itemData, lastItem }) {
               ? "/images/product_image_1.png"
               : "/images/product_image_2.png"
           }
+          alt=""
           width={1000}
           height={1000}
           className="w-full aspect-square"
@@ -81,14 +111,14 @@ function CartItem({ itemData, lastItem }) {
               <button
                 onClick={decrementItemQuantity}
                 className="w-1/3 bg-backgroundPrimary hover:bg-gradientPurple hover:text-backgroundPrimary transition-all flex justify-center items-center content-center h-full"
-                disabled={itemData.quantity === 1}
+                disabled={itemQuantity === 1}
               >
                 <FaMinus />
               </button>
               <input
                 className="w-1/3 text-center h-full [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                 type="number"
-                value={itemData.quantity}
+                value={itemQuantity}
                 min={1}
                 onChange={handleChangeProductQuantity}
                 disabled
