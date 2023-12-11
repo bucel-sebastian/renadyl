@@ -137,7 +137,7 @@ CREATE TABLE
         payment varchar(10) NOT NULL,
         payment_status text,
         invoice VARCHAR(100),
-        shipping_awb VARCHAR(255) NOT NULL,
+        shipping_awb VARCHAR(255),
         promo_code TEXT,
         order_total FLOAT NOT NULL,
         products_total FLOAT NOT NULL,
@@ -146,7 +146,7 @@ CREATE TABLE
         shipping_total FLOAT NOT NULL,
         promo_total FLOAT NOT NULL,
         status VARCHAR(50) NOT NULL,
-        logs TEXT NOT NULL,
+        logs TEXT,
         observations TEXT
     )
 
