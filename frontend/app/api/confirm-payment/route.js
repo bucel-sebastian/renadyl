@@ -24,10 +24,10 @@ export async function POST(req, res) {
       {
         payment_status: {
           status: decodedPaymentData.order.mobilpay.action,
-          timestamp: decodedPaymentData.order.$.timestamp,
+          timestamp: decodedPaymentData.order["$"].timestamp,
         },
       },
-      { id: decodedPaymentData.order.$.id }
+      { id: decodedPaymentData.order["$"].id }
     );
   } catch (error) {
     console.log("ERROR - ", error);
