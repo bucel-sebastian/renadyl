@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req, res) {
   const database = new Database();
-  const paymentData = await req.json();
+  const paymentData = await req;
 
   console.log(paymentData);
   try {
@@ -15,7 +15,7 @@ export async function POST(req, res) {
 
     database.update(
       "renadyl_orders",
-      { payment_status: decodedPaymentData },
+      { payment_status: paymentData },
       { id: "order00001" }
     );
   } catch (error) {}
