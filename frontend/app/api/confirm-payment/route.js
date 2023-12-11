@@ -5,7 +5,7 @@ export async function POST(req, res) {
   const database = new Database();
   const paymentData = await req;
 
-  console.log(paymentData);
+  console.log(JSON.stringify(paymentData, null, 4));
   try {
     const {
       decodeResponse,
