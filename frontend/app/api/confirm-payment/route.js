@@ -5,7 +5,7 @@ export async function POST(req, res) {
   const database = new Database();
   const paymentData = await req;
 
-  console.log(util.inspect(paymentData, false, null, true /* enable colors */));
+  console.log("data JSON - ", await paymentData.json());
   try {
     const {
       decodeResponse,
@@ -18,7 +18,9 @@ export async function POST(req, res) {
       { payment_status: paymentData },
       { id: "order00001" }
     );
-  } catch (error) {}
+  } catch (error) {
+    console.log("ERROR - ", error);
+  }
 
   return NextResponse.json({
     status: 200,
