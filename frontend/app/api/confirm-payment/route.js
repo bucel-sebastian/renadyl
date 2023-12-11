@@ -4,8 +4,14 @@ import { NextResponse } from "next/server";
 export async function POST(req, res) {
   const database = new Database();
 
+  const reqData = await req.text();
+  const reqParams = new URLSearchParams(reqData);
   try {
-    const paymentData = await req.text();
+    const paymentData = {
+      env_key: reqParams.get(env_key),
+      data: reqParams.get(data),
+      cipher: reqParams.get(cipher),
+    };
     console.log("data JSON - ", paymentData);
     const {
       decodeResponse,
@@ -15,7 +21,7 @@ export async function POST(req, res) {
 
     database.update(
       "renadyl_orders",
-      { payment_status: paymentData },
+      { payment_status: decodedPaymentData },
       { id: "order00001" }
     );
   } catch (error) {
