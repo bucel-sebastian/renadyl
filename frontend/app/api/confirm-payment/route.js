@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 
 export async function POST(req, res) {
   const database = new Database();
-  const paymentData = await req;
 
   try {
-    console.log("data JSON - ", await paymentData.text());
+    const paymentData = await req.text();
+    console.log("data JSON - ", paymentData);
     const {
       decodeResponse,
     } = require("@/utils/frontpages/netopia/getPaymentData");
