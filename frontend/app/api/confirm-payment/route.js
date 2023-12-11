@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req, res) {
   const database = new Database();
-  const paymentData = await req;
+  const paymentData = await req.json();
 
   console.log(paymentData);
   try {
