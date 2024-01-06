@@ -1,29 +1,40 @@
-'use client'
+"use client";
 
+import { SessionProvider, useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next-intl/client";
+import { useParams, useRouter } from "next/navigation";
+import React, { useState } from "react";
+import UserNav from "../widgets/UserNav";
 
-import { useTranslations } from 'next-intl'
-import { usePathname } from 'next-intl/client';
-import React, { useState } from 'react'
+function Header({ currentLocale }) {
+  const params = useParams();
+  const { id } = params;
 
-function Header({currentLocale}) {
+  const t = useTranslations("Dashboard");
+  const pathname = usePathname();
+  let pathTranslate = "";
 
-    const t = useTranslations('Dashboard');
-    const pathname = usePathname();
+  if (pathname.startsWith("/admin/dashboard/orders/")) {
+    pathTranslate = `${t("admin.header.order-title")} #${id} `;
+  } else {
+    pathTranslate = t(`admin.header.${pathname}`);
+  }
 
-    return (
-        <>
-            <div className='h-[75px] flex flex-row items-center content-center justify-between'>
-                <div>
-                    <h1 className='text-3xl font-bold'>
-                        {t(`admin.header.${pathname}`)}
-                    </h1>
-                </div>
-                <div>
-                    
-                </div>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div className="h-[75px] flex flex-row items-center content-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">{pathTranslate}</h1>
+        </div>
+        <div>
+          <SessionProvider>
+            <UserNav />
+          </SessionProvider>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Header
+export default Header;

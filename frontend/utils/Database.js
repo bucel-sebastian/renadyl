@@ -60,12 +60,16 @@ class Database {
     return this.query(query, params);
   }
 
-  async select(table, where) {
+  async select(table, where = [], order = null) {
     const whereClause = Object.keys(where)
       .map((key, index) => `${key} = $${index + 1}`)
       .join(" AND ");
     const params = Object.values(where);
-    const query = `SELECT * FROM ${table} WHERE ${whereClause}`;
+    let query;
+    query = `SELECT * FROM ${table} ${
+      whereClause !== "" ? `WHERE ${whereClause}` : ""
+    } ${order !== null ? `ORDER BY ${order}` : ""}`;
+    console.log(query);
     return this.query(query, params);
   }
 }

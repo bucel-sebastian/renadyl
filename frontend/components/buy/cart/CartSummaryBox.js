@@ -12,6 +12,8 @@ function CartSummaryBox({ currentLocale }) {
   const { cart } = useSelector((state) => state.cart);
   const { checkoutData } = useSelector((state) => state.cart);
 
+  console.log(checkoutData);
+
   const [summaryData, setSummaryData] = useState({
     orderTotal: 0,
     productsTotal: 0,
@@ -31,7 +33,7 @@ function CartSummaryBox({ currentLocale }) {
     };
 
     const response = await fetch(
-      "/api/data/json/checkout/calculate-order-total",
+      "/api/data/json/checkout/calculate-total-without-shipping",
       {
         method: "POST",
         headers: {
@@ -40,8 +42,9 @@ function CartSummaryBox({ currentLocale }) {
         body: JSON.stringify(requestBody),
       }
     );
+    console.log("pre summary data");
     const data = await response.json();
-
+    console.log("Summary data - ", data);
     setSummaryData(data.body);
   };
 
@@ -106,7 +109,7 @@ function CartSummaryBox({ currentLocale }) {
               {summaryData.promoTotal !== 0 ? (
                 <>
                   <p className="text-right">
-                    {t("total-promocode")}: {summaryData.promoTotal}{" "}
+                    {t("total-promocode")}: -{summaryData.promoTotal}{" "}
                     {checkoutData.currency}
                   </p>
                 </>

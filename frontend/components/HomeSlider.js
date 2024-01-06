@@ -48,15 +48,15 @@ function HomeSlider() {
     });
   };
 
-  useEffect(() => {
-    changeSlide(currentSlide);
-  }, [currentSlide]);
+  // useEffect(() => {
+  //   changeSlide(currentSlide);
+  // }, [currentSlide]);
 
-  const handleDotClick = (index) => {
-    clearInterval(changeSlideInterval.current);
-    setCurrentSlide(index);
-    startSlideInterval();
-  };
+  // const handleDotClick = (index) => {
+  //   clearInterval(changeSlideInterval.current);
+  //   setCurrentSlide(index);
+  //   startSlideInterval();
+  // };
 
   return (
     <div className="relative h-full overflow-hidden">
@@ -69,12 +69,14 @@ function HomeSlider() {
             disableRemotePlayback={true}
             className="h-full w-auto aspect-video pointer-events-none"
             playsInline
+            autoPlay
+            loop
           >
             <source src={"/videos/hero-banner-1.webm"} type="video/webm" />
             <source src={"/videos/hero-banner-1.mp4"} type="video/mp4" />
           </video>
         </div>
-        <div className="aspect-video absolute min-h-full w-content hero-slide">
+        {/* <div className="aspect-video absolute min-h-full w-content hero-slide">
           <video
             muted
             controls={false}
@@ -115,9 +117,9 @@ function HomeSlider() {
               loading="lazy"
             />
           </video>
-        </div>
+        </div> */}
       </div>
-      <div className="absolute bottom-[10px] w-full flex flex-row justify-center content-center items-center gap-[5px]">
+      {/* <div className="absolute bottom-[10px] w-full flex flex-row justify-center content-center items-center gap-[5px]">
         <div className="dot active-dot" onClick={() => handleDotClick(0)}>
           <div className="inner-dot"></div>
         </div>
@@ -127,7 +129,7 @@ function HomeSlider() {
         <div className="dot" onClick={() => handleDotClick(2)}>
           <div className="inner-dot"></div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

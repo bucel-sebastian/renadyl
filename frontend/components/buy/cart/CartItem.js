@@ -86,7 +86,7 @@ function CartItem({ itemName, countryCode, lastItem, itemQuantity }) {
         lastItem ? "" : "border-b-foregroundPrimary20 border-b-[1px]"
       }`}
     >
-      <div className="w-1/6 h-max px-4">
+      <div className="w-1/6 h-max px-4 max-md:w-1/3">
         <Image
           src={
             itemData.productName === "renal_single"
@@ -99,7 +99,7 @@ function CartItem({ itemName, countryCode, lastItem, itemQuantity }) {
           className="w-full aspect-square"
         />
       </div>
-      <div className="w-5/6 flex flex-row justify-between">
+      <div className="w-5/6 flex flex-row justify-between max-md:w-2/3 max-md:flex-col">
         <div className="h-full flex flex-col justify-between">
           <h1 className="text-xl font-bold ">
             {itemData.productName === "renal_single"
@@ -107,7 +107,7 @@ function CartItem({ itemName, countryCode, lastItem, itemQuantity }) {
               : t("renal-bundle-long-name")}
           </h1>
           <div className="">
-            <div className="rounded-xl border-[1px] border-foregroundPrimary20 w-max flex flex-row items-center content-center justify-center overflow-hidden text-xl h-[45px]">
+            <div className="rounded-xl border-[1px] border-foregroundPrimary20 w-max flex flex-row items-center content-center justify-center overflow-hidden text-xl h-[45px] max-md:w-full">
               <button
                 onClick={decrementItemQuantity}
                 className="w-1/3 bg-backgroundPrimary hover:bg-gradientPurple hover:text-backgroundPrimary transition-all flex justify-center items-center content-center h-full"

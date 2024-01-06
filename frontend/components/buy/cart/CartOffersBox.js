@@ -162,8 +162,8 @@ function CartOffersBox() {
           <>
             <div className="w-full">
               <h1 className="text-2xl font-bold mb-4 ">Produsele noastre</h1>
-              <div className="flex flex-row">
-                <div className="w-1/2 flex flex-row">
+              <div className="flex flex-row max-md:flex-col max-md:gap-8">
+                <div className="w-1/2 flex flex-row max-md:w-full">
                   <div className="w-1/3">
                     <Image
                       src="/images/product_image_1.png"
@@ -193,7 +193,7 @@ function CartOffersBox() {
                     </button>
                   </div>
                 </div>
-                <div className="w-1/2 flex flex-row">
+                <div className="w-1/2 flex flex-row max-md:w-full">
                   <div className="w-1/3">
                     <Image
                       src="/images/product_image_2.png"

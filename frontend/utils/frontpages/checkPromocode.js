@@ -3,7 +3,7 @@ import Database from "../Database";
 export const checkPromocode = async (promocode) => {
   const database = new Database();
   const where = new Object();
-  where["code"] = promocode;
+  where["code"] = promocode.code;
 
   const response = await database.select("renadyl_promo_codes", where);
 

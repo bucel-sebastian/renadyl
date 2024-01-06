@@ -56,7 +56,9 @@ export async function POST(req, { params }) {
   }
 
   if (checkoutData.promocode !== null) {
-    const promocodeData = await checkPromocode(checkoutData.promocode);
+    const promocodeData = await checkPromocode({
+      code: checkoutData.promocode,
+    });
     promoTotal = (productsTotal * promocodeData.value) / 100;
   }
 

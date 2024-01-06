@@ -61,7 +61,7 @@ export const sendOrderToDatabase = async (formData) => {
     item.expDate = "";
   }
 
-  values["cart"] = formData.cart;
+  values["cart"] = JSON.stringify(formData.cart);
 
   values["doctor"] = formData.checkoutData.doctor;
   values["currency"] = formData.checkoutData.currency;
@@ -151,7 +151,7 @@ export const sendOrderToDatabase = async (formData) => {
   values["shipping_total"] = formData.summaryData.shippingTotal;
   values["promo_total"] = formData.summaryData.promoTotal;
 
-  console.log("Values - ", values);
+  // console.log("Values - ", values);
 
   // console.log("values", values);
   // return false;

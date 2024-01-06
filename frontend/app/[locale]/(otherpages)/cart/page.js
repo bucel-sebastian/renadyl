@@ -41,34 +41,34 @@ export default function CartPage({ params: { locale } }) {
           <span className="relative flex items-center content-center justify-center bg-backgroundPrimary w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full ">
             1
           </span>
-          <span className="absolute top-full text-sm text-center w-max">
+          <span className="absolute top-full text-sm text-center w-max max-md:text-[10px]">
             {t("order-steps.step-1")}
           </span>
         </div>
-        <div className="w-[100px] h-[2px] bg-foregroundPrimary20"></div>
+        <div className="w-[100px] h-[2px] bg-foregroundPrimary20 max-md:w-[40px]"></div>
         <div className="text-xl relative flex justify-center">
           <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-foregroundPrimary30 rounded-full bg-backgroundPrimary">
             2
           </span>
-          <span className="absolute top-full text-sm text-center w-max">
+          <span className="absolute top-full text-sm text-center w-max max-md:text-[10px]">
             {t("order-steps.step-2")}
           </span>
         </div>
-        <div className="w-[100px] h-[2px] bg-foregroundPrimary20"></div>
+        <div className="w-[100px] h-[2px] bg-foregroundPrimary20 max-md:w-[40px]"></div>
         <div className="text-xl relative flex justify-center">
           <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-foregroundPrimary30 rounded-full bg-backgroundPrimary">
             3
           </span>
-          <span className="absolute top-full text-sm text-center w-max">
+          <span className="absolute top-full text-sm text-center w-max max-md:text-[10px]">
             {t("order-steps.step-3")}
           </span>
         </div>
-        <div className="w-[100px] h-[2px] bg-foregroundPrimary20"></div>
+        <div className="w-[100px] h-[2px] bg-foregroundPrimary20 max-md:w-[40px]"></div>
         <div className="text-xl relative flex justify-center">
           <span className="flex items-center content-center justify-center w-[40px] h-[40px] border-[2px] border-foregroundPrimary30 rounded-full bg-backgroundPrimary">
             4
           </span>
-          <span className="absolute top-full text-sm text-center w-max">
+          <span className="absolute top-full text-sm text-center w-max max-md:text-[10px]">
             {t("order-steps.step-4")}
           </span>
         </div>

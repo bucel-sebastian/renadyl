@@ -91,7 +91,9 @@
     --dashboard-red-0: #FC3D3900;
 }
 
-
+html{
+  scroll-behavior: smooth;
+}
 
 body {
   color: rgb(var(--foreground-rgb));

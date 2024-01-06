@@ -231,11 +231,7 @@ function HomeHeader({ currentLocale }) {
             {/* </NextIntlClientProvider> */}
           </div>
           <div>
-            <Link
-              href="/under-construction"
-              locale={currentLocale}
-              aria-label="Account"
-            >
+            <Link href="/login" locale={currentLocale} aria-label="Account">
               <FaCircleUser className="text-[35px]" />
             </Link>
           </div>
@@ -355,6 +351,19 @@ function HomeHeader({ currentLocale }) {
                 >
                   {t("faq")}
                 </Link>
+              </li>
+              <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
+                {/* <Link
+                  href="/cart"
+                  onClick={handleMobileMenuClick}
+                  locale={currentLocale}
+                >
+                  {t("cart")}
+                </Link> */}
+
+                <div className="w-max mx-auto" onClick={handleMobileMenuClick}>
+                  <CartBtn currentLocale={currentLocale} />
+                </div>
               </li>
               <li className="text-4xl text-center relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
                 <Link

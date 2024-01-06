@@ -12,12 +12,10 @@ export async function POST(req, res) {
       data: reqParams.get("data"),
       cipher: reqParams.get("cipher"),
     };
-    console.log("data JSON - ", paymentData);
     const {
       decodeResponse,
     } = require("@/utils/frontpages/netopia/getPaymentData");
     const decodedPaymentData = await decodeResponse(paymentData);
-    console.log("decoded data - ", decodedPaymentData);
 
     database.update(
       "renadyl_orders",

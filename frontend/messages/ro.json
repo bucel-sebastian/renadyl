@@ -394,7 +394,7 @@
         "title": "Sumar comandă",
         "total-products": "Cost produse",
         "total-shipping": "Cost livrare",
-        "total-promocode": "Reducere cod promoțional",
+        "total-promocode": "Reducere cod promoțional / afiliat",
         "total-bundle-sale": "Reducere bundle",
         "total-order": "Total",
         "place-order": "Plasează comanda"
@@ -405,7 +405,13 @@
             "step-2": "Detalii comandă",
             "step-3": "Sumar comandă",
             "step-4": "Comandă plasată"
-        }
+        },
+        "page-title": "Comandă plasată",
+        "order-placed-title": "Comandă plasată",
+        "order-number": "Număr comandă",
+        "p-1": "Comanda dvs. a fost plasată cu succes!",
+        "p-2": "Detaliile legate de comandă au fost trimise pe email.",
+        "back-home": "Înapoi acasă"
     },
     "Buy": {
         "product-name": "Renadyl™ - Supliment alimentar",
@@ -901,6 +907,20 @@
         "heading-3": "DISPOZIȚII FINALE",
         "p-3-1": "Renadyl.ro / Renadyleurope.com (Healthy Medical)face eforturi permanente pentru a păstra acuratețea informațiilor din prezentările de pe site. Rareori acestea pot conține mici inadvertențe: fotografia are caracter informativ și poate conține accesorii neincluse în pachetul standard, culoarea poate fi diferită, unele specificații pot fi modificate de producător fără preaviz sau pot conține erori de operare. Va stăm oricând la dispoziție pentru eventuale clarificări și soluționări ale sesizărilor dumneavoastră, la adresa de email Office@healthymedical.ro "
     },
+    "Admin-Login": {
+        "page-title": "Autentificare - Admin",
+        "heading": "Autentificare - Admin",
+        "desc": "Introdu datele de autentificare pentru a accesa panoul de administrator",
+        "login-form": {
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "password-label": "Parola",
+            "password-ph": "Introdu parola",
+            "password-forgot-link": "Ai uitat parola?",
+            "remember-label": "Ține-mă minte",
+            "submit-btn": "Autentifică-te"
+        }
+    },
     "Dashboard": {
         "admin": {
             "header": {
@@ -914,7 +934,8 @@
                 "/admin/dashboard/distributors": "Distribuitori",
                 "/admin/dashboard/affiliates": "Afiliați",
                 "/admin/dashboard/product": "Produs",
-                "/admin/dashboard/settings": "Setări"
+                "/admin/dashboard/settings": "Setări",
+                "order-title": "Comanda"
             },
             "navbar": {
                 "general": "General",
@@ -951,12 +972,19 @@
                         "status": "Status",
                         "date": "Dată",
                         "client": "Client",
-                        "quantity": "Cantitate",
+                        "payment-type": "Metodă de plată",
+                        "payment-status": "Status plată",
                         "currency": "Monedă",
                         "value": "Valoare",
                         "transport": "Transport",
                         "actions": "Acțiuni"
                     }
+                },
+                "order-page": {
+                    "renal-single-long-name": "Renadyl - Supliment alimentar",
+                    "renal-single-short-name": "Renadyl",
+                    "renal-bundle-long-name": "Bundle 3x Renadyl - Supliment alimentar",
+                    "renal-bundle-short-name": "Bundle 3x Renadyl"
                 }
             },
             "invoices": {
@@ -1064,6 +1092,12 @@
                 "subscription": "Abonament",
                 "invoices": "Facturi",
                 "settings": "Setări"
+            },
+            "buy": {
+                "product-name-renal-single": "Renadyl - Supliment alimentar",
+                "product-name-renal-bundle": "Bundle 3x Renadyl - Supliment alimentar",
+                "product-desc-renal-single": "",
+                "product-desc-renal-bundle": ""
             }
         }
     }

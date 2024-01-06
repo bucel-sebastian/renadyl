@@ -14,11 +14,9 @@ CREATE TABLE
         password VARCHAR(255) NOT NULL,
     )
 
-CREATE TABLE `bank_data` ()
-
--- POSTGRESQL
-
--- contact form
+CREATE TABLE
+    `bank_data` () -- POSTGRESQL
+    -- contact form
 
 CREATE TABLE
     IF NOT EXISTS renadyl_contact_form (
@@ -57,9 +55,7 @@ CREATE TABLE
         sale_value varchar(150) NOT NULL,
         sale_percentage VARCHAR(150) NOT NULL,
         change_date timestamp without time zone NOT NULL
-    )
-
--- users
+    ) -- users
 
 CREATE TABLE
     IF NOT EXISTS renadyl_users (
@@ -76,31 +72,28 @@ CREATE TABLE
 
 -- users shipping addresses
 
-CREATE TABLE IF NOT EXISTS renadyl_shipping_details ()
+CREATE TABLE
+    IF NOT EXISTS renadyl_shipping_details () -- users billing addresses
 
--- users billing addresses
-
-CREATE TABLE IF NOT EXISTS renadyl_billing_details ()
-
--- subscriptions
+CREATE TABLE
+    IF NOT EXISTS renadyl_billing_details () -- subscriptions
 
 CREATE TABLE IF NOT EXISTS renadyl_subscriptions (
 
-)
-
--- admins
+) -- admins
 
 CREATE TABLE
     IF NOT EXISTS renadyl_admins (
         id VARCHAR(50) NOT NULL PRIMARY KEY,
-        f_name VARCHAR(50),
-        l_name VARCHAR(50),
-        email VARCHAR(100) NOT NULL,
-        phone VARCHAR(100),
-        password VARCHAR(255) NOT NULL
-    )
+        role VARCHAR(25) NOT NULL,
 
--- stocks
+f_name VARCHAR(50),
+l_name VARCHAR(50),
+email VARCHAR(100) NOT NULL,
+phone VARCHAR(100),
+password VARCHAR(255) NOT NULL,
+last_login TIMESTAMP
+) -- stocks
 
 CREATE TABLE
     IF NOT EXISTS renadyl_stocks (
@@ -108,9 +101,7 @@ CREATE TABLE
         stock_quantity INTEGER NOT NULL,
         change_date TIMESTAMP NOT NULL,
         last_stock_quantity INTEGER NOT NULL
-    )
-
--- intrari
+    ) -- intrari
 
 CREATE TABLE
     IF NOT EXISTS renadyl_product_inputs (
@@ -119,9 +110,7 @@ CREATE TABLE
         date TIMESTAMP NOT NULL,
         buy_price FLOAT NOT NULL,
         shipping_price FLOAT NOT NULL
-    )
-
--- Orders
+    ) -- Orders
 
 CREATE TABLE
     IF NOT EXISTS renadyl_orders (
@@ -136,8 +125,8 @@ CREATE TABLE
         country_code VARCHAR(5) NOT NULL,
         payment varchar(10) NOT NULL,
         payment_status text,
-        invoice VARCHAR(100),
-        shipping_awb VARCHAR(255),
+        invoice TEXT,
+        shipping_awb TEXT,
         promo_code TEXT,
         order_total FLOAT NOT NULL,
         products_total FLOAT NOT NULL,
@@ -148,9 +137,7 @@ CREATE TABLE
         status VARCHAR(50) NOT NULL,
         logs TEXT,
         observations TEXT
-    )
-
--- Invoices
+    ) -- Invoices
 
 CREATE TABLE
     IF NOT EXISTS renadyl_invoices (
@@ -164,4 +151,11 @@ CREATE TABLE
         code VARCHAR(100) NOT NULL PRIMARY KEY,
         user_id VARCHAR(255) NOT NULL,
         value VARCHAR(100) NOT NULL
+    ) -- Lots and exp DATABASE
+CREATE TABLE
+    IF NOT EXISTS renadyl_lots (
+        id serial,
+        lot_number VARCHAR(100) NOT NULL PRIMARY KEY,
+        exp_date DATE NOT NULL,
+        added_date TIMESTAMP NOT NULL
     )

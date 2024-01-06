@@ -25,6 +25,7 @@ const cartSlice = createSlice({
         state: "",
         stateKey: "",
         type: "courier",
+        locker: null,
       },
       billing: {
         asShipping: true,
@@ -127,7 +128,10 @@ const cartSlice = createSlice({
       state = {
         cart: [],
         checkoutData: {
+          currency: null,
+          countryCode: null,
           promocode: null,
+          isLoggedIn: false,
           shipping: {
             address: "",
             city: "",
@@ -141,12 +145,9 @@ const cartSlice = createSlice({
             phone: "",
             postalCode: "",
             rePassword: "",
-            wantsAccount: false,
             state: "",
             stateKey: "",
             type: "courier",
-            easybox: null,
-            provider: "",
           },
           billing: {
             asShipping: true,
@@ -163,10 +164,7 @@ const cartSlice = createSlice({
             postalCode: "",
             state: "",
             stateKey: "",
-            companyCif: "",
-            companyName: "",
           },
-          order: {},
           doctor: "",
           payment: "card",
         },
@@ -191,5 +189,6 @@ export const {
   updateCheckoutData,
   saveCheckoutData,
   setCurrencyAndCountryCode,
+  resetCartData,
 } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

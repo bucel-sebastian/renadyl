@@ -12,7 +12,7 @@ async function Checkout({ locale, messages }) {
   return (
     <>
       <NextIntlClientProvider locale={locale} messages={messages}>
-        {session ? (
+        {session && session.user.role !== "admin" ? (
           <>
             <CheckoutLoggedIn locale={locale} />
           </>

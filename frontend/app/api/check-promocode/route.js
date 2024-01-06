@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(req, res) {
   const formData = await req.json();
 
-  console.log(formData);
+  console.log("checkpromocode", formData);
 
   let response = null;
 

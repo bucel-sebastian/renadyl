@@ -9,10 +9,12 @@ import SelectInput from "@/components/SelectInput";
 
 import countriesData from "@/public/json/countriesData.json";
 import Script from "next/script";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 function CheckoutNotLoggedIn({ locale }) {
   const router = useRouter();
+  const pathname = usePathname();
+  console.log();
 
   const t = useTranslations("Checkout");
 
@@ -131,6 +133,17 @@ function CheckoutNotLoggedIn({ locale }) {
   useEffect(() => {
     dispatch(updateCheckoutData({ name: "shipping.rePassword", value: "" }));
     dispatch(updateCheckoutData({ name: "shipping.password", value: "" }));
+    if (window?.location?.hash) {
+      console.log("Has #");
+      handleSetIsNotClient();
+      setTimeout(() => {
+        const elementId = window?.location?.hash.substring(1); // Remove the '#' character
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView();
+        }
+      }, 100);
+    }
   }, []);
 
   const countries = new Object();
@@ -184,15 +197,8 @@ function CheckoutNotLoggedIn({ locale }) {
   const handleSameDayLockerSelect = (msg) => {
     setSamedayLockerMsg(msg);
     console.log("Sameday Easybox plugin response: ", msg);
-    setcheckoutFormData((prevData) => {
-      const updatedData = { ...prevData };
 
-      updatedData["shipping"]["easybox"] = msg;
-
-      console.log(updatedData);
-
-      return updatedData;
-    });
+    dispatch(updateCheckoutData({ name: "shipping.locker", value: msg }));
     // RESPONSE {
     //     "lockerId": 1150,
     //     "name": "easybox Canal S",
@@ -504,13 +510,16 @@ function CheckoutNotLoggedIn({ locale }) {
               </div>
             </section>
 
-            <section className="relative block max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8 border-[1px] shadow-lg rounded-xl h-max ">
+            <section
+              className="relative block max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8 border-[1px] shadow-lg rounded-xl h-max "
+              id="shipping"
+            >
               <div className="p-8 bg-backgroundPrimary rounded-xl">
                 <h2 className="text-2xl">2. {t("section-2-2-title")}</h2>
 
                 <div>
-                  <div className="w-full flex flex-row gap-8 ">
-                    <div className="w-1/2 flex flex-col mb-2">
+                  <div className="w-full flex flex-row gap-8 max-md:flex-col max-md:gap-0">
+                    <div className="w-1/2 flex flex-col mb-2 max-md:w-full">
                       <label className="px-1 text-foregroundPrimary70">
                         {t("register-form.fname-label")}
                       </label>
@@ -524,7 +533,7 @@ function CheckoutNotLoggedIn({ locale }) {
                         required
                       />
                     </div>
-                    <div className="w-1/2 flex flex-col mb-2">
+                    <div className="w-1/2 flex flex-col mb-2 max-md:w-full">
                       <label className="px-1 text-foregroundPrimary70">
                         {t("register-form.lname-label")}
                       </label>
@@ -539,8 +548,8 @@ function CheckoutNotLoggedIn({ locale }) {
                       />
                     </div>
                   </div>
-                  <div className="w-full flex flex-row gap-8 ">
-                    <div className="w-1/2 flex flex-col mb-2">
+                  <div className="w-full flex flex-row gap-8 max-md:flex-col max-md:gap-0 ">
+                    <div className="w-1/2 flex flex-col mb-2 max-md:w-full">
                       <label className="px-1 text-foregroundPrimary70">
                         {t("register-form.phone-label")}
                       </label>
@@ -558,7 +567,7 @@ function CheckoutNotLoggedIn({ locale }) {
                         specialLabel=""
                       />
                     </div>
-                    <div className="w-1/2 flex flex-col mb-2">
+                    <div className="w-1/2 flex flex-col mb-2 max-md:w-full">
                       <label className="px-1 text-foregroundPrimary70">
                         {t("register-form.email-label")}
                       </label>
@@ -756,7 +765,7 @@ function CheckoutNotLoggedIn({ locale }) {
                               />
                             </div>
                           </div>
-                          <div className="w-full flex flex-row gap-8 ">
+                          <div className="w-full flex flex-row gap-8 max-md:flex-col max-md:gap-0">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("shipping-form.city-label")}
@@ -916,7 +925,10 @@ function CheckoutNotLoggedIn({ locale }) {
                 )}
               </div>
             </section>
-            <section className="relative block max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max">
+            <section
+              className="relative block max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max"
+              id="billing"
+            >
               <div className="p-8 bg-backgroundPrimary rounded-xl">
                 <h2 className="text-2xl">3. {t("section-3-title")}</h2>{" "}
                 <div className="relative w-full flex flex-row bg-backgroundPrimary border-[1px] border-foregroundPrimary20 rounded-xl overflow-hidden mb-6">
@@ -929,7 +941,7 @@ function CheckoutNotLoggedIn({ locale }) {
                   ></div>
                   <button
                     type="button"
-                    className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
+                    className={`w-1/2 text-xl py-3 px-2 z-10 transition-all duration-300 ${
                       checkoutData?.billing?.asShipping
                         ? "text-backgroundPrimary"
                         : "text-foregroundPrimary"
@@ -940,7 +952,7 @@ function CheckoutNotLoggedIn({ locale }) {
                   </button>
                   <button
                     type="button"
-                    className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
+                    className={`w-1/2 text-xl py-3  px-2 z-10 transition-all duration-300 ${
                       checkoutData?.billing?.asShipping
                         ? "text-foregroundPrimary"
                         : "text-backgroundPrimary"
@@ -991,7 +1003,7 @@ function CheckoutNotLoggedIn({ locale }) {
                     {checkoutData?.billing?.entity === "pf" ? (
                       <>
                         <div>
-                          <div className="w-full flex flex-row gap-8">
+                          <div className="w-full flex flex-row gap-8 max-md:gap-0 max-md:flex-col">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("billing-form.fname-label")}
@@ -1021,7 +1033,7 @@ function CheckoutNotLoggedIn({ locale }) {
                               />
                             </div>
                           </div>
-                          <div className="w-full flex flex-row gap-8">
+                          <div className="w-full flex flex-row gap-8 max-md:gap-0 max-md:flex-col">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("billing-form.phone-label")}
@@ -1063,7 +1075,7 @@ function CheckoutNotLoggedIn({ locale }) {
                               />
                             </div>
                           </div>
-                          <div className="w-full flex flex-row gap-8">
+                          <div className="w-full flex flex-row gap-8 max-md:gap-0 max-md:flex-col">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("billing-form.country-label")}
@@ -1092,7 +1104,7 @@ function CheckoutNotLoggedIn({ locale }) {
                               />
                             </div>
                           </div>
-                          <div className="w-full flex flex-row gap-8">
+                          <div className="w-full flex flex-row gap-8 max-md:gap-0 max-md:flex-col">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("billing-form.city-label")}
@@ -1298,7 +1310,10 @@ function CheckoutNotLoggedIn({ locale }) {
             {checkoutData?.shipping?.country === "Romania" &&
             checkoutData?.shipping.type === "courier" ? (
               <>
-                <section className="relative block max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max">
+                <section
+                  className="relative block max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max"
+                  id="payment"
+                >
                   <div className="p-8 bg-backgroundPrimary rounded-xl">
                     <h2 className="text-2xl">4. {t("payment-method-title")}</h2>
 

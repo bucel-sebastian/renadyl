@@ -13,7 +13,7 @@ export const authSameday = async () => {
       method: "POST",
       headers: reqHeaders,
     });
-
+    console.log("Authenitcated");
     const body = await response.json();
     return body.token;
   } catch (error) {

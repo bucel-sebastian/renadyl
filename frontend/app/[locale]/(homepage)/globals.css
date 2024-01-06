@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior: smooth;
+}
+
 :root {
   --background-primary: #fafafa;
   --background-primary-90: #fafafaE6;

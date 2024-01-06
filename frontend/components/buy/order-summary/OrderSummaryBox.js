@@ -9,10 +9,14 @@ function OrderSummaryBox() {
 
   const { cart } = useSelector((state) => state.cart);
   const { checkoutData } = useSelector((state) => state.cart);
+  const slice = useSelector((state) => state);
 
   const [havePaymentData, setHavePaymentData] = useState(false);
   const [netopiaEnvKey, setNetopiaEnvKey] = useState(null);
   const [netopiaData, setNetopiaData] = useState(null);
+
+  console.log("CART - ", cart);
+  console.log("SLICE - ", slice);
 
   const [summaryData, setSummaryData] = useState({
     orderTotal: 0,
@@ -41,7 +45,7 @@ function OrderSummaryBox() {
 
     if (response.ok) {
       const responseJson = await response.json();
-
+      console.log(responseJson);
       const body = await responseJson.body;
 
       const { env_key, data } = await body.paymentData;
@@ -111,7 +115,7 @@ function OrderSummaryBox() {
           ) : (
             <>
               <p className="text-right">
-                {t("total-products")}: -{summaryData.promoTotal}{" "}
+                {t("total-promocode")}: -{summaryData.promoTotal}{" "}
                 {checkoutData.currency}
               </p>
             </>
@@ -129,6 +133,7 @@ function OrderSummaryBox() {
       <button
         type="submit"
         onClick={handleFormSubmit}
+        disabled
         className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
       >
         {t("place-order")}

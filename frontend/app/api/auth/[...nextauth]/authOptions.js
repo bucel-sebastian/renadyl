@@ -7,7 +7,7 @@ import { checkLoginDetails } from "@/utils/user/auth/login";
 import { checkAdminLoginDetails } from "@/utils/admin/auth/login";
 
 export const authOptions = {
-  secret: "123AUTH1234SECRET123",
+  secret: process.env.NEXT_AUTH_SECRET,
   session: {
     strategy: "jwt",
   },
@@ -26,7 +26,6 @@ export const authOptions = {
           credentials?.password
         );
         const user = await response;
-        // console.log("autorize ", { user });
         if (user !== null) {
           return user;
         }
@@ -44,13 +43,15 @@ export const authOptions = {
           type: "password",
         },
       },
-
       async authorize(credentials) {
         const response = await checkAdminLoginDetails(
           credentials?.email,
           credentials?.password
         );
+
         const user = await response;
+        user.role = "admin";
+
         if (user !== null) {
           return user;
         }
@@ -82,9 +83,10 @@ export const authOptions = {
 
       return token;
     },
-    async session({ session, token, user }) {
-      console.log("session callback", { session, token, user });
+    async session({ session, token }) {
+      console.log("session callback", { session, token });
       session.user = { ...token };
+      console.log("session callback - 2", { session, token });
       // if (session?.user) session.user.role = "client";
       return session;
     },

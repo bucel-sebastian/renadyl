@@ -145,4 +145,3 @@ function decodeResponse(data) {
     );
   });
 }
-// console.log(getRequest(111));
