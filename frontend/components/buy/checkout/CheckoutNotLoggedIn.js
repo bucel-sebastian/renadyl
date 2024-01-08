@@ -1154,7 +1154,7 @@ function CheckoutNotLoggedIn({ locale }) {
                     ) : (
                       <>
                         <div>
-                          <div className="w-full flex flex-row gap-8">
+                          <div className="w-full flex flex-row gap-8 max-md:gap-0 max-md:flex-col">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("billing-form.company-name-label")}
@@ -1184,7 +1184,7 @@ function CheckoutNotLoggedIn({ locale }) {
                               />
                             </div>
                           </div>
-                          <div className="w-full flex flex-row gap-8">
+                          <div className="w-full flex flex-row gap-8 max-md:gap-0 max-md:flex-col">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("billing-form.phone-label")}
@@ -1225,7 +1225,7 @@ function CheckoutNotLoggedIn({ locale }) {
                               />
                             </div>
                           </div>
-                          <div className="w-full flex flex-row gap-8">
+                          <div className="w-full flex flex-row gap-8 max-md:gap-0 max-md:flex-col">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("billing-form.country-label")}
@@ -1254,7 +1254,7 @@ function CheckoutNotLoggedIn({ locale }) {
                               />
                             </div>
                           </div>
-                          <div className="w-full flex flex-row gap-8">
+                          <div className="w-full flex flex-row gap-8 max-md:gap-0 max-md:flex-col">
                             <div className="w-full flex flex-col mb-2">
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("billing-form.city-label")}
