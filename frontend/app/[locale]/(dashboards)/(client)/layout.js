@@ -28,20 +28,22 @@ export default function LocaleLayout({
       <body
         className={`scroll-smoth ${sofiaSans.className} relative bg-gradient-to-r from-gradientGreen to-gradientPurple p-4 h-screen max-lg:p-0 max-lg:h-auto max-lg:min-h-screen`}
       >
-        <StoreProvider>
-          <div className="flex flex-row bg-backgroundPrimary rounded-2xl h-full overflow-hidden max-lg:rounded-none max-lg:min-h-screen">
-            <NextIntlClientProvider locale={locale} messages={messages}>
-              <Navbar />
-            </NextIntlClientProvider>
-
-            <div className="flex flex-col px-8 py-6 w-5/6 h-full max-h-full overflow-x-hidden overflow-y-auto gap-4 max-lg:px-2">
+        <SessionProviderInClient session={session}>
+          <StoreProvider>
+            <div className="flex flex-row bg-backgroundPrimary rounded-2xl h-full overflow-hidden max-lg:rounded-none max-lg:min-h-screen">
               <NextIntlClientProvider locale={locale} messages={messages}>
-                <Header />
+                <Navbar />
               </NextIntlClientProvider>
-              {children}
+
+              <div className="flex flex-col px-8 py-6 w-5/6 h-full max-h-full overflow-x-hidden overflow-y-auto gap-4 max-lg:px-2">
+                <NextIntlClientProvider locale={locale} messages={messages}>
+                  <Header />
+                </NextIntlClientProvider>
+                {children}
+              </div>
             </div>
-          </div>
-        </StoreProvider>
+          </StoreProvider>
+        </SessionProviderInClient>
       </body>
     </html>
   );
