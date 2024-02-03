@@ -29,9 +29,9 @@ function Header({ currentLocale }) {
         </div>
         <div className="w-3/5 h-full flex flex-row justify-end"></div>
       </div>
-      <div className="max-lg:mt-[65px] h-[75px] flex flex-row items-center content-center justify-between max-lg:hidden">
+      <div className="max-lg:mt-[65px] h-[75px] flex flex-row items-center content-center justify-between">
         <DashboardPageTitle />
-        <div>
+        <div className=" max-lg:hidden">
           <SessionProviderInClient session={session}>
             <UserNav />
           </SessionProviderInClient>
