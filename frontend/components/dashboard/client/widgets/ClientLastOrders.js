@@ -86,13 +86,97 @@ function ClientLastOrders() {
                   <TableRow key={row.id}>
                     <TableCell>{row.id}</TableCell>
                     <TableCell>
-                      <div
-                        className={`w-max mx-auto rounded-xl ${`bg-[${
-                          orderStatus[row.status].color
-                        }]`}`}
-                      >
-                        {orderStatus[row.status].name}
-                      </div>
+                      {parseInt(row.status) === 0 ? (
+                        <>
+                          <div
+                            className={`w-max  rounded-xl px-3 py-[2px] text-foregroundSecondary bg-[#e74d3d]`}
+                          >
+                            {t("orders-list.order-status.cancelled")}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          {parseInt(row.status) === 1 ? (
+                            <>
+                              <div
+                                className={`w-max  rounded-xl px-3 py-[2px] text-foregroundSecondary bg-[#f1c40d]`}
+                              >
+                                {t("orders-list.order-status.placed")}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {parseInt(row.status) === 2 ? (
+                                <>
+                                  <div
+                                    className={`w-max  rounded-xl px-3 py-[2px] text-foregroundSecondary bg-[#e77e22]`}
+                                  >
+                                    {t("orders-list.order-status.processing")}
+                                  </div>
+                                </>
+                              ) : (
+                                <>
+                                  {parseInt(row.status) === 3 ? (
+                                    <>
+                                      <div
+                                        className={`w-max  rounded-xl px-3 py-[2px] text-foregroundSecondary bg-[#3397dc]`}
+                                      >
+                                        {t(
+                                          "orders-list.order-status.ready-to-ship"
+                                        )}
+                                      </div>
+                                    </>
+                                  ) : (
+                                    <>
+                                      {parseInt(row.status) === 4 ? (
+                                        <>
+                                          <div
+                                            className={`w-max  rounded-xl px-3 py-[2px] text-foregroundSecondary bg-[#2980b9]`}
+                                          >
+                                            {t(
+                                              "orders-list.order-status.shipped"
+                                            )}
+                                          </div>
+                                        </>
+                                      ) : (
+                                        <>
+                                          {parseInt(row.status) === 5 ? (
+                                            <>
+                                              <div
+                                                className={`w-max  rounded-xl px-3 py-[2px] text-foregroundSecondary bg-[#2ecd70]`}
+                                              >
+                                                {t(
+                                                  "orders-list.order-status.finished"
+                                                )}
+                                              </div>
+                                            </>
+                                          ) : (
+                                            <>
+                                              {parseInt(row.status) === 6 ? (
+                                                <>
+                                                  <div
+                                                    className={`w-max  rounded-xl px-3 py-[2px] text-foregroundSecondary bg-[#e74d3d]`}
+                                                  >
+                                                    {t(
+                                                      "orders-list.order-status.refunded"
+                                                    )}
+                                                  </div>
+                                                </>
+                                              ) : (
+                                                <></>
+                                              )}
+                                            </>
+                                          )}
+                                        </>
+                                      )}
+                                    </>
+                                  )}
+                                </>
+                              )}
+                            </>
+                          )}
+                        </>
+                      )}
                     </TableCell>
                     <TableCell>
                       {formatter.format(new Date(row.date))}
