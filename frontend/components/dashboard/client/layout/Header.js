@@ -1,29 +1,21 @@
-"use client";
 import { SessionProvider, useSession } from "next-auth/react";
 
 import { useTranslations } from "next-intl";
 import { usePathname } from "next-intl/client";
-import React, { useState } from "react";
+import React from "react";
 import renadylLogo from "@/public/renadyl_logo.svg";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import UserNav from "../../admin/widgets/UserNav";
+import DashboardPageTitle from "./DashboardPageTitle";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import SessionProviderInClient from "@/components/SessionProviderInClient";
 
-function Header({ currentLocale, session }) {
-  const params = useParams();
-  const { id } = params;
+function Header({ currentLocale }) {
+  const session = getServerSession(authOptions);
 
   const t = useTranslations("Dashboard");
-  const pathname = usePathname();
-
-  let pathTranslate = "";
-
-  if (pathname.startsWith("/dashboard/client/orders/")) {
-    pathTranslate = `${t("client.header.order-title")} #${id} `;
-  } else {
-    pathTranslate = t(`client.header.${pathname}`);
-  }
 
   return (
     <>
@@ -38,9 +30,7 @@ function Header({ currentLocale, session }) {
         <div className="w-3/5 h-full flex flex-row justify-end"></div>
       </div>
       <div className="max-lg:mt-[65px] h-[75px] flex flex-row items-center content-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold max-lg:ml-2">{pathTranslate}</h1>
-        </div>
+        <DashboardPageTitle />
         <div>
           <SessionProviderInClient session={session}>
             <UserNav />

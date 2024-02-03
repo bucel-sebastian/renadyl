@@ -16,7 +16,7 @@ const locales = ["ro", "en", "de"];
 
 export default function LocaleLayout({
   children,
-  params: { locale, session },
+  params: { locale, session, id },
 }) {
   let messages = useMessages();
 
@@ -37,7 +37,7 @@ export default function LocaleLayout({
 
               <div className="flex flex-col px-8 py-6 w-5/6 h-full max-h-full overflow-x-hidden overflow-y-auto gap-4 max-lg:px-2">
                 <NextIntlClientProvider locale={locale} messages={messages}>
-                  <Header />
+                  <Header currentLocale={locale} params={id} />
                 </NextIntlClientProvider>
                 {children}
               </div>
