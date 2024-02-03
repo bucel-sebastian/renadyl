@@ -1,7 +1,7 @@
 import Database from "@/utils/Database";
 import { NextResponse } from "next/server";
 
-const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 export async function GET(req, { params }) {
   const database = new Database();
