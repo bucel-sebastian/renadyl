@@ -13,7 +13,7 @@ function ClientDashboardGreeting() {
     //   getClientLastOrders(session?.data?.user?.id);
     // }
 
-    console.log(session);
+    console.log("greetings session - ", session);
   }, [session]);
   return (
     <div>

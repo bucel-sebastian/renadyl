@@ -106,8 +106,6 @@ export const authOptions = {
 
         const userFromDb = await checkProviderAccountDetails(email);
 
-        console.log("user from db", userFromDb);
-
         if (!userFromDb) {
           const newUserFromDb = await handleGoogleRegister({
             email: email,
@@ -115,8 +113,6 @@ export const authOptions = {
             family_name: profile.family_name,
             at_hash: profile.at_hash,
           });
-
-          console.log("new user from db", newUserFromDb);
 
           user.id = newUserFromDb.data.id;
           user.role = newUserFromDb.data.role;
@@ -138,16 +134,12 @@ export const authOptions = {
 
         const userFromDb = await checkProviderAccountDetails(email);
 
-        console.log("user from db", userFromDb);
-
         if (!userFromDb) {
           const newUserFromDb = await handleFacebookRegister({
             email: email,
             given_name: profile.name,
             at_hash: profile.id,
           });
-
-          console.log("new user from db", newUserFromDb);
 
           user.id = newUserFromDb.data.id;
           user.role = newUserFromDb.data.role;
@@ -169,11 +161,6 @@ export const authOptions = {
       return null;
     },
     async jwt({ token, user, session, trigger, account }) {
-      if (account) {
-        console.log("JWT account", account);
-        if (account.provider === "google") {
-        }
-      }
       if (trigger === "update") {
         token.f_name = session?.f_name;
         token.l_name = session?.l_name;
