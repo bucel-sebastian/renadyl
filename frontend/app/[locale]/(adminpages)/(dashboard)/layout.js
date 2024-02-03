@@ -34,7 +34,7 @@ export default function LocaleLayout({
 
             <div className="flex flex-col px-8 py-6 w-5/6 h-full max-h-full overflow-x-hidden overflow-y-auto gap-4">
               <NextIntlClientProvider locale={locale} messages={messages}>
-                <Header />
+                <Header session={session} />
               </NextIntlClientProvider>
               {children}
             </div>

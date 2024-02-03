@@ -7,7 +7,7 @@ import { useParams, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import UserNav from "../widgets/UserNav";
 
-function Header({ currentLocale }) {
+function Header({ currentLocale, session }) {
   const params = useParams();
   const { id } = params;
 
@@ -36,9 +36,9 @@ function Header({ currentLocale }) {
           <h1 className="text-3xl font-bold">{pathTranslate}</h1>
         </div>
         <div>
-          <SessionProvider>
+          <SessionProviderInClient session={session}>
             <UserNav />
-          </SessionProvider>
+          </SessionProviderInClient>
         </div>
       </div>
     </>
