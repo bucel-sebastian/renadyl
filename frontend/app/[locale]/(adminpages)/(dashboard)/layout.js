@@ -13,7 +13,7 @@ const sofiaSans = Sofia_Sans({
 
 const locales = ["ro", "en", "de"];
 
-export default function LocaleLayout({ children, params: { locale } }) {
+export default function LocaleLayout({ children, params, locale }) {
   let messages = useMessages();
   const { locale } = params;
   const isValidLocale = locales.some((cur) => cur === locale);
