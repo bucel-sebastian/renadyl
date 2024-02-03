@@ -1,10 +1,12 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next-intl/client";
 import React, { useEffect, useState } from "react";
 
 function UserNav() {
   const session = useSession();
+  const router = useRouter();
 
   const [fnameInitial, setFnameInitial] = useState("");
 
@@ -22,6 +24,10 @@ function UserNav() {
   useEffect(() => {
     console.log("nav user session.data ", session);
     setFnameInitial(session.data?.user?.f_name?.charAt(0));
+
+    if (session.status === "unauthenticated") {
+      router.replace("/");
+    }
   }, [session]);
 
   return (
