@@ -161,20 +161,13 @@ export default async function middleware(req) {
     secret: process.env.NEXT_AUTH_SECRET,
   });
 
-  console.log("Token from mw - ", await token);
-
-  console.log("middleware step 1 - check if is private");
   if (isPrivatePage) {
-    console.log("middleware step 2 - is private");
     if (isAdmin) {
-      console.log("middleware step 3 - is admin");
       return await adminAuthMiddleware(req);
     } else {
-      console.log("middleware step 3 - is client");
       return await clientAuthMiddleware(req);
     }
   } else {
-    console.log("middleware step 2 - is public");
     return intlMiddleware(req);
   }
 }

@@ -881,13 +881,43 @@ function CheckoutNotLoggedIn({ locale }) {
                               <label className="px-1 text-foregroundPrimary70">
                                 {t("shipping-form.easybox.label")}
                               </label>
-                              <button
-                                type="button"
-                                onClick={openSamedayLockerMap}
-                                className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
-                              >
-                                {t("shipping-form.easybox.button-text")}
-                              </button>
+
+                              <input
+                                type="text"
+                                value={checkoutData?.shipping?.locker?.id}
+                                className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
+                                required
+                                readOnly
+                              />
+                              {checkoutData?.shipping?.locker !== null ? (
+                                <>
+                                  <p className="font-bold">
+                                    {checkoutData?.shipping?.locker?.name},{" "}
+                                    {checkoutData?.shipping?.locker?.address},{" "}
+                                    {checkoutData?.shipping?.locker?.city},{" "}
+                                    {checkoutData?.shipping?.locker?.county}
+                                  </p>
+                                  <button
+                                    type="button"
+                                    onClick={openSamedayLockerMap}
+                                    className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
+                                  >
+                                    {t(
+                                      "shipping-form.easybox.change-button-text"
+                                    )}
+                                  </button>
+                                </>
+                              ) : (
+                                <>
+                                  <button
+                                    type="button"
+                                    onClick={openSamedayLockerMap}
+                                    className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
+                                  >
+                                    {t("shipping-form.easybox.button-text")}
+                                  </button>
+                                </>
+                              )}
                             </div>
                           </>
                         )}
