@@ -20,7 +20,7 @@ function UserNav() {
   };
 
   useEffect(() => {
-    console.log("nav user session.data ", session.data);
+    console.log("nav user session.data ", session);
     setFnameInitial(session.data?.user?.f_name?.charAt(0));
   }, [session]);
 
