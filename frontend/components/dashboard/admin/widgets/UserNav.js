@@ -20,7 +20,7 @@ function UserNav() {
 
   useEffect(() => {
     console.log("nav user session.data ", session.data);
-  }, [session.data]);
+  }, [session]);
 
   return (
     <div className="flex flex-row items-center content-center gap-3">
