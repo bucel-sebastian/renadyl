@@ -275,6 +275,7 @@
         "is-already-client": "Sunt deja client",
         "is-new-client": "Sunt client nou",
         "promo-account": "Utilizatorii autentificati beneficiază de transport gratuit",
+        "locker-not-selected-error": "Vă rugăm să selectați un punct de livrare",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",

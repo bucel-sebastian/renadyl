@@ -13,6 +13,9 @@ import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next-intl/client";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function CheckoutNotLoggedIn({ locale }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -115,7 +118,24 @@ function CheckoutNotLoggedIn({ locale }) {
 
   const handleCheckoutSubmit = (e) => {
     e.preventDefault();
-    console.log("merge");
+
+    if (
+      checkoutData?.shipping?.type === "easybox" &&
+      checkoutData?.shipping?.locker === null
+    ) {
+      toast.error(t("locker-not-selected-error"), {
+        position: "bottom-right",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      document.getElementById("shipping").scrollIntoView();
+      return;
+    }
     router.push("/checkout/summary", { locale: locale });
   };
 
@@ -137,7 +157,7 @@ function CheckoutNotLoggedIn({ locale }) {
     );
     const data = await response.json();
 
-    console.log("summary data - ", data.body);
+    // console.log("summary data - ", data.body);
     setSummaryData(data.body);
   };
 
@@ -147,7 +167,7 @@ function CheckoutNotLoggedIn({ locale }) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailPattern.test(emailValue)) {
-      console.log("Email valid:", emailValue);
+      // console.log("Email valid:", emailValue);
 
       const response = await fetch(
         `/api/data/json/checkout/check-if-email-exists/${emailValue}`
@@ -156,7 +176,7 @@ function CheckoutNotLoggedIn({ locale }) {
       const body = await response.json();
 
       setExistsAccountWithEmail(body.body);
-      console.log("email response - ", body.body);
+      // console.log("email response - ", body.body);
     } else {
       setExistsAccountWithEmail(false);
     }
@@ -173,7 +193,7 @@ function CheckoutNotLoggedIn({ locale }) {
     checkShippingEmailInput();
 
     if (window?.location?.hash) {
-      console.log("Has #");
+      // console.log("Has #");
       handleSetIsNotClient();
       setTimeout(() => {
         const elementId = window?.location?.hash.substring(1); // Remove the '#' character
@@ -235,7 +255,7 @@ function CheckoutNotLoggedIn({ locale }) {
   };
   const handleSameDayLockerSelect = (msg) => {
     setSamedayLockerMsg(msg);
-    console.log("Sameday Easybox plugin response: ", msg);
+    // console.log("Sameday Easybox plugin response: ", msg);
 
     dispatch(updateCheckoutData({ name: "shipping.locker", value: msg }));
     // RESPONSE {
@@ -301,7 +321,7 @@ function CheckoutNotLoggedIn({ locale }) {
   }, [checkoutData?.shipping?.country, checkoutData?.shipping?.countryKey]);
 
   const handleStateChange = (key, value) => {
-    console.log("State change ", value, key);
+    // console.log("State change ", value, key);
     dispatch(updateCheckoutData({ name: "shipping.state", value: value }));
     dispatch(updateCheckoutData({ name: "shipping.stateKey", value: key }));
   };
@@ -410,14 +430,14 @@ function CheckoutNotLoggedIn({ locale }) {
         updateCheckoutData({ name: "shipping.provider", value: "Sameday" })
       );
     }
-    console.log("Se schimba paymentul sau tara");
+    // console.log("Se schimba paymentul sau tara");
   }, [
     checkoutData?.payment,
     checkoutData?.shipping?.countryKey,
     checkoutData?.shipping?.type,
   ]);
   useEffect(() => {
-    console.log(checkoutData);
+    // console.log(checkoutData);
     calculateCartSummary();
   }, [checkoutData]);
 
@@ -430,7 +450,7 @@ function CheckoutNotLoggedIn({ locale }) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailPattern.test(emailValue)) {
-      console.log("Email valid:", emailValue);
+      // console.log("Email valid:", emailValue);
 
       const response = await fetch(
         `/api/data/json/checkout/check-if-email-exists/${emailValue}`
@@ -439,7 +459,7 @@ function CheckoutNotLoggedIn({ locale }) {
       const body = await response.json();
 
       setExistsAccountWithEmail(body.body);
-      console.log("email response - ", body.body);
+      // console.log("email response - ", body.body);
     } else {
       setExistsAccountWithEmail(false);
     }
@@ -882,12 +902,6 @@ function CheckoutNotLoggedIn({ locale }) {
                                 {t("shipping-form.easybox.label")}
                               </label>
 
-                              <input
-                                type="text"
-                                value={checkoutData?.shipping?.locker?.lockerId}
-                                className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
-                                required
-                              />
                               {checkoutData?.shipping?.locker !== null ? (
                                 <>
                                   <p className="font-bold">
@@ -1614,6 +1628,18 @@ function CheckoutNotLoggedIn({ locale }) {
           </form>
         </>
       )}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Script
         src="https://cdn.sameday.ro/locker-plugin/lockerpluginsdk.js"
         // strategy="beforeInteractive"
