@@ -49,10 +49,21 @@ function BillingBox() {
               {billing.asShipping === true ? (
                 <>
                   <h3 className="text-center">{t("entity-pf")}</h3>
-                  <p className="text-center">
-                    {shipping.address}, {shipping.postalCode}, {shipping.city},{" "}
-                    {shipping.state}, {shipping.country}
-                  </p>
+                  {shipping.type === "courier" ? (
+                    <>
+                      <p className="text-center">
+                        {shipping.address}, {shipping.postalCode},{" "}
+                        {shipping.city}, {shipping.state}, {shipping.country}
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-center">
+                        {shipping.locker.city}, {shipping.locker.county},{" "}
+                        {shipping.country}
+                      </p>
+                    </>
+                  )}
                 </>
               ) : (
                 <>

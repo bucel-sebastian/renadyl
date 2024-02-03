@@ -5,6 +5,7 @@ import { FaPencil } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { getSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import LoadingBlock from "@/components/LoadingBlock";
 
 function ShippingBox() {
   const { shipping } = useSelector((state) => state.cart.checkoutData);
@@ -44,7 +45,13 @@ function ShippingBox() {
     <>
       <div className="relative flex flex-col justify-between gap-4 h-4/5">
         <div>
-          <Suspense fallback={<></>}>
+          <Suspense
+            fallback={
+              <>
+                <LoadingBlock />
+              </>
+            }
+          >
             {shipping.savedData === null ? (
               <>
                 <h3 className="text-center">
@@ -54,10 +61,21 @@ function ShippingBox() {
                     <>{t("delivery-easybox")}</>
                   )}
                 </h3>
-                <p className="text-center">
-                  {shipping.address}, {shipping.postalCode}, {shipping.city},{" "}
-                  {shipping.state}, {shipping.country}
-                </p>
+                {shipping.type === "courier" ? (
+                  <>
+                    <p className="text-center">
+                      {shipping.address}, {shipping.postalCode}, {shipping.city}
+                      , {shipping.state}, {shipping.country}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-center">
+                      {shipping.locker.name}, {shipping.locker.address},{" "}
+                      {shipping.locker.city}, {shipping.locker.county}
+                    </p>
+                  </>
+                )}
               </>
             ) : (
               <>
