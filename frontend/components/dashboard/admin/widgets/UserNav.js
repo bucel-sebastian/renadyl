@@ -3,15 +3,15 @@ import { signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import React, { useEffect } from "react";
 
-async function UserNav() {
-  const { data, update } = await useSession();
-  const fnameInitial = data?.user?.f_name?.charAt(0);
+function UserNav() {
+  const session = useSession();
+  const fnameInitial = session.data?.user?.f_name?.charAt(0);
 
   const t = useTranslations("Dashboard");
 
   const handleSignOut = (e) => {
     e.preventDefault();
-    if (data.user.role === "admin") {
+    if (session.data.user.role === "admin") {
       signOut({ callbackUrl: "/admin/login" });
     } else {
       signOut({ callbackUrl: "/login" });
@@ -19,8 +19,8 @@ async function UserNav() {
   };
 
   useEffect(() => {
-    console.log("nav user data ", data);
-  }, [data]);
+    console.log("nav user session.data ", session.data);
+  }, [session.data]);
 
   return (
     <div className="flex flex-row items-center content-center gap-3">
@@ -29,11 +29,11 @@ async function UserNav() {
       </div>
       <div className="flex flex-col mr-4">
         <span className="w-full leading-none capitalize">
-          {data?.user?.role === "doctor" ? "Dr. " : ""}
-          {data?.user.f_name} {data?.user.l_name}
+          {session.data?.user?.role === "doctor" ? "Dr. " : ""}
+          {session.data?.user.f_name} {session.data?.user.l_name}
         </span>
         <span className="w-full leading-none capitalize">
-          {data?.user?.role}
+          {session.data?.user?.role}
         </span>
       </div>
       <button
