@@ -13,7 +13,8 @@ export async function POST(req, res) {
       databaseResponse[0].id,
       databaseResponse[0].order_total,
       databaseResponse[0].currency,
-      requestBody
+      requestBody,
+      requestBody.locale
     );
 
     responseBody = {

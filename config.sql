@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS renadyl_product_inputs (
 ) -- Orders
 
 CREATE TABLE IF NOT EXISTS renadyl_orders (
-    id VARCHAR(50) NOT NULL PRIMARY KEY, date TIMESTAMP WITHOUT TIME ZONE NOT NULL, client_id VARCHAR(255) NOT NULL, doctor jsonb, shipping_details TEXT NOT NULL, billing_details TEXT NOT NULL, cart TEXT NOT NULL, currency VARCHAR(10) NOT NULL, country_code VARCHAR(5) NOT NULL, payment varchar(10) NOT NULL, payment_status text, invoice TEXT, shipping_awb TEXT, promo_code TEXT, order_total DOUBLE NOT NULL, products_total DOUBLE NOT NULL, vat_procent DOUBLE NOT NULL, vat_total DOUBLE NOT NULL, shipping_total DOUBLE NOT NULL, promo_total DOUBLE NOT NULL, status VARCHAR(50) NOT NULL, logs TEXT, observations TEXT
+    id VARCHAR(50) NOT NULL PRIMARY KEY, date TIMESTAMP WITHOUT TIME ZONE NOT NULL, client_id VARCHAR(255), doctor jsonb, shipping_details TEXT NOT NULL, billing_details TEXT NOT NULL, cart TEXT NOT NULL, currency VARCHAR(10) NOT NULL, country_code VARCHAR(5) NOT NULL, payment varchar(10) NOT NULL, payment_status text, invoice TEXT, shipping_awb TEXT, promo_code TEXT, order_total DOUBLE NOT NULL, products_total DOUBLE NOT NULL, vat_procent DOUBLE NOT NULL, vat_total DOUBLE NOT NULL, shipping_total DOUBLE NOT NULL, promo_total DOUBLE NOT NULL, status VARCHAR(50) NOT NULL, logs TEXT, observations TEXT
 ) -- Invoices
 
 CREATE TABLE
