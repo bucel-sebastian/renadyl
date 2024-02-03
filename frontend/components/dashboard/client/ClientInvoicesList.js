@@ -252,7 +252,6 @@ function ClientInvoicesList() {
                   </TableCell>
 
                   <TableCell
-                    align="center"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
@@ -261,7 +260,6 @@ function ClientInvoicesList() {
                     {formatter.format(new Date(row.date))}
                   </TableCell>
                   <TableCell
-                    align="center"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
