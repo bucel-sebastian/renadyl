@@ -24,14 +24,21 @@ function UserNav() {
   };
 
   useEffect(() => {
-    setSessionData(JSON.parse(session.data.value));
-    console.log("nav user session.data ", sessionData);
-    setFnameInitial(sessionData?.data?.user?.f_name?.charAt(0));
+    if (typeof session?.data?.value === "string") {
+      setSessionData(JSON.parse(session.data.value));
+    } else {
+      setSessionData(session.data.value);
+    }
 
     if (session?.status === "unauthenticated") {
       router.replace("/");
     }
   }, [session]);
+
+  useEffect(() => {
+    setFnameInitial(sessionData?.user?.f_name?.charAt(0));
+    console.log("nav user session.data ", sessionData);
+  }, [sessionData]);
 
   return (
     <>
