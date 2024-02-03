@@ -13,6 +13,10 @@ import { usePathname } from "next/navigation";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next-intl/client";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import LoadingBlock from "@/components/LoadingBlock";
+
 function CheckoutLoggedIn({ locale }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -58,6 +62,25 @@ function CheckoutLoggedIn({ locale }) {
 
   const handleCheckoutSubmit = (e) => {
     e.preventDefault();
+
+    if (
+      checkoutData?.shipping?.type === "easybox" &&
+      checkoutData?.shipping?.locker === null
+    ) {
+      toast.error(t("locker-not-selected-error"), {
+        position: "bottom-right",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      document.getElementById("shipping").scrollIntoView();
+      return;
+    }
+
     router.push("/checkout/summary", { locale: locale });
   };
 
@@ -79,13 +102,13 @@ function CheckoutLoggedIn({ locale }) {
     );
     const data = await response.json();
 
-    console.log("summary data - ", data.body);
+    // console.log("summary data - ", data.body);
     setSummaryData(data.body);
   };
 
   const getShippingDatas = async () => {
     const session = await getSession();
-    console.log("Session - ", session);
+    // console.log("Session - ", session);
     const response = await fetch(
       `/api/client/data/json/get-shipping-datas/${session.user.id}`
     );
@@ -111,7 +134,7 @@ function CheckoutLoggedIn({ locale }) {
     getShippingDatas();
     getBillingDatas();
     if (window?.location?.hash) {
-      console.log("Has #");
+      // console.log("Has #");
       // handleSetIsNotClient();
       setTimeout(() => {
         const elementId = window?.location?.hash.substring(1); // Remove the '#' character
@@ -174,7 +197,7 @@ function CheckoutLoggedIn({ locale }) {
 
   const handleSameDayLockerSelect = (msg) => {
     setSamedayLockerMsg(msg);
-    console.log("Sameday Easybox plugin response: ", msg);
+    // console.log("Sameday Easybox plugin response: ", msg);
 
     dispatch(updateCheckoutData({ name: "shipping.locker", value: msg }));
     // RESPONSE {
@@ -240,7 +263,7 @@ function CheckoutLoggedIn({ locale }) {
   }, [checkoutData?.shipping?.country, checkoutData?.shipping?.countryKey]);
 
   const handleStateChange = (key, value) => {
-    console.log("State change ", value, key);
+    // console.log("State change ", value, key);
     dispatch(updateCheckoutData({ name: "shipping.state", value: value }));
     dispatch(updateCheckoutData({ name: "shipping.stateKey", value: key }));
   };
@@ -349,7 +372,7 @@ function CheckoutLoggedIn({ locale }) {
         updateCheckoutData({ name: "shipping.provider", value: "Sameday" })
       );
     }
-    console.log("Se schimba paymentul sau tara");
+    // console.log("Se schimba paymentul sau tara");
   }, [
     checkoutData?.payment,
     checkoutData?.shipping?.countryKey,
@@ -357,7 +380,7 @@ function CheckoutLoggedIn({ locale }) {
   ]);
 
   useEffect(() => {
-    console.log(checkoutData);
+    // console.log(checkoutData);
     calculateCartSummary();
   }, [checkoutData]);
 
@@ -377,7 +400,7 @@ function CheckoutLoggedIn({ locale }) {
   };
 
   useEffect(() => {
-    console.log("Saved shipping data - ", savedShippingDatas);
+    // console.log("Saved shipping data - ", savedShippingDatas);
     if (savedShippingDatasFetched === true) {
       if (savedShippingDatas.length === 0) {
         handleTrueNewShippingData();
@@ -391,7 +414,7 @@ function CheckoutLoggedIn({ locale }) {
     }
   }, [savedShippingDatas]);
   useEffect(() => {
-    console.log("Saved billing data - ", savedBillingDatas);
+    // console.log("Saved billing data - ", savedBillingDatas);
     if (savedBillingDatasFetched === true) {
       if (savedBillingDatas.length === 0) {
         handleTrueNewBillingData();
@@ -702,20 +725,45 @@ function CheckoutLoggedIn({ locale }) {
                       {checkoutData?.shipping?.type === "easybox" ? (
                         <>
                           {samedayLockerInstanceLoading ? (
-                            <></>
+                            <>
+                              <LoadingBlock />
+                            </>
                           ) : (
                             <>
                               <div>
                                 <label className="px-1 text-foregroundPrimary70">
                                   {t("shipping-form.easybox.label")}
                                 </label>
-                                <button
-                                  type="button"
-                                  onClick={openSamedayLockerMap}
-                                  className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
-                                >
-                                  {t("shipping-form.easybox.button-text")}
-                                </button>
+
+                                {checkoutData?.shipping?.locker !== null ? (
+                                  <>
+                                    <p className="font-bold">
+                                      {checkoutData?.shipping?.locker?.name},{" "}
+                                      {checkoutData?.shipping?.locker?.address},{" "}
+                                      {checkoutData?.shipping?.locker?.city},{" "}
+                                      {checkoutData?.shipping?.locker?.county}
+                                    </p>
+                                    <button
+                                      type="button"
+                                      onClick={openSamedayLockerMap}
+                                      className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
+                                    >
+                                      {t(
+                                        "shipping-form.easybox.change-button-text"
+                                      )}
+                                    </button>
+                                  </>
+                                ) : (
+                                  <>
+                                    <button
+                                      type="button"
+                                      onClick={openSamedayLockerMap}
+                                      className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
+                                    >
+                                      {t("shipping-form.easybox.button-text")}
+                                    </button>
+                                  </>
+                                )}
                               </div>
                             </>
                           )}
@@ -1686,6 +1734,23 @@ function CheckoutLoggedIn({ locale }) {
           </div>
         </section>
       </form>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <Script
+        src="https://cdn.sameday.ro/locker-plugin/lockerpluginsdk.js"
+        // strategy="beforeInteractive"
+        onLoad={initSamedayLocker}
+      />
     </>
   );
 }

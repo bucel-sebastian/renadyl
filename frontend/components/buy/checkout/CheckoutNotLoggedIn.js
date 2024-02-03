@@ -15,6 +15,11 @@ import { useRouter } from "next-intl/client";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoadingBlock from "@/components/LoadingBlock";
+
+import facebookLogo from "@/public/images/facebook_logo.svg";
+import googleLogo from "@/public/images/google_logo.svg";
+import Image from "next/image";
 
 function CheckoutNotLoggedIn({ locale }) {
   const router = useRouter();
@@ -486,6 +491,31 @@ function CheckoutNotLoggedIn({ locale }) {
     dispatch(updateCheckoutData({ name: "shipping.password", value: "" }));
   }, [esxistsAccountWithEmail]);
 
+  const handleGoogleLogin = async (event) => {
+    event.preventDefault();
+    const response = await signIn("google", {
+      redirect: false,
+    });
+    if (!response?.error) {
+      const session = await getSession();
+      if (session?.user?.role !== "admin") {
+        router.refresh();
+      }
+    }
+  };
+  const handleFacebookLogin = async (event) => {
+    event.preventDefault();
+    const resonse = await signIn("facebook", {
+      redirect: false,
+    });
+    if (!response?.error) {
+      const session = await getSession();
+      if (session?.user?.role !== "admin") {
+        router.refresh();
+      }
+    }
+  };
+
   return (
     <>
       <section className="relative max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max overflow-hidden">
@@ -589,6 +619,26 @@ function CheckoutNotLoggedIn({ locale }) {
                 >
                   {t("login-form.submit-btn")}
                 </button>
+                <div className="mt-4">
+                  <p className="text-center">{t("login-form.other-options")}</p>
+                  <div className="flex flex-row gap-5 justify-center mt-2">
+                    <button
+                      className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md p-[4px]"
+                      onClick={handleFacebookLogin}
+                    >
+                      <Image src={facebookLogo} />
+                    </button>
+
+                    <button
+                      className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md p-[4px]"
+                      onClick={handleGoogleLogin}
+                    >
+                      <Image src={googleLogo} />
+                    </button>
+
+                    {/* <button className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md"></button> */}
+                  </div>
+                </div>
               </div>
             </section>
           </form>
@@ -894,7 +944,9 @@ function CheckoutNotLoggedIn({ locale }) {
                     {checkoutData?.shipping?.type === "easybox" ? (
                       <>
                         {samedayLockerInstanceLoading ? (
-                          <></>
+                          <>
+                            <LoadingBlock />
+                          </>
                         ) : (
                           <>
                             <div>
