@@ -1,5 +1,7 @@
 "use client";
+import LoadingBlock from "@/components/LoadingBlock";
 import SelectInput from "@/components/SelectInput";
+import SelectInputClassic from "@/components/SelectInputClassic";
 import {
   Table,
   TableBody,
@@ -14,10 +16,15 @@ import { useTranslations } from "next-intl";
 import Link from "next-intl/link";
 import React, { useEffect, useState } from "react";
 
+import { FaArrowRotateLeft } from "react-icons/fa6";
+
 function OrdersList() {
   const [dataIsLoading, setDataIsLoading] = useState(true);
 
   const [data, setData] = useState([]);
+
+  const [clientsData, setClientsData] = useState([]);
+
   const [filteredData, setFilteredData] = useState([]);
 
   const [page, setPage] = useState(0);
@@ -28,10 +35,8 @@ function OrdersList() {
     start_date: "",
     end_date: "",
     status: "",
-    payment_type: "",
-    payment_status: "",
-    currency: "",
-    shipping_awb: "",
+    // currency: "",
+    // shipping_awb: "",
   });
 
   const orderStatus = [
@@ -42,6 +47,15 @@ function OrdersList() {
     { name: "Expediată", color: "#2980b9" },
     { name: "Finalizată", color: "#2ecd70" },
   ];
+
+  const orderStatusData = {
+    0: "Anulată",
+    1: "Plasată",
+    2: "În procesare",
+    3: "Pregătită de expediere",
+    4: "Expediată",
+    5: "Finalizată",
+  };
 
   const datetimeOptions = {
     year: "numeric",
@@ -66,12 +80,31 @@ function OrdersList() {
 
   const t = useTranslations("Dashboard");
 
+  const getClientsList = async () => {
+    const response = await fetch("/api/admin/data/json/clients");
+    if (response.ok) {
+      const body = await response.json();
+      const clientsNames = new Object();
+
+      for (let i = 0; i < body.body.length; i++) {
+        if (!clientsNames[body.body[i].id]) {
+          clientsNames[body.body[i].id] = {
+            id: body.body[i].id,
+            name: `${body.body[i].l_name} ${body.body[i].f_name}`,
+          };
+        }
+      }
+
+      setClientsData(clientsNames);
+    }
+  };
+
   const getOrdersList = async () => {
     const response = await fetch("/api/admin/data/json/orders");
     const body = await response.json();
     for (let i = 0; i < body.body.length; i++) {
       body.body[i].shipping_details = JSON.parse(body.body[i].shipping_details);
-      body.body[i].client_details = JSON.parse(body.body[i].client_details);
+      // body.body[i].client_details = JSON.parse(body.body[i].client_details);
       body.body[i].billing_details = JSON.parse(body.body[i].billing_details);
       //   body.body[i].cart = JSON.parse(body.body[i].cart);
     }
@@ -87,17 +120,31 @@ function OrdersList() {
 
   const filterData = () => {
     setFilteredData(
-      data.filter((obj) => {
-        // {
-        //     id: "",
-        //     start_date: "",
-        //     end_date: "",
-        //     status: "",
-        //     payment_type: "",
-        //     payment_status: "",
-        //     currency: "",
-        //     shipping_awb: "",
-        //   }
+      data.filter((order) => {
+        if (
+          filters.id &&
+          !order.id.toLowerCase().includes(filters.id.toLocaleLowerCase())
+        )
+          return false;
+
+        if (
+          filters.status &&
+          parseInt(order.status) !== parseInt(filters.status)
+        )
+          return false;
+
+        const startDate = filters["start_date"];
+        const endDate =
+          filters["end_date"] !== "" || filters["end_date"] !== null
+            ? filters["end_date"]
+            : filters["start_date"];
+
+        if (startDate && endDate) {
+          const orderDate = new Date(order.date);
+          const start = new Date(startDate);
+          const end = new Date(endDate);
+          if (orderDate < start || orderDate > end) return false;
+        }
 
         return true;
       })
@@ -105,7 +152,12 @@ function OrdersList() {
   };
 
   useEffect(() => {
+    console.log(clientsData);
+  }, [clientsData]);
+
+  useEffect(() => {
     if (dataIsLoading) {
+      getClientsList();
       getOrdersList();
     }
   }, []);
@@ -119,9 +171,111 @@ function OrdersList() {
     console.log(filteredData);
   }, [filteredData]);
 
+  const handleChangeStatusFilter = (key, value) => {
+    setFilters((prevData) => ({ ...prevData, status: key }));
+  };
+
+  const handleResetFilters = (e) => {
+    e.preventDefault();
+    setFilters({
+      id: "",
+      start_date: "",
+      end_date: "",
+      status: null,
+      currency: "",
+    });
+  };
+
   return (
-    <div className="relative block w-full shadow-xl bg-backgroundPrimary h-full overflow-y-auto ">
-      {/* <table className='w-full h-screen relative overflow-y-auto'>
+    <>
+      {!dataIsLoading ? (
+        <>
+          <div className="flex flex-row gap-2">
+            <div className="flex flex-col mb-2 max-md:w-full">
+              <label className="px-1 text-foregroundPrimary70">
+                {t("admin.orders.orders-list.filters.order-id-label")}
+              </label>
+              <input
+                type="text"
+                name="id"
+                value={filters.id}
+                onChange={handleFilterInputChange}
+                className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
+              />
+            </div>
+            <div className="flex flex-col mb-2 max-md:w-full">
+              <label className="px-1 text-foregroundPrimary70">
+                {t("admin.orders.orders-list.filters.dates-label")}
+              </label>
+
+              <div className="w-full flex flex-row gap-2">
+                <input
+                  type="date"
+                  name="start_date"
+                  value={filters.start_date}
+                  onChange={handleFilterInputChange}
+                  className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary pt-1 pb-[2px] px-1 w-1/2 "
+                />
+                <input
+                  type="date"
+                  name="end_date"
+                  value={filters.end_date}
+                  onChange={handleFilterInputChange}
+                  className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary pt-1 pb-[2px] px-1  w-1/2"
+                />
+              </div>
+            </div>
+            {/* <SelectInput /> */}
+            {/* <SelectInput /> */}
+            {/* <SelectInput /> */}
+            <div>
+              <label className="px-1 text-foregroundPrimary70">
+                {t("admin.orders.orders-list.filters.status-label")}
+              </label>
+
+              <SelectInputClassic
+                data={orderStatusData}
+                value={orderStatusData[filters.status] || ""}
+                name="role-selector"
+                placeholder={t("admin.orders.orders-list.filters.status-ph")}
+                onChange={handleChangeStatusFilter}
+              />
+            </div>
+            {/* <div>
+              <label className="px-1 text-foregroundPrimary70">
+                {t("admin.orders.orders-list.filters.status-label")}
+              </label>
+
+              <SelectInputClassic
+                data={orderStatusData}
+                value={orderStatusData[filters.status] || ""}
+                name="role-selector"
+                placeholder={t("admin.orders.orders-list.filters.status-ph")}
+                onChange={handleChangeStatusFilter}
+              />
+            </div> */}
+            {/* <div className="flex flex-col mb-2 max-md:w-full">
+              <label className="px-1 text-foregroundPrimary70">
+                {t("admin.orders.orders-list.filters.awb-label")}
+              </label>
+              <input
+                type="text"
+                name="shipping_awb"
+                value={filters.shipping_awb}
+                onChange={handleFilterInputChange}
+                className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
+              />
+            </div> */}
+            <button onClick={handleResetFilters} className="text-xl">
+              <FaArrowRotateLeft />
+            </button>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+      <div className="relative block w-full bg-backgroundPrimary h-full overflow-y-auto ">
+        {/* <table className='w-full h-screen relative overflow-y-auto'>
             <tr className='w-full '>
                 <th className='text-left font-normal text-foregroundSecondary pb-2'>
                     {t("admin.orders.orders-list.table-heads.id")}
@@ -356,288 +510,285 @@ function OrdersList() {
                 </td>
             </tr>
         </table> */}
-      {dataIsLoading ? (
-        <></>
-      ) : (
-        <>
-          <div>
-            <input type="text" name="id" onChange={handleFilterInputChange} />
-            <div>
-              <input type="date" />
-              <input type="date" />
-            </div>
-            {/* <SelectInput /> */}
-            {/* <SelectInput /> */}
-            {/* <SelectInput /> */}
-            {/* <SelectInput /> */}
-            <input type="text" name="awb" onChange={handleFilterInputChange} />
-          </div>
-          <Table
-            stickyHeader
-            sx={{
-              backgroundColor: "var(--background-primary)",
-              color: "var(--foreground-primary)",
-            }}
-          >
-            <TableHead
+        {dataIsLoading ? (
+          <>
+            <LoadingBlock />
+          </>
+        ) : (
+          <>
+            <Table
+              stickyHeader
               sx={{
                 backgroundColor: "var(--background-primary)",
                 color: "var(--foreground-primary)",
               }}
             >
-              <TableRow
+              <TableHead
                 sx={{
                   backgroundColor: "var(--background-primary)",
                   color: "var(--foreground-primary)",
                 }}
               >
-                <TableCell
+                <TableRow
                   sx={{
                     backgroundColor: "var(--background-primary)",
                     color: "var(--foreground-primary)",
-                    fontWeight: 600,
                   }}
                 >
-                  {t("admin.orders.orders-list.table-heads.id")}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.date")}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.client")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.status")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.payment-type")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.payment-status")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.value")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.currency")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.transport")}
-                </TableCell>
-                <TableCell
-                  align="right"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.actions")}
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {(rowsPerPage > 0
-                ? filteredData.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
-                : filteredData
-              ).map((row) => (
-                <TableRow key={row.id}>
                   <TableCell
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    <Link href={`/admin/dashboard/orders/${row.id}`}>
-                      {row.id}
-                    </Link>
+                    {t("admin.orders.orders-list.table-heads.id")}
                   </TableCell>
                   <TableCell
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    {formatter.format(new Date(row.date))}
+                    {t("admin.orders.orders-list.table-heads.date")}
                   </TableCell>
                   <TableCell
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    {row.client_details.isLoggedIn === true ? (
-                      <></>
-                    ) : (
-                      <>
-                        {row.shipping_details.fname}{" "}
-                        {row.shipping_details.lname}
-                      </>
-                    )}
+                    {t("admin.orders.orders-list.table-heads.client")}
                   </TableCell>
                   <TableCell
                     align="center"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    <div
-                      className={`w-max mx-auto rounded-xl ${`bg-[${
-                        orderStatus[row.status].color
-                      }]`}`}
-                    >
-                      {orderStatus[row.status].name}
-                    </div>
+                    {t("admin.orders.orders-list.table-heads.status")}
                   </TableCell>
                   <TableCell
                     align="center"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    {row.payment}
+                    {t("admin.orders.orders-list.table-heads.payment-type")}
                   </TableCell>
                   <TableCell
                     align="center"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    {row.payment_status === null ? <>În așteptare</> : <></>}
+                    {t("admin.orders.orders-list.table-heads.payment-status")}
                   </TableCell>
                   <TableCell
                     align="center"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    {row.order_total}
+                    {t("admin.orders.orders-list.table-heads.value")}
                   </TableCell>
                   <TableCell
                     align="center"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    {row.currency}
+                    {t("admin.orders.orders-list.table-heads.currency")}
                   </TableCell>
                   <TableCell
+                    align="center"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    {row.shipping_awb}
+                    {t("admin.orders.orders-list.table-heads.transport")}
                   </TableCell>
                   <TableCell
                     align="right"
                     sx={{
                       backgroundColor: "var(--background-primary)",
                       color: "var(--foreground-primary)",
+                      fontWeight: 600,
                     }}
                   >
-                    <Link
-                      href={`/admin/dashboard/orders/${row.id}`}
-                      className="text-gradientPurple"
-                    >
-                      Detalii
-                    </Link>
+                    {t("admin.orders.orders-list.table-heads.actions")}
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-            <TableFooter>
-              <TableRow>
-                <TablePagination
-                  labelRowsPerPage={t("admin.tables.rows-per-page-label")}
-                  rowsPerPageOptions={[
-                    10,
-                    25,
-                    50,
-                    100,
-                    { label: t("admin.tables.all-label"), value: -1 },
-                  ]}
-                  colSpan={10}
-                  count={filteredData.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onPageChange={handleChangePage}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                  ActionsComponent={TablePaginationActions}
-                  labelDisplayedRows={({ from, to, count }) =>
-                    `${from}-${to} ${t("admin.tables.of-label")} ${count} ${t(
-                      "admin.tables.elements-label"
-                    )}`
-                  }
-                />
-              </TableRow>
-            </TableFooter>
-          </Table>
-        </>
-      )}
-    </div>
+              </TableHead>
+              <TableBody>
+                {(rowsPerPage > 0
+                  ? filteredData.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : filteredData
+                ).map((row) => (
+                  <TableRow key={row.id}>
+                    <TableCell
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      <Link href={`/admin/dashboard/orders/${row.id}`}>
+                        {row.id}
+                      </Link>
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      {formatter.format(new Date(row.date))}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      {row.client_id !== null ? (
+                        <>
+                          <Link
+                            href={`/admin/dashboard/clients/${row.client_id}`}
+                          >
+                            {clientsData[row.client_id]?.name}
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                          {row.shipping_details.fname}{" "}
+                          {row.shipping_details.lname}
+                        </>
+                      )}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      <div
+                        className={`w-max mx-auto rounded-xl px-3 py-1 ${`bg-[${
+                          orderStatus[row.status].color
+                        }]`}`}
+                      >
+                        {orderStatus[row.status].name}
+                      </div>
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      {row.payment}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      {row.payment_status === null ? <>În așteptare</> : <></>}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      {row.order_total}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      {row.currency}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      {row.shipping_awb}
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      sx={{
+                        backgroundColor: "var(--background-primary)",
+                        color: "var(--foreground-primary)",
+                      }}
+                    >
+                      <Link
+                        href={`/admin/dashboard/orders/${row.id}`}
+                        className="text-gradientPurple"
+                      >
+                        {t("admin.orders.orders-list.details-btn")}
+                      </Link>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TablePagination
+                    labelRowsPerPage={t("admin.tables.rows-per-page-label")}
+                    rowsPerPageOptions={[
+                      10,
+                      25,
+                      50,
+                      100,
+                      { label: t("admin.tables.all-label"), value: -1 },
+                    ]}
+                    colSpan={10}
+                    count={filteredData.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                    ActionsComponent={TablePaginationActions}
+                    labelDisplayedRows={({ from, to, count }) =>
+                      `${from}-${to} ${t("admin.tables.of-label")} ${count} ${t(
+                        "admin.tables.elements-label"
+                      )}`
+                    }
+                  />
+                </TableRow>
+              </TableFooter>
+            </Table>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

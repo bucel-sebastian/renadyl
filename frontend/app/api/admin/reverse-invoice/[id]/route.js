@@ -32,6 +32,7 @@ export async function GET(req, { params }) {
     headers: headers,
     body: JSON.stringify(requestBody),
   });
+
   if (response.ok) {
     const responseBody = await response.json();
 

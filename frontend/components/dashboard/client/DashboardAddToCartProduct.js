@@ -95,14 +95,14 @@ function DashboardAddToCartProduct({ product, currentLocale }) {
         <>
           {productData.price !== "" ? (
             <div className="max-md:mb-4 w-max max-md:mx-auto">
-              <div className="text-3xl mb-4 w-max flex items-end">
+              <div className="text-3xl mb-4 w-max flex items-end max-sm:text-xl">
                 <span className="mb-[1px]">
                   {t("hero-section.product-price")}:
                 </span>
                 &nbsp;
                 <div>
                   {productData.onSale ? (
-                    <div className="flex justify-between items-center content-center text-lg">
+                    <div className="flex justify-between items-center content-center text-lg ">
                       <span>
                         <del>
                           {productData.price} {productData.currency}
@@ -136,10 +136,10 @@ function DashboardAddToCartProduct({ product, currentLocale }) {
                   onClick={handleAddToCart}
                   // href="/buy"
                   // href="https://www.emag.ro/renadyl-pentru-insuficienta-renala-60-comprimate-rnd/pd/D1D5C3YBM/?cmpid=101143&gclid=CjwKCAjwsKqoBhBPEiwALrrqiI6-RpbKtsr_0UzHmEIo-6DLzegwvfrY7Lsg0TlhXC7_rcIdUbQIihoCoPgQAvD_BwE"
-                  className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2.5"
+                  className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2.5 max-sm:w-full"
                   disabled={isDisabled}
                 >
-                  {t("hero-section.product-buy-btn")}
+                  {t("hero-section.product-client-buy-btn")}
                 </button>
                 {/* <button className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-gradientGreen hover:text-gradientPurple rounded-2xl p-[3px]">
           <div className="bg-backgroundPrimary rounded-xl py-2.5 ">

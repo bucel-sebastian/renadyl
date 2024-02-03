@@ -3,8 +3,6 @@ import { handleRegister } from "@/utils/user/auth/register";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  const database = new Database();
-
   const formData = await req.json();
 
   let registerRes = null;

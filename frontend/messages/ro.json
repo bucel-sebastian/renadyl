@@ -57,7 +57,8 @@
             "product-shippment": "Livrare",
             "product-shippment-green": "5 zile lucrătoare",
             "product-return-tc": "Termeni și condiții pentru",
-            "product-return-tc-btn": "retur"
+            "product-return-tc-btn": "retur",
+            "product-client-buy-btn": "Cumpără"
         },
         "about-section": {
             "title": "Cum ajută Renadyl™",
@@ -246,7 +247,10 @@
         "promocode-button": "Adaugă",
         "promocode-success": "Codul de afiliat / reducere a fost adaugat cu succes!",
         "promocode-fail": "Codul de afiliat / reducere este invalid",
-        "add-to-cart-success": "Produsul a fost adăugat în coș!"
+        "add-to-cart-success": "Produsul a fost adăugat în coș!",
+        "our-products": "Produsele noastre",
+        "bundle-offer-1": "Profită acum de oferta noastră și poți cumpăra pachetul de 3 buc. Renadyl pentru doar",
+        "bundle-offer-2": "buc"
     },
     "Checkout": {
         "page-title": "Checkout",
@@ -270,7 +274,7 @@
         "total-order": "Total",
         "is-already-client": "Sunt deja client",
         "is-new-client": "Sunt client nou",
-        "promo-account": "Utilizatorii autentificati beneficiază de trasport gratuit",
+        "promo-account": "Utilizatorii autentificati beneficiază de transport gratuit",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",
@@ -308,11 +312,17 @@
             "submit-btn": "Înregistrează-te",
             "other-options": "sau poți folosi",
             "login-link": "Ai deja cont? Autentifică-te",
-            "tc-label": "",
-            "tc-link": "",
+            "tc-label-1": "Sunt de acord cu ",
+            "tc-label-2": " și ",
+            "tc-label-3": " a website-ului",
+            "tc-link-tc": "termenii și condițiile",
+            "tc-link-gdpr": "politica GDPR",
             "want-account": "Doriți să vă creăm cont?",
             "wants-account-yes": "Da",
-            "wants-account-no": "Nu"
+            "wants-account-no": "Nu",
+            "already-account": "Există un cont cu această adresa de email",
+            "login": "Autentifică-te",
+            "passwords-error": "Parolele nu coincid"
         },
         "shipping-form": {
             "shipping-title": "Detalii de livrare",
@@ -368,6 +378,7 @@
             "pf": "Persoană fizică",
             "pj": "Persoană juridică"
         },
+        "submit-add-btn": "Salvează",
         "next-step-btn": "Pasul următor"
     },
     "Order-summary": {
@@ -397,7 +408,14 @@
         "total-promocode": "Reducere cod promoțional / afiliat",
         "total-bundle-sale": "Reducere bundle",
         "total-order": "Total",
-        "place-order": "Plasează comanda"
+        "place-order": "Plasează comanda",
+        "modify-btn": "Modifică",
+        "payment-card": "Online cu cardul",
+        "payment-cash": "Ramburs la curier",
+        "delivery-courier": "Livrare prin curier ",
+        "delivery-easybox": "Ridicare personală de la EasyBox",
+        "entity-pf": "Persoană fizică",
+        "entity-pj": "Persoană juridică"
     },
     "Order-placed": {
         "order-steps": {
@@ -453,8 +471,11 @@
             "submit-btn": "Înregistrează-te",
             "other-options": "sau poți folosi",
             "login-link": "Ai deja cont? Autentifică-te",
-            "tc-label": "",
-            "tc-link": "",
+            "tc-label-1": "Sunt de acord cu ",
+            "tc-label-2": " și ",
+            "tc-label-3": " a website-ului",
+            "tc-link-tc": "termenii și condițiile",
+            "tc-link-gdpr": "politica GDPR",
             "want-account": "Doriți să vă creăm cont?"
         },
         "shipping-form": {
@@ -504,6 +525,8 @@
         "page-title": "Autentificare",
         "heading": "Autentificare",
         "desc": "Cumpara renadyl in 3 pasi simpli",
+        "error": "Datele introduse sunt incorecte",
+        "error-not-activated": "Contul dvs. nu este activat",
         "login-form": {
             "email-label": "Adresa de email",
             "email-ph": "Introdu adresa de email",
@@ -519,6 +542,40 @@
     "Register": {
         "page-title": "Înregistrare",
         "heading": "Înregistrare",
+        "desc": "",
+        "email-exists": "Adresa de email există deja",
+        "passwords-no-match": "Parolele nu coincid",
+        "other-error": "A apărut o problema, încercați mai târziu",
+        "register-form": {
+            "fname-label": "Prenume",
+            "fname-ph": "Introdu prenumele",
+            "lname-label": "Nume",
+            "lname-ph": "Introdu numele",
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "password-label": "Parola",
+            "password-ph": "Introdu parola",
+            "re-password-label": "Confirmă parola",
+            "re-password-ph": "Reintrodu parola",
+            "submit-btn": "Înregistrează-te",
+            "other-options": "sau poți folosi",
+            "login-link": "Ai deja cont? Autentifică-te",
+            "tc-label-1": "Sunt de acord cu ",
+            "tc-label-2": " și ",
+            "tc-label-3": " a website-ului",
+            "tc-link-tc": "Termenii și Condițiile",
+            "tc-link-privacy": "Politica de confidențialitate"
+        }
+    },
+    "Register-success": {
+        "page-title": "Înregistrare completă",
+        "heading": "Contul dvs. a fost creat cu succes!",
+        "desc": "Pentru a vă activa contul, trebuie să accesați link-ul primit pe e-mail.",
+        "back-to-login-btn": "Înapoi la autentificare"
+    },
+    "Register-doctor": {
+        "page-title": "Înregistrare Medic",
+        "heading": "Înregistrare Medic",
         "desc": "",
         "register-form": {
             "fname-label": "Prenume",
@@ -541,7 +598,14 @@
     "Forgot-pass": {
         "page-title": "Indisponibil",
         "heading": "Autentificare",
-        "desc": ""
+        "desc": "",
+        "no-account": "Nu există niciun cont cu această adresa de email",
+        "forget-pass-form": {
+            "email-label": "Adresa de email",
+            "email-ph": "Introdu adresa de email",
+            "submit-btn": "Trimite",
+            "register-link": "Nu ai cont? Înregistrează-te"
+        }
     },
     "Reset-pass": {
         "page-title": "Indisponibil",
@@ -922,10 +986,13 @@
         }
     },
     "Dashboard": {
+        "sign-out-btn": "Ieși din cont",
         "admin": {
+            "loading": "Se încarcă",
             "header": {
                 "/admin/dashboard": "General",
                 "/admin/dashboard/orders": "Comenzi",
+                "/admin/dashboard/cancel-requests": "Cereri de anulare",
                 "/admin/dashboard/subscriptions": "Abonamente",
                 "/admin/dashboard/invoices": "Facturi",
                 "/admin/dashboard/analytics": "Rapoarte",
@@ -933,19 +1000,26 @@
                 "/admin/dashboard/medics": "Medici",
                 "/admin/dashboard/distributors": "Distribuitori",
                 "/admin/dashboard/affiliates": "Afiliați",
+                "/admin/dashboard/contact": "Contact",
                 "/admin/dashboard/product": "Produs",
                 "/admin/dashboard/settings": "Setări",
-                "order-title": "Comanda"
+                "order-title": "Comanda",
+                "medic-title": "Doctor",
+                "client-title": "Client",
+                "distributor-title": "Distribuitor",
+                "affiliate-title": "Affiliat"
             },
             "navbar": {
                 "general": "General",
                 "orders": "Comenzi",
+                "cancel-orders": "Cereri de anulare",
                 "subscriptions": "Abonamente",
                 "invoices": "Facturi",
                 "analytics": "Rapoarte",
                 "clients": "Clienți",
                 "medics": "Medici",
                 "distributors": "Distribuitori",
+                "contact": "Contact",
                 "affiliates": "Afiliați",
                 "product": "Produs",
                 "settings": "Setări"
@@ -978,20 +1052,46 @@
                         "value": "Valoare",
                         "transport": "Transport",
                         "actions": "Acțiuni"
-                    }
+                    },
+                    "order-status": {
+                        "cancelled": "Anulată",
+                        "placed": "Plasată",
+                        "processing": "În procesare",
+                        "ready-to-ship": "Pregătită de expediere",
+                        "shipped": "Expediată",
+                        "finished": "Finalizată",
+                        "refunded": "Plată returnată"
+                    },
+                    "filters": {
+                        "order-id-label": "ID",
+                        "dates-label": "Interval",
+                        "awb-label": "AWB",
+                        "status-label": "Status",
+                        "status-ph": "Selectează statusul"
+                    },
+                    "details-btn": "Detalii"
                 },
                 "order-page": {
                     "renal-single-long-name": "Renadyl - Supliment alimentar",
                     "renal-single-short-name": "Renadyl",
                     "renal-bundle-long-name": "Bundle 3x Renadyl - Supliment alimentar",
-                    "renal-bundle-short-name": "Bundle 3x Renadyl"
+                    "renal-bundle-short-name": "Bundle 3x Renadyl",
+                    "order-status": {
+                        "cancelled": "Anulată",
+                        "placed": "Plasată",
+                        "processing": "În procesare",
+                        "ready-to-ship": "Pregătită de expediere",
+                        "shipped": "Expediată",
+                        "finished": "Finalizată",
+                        "refunded": "Plată returnată"
+                    }
                 }
             },
             "invoices": {
                 "invoices-list": {
                     "table-heads": {
                         "order-id": "ID comandă",
-                        "invoice-number": "Nr. factură",
+                        "invoice-id": "Nr. factură",
                         "client": "Client",
                         "value": "Valoare",
                         "currency": "Monedă",
@@ -1003,31 +1103,47 @@
             },
             "product": {
                 "edit-form": {
-                    "ron": {
-                        "title": "Configurare RON",
+                    "renal-single": {
+                        "title": "Configurare Renadyl Single",
                         "base-price-label": "Prețul de bază",
                         "vat-label": "Cota TVA",
                         "offer-label": "Valoare ofertă",
                         "percentage-label": "Ofertă procentuală",
                         "offer-toggle": "Activează ofertă"
                     },
-                    "eur": {
-                        "title": "Configurare EUR",
-                        "base-price-label": "Prețul de bază (EURO)",
-                        "vat-label": "Cota TVA (EURO)",
+                    "renal-bundle": {
+                        "title": "Configurare Renadyl Bundle",
+                        "base-price-label": "Prețul de bază ",
+                        "vat-label": "Cota TVA ",
                         "offer-label": "Valoare ofertă",
                         "percentage-label": "Ofertă procentuală",
-                        "offer-toggle": "Activează ofertă (EURO)"
+                        "offer-toggle": "Activează ofertă "
                     },
+                    "final-price": "Preț final",
                     "save-btn": "Salvează",
                     "leave-btn": "Renunță",
-                    "loading": "Se încarcă"
+                    "loading": "Se încarcă",
+                    "edit-product-success": "Produsul a fost actualizat cu succes",
+                    "edit-product-fail": "A apărut o problema, încercați mai târziu",
+                    "edit-product-under-zero-fail": "Prețul final trebuie sa fie pozitiv"
                 },
-                "stocks-form": {},
+                "inputs-title": "Intrări de stock",
+                "new-input": {
+                    "quantity-label": "Cantitatea",
+                    "quantity-ph": "Introdu cantitatea",
+                    "buy-price-label": "Preț de cumpărare",
+                    "buy-price-ph": "Introdu prețul de cumpărare",
+                    "shipping-price-label": "Preț transport",
+                    "shipping-price-ph": "Introdu prețul de transport",
+                    "submit-btn": "Salvează",
+                    "add-success": "Intrarea a fost adăugată cu succes",
+                    "add-fail": "A apărut o problema, încercați mai târziu"
+                },
                 "stocks-list": {
                     "date": "Dată",
                     "quantity": "Cantitate",
                     "buy-price": "Preț achiziție",
+                    "shipping-price": "Preț transport",
                     "actions": "Acțiuni"
                 }
             },
@@ -1039,7 +1155,101 @@
                     "orders": "Comenzi",
                     "register-date": "Data înregistrării",
                     "last-login-date": "Ultima autentificare",
-                    "actions": "Acțiuni"
+                    "actions": "Acțiuni",
+                    "status": "Status",
+                    "status-active": "Activ",
+                    "status-inactive": "Inactiv",
+                    "details-btn": "Detalii"
+                },
+                "client-page": {
+                    "client-details-title": "Detalii",
+                    "client-orders-title": "Comenzile clientului",
+                    "client-subscription-title": "Abonament",
+                    "name": "Nume",
+                    "email": "Adresă de email",
+                    "phone": "Număr de telefon",
+                    "status-account": "Status cont",
+                    "register-date": "Data înregistrării",
+                    "change-status": "Schimbă statusul",
+                    "subscription-status": "Status",
+                    "change-status-success": "Statusul a fost modificat cu succes!",
+                    "change-status-fail": "A apărut o problema, încercați mai târziu"
+                }
+            },
+            "doctors": {
+                "doctors-list": {
+                    "status-active": "Activ",
+                    "status-inactive": "Inactiv",
+                    "details-btn": "Detalii",
+                    "table-heads": {
+                        "id": "Număr comandă",
+                        "name": "Nume",
+                        "status": "Status",
+                        "email": "Adresă de email",
+                        "phone": "Număr de telefon",
+                        "orders": "Comenzi",
+                        "actions": "Acțiuni"
+                    }
+                },
+                "doctors-page": {
+                    "doctors-details-title": "Detalii",
+                    "doctors-orders-title": "Comenzile atribuite",
+                    "name": "Nume",
+                    "email": "Adresă de email",
+                    "phone": "Număr de telefon",
+                    "status-account": "Status cont",
+                    "status-doctor": "Status doctor",
+                    "specialization": "Specializare",
+                    "url_profile": "Link profil",
+                    "location": "Locație",
+                    "state": "Județ",
+                    "city": "Oraș",
+                    "promocode": "Cod promoțional",
+                    "work-unit": "Unitatea în care profesează",
+                    "attached-documents": "Documente atașate",
+                    "change-doctor-status": "Schimbă statusul doctorului",
+                    "change-doctor-status-inactive": "Setează ca inactiv",
+                    "change-doctor-status-active": "Setează ca activ",
+                    "change-doctor-status-success": "Statusul a fost modificat cu succes",
+                    "change-doctor-status-fail": "A apărut o problema, încercați mai târziu",
+                    "change-role-client": "Client",
+                    "change-role-doctor": "Doctor",
+                    "change-role-distributor": "Distribuitor",
+                    "change-role-ph": "Selectează rolul",
+                    "change-role": "Schimbă rolul",
+                    "change-role-submit-btn": "Salvează rolul",
+                    "change-promocode-value": "Valoarea codului promoțional",
+                    "change-promocode-value-submit-btn": "Salvează"
+                }
+            },
+            "distributors": {
+                "distributors-list": {
+                    "table-heads": {
+                        "id": "ID",
+                        "status": "Status",
+                        "date": "Dată",
+                        "name": "Nume",
+                        "email": "Adresă de email",
+                        "phone": "Număr de telefon",
+                        "message": "Mesaj",
+                        "actions": "Acțiuni"
+                    }
+                }
+            },
+            "cancel-requests": {
+                "requests-list": {
+                    "actions": "Acțiuni",
+                    "order-id": "ID comandă",
+                    "reason": "Motiv",
+                    "date": "Dată",
+                    "status": "Status",
+                    "status-waiting": "În așteptare",
+                    "status-accepted": "Acceptată",
+                    "status-denied": "Refuzată",
+                    "confirm-accept": "Sunteți sigur că doriți să aprobați această cerere?",
+                    "confirm-deny": "Sunteți sigur că doriți să refuzați această cerere?",
+                    "change-status-success": "Statusul a fost modificat cu succes!",
+                    "change-status-fail": "A apărut o problema, încercați mai târziu"
                 }
             },
             "affiliates": {
@@ -1074,6 +1284,101 @@
                 "clients-pie": {
                     "title": "Raport clienți autentificați/anonimi"
                 }
+            },
+            "contact": {
+                "contact-list": {
+                    "table-heads": {
+                        "status": "Status",
+                        "date": "Dată",
+                        "name": "Nume",
+                        "email": "Adresă de email",
+                        "phone": "Număr de telefon",
+                        "message": "Mesaj",
+                        "actions": "Acțiuni"
+                    },
+                    "mark-unread-btn": "Marchează ca necitit",
+                    "mark-read-btn": "Marchează ca citit",
+                    "status-read": "Citit",
+                    "status-unread": "Necitit",
+                    "change-status-fail": "A apărut o problema, încercați mai târziu",
+                    "change-status-success": "Statusul a fost modificat cu succes!",
+                    "message-title": "Mesaj",
+                    "phone-title": "Număr de telefon",
+                    "email-title": "Adresă de email",
+                    "date-title": "Data",
+                    "reason-title": "Motiv",
+                    "order-title": "Număr comandă",
+                    "name-title": "Nume",
+                    "preview-btn": "Vizualizează"
+                }
+            },
+            "settings": {
+                "website-settings-form": {
+                    "website-settings-title": "Setări website",
+                    "vat-label": "Cota TVA România (%)",
+                    "vat-ph": "Introdu cota TVA România (%)",
+                    "vat-int-label": "Cota TVA Internațional (%)",
+                    "vat-int-ph": "Introdu cota TVA internațional (%)",
+                    "invoice-series-label": "Serie factură",
+                    "invoice-series-ph": "Introdu serie factură",
+                    "promotion-landing-page-label": "Landing page promoțional",
+                    "submit-btn": "Salvează",
+                    "reset-btn": "Anulează",
+                    "change-settings-success": "Setările au fost actualizate cu succes",
+                    "change-settings-fail": "A apărut o problema, încercați mai târziu"
+                },
+                "admins-list": {
+                    "admins-list-title": "Administratori",
+                    "details-btn": "Detalii",
+                    "status-active": "Activ",
+                    "status-inactive": "Inactiv",
+                    "table-heads": {
+                        "id": "Număr comandă",
+                        "name": "Nume",
+                        "status": "Status",
+                        "email": "Adresă de email",
+                        "phone": "Număr de telefon",
+                        "orders": "Comenzi",
+                        "actions": "Acțiuni"
+                    }
+                },
+                "new-admin-form": {
+                    "new-admin-title": "Adaugă un administrator nou",
+                    "password-label": "Parola",
+                    "password-ph": "Introdu parola",
+                    "re-password-label": "Confirmă parola",
+                    "re-password-ph": "Reintrodu parola",
+                    "fname-label": "Prenume",
+                    "fname-ph": "Introdu prenumele",
+                    "lname-label": "Nume",
+                    "lname-ph": "Introdu numele",
+                    "email-label": "Adresa de email",
+                    "email-ph": "Introdu adresa de email",
+                    "phone-label": "Număr de telefon",
+                    "phone-ph": "Introdu numărul de telefon",
+                    "submit-add-btn": "Adaugă",
+                    "new-admin-success": "Administratorul a fost adăugat cu succes!",
+                    "new-admin-fail": "A apărut o problema, încercați mai târziu",
+                    "new-admin-fail-exists": "Adresa de email există deja",
+                    "new-admin-fail-database": "A apărut o problema, încercați mai târziu"
+                },
+                "account-settings-form": {
+                    "account-settings-title": "Setări cont",
+                    "password-label": "Parola",
+                    "password-ph": "Introdu parola",
+                    "re-password-label": "Confirmă parola",
+                    "re-password-ph": "Reintrodu parola",
+                    "fname-label": "Prenume",
+                    "fname-ph": "Introdu prenumele",
+                    "lname-label": "Nume",
+                    "lname-ph": "Introdu numele",
+                    "email-label": "Adresa de email",
+                    "email-ph": "Introdu adresa de email",
+                    "phone-label": "Număr de telefon",
+                    "phone-ph": "Introdu numărul de telefon",
+                    "submit-btn": "Salvează",
+                    "submit-password-btn": "Schimbă parola"
+                }
             }
         },
         "client": {
@@ -1083,7 +1388,9 @@
                 "/dashboard/client/orders": "Comenzile mele",
                 "/dashboard/client/subscription": "Abonament",
                 "/dashboard/client/invoices": "Facturi",
-                "/dashboard/client/settings": "Setări"
+                "/dashboard/client/settings": "Setări",
+                "/dashboard/client/affiliates": "Afiliați",
+                "order-title": "Comanda"
             },
             "navbar": {
                 "general": "General",
@@ -1091,14 +1398,183 @@
                 "orders": "Comenzile mele",
                 "subscription": "Abonament",
                 "invoices": "Facturi",
-                "settings": "Setări"
+                "affiliates": "Afiliază-te",
+                "settings": "Setări",
+                "logout": "Deconectare"
+            },
+            "dashboard-greetings": "Bine ai venit, ",
+            "subscription-status": {
+                "title": "Abonament lunar",
+                "status": "Status",
+                "active": "Activ",
+                "inactive": "Inactiv",
+                "want-subscription": "Doresc abonament lunar",
+                "next-billing": "Urmatoarea dată de facturare",
+                "awb-actual-month": "AWB livrare luna curentă"
             },
             "buy": {
                 "product-name-renal-single": "Renadyl - Supliment alimentar",
                 "product-name-renal-bundle": "Bundle 3x Renadyl - Supliment alimentar",
                 "product-desc-renal-single": "",
                 "product-desc-renal-bundle": ""
+            },
+            "orders": {
+                "orders-list": {
+                    "table-heads": {
+                        "id": "Număr comandă",
+                        "date": "Dată",
+                        "status": "Status",
+                        "payment-type": "Metodă de plată",
+                        "value": "Valoare",
+                        "transport": "Transport",
+                        "actions": "Acțiuni"
+                    },
+                    "order-status": {
+                        "cancelled": "Anulată",
+                        "placed": "Plasată",
+                        "processing": "În procesare",
+                        "ready-to-ship": "Pregătită de expediere",
+                        "shipped": "Expediată",
+                        "finished": "Finalizată",
+                        "refunded": "Plată returnată"
+                    }
+                },
+                "last-orders": {
+                    "title": "Ultimele comenzi",
+                    "no-orders": "Momentan nu există comenzi"
+                },
+                "order-page": {
+                    "orders-list": {
+                        "table-heads": {
+                            "id": "Număr comandă",
+                            "date": "Dată",
+                            "status": "Status",
+                            "payment-type": "Metodă de plată",
+                            "value": "Valoare",
+                            "transport": "Transport",
+                            "actions": "Acțiuni"
+                        },
+                        "order-status": {
+                            "cancelled": "Anulată",
+                            "placed": "Plasată",
+                            "processing": "În procesare",
+                            "ready-to-ship": "Pregătită de expediere",
+                            "shipped": "Expediată",
+                            "finished": "Finalizată",
+                            "refunded": "Plată returnată"
+                        }
+                    },
+                    "renal-single-long-name": "Renadyl - Supliment alimentar",
+                    "renal-single-short-name": "Renadyl",
+                    "renal-bundle-long-name": "Bundle 3x Renadyl - Supliment alimentar",
+                    "renal-bundle-short-name": "Bundle 3x Renadyl"
+                },
+                "tables": {
+                    "rows-per-page-label": "Rânduri per pagină",
+                    "all-label": "Toate",
+                    "of-label": "din",
+                    "elements-label": "elemente"
+                }
+            },
+            "invoices": {
+                "invoices-list": {
+                    "table-heads": {
+                        "invoice-id": "Număr factură",
+                        "order-id": "Număr comandă",
+                        "date": "Dată",
+                        "status": "Status",
+                        "payment-type": "Metodă de plată",
+                        "value": "Valoare",
+                        "transport": "Transport",
+                        "actions": "Acțiuni"
+                    }
+                },
+                "tables": {
+                    "rows-per-page-label": "Rânduri per pagină",
+                    "all-label": "Toate",
+                    "of-label": "din",
+                    "elements-label": "elemente"
+                }
+            },
+            "affiliates": {
+                "promocode-copy-btn": "Copiază",
+                "promocode-copy-success": "Codul a fost copiat cu succes!",
+                "affiliate-code-title": "Codul dvs. de afiliat",
+                "affiliate-code-stats-title": "Codul dvs. a fost utilizat în",
+                "affiliate-code-stats-subtitle": "comenzi",
+                "affiliate-promocode-title": "Codurile dvs. promoționale",
+                "promocodes-table-code": "Cod promoțional",
+                "promocodes-table-value": "Valoare",
+                "promocodes-table-use-remainings": "Utilizări rămase",
+                "affiliate-join-title": "Momentan nu faceți parte din programul de afiliați",
+                "affiliate-join-btn": "Devino afiliat",
+                "affiliate-join-success": "V-ați alăturat cu succes programului de afiliați!",
+                "affiliate-join-fail": "A apărut o problema, încercați mai târziu",
+                "tables": {
+                    "rows-per-page-label": "Rânduri per pagină",
+                    "all-label": "Toate",
+                    "of-label": "din",
+                    "elements-label": "elemente"
+                }
+            },
+            "settings": {
+                "delete-shipping-confirm": "Sigur dorești să ștergi aceste date de livrare?",
+                "delete-billing-confirm": "Sigur dorești să ștergi aceste date de facturare?",
+                "delete-btn": "Șterge",
+                "shipping-title-saved": "Detalii de livrare salvate",
+                "billing-title-saved": "Detalii de facturare salvate",
+                "shipping-title-new": "Detalii de livrare noi",
+                "billing-title-new": "Detalii de facturare noi",
+                "new-shipping-data-btn": "Adaugă detalii de livrare",
+                "new-billing-data-btn": "Adaugă detalii de facturare",
+                "change-user-password-success": "Parola a fost modificată cu succes!",
+                "change-user-password-fail": "A apărut o problema, încercați mai târziu",
+                "password-no-match-fail": "Parolele nu coincid",
+                "change-user-details-success": "Datele au fost modificate cu succes!",
+                "change-user-details-fail": "A apărut o problema, încercați mai târziu",
+                "update-data-form": {
+                    "password-label": "Parola",
+                    "password-ph": "Introdu parola",
+                    "re-password-label": "Confirmă parola",
+                    "re-password-ph": "Reintrodu parola",
+                    "fname-label": "Prenume",
+                    "fname-ph": "Introdu prenumele",
+                    "lname-label": "Nume",
+                    "lname-ph": "Introdu numele",
+                    "email-label": "Adresa de email",
+                    "email-ph": "Introdu adresa de email",
+                    "phone-label": "Număr de telefon",
+                    "phone-ph": "Introdu numărul de telefon",
+                    "submit-update-user-data-btn": "Salvează",
+                    "submit-update-user-password-btn": "Schimbă parola",
+                    "passwords-error": "Parolele nu coincid"
+                }
             }
+        },
+        "doctor": {
+            "header": {
+                "/dashboard/doctor": "General",
+                "/dashboard/doctor/buy": "Cumpără",
+                "/dashboard/doctor/orders": "Comenzile mele",
+                "/dashboard/doctor/subscription": "Abonament",
+                "/dashboard/doctor/invoices": "Facturi",
+                "/dashboard/doctor/settings": "Setări",
+                "/dashboard/doctor/affiliates": "Afiliați",
+                "/dashboard/doctor/patients": "Pacienți",
+                "order-title": "Comanda"
+            },
+            "navbar": {
+                "general": "General",
+                "buy": "Cumpără",
+                "orders": "Comenzile mele",
+                "subscription": "Abonament",
+                "invoices": "Facturi",
+                "affiliates": "Afiliază-te",
+                "patients": "Pacienți",
+                "settings": "Setări",
+                "logout": "Deconectare"
+            },
+            "dashboard-greetings": "Bine ai venit, "
         }
     }
 }

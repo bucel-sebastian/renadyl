@@ -4,7 +4,7 @@ export const getProductData = async (productName) => {
   const database = new Database();
   let data = null;
   try {
-    data = database.select("renadyl_products_data", {
+    data = await database.select("renadyl_products_data", {
       product_name: productName,
     });
   } catch (error) {

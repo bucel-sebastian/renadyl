@@ -4,11 +4,21 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import RedirectToPayment from "../RedirectToPayment";
 
-function OrderSummaryBox() {
+import { getSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
+function OrderSummaryBox({ locale }) {
+  const router = useRouter();
+
   const t = useTranslations("Order-summary");
 
   const { cart } = useSelector((state) => state.cart);
   const { checkoutData } = useSelector((state) => state.cart);
+
+  if (cart.length === 0) {
+    router.replace("/cart", { locale: locale });
+  }
+
   const slice = useSelector((state) => state);
 
   const [havePaymentData, setHavePaymentData] = useState(false);
@@ -29,10 +39,14 @@ function OrderSummaryBox() {
   });
 
   const handleFormSubmit = async () => {
+    const session = await getSession();
+
     const requestBody = {
       cart: cart,
       checkoutData: checkoutData,
       summaryData: summaryData,
+      userData: session,
+      locale: locale,
     };
 
     const response = await fetch("/api/place-order", {
@@ -133,7 +147,6 @@ function OrderSummaryBox() {
       <button
         type="submit"
         onClick={handleFormSubmit}
-        disabled
         className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
       >
         {t("place-order")}

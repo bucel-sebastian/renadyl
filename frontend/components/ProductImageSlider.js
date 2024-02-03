@@ -6,7 +6,7 @@ import Image from "next/image";
 import img1 from "@/public/images/product_image_1.png";
 import img2 from "@/public/images/product_image_2.png";
 import img3 from "@/public/images/product_image_3.png";
-import img4 from "@/public/images/product_image_4.png";
+// import img4 from "@/public/images/product_image_4.png";
 
 function ProductImageSlider() {
   const [actualImage, setActualImage] = useState(img1);
@@ -70,7 +70,7 @@ function ProductImageSlider() {
             alt="Renadyl Product Image - 3"
           />
         </button>
-        <button
+        {/* <button
           className="p-3 aspect-square w-1/4 transition-all duration-300 hover:p-2"
           onClick={() => {
             switchImage(img4);
@@ -83,7 +83,7 @@ function ProductImageSlider() {
             className="object-contain aspect-square"
             alt="Renadyl Product Image - 4"
           />
-        </button>
+        </button> */}
       </div>
     </div>
   );

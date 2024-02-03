@@ -8,6 +8,12 @@ import { useRouter, usePathname } from "next-intl/client";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+import facebookLogo from "@/public/images/facebook_logo.svg";
+import googleLogo from "@/public/images/google_logo.svg";
+import Image from "next/image";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function LoginForm() {
   const router = useRouter();
   const t = useTranslations("Login");
@@ -27,6 +33,7 @@ function LoginForm() {
     const response = await signIn("clientCredentials", {
       email: formData.get("email"),
       password: formData.get("password"),
+      rememberMe: formData.get("remember-me"),
       redirect: false,
     });
     console.log(response);
@@ -38,7 +45,40 @@ function LoginForm() {
         router.push(`/dashboard/${session.user.role}`);
         router.refresh();
       }
+    } else {
+      if (response.error === "not activated") {
+        toast.error(t("error-not-activated"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } else {
+        toast.error(t("error"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
     }
+  };
+
+  const handleGoogleLogin = async (event) => {
+    event.preventDefault();
+    signIn("google");
+  };
+  const handleFacebookLogin = async (event) => {
+    event.preventDefault();
+    signIn("facebook");
   };
 
   return (
@@ -102,13 +142,35 @@ function LoginForm() {
       <div className="mt-4">
         <p className="text-center">{t("login-form.other-options")}</p>
         <div className="flex flex-row gap-5 justify-center mt-2">
-          <button className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md"></button>
+          <button
+            className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md p-[4px]"
+            onClick={handleFacebookLogin}
+          >
+            <Image src={facebookLogo} />
+          </button>
 
-          <button className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md"></button>
+          <button
+            className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md p-[4px]"
+            onClick={handleGoogleLogin}
+          >
+            <Image src={googleLogo} />
+          </button>
 
-          <button className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md"></button>
+          {/* <button className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md"></button> */}
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }

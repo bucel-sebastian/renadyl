@@ -113,34 +113,34 @@ const clientAuthMiddleware = withAuth(
   {
     callbacks: {
       authorized: async ({ req, token }) => {
-        if (token.role === "admin") {
+        if (token?.role === "admin") {
           return false;
         }
         if (
-          token.role === "client" &&
+          token?.role === "client" &&
           !req.nextUrl.pathname.startsWith("/dashboard/client")
         ) {
           return false;
         }
         if (
-          token.role === "doctor" &&
+          token?.role === "doctor" &&
           !req.nextUrl.pathname.startsWith("/dashboard/doctor")
         ) {
           return false;
         }
         if (
-          token.role === "distributor" &&
+          token?.role === "distributor" &&
           !req.nextUrl.pathname.startsWith("/dashboard/distributors")
         ) {
           return false;
         }
         if (
-          token.role === "affiliate" &&
+          token?.role === "affiliate" &&
           !req.nextUrl.pathname.startsWith("/dashboard/affiliate")
         ) {
           return false;
         }
-        return token.role != null;
+        return token?.role != null;
       },
     },
     pages: {

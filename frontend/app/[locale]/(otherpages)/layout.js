@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import OtherHeader from "@/components/headers/OtherHeader";
 import Loading from "./loading";
 import { StoreProvider } from "@/redux/StoreProvider";
+import { SessionProvider } from "next-auth/react";
 
 // export function generateStaticParams() {
 //     return [

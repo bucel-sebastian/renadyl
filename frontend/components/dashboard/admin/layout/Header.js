@@ -17,6 +17,14 @@ function Header({ currentLocale }) {
 
   if (pathname.startsWith("/admin/dashboard/orders/")) {
     pathTranslate = `${t("admin.header.order-title")} #${id} `;
+  } else if (pathname.startsWith("/admin/dashboard/medics/")) {
+    pathTranslate = `${t("admin.header.medic-title")} `;
+  } else if (pathname.startsWith("/admin/dashboard/clients/")) {
+    pathTranslate = `${t("admin.header.client-title")} #${id} `;
+  } else if (pathname.startsWith("/admin/dashboard/distributors/")) {
+    pathTranslate = `${t("admin.header.distributor-title")} #${id} `;
+  } else if (pathname.startsWith("/admin/dashboard/affiliates/")) {
+    pathTranslate = `${t("admin.header.affiliate-title")} #${id} `;
   } else {
     pathTranslate = t(`admin.header.${pathname}`);
   }

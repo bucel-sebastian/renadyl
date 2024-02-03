@@ -6,7 +6,12 @@ export async function GET(req, { params }) {
   const database = new Database();
 
   const ordersList = await database.select("renadyl_orders", { id: id });
+  const databaseResponseInvoiceSeries = await database.select(
+    "renadyl_settings",
+    { name: "invoice_series" }
+  );
   const orderData = await ordersList[0];
+  const invoiceSeries = await databaseResponseInvoiceSeries[0].value;
 
   const billingDetails = JSON.parse(await orderData.billing_details);
   const shippingDetails = JSON.parse(await orderData.shipping_details);
@@ -112,7 +117,7 @@ export async function GET(req, { params }) {
     companyVatCode: process.env.BUSINESS_CIF,
     client: requestClient,
     isDraft: false,
-    seriesName: "RND",
+    seriesName: invoiceSeries,
     currency: orderData.currency,
     language: orderData.country_code === "RO" ? "RO" : "EN",
     precision: 2,

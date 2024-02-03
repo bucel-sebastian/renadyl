@@ -21,9 +21,9 @@ export default function LocaleLayout({ children, params, session }) {
   return (
     <html lang={locale}>
       <body
-        className={`scroll-smoth ${sofiaSans.className} relative bg-gradient-to-r from-gradientGreen to-gradientPurple p-4 h-screen`}
+        className={`scroll-smoth ${sofiaSans.className} relative bg-gradient-to-r from-gradientGreen to-gradientPurple p-4 h-screen max-lg:p-0 max-lg:h-auto max-lg:min-h-screen`}
       >
-        <div className="flex flex-row bg-backgroundPrimary rounded-2xl h-full">
+        <div className="flex flex-row bg-backgroundPrimary rounded-2xl h-full overflow-hidden max-lg:rounded-none max-lg:min-h-screen">
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar />
           </NextIntlClientProvider>

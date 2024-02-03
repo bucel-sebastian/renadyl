@@ -91,7 +91,7 @@ function CartItem({ itemName, countryCode, lastItem, itemQuantity }) {
           src={
             itemData.productName === "renal_single"
               ? "/images/product_image_1.png"
-              : "/images/product_image_2.png"
+              : "/images/product_image_5.png"
           }
           alt=""
           width={1000}

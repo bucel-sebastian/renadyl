@@ -6,19 +6,25 @@ import { FaEyeSlash, FaEye } from "react-icons/fa6";
 import { updateCheckoutData } from "@/redux/slices/cartSlice";
 import PhoneInput from "react-phone-input-2";
 import SelectInput from "@/components/SelectInput";
+import { getSession, signIn } from "next-auth/react";
 
 import countriesData from "@/public/json/countriesData.json";
 import Script from "next/script";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next-intl/client";
 
 function CheckoutNotLoggedIn({ locale }) {
   const router = useRouter();
   const pathname = usePathname();
-  console.log();
 
   const t = useTranslations("Checkout");
 
   const { cart } = useSelector((state) => state.cart);
+
+  if (cart.length === 0) {
+    router.replace("/cart", { locale: locale });
+  }
+
   const { checkoutData } = useSelector((state) => state.cart);
 
   const [summaryData, setSummaryData] = useState({
@@ -34,6 +40,11 @@ function CheckoutNotLoggedIn({ locale }) {
   const dispatch = useDispatch();
 
   const [isClient, setIsClient] = useState(true);
+
+  const [esxistsAccountWithEmail, setExistsAccountWithEmail] = useState(false);
+
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
   const handleSetIsClient = () => {
     setIsClient(true);
   };
@@ -130,9 +141,37 @@ function CheckoutNotLoggedIn({ locale }) {
     setSummaryData(data.body);
   };
 
+  const checkShippingEmailInput = async () => {
+    const emailValue = checkoutData?.shipping?.email;
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailPattern.test(emailValue)) {
+      console.log("Email valid:", emailValue);
+
+      const response = await fetch(
+        `/api/data/json/checkout/check-if-email-exists/${emailValue}`
+      );
+
+      const body = await response.json();
+
+      setExistsAccountWithEmail(body.body);
+      console.log("email response - ", body.body);
+    } else {
+      setExistsAccountWithEmail(false);
+    }
+  };
+
   useEffect(() => {
     dispatch(updateCheckoutData({ name: "shipping.rePassword", value: "" }));
     dispatch(updateCheckoutData({ name: "shipping.password", value: "" }));
+    dispatch(updateCheckoutData({ name: "shipping.save", value: false }));
+    dispatch(updateCheckoutData({ name: "shipping.savedData", value: null }));
+    dispatch(updateCheckoutData({ name: "billing.save", value: false }));
+    dispatch(updateCheckoutData({ name: "billing.savedData", value: null }));
+
+    checkShippingEmailInput();
+
     if (window?.location?.hash) {
       console.log("Has #");
       handleSetIsNotClient();
@@ -381,6 +420,52 @@ function CheckoutNotLoggedIn({ locale }) {
     console.log(checkoutData);
     calculateCartSummary();
   }, [checkoutData]);
+
+  const validadeRegisterEmail = async (e) => {
+    e.preventDefault();
+    handleChangeCheckoutData(e);
+
+    const emailValue = e.target.value;
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailPattern.test(emailValue)) {
+      console.log("Email valid:", emailValue);
+
+      const response = await fetch(
+        `/api/data/json/checkout/check-if-email-exists/${emailValue}`
+      );
+
+      const body = await response.json();
+
+      setExistsAccountWithEmail(body.body);
+      console.log("email response - ", body.body);
+    } else {
+      setExistsAccountWithEmail(false);
+    }
+  };
+
+  useEffect(() => {
+    if (checkoutData?.shipping?.wantsAccount === true) {
+      if (
+        checkoutData?.shipping?.password.toString() ===
+        checkoutData?.shipping?.rePassword.toString()
+      ) {
+        setPasswordsMatch(true);
+      } else {
+        setPasswordsMatch(false);
+      }
+    }
+  }, [checkoutData?.shipping?.password, checkoutData?.shipping?.rePassword]);
+
+  useEffect(() => {
+    dispatch(
+      updateCheckoutData({ name: "shipping.wantsAccount", value: false })
+    );
+    dispatch(updateCheckoutData({ name: "shipping.rePassword", value: "" }));
+    dispatch(updateCheckoutData({ name: "shipping.password", value: "" }));
+  }, [esxistsAccountWithEmail]);
+
   return (
     <>
       <section className="relative max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max overflow-hidden">
@@ -575,102 +660,164 @@ function CheckoutNotLoggedIn({ locale }) {
                         placeholder={t("register-form.email-ph")}
                         type="email"
                         name="shipping.email"
-                        onChange={handleChangeCheckoutData}
+                        onChange={validadeRegisterEmail}
                         value={checkoutData?.shipping?.email}
                         className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
                         required
                       />
                     </div>
                   </div>
-                  <div className="mt-4">
-                    <h3 className="text-xl">
-                      {t("register-form.want-account")}
-                    </h3>
-                    <div className="relative w-full flex flex-row bg-backgroundPrimary border-[1px] border-foregroundPrimary20 rounded-xl overflow-hidden mb-4">
-                      <div
-                        className={`absolute w-1/2 top-0 "left-0" ${
-                          checkoutData?.shipping?.wantsAccount
-                            ? "translate-x-full bg-right rounded-l-lg"
-                            : "translate-x-0 bg-left rounded-r-lg"
-                        }  h-full bg-gradient-to-r from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%]  transition-all duration-300`}
-                      ></div>
-                      <button
-                        type="button"
-                        className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
-                          checkoutData?.shipping?.wantsAccount
-                            ? "text-foregroundPrimary"
-                            : "text-backgroundPrimary"
-                        }`}
-                        onClick={() => handleWantsAccount(false)}
-                      >
-                        {t("register-form.wants-account-no")}
-                      </button>
-                      <button
-                        type="button"
-                        className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
-                          checkoutData?.shipping?.wantsAccount
-                            ? "text-backgroundPrimary"
-                            : "text-foregroundPrimary"
-                        }`}
-                        onClick={() => handleWantsAccount(true)}
-                      >
-                        {t("register-form.wants-account-yes")}
-                      </button>
-                    </div>
 
-                    {checkoutData?.shipping?.wantsAccount ? (
-                      <div className="flex flex-row gap-8 max-sm:flex-col max-sm:gap-2">
-                        <div className="w-full flex flex-col mb-2">
-                          <label className="px-1 text-foregroundPrimary70">
-                            {t("register-form.password-label")}
-                          </label>
-                          <div className="relative flex flex-row items-center content-center">
-                            <input
-                              placeholder={t("register-form.password-ph")}
-                              type={newPasswordVisible ? "text" : "password"}
-                              name="shipping.password"
-                              onChange={handleChangeCheckoutData}
-                              value={checkoutData?.shipping?.password}
-                              className="w-full bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
-                              required
-                            />
-                            <button
-                              onClick={handleNewPasswordVisibleClick}
-                              type="button"
-                              className="absolute right-0"
-                            >
-                              {newPasswordVisible ? <FaEyeSlash /> : <FaEye />}
-                            </button>
-                          </div>
-                        </div>
-                        <div className="w-full flex flex-col mb-2">
-                          <label className="px-1 text-foregroundPrimary70">
-                            {t("register-form.re-password-label")}
-                          </label>
-                          <div className="relative flex flex-row items-center content-center">
-                            <input
-                              placeholder={t("register-form.re-password-ph")}
-                              type={newPasswordVisible ? "text" : "password"}
-                              name="shipping.rePassword"
-                              onChange={handleChangeCheckoutData}
-                              value={checkoutData?.shipping?.rePassword}
-                              className="w-full bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
-                              required
-                            />
-                            <button
-                              onClick={handleNewPasswordVisibleClick}
-                              type="button"
-                              className="absolute right-0"
-                            >
-                              {newPasswordVisible ? <FaEyeSlash /> : <FaEye />}
-                            </button>
+                  {esxistsAccountWithEmail === true ? (
+                    <>
+                      <div className="relative w-full mx-auto border-foregroundSecondary20 mt-4  border-[1px] shadow-lg rounded-xl h-max overflow-hidden ">
+                        <div className="relative w-full flex flex-row  flex items-center content-center justify-center bg-backgroundPrimary p-1 z-10 before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-r before:z-0 before:from-gradientGreen before:to-gradientPurple ">
+                          <div className="relative z-10 p-4 bg-backgroundPrimary content-['']  rounded-lg w-full h-full ">
+                            <h3 className="text-xl text-center">
+                              {t("register-form.already-account")} -{" "}
+                              <button
+                                onClick={handleSetIsClient}
+                                className="text-gradientPurple"
+                              >
+                                {t("register-form.login")}
+                              </button>
+                            </h3>
                           </div>
                         </div>
                       </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="mt-4">
+                        <h3 className="text-xl">
+                          {t("register-form.want-account")}
+                        </h3>
+                        <div className="relative w-full flex flex-row bg-backgroundPrimary border-[1px] border-foregroundPrimary20 rounded-xl overflow-hidden mb-4">
+                          <div
+                            className={`absolute w-1/2 top-0 "left-0" ${
+                              checkoutData?.shipping?.wantsAccount
+                                ? "translate-x-full bg-right rounded-l-lg"
+                                : "translate-x-0 bg-left rounded-r-lg"
+                            }  h-full bg-gradient-to-r from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%]  transition-all duration-300`}
+                          ></div>
+                          <button
+                            type="button"
+                            className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
+                              checkoutData?.shipping?.wantsAccount
+                                ? "text-foregroundPrimary"
+                                : "text-backgroundPrimary"
+                            }`}
+                            onClick={() => handleWantsAccount(false)}
+                          >
+                            {t("register-form.wants-account-no")}
+                          </button>
+                          <button
+                            type="button"
+                            className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
+                              checkoutData?.shipping?.wantsAccount
+                                ? "text-backgroundPrimary"
+                                : "text-foregroundPrimary"
+                            }`}
+                            onClick={() => handleWantsAccount(true)}
+                          >
+                            {t("register-form.wants-account-yes")}
+                          </button>
+                        </div>
+
+                        {checkoutData?.shipping?.wantsAccount ? (
+                          <>
+                            <div className="flex flex-row gap-8 max-sm:flex-col max-sm:gap-2">
+                              <div className="w-full flex flex-col mb-2">
+                                <label className="px-1 text-foregroundPrimary70">
+                                  {t("register-form.password-label")}
+                                </label>
+                                <div className="relative flex flex-row items-center content-center">
+                                  <input
+                                    placeholder={t("register-form.password-ph")}
+                                    type={
+                                      newPasswordVisible ? "text" : "password"
+                                    }
+                                    name="shipping.password"
+                                    onChange={handleChangeCheckoutData}
+                                    value={checkoutData?.shipping?.password}
+                                    className={`w-full bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ${
+                                      passwordsMatch
+                                        ? ""
+                                        : "border-dashboardRed70"
+                                    }`}
+                                    required
+                                  />
+                                  <button
+                                    onClick={handleNewPasswordVisibleClick}
+                                    type="button"
+                                    className="absolute right-0"
+                                  >
+                                    {newPasswordVisible ? (
+                                      <FaEyeSlash />
+                                    ) : (
+                                      <FaEye />
+                                    )}
+                                  </button>
+                                </div>
+                              </div>
+                              <div className="w-full flex flex-col mb-2">
+                                <label className="px-1 text-foregroundPrimary70">
+                                  {t("register-form.re-password-label")}
+                                </label>
+                                <div className="relative flex flex-row items-center content-center">
+                                  <input
+                                    placeholder={t(
+                                      "register-form.re-password-ph"
+                                    )}
+                                    type={
+                                      newPasswordVisible ? "text" : "password"
+                                    }
+                                    name="shipping.rePassword"
+                                    onChange={handleChangeCheckoutData}
+                                    value={checkoutData?.shipping?.rePassword}
+                                    className={`w-full bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 ${
+                                      passwordsMatch
+                                        ? ""
+                                        : "border-dashboardRed70"
+                                    }`}
+                                    required
+                                  />
+                                  <button
+                                    onClick={handleNewPasswordVisibleClick}
+                                    type="button"
+                                    className="absolute right-0"
+                                  >
+                                    {newPasswordVisible ? (
+                                      <FaEyeSlash />
+                                    ) : (
+                                      <FaEye />
+                                    )}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            {passwordsMatch ? (
+                              <></>
+                            ) : (
+                              <>
+                                <div className="relative w-full mx-auto border-foregroundSecondary20 mt-4  border-[1px] shadow-lg rounded-xl h-max overflow-hidden ">
+                                  <div className="relative w-full flex flex-row  flex items-center content-center justify-center bg-backgroundPrimary p-1 z-10 before:content-[''] before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-r before:z-0 before:from-gradientGreen before:to-gradientPurple ">
+                                    <div className="relative z-10 p-4 bg-backgroundPrimary content-['']  rounded-lg w-full h-full ">
+                                      <h3 className="text-xl text-center">
+                                        {t("register-form.passwords-error")}
+                                      </h3>
+                                    </div>
+                                  </div>
+                                </div>
+                              </>
+                            )}
+                          </>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <h3 className="text-xl mt-4">
@@ -896,25 +1043,39 @@ function CheckoutNotLoggedIn({ locale }) {
                       <label className="px-1 text-foregroundPrimary70">
                         {t("shipping-form.provider-label")}
                       </label>
-                      <div className="flex flex-col ">
-                        <label>
+                      <div className="flex flex-row gap-8 ">
+                        <label
+                          className={`w-1/2 border-[1px] rounded-lg p-4 transition-all duration-[0.3s] ${
+                            checkoutData?.shipping?.provider === "DHL"
+                              ? "border-foregroundPrimary90"
+                              : "border-foregroundPrimary20"
+                          }`}
+                        >
                           <input
                             type="radio"
                             name="shipping.provider"
                             value="DHL"
                             onChange={handleChangeCheckoutData}
                             checked={checkoutData?.shipping?.provider === "DHL"}
+                            className="mr-2"
                             required
                           />{" "}
-                          DHL
+                          <span>DHL</span>
                         </label>
-                        <label>
+                        <label
+                          className={`w-1/2 border-[1px] rounded-lg p-4 transition-all duration-[0.3s] ${
+                            checkoutData?.shipping?.provider === "UPS"
+                              ? "border-foregroundPrimary90"
+                              : "border-foregroundPrimary20"
+                          }`}
+                        >
                           <input
                             type="radio"
                             name="shipping.provider"
                             value="UPS"
                             onChange={handleChangeCheckoutData}
                             checked={checkoutData?.shipping?.provider === "UPS"}
+                            className="mr-2"
                             required
                           />{" "}
                           UPS
@@ -1411,6 +1572,11 @@ function CheckoutNotLoggedIn({ locale }) {
                   type="submit"
                   // onClick={handleFormSubmit}
                   className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
+                  disabled={
+                    checkoutData?.shipping?.wantsAccount === true
+                      ? !passwordsMatch
+                      : false
+                  }
                 >
                   {t("next-step-btn")}
                 </button>

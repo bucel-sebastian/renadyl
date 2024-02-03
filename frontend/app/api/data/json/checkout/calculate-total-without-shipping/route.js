@@ -22,11 +22,11 @@ export async function POST(req, { params }) {
   for (const item of cart) {
     const data = await getProductData(item.productName);
 
-    const price = JSON.parse(data[0].price);
-    const on_sale = JSON.parse(data[0].on_sale);
-    const sale_value = JSON.parse(data[0].sale_value);
-    const sale_percentage = JSON.parse(data[0].sale_percentage);
-    const sale_price = JSON.parse(data[0].sale_price);
+    const price = data[0].price;
+    const on_sale = data[0].on_sale;
+    const sale_value = data[0].sale_value;
+    const sale_percentage = data[0].sale_percentage;
+    const sale_price = data[0].sale_price;
 
     if (countryCode === "RO") {
       if (on_sale.nat) {

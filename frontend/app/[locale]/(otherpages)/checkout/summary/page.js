@@ -37,23 +37,29 @@ export default function CheckoutPage({ params: { locale } }) {
   return (
     <main className="relative block pt-[90px] text-lg min-h-screen h-full checkout-background">
       <div className="relative flex flex-row items-center content-center justify-center mb-8 z-10">
-        <div className="relative text-xl relative flex justify-center ">
-          <span className="relative flex items-center content-center justify-center bg-backgroundPrimary w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full ">
-            1
-          </span>
-          <span className="absolute top-full text-sm text-center w-max max-md:text-[10px]">
-            {t("order-steps.step-1")}
-          </span>
-        </div>
+        <Link href="/cart" locale={locale}>
+          <div className="relative text-xl relative flex justify-center ">
+            <span className="relative flex items-center content-center justify-center bg-backgroundPrimary w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full ">
+              1
+            </span>
+            <span className="absolute top-full text-sm text-center w-max max-md:text-[10px]">
+              {t("order-steps.step-1")}
+            </span>
+          </div>
+        </Link>
+
         <div className="w-[100px] h-[2px] bg-gradientGreen max-md:w-[40px]"></div>
-        <div className="text-xl relative flex justify-center">
-          <span className="relative flex items-center content-center justify-center bg-backgroundPrimary w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full ">
-            2
-          </span>
-          <span className="absolute top-full text-sm text-center w-max max-md:text-[10px]">
-            {t("order-steps.step-2")}
-          </span>
-        </div>
+
+        <Link href="/checkout" locale={locale}>
+          <div className="text-xl relative flex justify-center">
+            <span className="relative flex items-center content-center justify-center bg-backgroundPrimary w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full ">
+              2
+            </span>
+            <span className="absolute top-full text-sm text-center w-max max-md:text-[10px]">
+              {t("order-steps.step-2")}
+            </span>
+          </div>
+        </Link>
         <div className="w-[100px] h-[2px] bg-gradientGreen max-md:w-[40px]"></div>
         <div className="text-xl relative flex justify-center">
           <span className="relative flex items-center content-center justify-center bg-backgroundPrimary w-[40px] h-[40px] border-[2px] border-gradientPurple rounded-full">
@@ -73,39 +79,40 @@ export default function CheckoutPage({ params: { locale } }) {
           </span>
         </div>
       </div>
-      <section className="block relative max-w-[1200px] w-full mx-auto z-10 max-[1200px]:px-2">
-        <div className="flex flex-col gap-4">
-          <div className="w-full flex flex-row max-md:flex-col gap-4">
-            <div className="w-1/3 border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 max-md:w-full">
-              <h2 className="flex flex-row justify-center items-center content-center gap-2 text-xl font-bold">
-                <FaTruckFast className="text-gradientPurple text-2xl" />
-                {t("summary-shipping-title")}
-              </h2>
-              <ShippingBox />
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <section className="block relative max-w-[1200px] w-full mx-auto z-10 max-[1200px]:px-2">
+          <div className="flex flex-col gap-4">
+            <div className="w-full flex flex-row max-md:flex-col gap-4">
+              <div className="w-1/3 border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 max-md:w-full">
+                <h2 className="flex flex-row justify-center items-center content-center gap-2 text-xl font-bold">
+                  <FaTruckFast className="text-gradientPurple text-2xl" />
+                  {t("summary-shipping-title")}
+                </h2>
+                <ShippingBox />
+              </div>
+              <div className="w-1/3 border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 max-md:w-full">
+                <h2 className="flex flex-row justify-center items-center content-center gap-2 text-xl font-bold">
+                  <FaFileInvoiceDollar className="text-gradientPurple text-2xl" />
+                  {t("summary-billing-title")}
+                </h2>
+                <BillingBox />
+              </div>
+              <div className="w-1/3 border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 flex flex-col justify-between max-md:w-full">
+                <h2 className="flex flex-row justify-center items-center content-center gap-2 text-xl font-bold h-1/5">
+                  <FaMoneyBills className="text-gradientPurple text-2xl" />
+                  {t("summary-payment-title")}
+                </h2>
+                <PaymentBox />
+              </div>
             </div>
-            <div className="w-1/3 border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 max-md:w-full">
-              <h2 className="flex flex-row justify-center items-center content-center gap-2 text-xl font-bold">
-                <FaFileInvoiceDollar className="text-gradientPurple text-2xl" />
-                {t("summary-billing-title")}
-              </h2>
-              <BillingBox />
-            </div>
-            <div className="w-1/3 border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 flex flex-col justify-between max-md:w-full">
-              <h2 className="flex flex-row justify-center items-center content-center gap-2 text-xl font-bold h-1/5">
-                <FaMoneyBills className="text-gradientPurple text-2xl" />
-                {t("summary-payment-title")}
-              </h2>
-              <PaymentBox />
+            <div className="w-full border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 mb-8">
+              <h1 className="text-2xl font-bold mb-4 ">{t("summary-title")}</h1>
+
+              <OrderSummaryBox locale={locale} />
             </div>
           </div>
-          <div className="w-full border-[#1a1a1a55] bg-[#fff] border-[1px]  rounded-xl shadow-xl p-6 mb-8">
-            <h1 className="text-2xl font-bold mb-4 ">{t("summary-title")}</h1>
-            <NextIntlClientProvider locale={locale} messages={messages}>
-              <OrderSummaryBox />
-            </NextIntlClientProvider>
-          </div>
-        </div>
-      </section>
+        </section>
+      </NextIntlClientProvider>
     </main>
   );
 }

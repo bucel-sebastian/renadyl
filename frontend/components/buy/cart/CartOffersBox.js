@@ -134,7 +134,7 @@ function CartOffersBox() {
               <div className="relative  w-full flex flex-row items-center content-center flex-nowrap">
                 <div className="w-1/6">
                   <Image
-                    src="/images/product_image_2.png"
+                    src="/images/product_image_5.png"
                     width={1000}
                     height={1000}
                     className="w-full aspect-square"
@@ -143,8 +143,11 @@ function CartOffersBox() {
                 </div>
                 <div className="relative w-5/6 h-full flex flex-col ">
                   <h2 className="font-bold text-center text-xl">
-                    Profită acum de oferta noastră și poți cumpăra pachetul de 3
-                    buc. Renadyl pentru doar 400 RON /buc.
+                    {t("bundle-offer-1")}{" "}
+                    {bundleProductData.onSale
+                      ? bundleProductData.salePrice / 3
+                      : bundleProductData.price / 3}{" "}
+                    {bundleProductData.currency} / {t("bundle-offer-2")}.
                   </h2>
                   <button
                     onClick={handleConvertToBundle}
@@ -161,7 +164,7 @@ function CartOffersBox() {
         ) : (
           <>
             <div className="w-full">
-              <h1 className="text-2xl font-bold mb-4 ">Produsele noastre</h1>
+              <h1 className="text-2xl font-bold mb-4 ">{t("our-products")}</h1>
               <div className="flex flex-row max-md:flex-col max-md:gap-8">
                 <div className="w-1/2 flex flex-row max-md:w-full">
                   <div className="w-1/3">
@@ -196,7 +199,7 @@ function CartOffersBox() {
                 <div className="w-1/2 flex flex-row max-md:w-full">
                   <div className="w-1/3">
                     <Image
-                      src="/images/product_image_2.png"
+                      src="/images/product_image_5.png"
                       width={1000}
                       height={1000}
                       className="w-full aspect-square"

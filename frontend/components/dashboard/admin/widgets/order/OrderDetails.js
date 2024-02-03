@@ -1,5 +1,7 @@
 "use client";
+import LoadingBlock from "@/components/LoadingBlock";
 import SelectInput from "@/components/SelectInput";
+import SelectInputClassic from "@/components/SelectInputClassic";
 import {
   Table,
   TableBody,
@@ -16,9 +18,13 @@ import "react-toastify/dist/ReactToastify.css";
 function OrderDetails({ orderId }) {
   const [initialOrderData, setInitialOrderData] = useState(null);
   const [updatedOrderData, setUpdatedOrderData] = useState(null);
+  const [clientData, setClientData] = useState(null);
   const [productsDetailsModified, setProductsDetailsModified] = useState(false);
 
+  const [doctorsData, setDoctorsData] = useState({});
+
   const [newStatus, setNewStatus] = useState(1);
+  const [newDoctor, setNewDoctor] = useState("");
 
   const [generateAWBisLoading, setGenerateAWBisLoading] = useState(false);
   const [generateInvoiceIsLoading, setGenerateInvoiceIsLoading] =
@@ -37,22 +43,44 @@ function OrderDetails({ orderId }) {
   };
 
   const orderStatus = [
-    { name: "Anulată", color: "#e74d3d" },
-    { name: "Plasată", color: "#f1c40d" },
-    { name: "În procesare", color: "#e77e22" },
-    { name: "Pregătită de expediere", color: "#3397dc" },
-    { name: "Expediată", color: "#2980b9" },
-    { name: "Finalizată", color: "#2ecd70" },
+    {
+      name: t("order-status.cancelled"),
+      color: "#e74d3d",
+    },
+    {
+      name: t("order-status.placed"),
+      color: "#f1c40d",
+    },
+    {
+      name: t("order-status.processing"),
+      color: "#e77e22",
+    },
+    {
+      name: t("order-status.ready-to-ship"),
+      color: "#3397dc",
+    },
+    {
+      name: t("order-status.shipped"),
+      color: "#2980b9",
+    },
+    {
+      name: t("order-status.finished"),
+      color: "#2ecd70",
+    },
+    {
+      name: t("order-status.refunded"),
+      color: "#e74d3d",
+    },
   ];
 
   const statusData = {
-    "status-0": "Anulată",
-    "status-1": "Plasată",
-    "status-2": "În procesare",
-    "status-3": "Pregătită de expediere",
-    "status-4": "Expediată",
-    "status-5": "Finalizată",
-    "status-6": "Stornată",
+    "status-0": t("order-status.cancelled"),
+    "status-1": t("order-status.placed"),
+    "status-2": t("order-status.processing"),
+    "status-3": t("order-status.ready-to-ship"),
+    "status-4": t("order-status.shipped"),
+    "status-5": t("order-status.finished"),
+    "status-6": t("order-status.refunded"),
   };
 
   const formatter = new Intl.DateTimeFormat("ro-RO", datetimeOptions);
@@ -60,11 +88,11 @@ function OrderDetails({ orderId }) {
   const getOrderData = async () => {
     const response = await fetch(`/api/admin/data/json/orders/${orderId}`);
     const body = await response.json();
+    console.log(body);
 
     body.body.billing_details = JSON.parse(body.body.billing_details);
     body.body.cart = JSON.parse(body.body.cart);
     body.body.shipping_details = JSON.parse(body.body.shipping_details);
-    body.body.client_details = JSON.parse(body.body.client_details);
     if (body.body.payment_status !== null) {
       body.body.payment_status = JSON.parse(body.body.payment_status);
     }
@@ -82,6 +110,23 @@ function OrderDetails({ orderId }) {
 
     setInitialOrderData(initialData);
     setUpdatedOrderData(updatedData);
+    setClientData(body.client_data);
+  };
+
+  const getDoctorsList = async () => {
+    const response = await fetch(`/api/admin/data/json/doctors`);
+    if (response.ok) {
+      const body = await response.json();
+
+      const data = new Object();
+      for (let i = 0; i < body.body.length; i++) {
+        data[
+          body.body[i].id
+        ] = `Dr. ${body.body[i].f_name} ${body.body[i].l_name}`;
+      }
+      // console.log("DOctors", data);
+      setDoctorsData(data);
+    }
   };
 
   const verifyIfProductDetailsAreModified = () => {
@@ -168,6 +213,30 @@ function OrderDetails({ orderId }) {
     const response = await fetch(
       `/api/admin/generate-awb/${updatedOrderData.id}`
     );
+    if (response.ok) {
+      getOrderData();
+      toast.success("AWB-ul a fost generat cu succes!", {
+        position: "bottom-right",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      toast.error(t("A aparut o problema"), {
+        position: "bottom-right",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
     console.log(await response.json());
     setGenerateAWBisLoading(false);
   };
@@ -185,17 +254,31 @@ function OrderDetails({ orderId }) {
       `/api/admin/generate-invoice/${updatedOrderData.id}`
     );
     if (response.ok) {
-      getOrderData();
-      toast.success("Factura a fost generata cu succes!", {
-        position: "bottom-right",
-        autoClose: 2500,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      const body = await response.json();
+      if (body.status === 200) {
+        getOrderData();
+        toast.success("Factura a fost generata cu succes!", {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } else {
+        toast.error(t("change-details-fail"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
     }
     setGenerateInvoiceIsLoading(false);
   };
@@ -227,6 +310,42 @@ function OrderDetails({ orderId }) {
     } else {
       setGenerateInvoiceIsLoading(true);
       generateInvoice();
+    }
+  };
+
+  const handleDoctorInputChange = (key, value) => {
+    setNewDoctor(key);
+  };
+
+  const handleSetDoctor = async (e) => {
+    e.preventDefault();
+
+    const reqData = new Object();
+    reqData.id = newDoctor;
+    reqData.doctor_name = doctorsData[newDoctor];
+    reqData.client = initialOrderData.doctor.client;
+
+    const response = await fetch(`/api/admin/update-order-doctor/${orderId}`, {
+      method: "POST",
+      body: JSON.stringify(reqData),
+    });
+    if (response.ok) {
+      const body = await response.json();
+      if (body.response) {
+        getOrderData();
+        toast.success("Doctorul a fost setat cu succes!", {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } else {
+      }
+    } else {
     }
   };
 
@@ -272,80 +391,107 @@ function OrderDetails({ orderId }) {
     changeOrderStatus();
   };
 
-  const viewInvoice = async () => {
-    const backendResponse = await fetch(
-      `/api/admin/view-invoice/${updatedOrderData.invoice.series}/${updatedOrderData.invoice.number}`
-    );
-
-    const backendBody = await backendResponse.json();
-
-    const response = await fetch(
-      `https://ws.smartbill.ro/SBORO/api/invoice/pdf?cif=${backendBody.body.businessCif}&seriesname=${backendBody.body.series}&number=${backendBody.body.number}`,
-      {
-        headers: {
-          Accept: "application/octet-stream",
-          Authorization: backendBody.body.auth,
-        },
-      }
-    );
-    const body = await response.blob();
-    const url = window.URL.createObjectURL(new Blob([body]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute(
-      "download",
-      `${backendBody.body.series} ${backendBody.body.number}.pdf`
-    );
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const handleViewInvoice = (e) => {
+  const handleViewInvoice = async (e, series, number) => {
     e.preventDefault();
-    viewInvoice();
-  };
 
-  const viewReverseInvoice = async () => {
-    const backendResponse = await fetch(
-      `/api/admin/view-invoice/${updatedOrderData.invoice.reverse.series}/${updatedOrderData.invoice.reverse.number}`
-    );
+    try {
+      const response = await fetch(
+        `/api/admin/data/json/invoices/${series}/${number}`
+      );
+      if (response.ok) {
+        const body = await response.json();
 
-    const backendBody = await backendResponse.json();
+        const headers = new Headers(body.body.headers);
+        const smartbillResponse = await fetch(body.body.url, {
+          headers: headers,
+        });
+        const data = await smartbillResponse.arrayBuffer();
 
-    const response = await fetch(
-      `https://ws.smartbill.ro/SBORO/api/invoice/pdf?cif=${backendBody.body.businessCif}&seriesname=${backendBody.body.series}&number=${backendBody.body.number}`,
-      {
-        headers: {
-          Accept: "application/octet-stream",
-          Authorization: backendBody.body.auth,
-        },
+        const pdfBlob = new Blob([data], { type: "application/pdf" });
+
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+
+        window.open(pdfUrl, "_blank");
       }
-    );
-    const body = await response.blob();
-    const url = window.URL.createObjectURL(new Blob([body]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute(
-      "download",
-      `${backendBody.body.series} ${backendBody.body.number}.pdf`
-    );
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    } catch (error) {
+      toast.error(t("change-details-fail"), {
+        position: "bottom-right",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
   };
 
-  const handleViewReverseInvoice = (e) => {
-    e.preventDefault();
-    viewReverseInvoice();
-  };
   const reverseInvoice = async () => {
-    const response = await fetch(
-      `/api/admin/reverse-invoice/${initialOrderData.id}`
-    );
-    if (response.ok) {
-      getOrderData();
-      toast.success("Factura a fost stornata cu succes!", {
+    if (
+      new Date(initialOrderData.invoice.date).getUTCFullYear() <
+        new Date().getUTCFullYear() ||
+      (new Date(initialOrderData.invoice.date).getUTCFullYear() ===
+        new Date().getUTCFullYear() &&
+        new Date(initialOrderData.invoice.date).getUTCMonth() <
+          new Date().getUTCMonth()) ||
+      (new Date(initialOrderData.invoice.date).getUTCFullYear() ===
+        new Date().getUTCFullYear() &&
+        new Date(initialOrderData.invoice.date).getUTCMonth() ===
+          new Date().getUTCMonth() &&
+        new Date(initialOrderData.invoice.date).getUTCDate() <
+          new Date().getUTCDate())
+    ) {
+      if (
+        window.confirm(
+          "Sigur doresti sa generezi factura fara numar de lot sau data de expirare?"
+        )
+      ) {
+        const response = await fetch(
+          `/api/admin/reverse-invoice/${initialOrderData.id}`
+        );
+        if (response.ok) {
+          const body = await response.json();
+
+          if (body.status === 200) {
+            getOrderData();
+            toast.success("Factura a fost stornata cu succes!", {
+              position: "bottom-right",
+              autoClose: 2500,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          } else {
+            toast.error(t("change-details-fail"), {
+              position: "bottom-right",
+              autoClose: 2500,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          }
+        } else {
+          toast.error(t("change-details-fail"), {
+            position: "bottom-right",
+            autoClose: 2500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+      }
+    } else {
+      toast.error(t("change-details-fail"), {
         position: "bottom-right",
         autoClose: 2500,
         hideProgressBar: true,
@@ -383,6 +529,7 @@ function OrderDetails({ orderId }) {
 
   useEffect(() => {
     getOrderData();
+    getDoctorsList();
   }, []);
 
   useEffect(() => {
@@ -401,56 +548,26 @@ function OrderDetails({ orderId }) {
             <div className="flex flex-row justify-between">
               <h2 className="text-xl font-bold">Detalii comandă</h2>
               <div className="flex flex-row gap-2">
-                <button
-                  onClick={handleGenerateAWB}
-                  className="px-4 py-2 bg-dashboardBlue text-backgroundPrimary rounded-lg"
-                >
-                  Genreaza AWB
-                </button>
                 {updatedOrderData.invoice === null ? <></> : <></>}
               </div>
             </div>
 
             <div>
-              <div className="flex flex-row gap-8">
+              <div className="flex flex-row gap-12">
                 <div className="w-1/2">
                   <div>
                     <h4 className="font-bold">Data crearii</h4>
                     <p>{formatter.format(new Date(updatedOrderData?.date))}</p>
                   </div>
-
-                  <div>
-                    <h4 className="font-bold">Status actual</h4>
-                    <p>{orderStatus[updatedOrderData?.status].name}</p>
-                  </div>
-                  <div>
-                    <form onSubmit={handleStatusFormSubmit}>
-                      <div className="flex flex-row gap-2 ">
-                        <div className="w-2/3">
-                          <SelectInput
-                            data={statusData}
-                            value={newStatus}
-                            name="status-selector"
-                            placeholder="Status actual"
-                            onChange={handleStatusInputChange}
-                            required={true}
-                          />
-                        </div>
-                        <button className="px-4 py-2 bg-dashboardBlue text-backgroundPrimary rounded-lg w-1/3">
-                          Schimba Status
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  <br />
                   <div>
                     <h4 className="font-bold">Client</h4>
                     <p>
-                      {updatedOrderData?.client_details.isLoggedIn ? (
+                      {updatedOrderData?.client_id ? (
                         <>
-                          <Link>
-                            {updatedOrderData.client_details.fname}{" "}
-                            {updatedOrderData.client_details.lname}
+                          <Link
+                            href={`/admin/dashboard/clients/${updatedOrderData?.client_id}`}
+                          >
+                            {clientData?.fname} {clientData?.lname}
                           </Link>
                         </>
                       ) : (
@@ -462,92 +579,208 @@ function OrderDetails({ orderId }) {
                     </p>
                   </div>
                   <div>
+                    <h4 className="font-bold">Status actual</h4>
+                    <p>{orderStatus[updatedOrderData?.status].name}</p>
+                  </div>
+                  <div>
                     <h4 className="font-bold">Doctor</h4>
-                    <p>{updatedOrderData?.doctor}</p>
+                    {updatedOrderData?.doctor?.id !== null ? (
+                      <>
+                        <Link
+                          href={`/admin/dashboard/medics/${updatedOrderData?.doctor?.id}`}
+                        >
+                          <p>{updatedOrderData?.doctor?.doctor_name}</p>
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <p>{updatedOrderData?.doctor?.client}</p>
+                      </>
+                    )}
                   </div>
                 </div>
                 <div className="w-1/2">
-                  <div>
-                    <h4 className="font-bold">Tip plată</h4>
-                    <p>{updatedOrderData?.payment}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Status plată</h4>
-                    <p>
+                  <form onSubmit={handleStatusFormSubmit}>
+                    <h4 className="font-bold">Schimbă statusul</h4>
+                    <div className="flex flex-row gap-2 ">
+                      <div className="w-2/3">
+                        <SelectInputClassic
+                          data={statusData}
+                          value={newStatus}
+                          name="status-selector"
+                          placeholder="Status actual"
+                          onChange={handleStatusInputChange}
+                          required={true}
+                        />
+                      </div>
+                      <button className="px-4 py-2 bg-gradientPurple text-backgroundPrimary rounded-lg w-1/3">
+                        Schimba Status
+                      </button>
+                    </div>
+                  </form>
+
+                  <br />
+
+                  <form onSubmit={handleSetDoctor}>
+                    <h4 className="font-bold">Schimbă doctorul</h4>
+                    <div className="flex flex-row gap-2 ">
+                      <div className="w-2/3">
+                        <SelectInput
+                          data={doctorsData}
+                          value={newDoctor}
+                          name="doctor-selector"
+                          placeholder="Doctor"
+                          onChange={handleDoctorInputChange}
+                          required={true}
+                        />
+                      </div>
+                      <button className="px-4 py-2 bg-gradientPurple text-backgroundPrimary rounded-lg w-1/3">
+                        Setează doctorul
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-row gap-4">
+            <div className="w-1/3 border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
+              <h2 className="text-xl font-bold">Plată</h2>
+              <div>
+                <h4 className="font-bold">Tip plată</h4>
+                <p>{updatedOrderData?.payment}</p>
+              </div>
+              <div>
+                <h4 className="font-bold">Status plată</h4>
+                <div>
+                  {updatedOrderData?.payment === "card" ? (
+                    <>
                       {updatedOrderData?.payment_status === null ? (
-                        <>În așteptare</>
+                        <p>În așteptare</p>
                       ) : (
                         <>
                           {updatedOrderData?.payment_status.status ===
                           "confirmed" ? (
-                            <>Confirmata</>
+                            <p>Confirmata</p>
                           ) : (
                             <></>
                           )}
                         </>
                       )}
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Factura</h4>
-                    <p>
-                      {updatedOrderData?.invoice !== null ? (
+                    </>
+                  ) : (
+                    <>
+                      {updatedOrderData?.payment_status === null ? (
                         <>
-                          <button onClick={handleViewInvoice}>
-                            {updatedOrderData.invoice.series}{" "}
-                            {updatedOrderData.invoice.number}
+                          <p>În așteptare</p>
+                          <button className="px-4 py-2 bg-dashboardBlue text-backgroundPrimary rounded-lg">
+                            Incasează
                           </button>
-                          <br />
-                          {updatedOrderData.invoice?.reverse ? (
-                            <>
-                              <button onClick={handleViewReverseInvoice}>
-                                Stornare -{" "}
-                                {updatedOrderData.invoice.reverse.series}{" "}
-                                {updatedOrderData.invoice.reverse.number}
-                              </button>
-                            </>
+                        </>
+                      ) : (
+                        <>
+                          {updatedOrderData?.payment_status.status ===
+                          "confirmed" ? (
+                            <p>Confirmata</p>
                           ) : (
-                            <>
-                              <button onClick={handleReverseInvoice}>
-                                Storneaza
-                              </button>
-                            </>
+                            <></>
                           )}
+                        </>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="w-1/3 border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
+              <div>
+                <h2 className="text-xl font-bold">Factură</h2>
+                <p>
+                  {updatedOrderData?.invoice !== null ? (
+                    <>
+                      <button
+                        onClick={(e) =>
+                          handleViewInvoice(
+                            e,
+                            updatedOrderData.invoice.series,
+                            updatedOrderData.invoice.number
+                          )
+                        }
+                      >
+                        {updatedOrderData.invoice.series}{" "}
+                        {updatedOrderData.invoice.number}
+                      </button>
+                      <br />
+                      {updatedOrderData.invoice?.reverse ? (
+                        <>
+                          <button
+                            onClick={(e) =>
+                              handleViewInvoice(
+                                e,
+                                updatedOrderData.invoice.reverse.series,
+                                updatedOrderData.invoice.reverse.number
+                              )
+                            }
+                            className="px-4 py-2 bg-dashboardBlue text-backgroundPrimary rounded-lg"
+                          >
+                            Stornare - {updatedOrderData.invoice.reverse.series}{" "}
+                            {updatedOrderData.invoice.reverse.number}
+                          </button>
                         </>
                       ) : (
                         <>
                           <button
+                            onClick={handleReverseInvoice}
                             className="px-4 py-2 bg-dashboardBlue text-backgroundPrimary rounded-lg"
-                            onClick={handleGenerateInvoice}
                           >
-                            Genereaza factura
+                            Storneaza
                           </button>
                         </>
                       )}
-                    </p>
-                  </div>
-                  <br />
-                  <div>
-                    <h4 className="font-bold">Serviciu de curierat</h4>
-                    <p>
-                      {updatedOrderData?.shipping_details.provider} -{" "}
-                      {updatedOrderData?.shipping_details.type}
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold">AWB</h4>
-                    <p>
-                      {updatedOrderData?.shipping_awb === null ? (
-                        <>AWB-ul nu a fost generat</>
-                      ) : (
-                        <></>
-                      )}
-                    </p>
-                  </div>
-                </div>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="px-4 py-2 bg-dashboardBlue text-backgroundPrimary rounded-lg"
+                        onClick={handleGenerateInvoice}
+                      >
+                        Genereaza factura
+                      </button>
+                    </>
+                  )}
+                </p>
+              </div>
+            </div>
+            <div className="w-1/3 border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
+              <h2 className="text-xl font-bold">Livrare</h2>
+              <div>
+                <h4 className="font-bold">Serviciu de curierat</h4>
+                <p>
+                  {updatedOrderData?.shipping_details.provider} -{" "}
+                  {updatedOrderData?.shipping_details.type}
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold">AWB</h4>
+                <p>
+                  {updatedOrderData?.shipping_awb === null ? (
+                    <>
+                      <button
+                        onClick={handleGenerateAWB}
+                        className="px-4 py-2 bg-dashboardBlue text-backgroundPrimary rounded-lg"
+                      >
+                        Genreaza AWB
+                      </button>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </p>
               </div>
             </div>
           </div>
+
           <div className="flex flex-row gap-4">
             <div className="w-1/2 border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
               <h2 className="text-xl font-bold">Livrare</h2>
@@ -816,10 +1049,27 @@ function OrderDetails({ orderId }) {
           />
         </>
       ) : (
-        <></>
+        <>
+          <LoadingBlock />
+        </>
       )}
     </>
   );
 }
 
 export default OrderDetails;
+
+const json = {
+  number: "0090",
+  series: "RND",
+  message: "",
+  url: "",
+  date: "2024-02-01T15:17:57.993Z",
+  reverse: {
+    number: "0091",
+    series: "RND",
+    message: "",
+    url: "",
+    date: "2024-02-01T15:30:28.909Z",
+  },
+};

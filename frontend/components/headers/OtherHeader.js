@@ -15,6 +15,8 @@ import deLocaleIcon from "@/public/images/de-icon.svg";
 import { FaCircleUser } from "react-icons/fa6";
 import { usePathname, useRouter } from "next-intl/client";
 import CartBtn from "../CartBtn";
+import { SessionProvider } from "next-auth/react";
+import AuthenticateUserIcon from "./AuthenticateUserIcon";
 
 function OtherHeader({ currentLocale }) {
   const pathname = usePathname();
@@ -29,7 +31,11 @@ function OtherHeader({ currentLocale }) {
 
   const t = useTranslations("Header");
 
-  const locales = { ro: roLocaleIcon, en: enLocaleIcon, de: deLocaleIcon };
+  const locales = {
+    ro: roLocaleIcon,
+    en: enLocaleIcon,
+    // de: deLocaleIcon
+  };
 
   const filteredLocales = [];
   for (const key in locales) {
@@ -85,7 +91,7 @@ function OtherHeader({ currentLocale }) {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     setHeaderWhite(isMenuOpen);
-
+    // getUserSession();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -165,7 +171,7 @@ function OtherHeader({ currentLocale }) {
                         </Link>
                       </li>
                       <li className="text-xl relative px-[3px] py-[1px] after:absolute after:bottom-0 after:left-0 after:content-[''] after:w-full after:h-[4px] after:bg-gradient-to-r after:from-gradientGreen after:to-gradientPurple after:scale-x-0 hover:after:scale-x-100 after:duration-150 after:transition-all">
-                        <Link href="/under-construction" locale={currentLocale}>
+                        <Link href="/distributors" locale={currentLocale}>
                           {t("distributors")}
                         </Link>
                       </li>
@@ -210,13 +216,9 @@ function OtherHeader({ currentLocale }) {
             <CartBtn currentLocale={currentLocale} />
           </div>
           <div>
-            <Link
-              href="/under-construction"
-              locale={currentLocale}
-              aria-label="Account"
-            >
-              <FaCircleUser className="text-[35px]" />
-            </Link>
+            <SessionProvider>
+              <AuthenticateUserIcon currentLocale={currentLocale} />
+            </SessionProvider>
           </div>
           <div
             className="relative flex gap-[6px]"

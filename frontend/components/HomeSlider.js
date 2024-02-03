@@ -10,25 +10,25 @@ function HomeSlider() {
 
   let changeSlideInterval = useRef();
 
-  const startSlideInterval = () => {
-    changeSlideInterval.current = setInterval(() => {
-      setCurrentSlide(
-        (prevSlide) => (prevSlide + 1) % dotElementsRef.current.length
-      );
-    }, 5000);
-  };
+  // const startSlideInterval = () => {
+  //   changeSlideInterval.current = setInterval(() => {
+  //     setCurrentSlide(
+  //       (prevSlide) => (prevSlide + 1) % dotElementsRef.current.length
+  //     );
+  //   }, 12000);
+  // };
 
-  useEffect(() => {
-    const dots = document.querySelectorAll(".dot");
-    const heroSlides = document.querySelectorAll(".hero-slide");
+  // useEffect(() => {
+  //   const dots = document.querySelectorAll(".dot");
+  //   const heroSlides = document.querySelectorAll(".hero-slide");
 
-    dotElementsRef.current = Array.from(dots);
-    heroSlideElementsRef.current = Array.from(heroSlides);
+  //   dotElementsRef.current = Array.from(dots);
+  //   heroSlideElementsRef.current = Array.from(heroSlides);
 
-    startSlideInterval();
+  //   startSlideInterval();
 
-    return () => clearInterval(changeSlideInterval);
-  }, []);
+  //   return () => clearInterval(changeSlideInterval);
+  // }, []);
 
   const changeSlide = (currentIndex) => {
     dotElementsRef.current.forEach((dot, index) => {

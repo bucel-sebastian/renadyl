@@ -13,11 +13,11 @@ export async function GET(req, { params }) {
     data = data[0];
     responseData = {
       product_name: data.product_name,
-      price: JSON.parse(data.price)[dataZone],
-      on_sale: JSON.parse(data.on_sale)[dataZone],
-      sale_value: JSON.parse(data.sale_value)[dataZone],
-      sale_price: JSON.parse(data.sale_price)[dataZone],
-      sale_percentage: JSON.parse(data.sale_percentage)[dataZone],
+      price: data.price[dataZone],
+      on_sale: data.on_sale[dataZone],
+      sale_value: data.sale_value[dataZone],
+      sale_price: data.sale_price[dataZone],
+      sale_percentage: data.sale_percentage[dataZone],
       currency: dataZone === "nat" ? "RON" : "EURO",
     };
   } catch (error) {

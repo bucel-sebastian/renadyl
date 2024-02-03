@@ -1,15 +1,13 @@
-import { getProductData } from "@/utils/admin/getProductData";
+import Database from "@/utils/Database";
 import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
-  const countryCode = params.countryCode === "RO" ? params.countryCode : "*";
-
-  console.log("Cod country - ", countryCode);
+  const database = new Database();
 
   let data = null;
 
   try {
-    data = await getProductData(countryCode);
+    data = await database.select("renadyl_settings", []);
   } catch (error) {
     console.error(`Error - ${error}`);
   }

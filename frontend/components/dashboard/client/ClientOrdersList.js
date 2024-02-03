@@ -24,15 +24,15 @@ function ClientOrdersList() {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const t = useTranslations("Dashboard");
+  const t = useTranslations("Dashboard.client.orders");
 
   const orderStatus = [
-    { name: "Anulată", color: "#e74d3d" },
-    { name: "Plasată", color: "#f1c40d" },
-    { name: "În procesare", color: "#e77e22" },
-    { name: "Pregătită de expediere", color: "#3397dc" },
-    { name: "Expediată", color: "#2980b9" },
-    { name: "Finalizată", color: "#2ecd70" },
+    { name: t("orders-list.order-status.cancelled"), color: "#e74d3d" },
+    { name: t("orders-list.order-status.placed"), color: "#f1c40d" },
+    { name: t("orders-list.order-status.processing"), color: "#e77e22" },
+    { name: t("orders-list.order-status.ready-to-ship"), color: "#3397dc" },
+    { name: t("orders-list.order-status.shipped"), color: "#2980b9" },
+    { name: t("orders-list.order-status.finished"), color: "#2ecd70" },
   ];
 
   const datetimeOptions = {
@@ -60,16 +60,20 @@ function ClientOrdersList() {
     const response = await fetch(
       `/api/client/data/json/orders/all/${clientId}`
     );
-    const body = await response.json();
-    for (let i = 0; i < body.body.length; i++) {
-      body.body[i].shipping_details = JSON.parse(body.body[i].shipping_details);
-      body.body[i].client_details = JSON.parse(body.body[i].client_details);
-      body.body[i].billing_details = JSON.parse(body.body[i].billing_details);
-      //   body.body[i].cart = JSON.parse(body.body[i].cart);
+    if (response.ok) {
+      const body = await response.json();
+      console.log(body);
+      for (let i = 0; i < body.body.length; i++) {
+        body.body[i].shipping_details = JSON.parse(
+          body.body[i].shipping_details
+        );
+        body.body[i].billing_details = JSON.parse(body.body[i].billing_details);
+        //   body.body[i].cart = JSON.parse(body.body[i].cart);
+      }
+      console.log(body.body);
+      setData(body.body);
+      setDataIsLoading(false);
     }
-    console.log(body.body);
-    setData(body.body);
-    setDataIsLoading(false);
   };
 
   useEffect(() => {
@@ -79,7 +83,7 @@ function ClientOrdersList() {
     }
   }, [session]);
   return (
-    <div className="relative block w-full shadow-xl bg-backgroundPrimary h-full overflow-y-auto ">
+    <div className="relative block w-full overflow-x-auto max-w-full bg-backgroundPrimary h-full overflow-y-auto ">
       {dataIsLoading ? (
         <></>
       ) : (
@@ -110,7 +114,7 @@ function ClientOrdersList() {
                     fontWeight: 600,
                   }}
                 >
-                  {t("admin.orders.orders-list.table-heads.id")}
+                  {t("orders-list.table-heads.id")}
                 </TableCell>
                 <TableCell
                   sx={{
@@ -119,16 +123,18 @@ function ClientOrdersList() {
                     fontWeight: 600,
                   }}
                 >
-                  {t("admin.orders.orders-list.table-heads.date")}
+                  {t("orders-list.table-heads.date")}
                 </TableCell>
+
                 <TableCell
+                  align="center"
                   sx={{
                     backgroundColor: "var(--background-primary)",
                     color: "var(--foreground-primary)",
                     fontWeight: 600,
                   }}
                 >
-                  {t("admin.orders.orders-list.table-heads.client")}
+                  {t("orders-list.table-heads.status")}
                 </TableCell>
                 <TableCell
                   align="center"
@@ -138,8 +144,9 @@ function ClientOrdersList() {
                     fontWeight: 600,
                   }}
                 >
-                  {t("admin.orders.orders-list.table-heads.status")}
+                  {t("orders-list.table-heads.payment-type")}
                 </TableCell>
+
                 <TableCell
                   align="center"
                   sx={{
@@ -148,8 +155,9 @@ function ClientOrdersList() {
                     fontWeight: 600,
                   }}
                 >
-                  {t("admin.orders.orders-list.table-heads.payment-type")}
+                  {t("orders-list.table-heads.value")}
                 </TableCell>
+
                 <TableCell
                   align="center"
                   sx={{
@@ -158,37 +166,7 @@ function ClientOrdersList() {
                     fontWeight: 600,
                   }}
                 >
-                  {t("admin.orders.orders-list.table-heads.payment-status")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.value")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.currency")}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    backgroundColor: "var(--background-primary)",
-                    color: "var(--foreground-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {t("admin.orders.orders-list.table-heads.transport")}
+                  {t("orders-list.table-heads.transport")}
                 </TableCell>
                 <TableCell
                   align="right"
@@ -198,7 +176,7 @@ function ClientOrdersList() {
                     fontWeight: 600,
                   }}
                 >
-                  {t("admin.orders.orders-list.table-heads.actions")}
+                  {t("orders-list.table-heads.actions")}
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -217,7 +195,7 @@ function ClientOrdersList() {
                       color: "var(--foreground-primary)",
                     }}
                   >
-                    <Link href={`/admin/dashboard/orders/${row.id}`}>
+                    <Link href={`/dashboard/client/orders/${row.id}`}>
                       {row.id}
                     </Link>
                   </TableCell>
@@ -229,21 +207,7 @@ function ClientOrdersList() {
                   >
                     {formatter.format(new Date(row.date))}
                   </TableCell>
-                  <TableCell
-                    sx={{
-                      backgroundColor: "var(--background-primary)",
-                      color: "var(--foreground-primary)",
-                    }}
-                  >
-                    {row.client_details.isLoggedIn === true ? (
-                      <></>
-                    ) : (
-                      <>
-                        {row.shipping_details.fname}{" "}
-                        {row.shipping_details.lname}
-                      </>
-                    )}
-                  </TableCell>
+
                   <TableCell
                     align="center"
                     sx={{
@@ -268,6 +232,7 @@ function ClientOrdersList() {
                   >
                     {row.payment}
                   </TableCell>
+
                   <TableCell
                     align="center"
                     sx={{
@@ -275,26 +240,9 @@ function ClientOrdersList() {
                       color: "var(--foreground-primary)",
                     }}
                   >
-                    {row.payment_status === null ? <>În așteptare</> : <></>}
+                    {row.order_total} {row.currency}
                   </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      backgroundColor: "var(--background-primary)",
-                      color: "var(--foreground-primary)",
-                    }}
-                  >
-                    {row.order_total}
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{
-                      backgroundColor: "var(--background-primary)",
-                      color: "var(--foreground-primary)",
-                    }}
-                  >
-                    {row.currency}
-                  </TableCell>
+
                   <TableCell
                     sx={{
                       backgroundColor: "var(--background-primary)",
@@ -311,7 +259,7 @@ function ClientOrdersList() {
                     }}
                   >
                     <Link
-                      href={`/admin/dashboard/orders/${row.id}`}
+                      href={`/dashboard/client/orders/${row.id}`}
                       className="text-gradientPurple"
                     >
                       Detalii
@@ -323,13 +271,13 @@ function ClientOrdersList() {
             <TableFooter>
               <TableRow>
                 <TablePagination
-                  labelRowsPerPage={t("admin.tables.rows-per-page-label")}
+                  labelRowsPerPage={t("tables.rows-per-page-label")}
                   rowsPerPageOptions={[
                     10,
                     25,
                     50,
                     100,
-                    { label: t("admin.tables.all-label"), value: -1 },
+                    { label: t("tables.all-label"), value: -1 },
                   ]}
                   colSpan={10}
                   count={data.length}
@@ -339,8 +287,8 @@ function ClientOrdersList() {
                   onRowsPerPageChange={handleChangeRowsPerPage}
                   ActionsComponent={TablePaginationActions}
                   labelDisplayedRows={({ from, to, count }) =>
-                    `${from}-${to} ${t("admin.tables.of-label")} ${count} ${t(
-                      "admin.tables.elements-label"
+                    `${from}-${to} ${t("tables.of-label")} ${count} ${t(
+                      "tables.elements-label"
                     )}`
                   }
                 />

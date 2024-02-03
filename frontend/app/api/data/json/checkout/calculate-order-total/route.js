@@ -7,6 +7,9 @@ export async function POST(req, { params }) {
   const { cart, checkoutData } = await req.json();
   const countryCode = checkoutData.countryCode;
 
+  console.log("cart", cart);
+  console.log("checkout", checkoutData);
+
   let vatProcent = 9;
 
   let productsTotal = 0;
@@ -20,11 +23,11 @@ export async function POST(req, { params }) {
   for (const item of cart) {
     const data = await getProductData(item.productName);
 
-    const price = JSON.parse(data[0].price);
-    const on_sale = JSON.parse(data[0].on_sale);
-    const sale_value = JSON.parse(data[0].sale_value);
-    const sale_percentage = JSON.parse(data[0].sale_percentage);
-    const sale_price = JSON.parse(data[0].sale_price);
+    const price = data[0].price;
+    const on_sale = data[0].on_sale;
+    const sale_value = data[0].sale_value;
+    const sale_percentage = data[0].sale_percentage;
+    const sale_price = data[0].sale_price;
 
     if (countryCode === "RO") {
       if (on_sale.nat) {
@@ -67,17 +70,19 @@ export async function POST(req, { params }) {
   productsTotalWithoutVat = productsTotal - vatTotal;
 
   // Shipping - start
+
   if (checkoutData.isLoggedIn === false) {
-    if (checkoutData.shipping.countryKey === "RO") {
-      const shippingData = await estimateSamedayCost({
-        payment: checkoutData.payment,
-        type: checkoutData.shipping.type,
-      });
+    if (checkoutData.shipping.wantsAccount === false) {
+      if (checkoutData.shipping.countryKey === "RO") {
+        const shippingData = await estimateSamedayCost({
+          payment: checkoutData.payment,
+          type: checkoutData.shipping.type,
+        });
 
-      console.log("Shipping data - ", shippingData);
+        console.log("Shipping data - ", shippingData);
 
-      shippingTotal = shippingData.amount;
-    } else {
+        shippingTotal = shippingData.amount;
+      }
     }
   }
 

@@ -69,7 +69,7 @@ class Database {
     query = `SELECT * FROM ${table} ${
       whereClause !== "" ? `WHERE ${whereClause}` : ""
     } ${order !== null ? `ORDER BY ${order}` : ""}`;
-    console.log(query);
+    // console.log(query);
     return this.query(query, params);
   }
 }

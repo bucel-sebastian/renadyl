@@ -24,7 +24,11 @@ function LoginHeader({ currentLocale }) {
 
   const t = useTranslations("Header");
 
-  const locales = { ro: roLocaleIcon, en: enLocaleIcon, de: deLocaleIcon };
+  const locales = {
+    ro: roLocaleIcon,
+    en: enLocaleIcon,
+    //  de: deLocaleIcon
+  };
 
   const filteredLocales = [];
   for (const key in locales) {

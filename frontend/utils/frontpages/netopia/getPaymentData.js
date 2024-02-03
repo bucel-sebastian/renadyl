@@ -29,7 +29,7 @@ var builder = new xml2js.Builder({
 var parser = new xml2js.Parser({
   explicitArray: false,
 });
-function getPayment(orderId, amount, currency, orderData) {
+function getPayment(orderId, amount, currency, orderData, locale) {
   let date = new Date();
   console.log("Order data - ", orderData);
   return {
@@ -41,7 +41,10 @@ function getPayment(orderId, amount, currency, orderData) {
       },
       signature: "2VZR-GOQH-7A8W-VLRB-UOOW",
       url: {
-        return: "https://renadyleurope.com/order-placed",
+        return:
+          locale === "ro"
+            ? `https://renadyleurope.com/order-placed`
+            : `https://renadyleurope.com/${locale}/order-placed`,
         confirm: "https://renadyleurope.com/api/confirm-payment",
       },
       invoice: {
@@ -123,9 +126,9 @@ function removeDiacritics(input) {
   );
 }
 
-function getRequest(orderId, amount, currency, orderData) {
+function getRequest(orderId, amount, currency, orderData, locale) {
   let xml = builder.buildObject(
-    getPayment(orderId, amount, currency, orderData)
+    getPayment(orderId, amount, currency, orderData, locale)
   );
   // console.log(removeDiacritics(xml));
   let xmlWithoutDiacritics = removeDiacritics(xml);

@@ -1,4 +1,5 @@
 "use client";
+import { signOut, useSession } from "next-auth/react";
 
 import React, { useState } from "react";
 
@@ -9,7 +10,13 @@ import renadylLogo from "@/public/renadyl_logo.svg";
 import { useTranslations } from "use-intl";
 
 import { FaHome, FaShoppingCart, FaListUl } from "react-icons/fa";
-import { FaGear, FaFileInvoiceDollar, FaRepeat } from "react-icons/fa6";
+import {
+  FaGear,
+  FaFileInvoiceDollar,
+  FaRepeat,
+  FaUserAstronaut,
+  FaArrowRightFromBracket,
+} from "react-icons/fa6";
 import { usePathname } from "next-intl/client";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slices/cartSlice";
@@ -43,9 +50,14 @@ function Navbar({ currentLocale }) {
     router.push("/cart", { locale: currentLocale });
   };
 
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    signOut({ callbackUrl: "/login" });
+  };
+
   return (
     <>
-      <div className="h-full flex flex-col w-1/6 border-r-[1px] border-foregroundPrimary20 px-8 py-10 gap-6">
+      <div className="h-full flex flex-col min-w-[250px] w-1/6 border-r-[1px] border-foregroundPrimary20 px-8 py-10 gap-6 max-lg:hidden">
         <div className="h-1/5">
           <Image
             src={renadylLogo}
@@ -53,7 +65,7 @@ function Navbar({ currentLocale }) {
             className={`w-full relative top-0 left-0 transition-all duration-300`}
           />
         </div>
-        <div className="h-3/5">
+        <div className="h-4/5">
           <nav className="flex flex-col gap-2">
             <li className="list-none">
               <Link
@@ -137,6 +149,20 @@ function Navbar({ currentLocale }) {
             </li>
             <li className="list-none">
               <Link
+                href="/dashboard/client/affiliates"
+                locale={currentLocale}
+                className={`flex flex-row items-center content-center gap-4 text-lg px-3 py-2 rounded-lg ${
+                  pathname === "/dashboard/client/affiliates"
+                    ? "bg-dashboardBlue20 text-dashboardBlue"
+                    : "text-foregroundPrimary90 hover:bg-dashboardBlue10"
+                } `}
+              >
+                <FaUserAstronaut className="text-2xl" />
+                {t("client.navbar.affiliates")}
+              </Link>
+            </li>
+            <li className="list-none">
+              <Link
                 href="/dashboard/client/settings"
                 locale={currentLocale}
                 className={`flex flex-row items-center content-center gap-4 text-lg px-3 py-2 rounded-lg ${
@@ -149,9 +175,22 @@ function Navbar({ currentLocale }) {
                 {t("client.navbar.settings")}
               </Link>
             </li>
+            {/* <li className="list-none">
+              <button
+                className={` w-full flex flex-row items-center content-center gap-4 text-lg px-3 py-2 rounded-lg ${
+                  pathname === "/dashboard/client/settings"
+                    ? "bg-dashboardBlue20 text-dashboardBlue"
+                    : "text-foregroundPrimary90 hover:bg-dashboardBlue10"
+                } `}
+                onClick={handleSignOut}
+              >
+                {/* <FaGear className="text-2xl" /> 
+                <FaArrowRightFromBracket className="text-2xl" />
+                {t("client.navbar.logout")}
+              </button>
+            </li> */}
           </nav>
         </div>
-        <div className="h-1/5"></div>
       </div>
     </>
   );
