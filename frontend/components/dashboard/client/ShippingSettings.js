@@ -5,6 +5,7 @@ import NewShippginDetails from "./NewShippginDetails";
 import SavedShippingDetails from "./SavedShippingDetails";
 import { getSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import LoadingBlock from "@/components/LoadingBlock";
 
 function ShippingSettings() {
   const [showNewDatas, setShowNewDatas] = useState(false);
@@ -56,12 +57,21 @@ function ShippingSettings() {
       ) : (
         <></>
       )}
-      <SavedShippingDetails
-        savedShippingDatas={savedShippingDatas}
-        savedShippingDatasFetched={savedShippingDatasFetched}
-        getUpdatedData={getShippingDatas}
-        showNewDatas={showNewDatas}
-      />
+
+      {savedShippingDatasFetched ? (
+        <>
+          <SavedShippingDetails
+            savedShippingDatas={savedShippingDatas}
+            savedShippingDatasFetched={savedShippingDatasFetched}
+            getUpdatedData={getShippingDatas}
+            showNewDatas={showNewDatas}
+          />
+        </>
+      ) : (
+        <>
+          <LoadingBlock />
+        </>
+      )}
     </>
   );
 }

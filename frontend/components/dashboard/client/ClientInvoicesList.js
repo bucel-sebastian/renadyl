@@ -15,6 +15,7 @@ import TablePaginationActions from "@mui/material/TablePagination/TablePaginatio
 import Link from "next-intl/link";
 import { useTranslations } from "next-intl";
 import { PDFDocument } from "pdf-lib";
+import LoadingBlock from "@/components/LoadingBlock";
 
 function ClientInvoicesList() {
   const session = useSession();
@@ -107,7 +108,9 @@ function ClientInvoicesList() {
   return (
     <div className="relative block w-full overflow-x-auto max-w-full bg-backgroundPrimary h-full overflow-y-auto ">
       {dataIsLoading ? (
-        <></>
+        <>
+          <LoadingBlock />
+        </>
       ) : (
         <>
           <Table

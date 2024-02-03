@@ -5,6 +5,7 @@ import SavedBillingDetails from "./SavedBillingDetails";
 import NewBillingDetails from "./NewBillingDetails";
 import { getSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import LoadingBlock from "@/components/LoadingBlock";
 
 function BillingSettings() {
   const [showNewDatas, setShowNewDatas] = useState(false);
@@ -57,12 +58,20 @@ function BillingSettings() {
         <></>
       )}
 
-      <SavedBillingDetails
-        savedBillingDatas={savedBillingDatas}
-        savedBillingDatasFetched={savedBillingDatasFetched}
-        getUpdatedData={getBillingDatas}
-        showNewDatas={showNewDatas}
-      />
+      {savedBillingDatasFetched ? (
+        <>
+          <SavedBillingDetails
+            savedBillingDatas={savedBillingDatas}
+            savedBillingDatasFetched={savedBillingDatasFetched}
+            getUpdatedData={getBillingDatas}
+            showNewDatas={showNewDatas}
+          />
+        </>
+      ) : (
+        <>
+          <LoadingBlock />
+        </>
+      )}
     </>
   );
 }

@@ -107,6 +107,7 @@ function ChangePassForm({ userId }) {
 
   return (
     <form className="w-1/2 max-xl:w-full" onSubmit={handleSubmitUserPassword}>
+      <h2 className="text-xl font-bold">{t("account-password-title")}</h2>
       <div className="w-2/3 max-xl:w-full">
         <div className="w-full flex flex-col mb-2">
           <label className="px-1 text-foregroundPrimary70">

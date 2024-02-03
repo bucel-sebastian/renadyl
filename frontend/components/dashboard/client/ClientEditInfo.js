@@ -3,6 +3,7 @@ import { getSession, useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
 import ChangePassForm from "./ChangePassForm";
 import ChangeUserDataFrom from "./ChangeUserDataFrom";
+import LoadingBlock from "@/components/LoadingBlock";
 
 function ClientEditInfo() {
   const { update } = useSession();
@@ -46,7 +47,9 @@ function ClientEditInfo() {
           <ChangePassForm userId={userInitialData?.id} />
         </>
       ) : (
-        <></>
+        <>
+          <LoadingBlock />
+        </>
       )}
     </div>
   );

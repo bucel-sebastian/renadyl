@@ -14,6 +14,7 @@ import {
 import TablePaginationActions from "@mui/material/TablePagination/TablePaginationActions";
 import Link from "next-intl/link";
 import { useTranslations } from "next-intl";
+import LoadingBlock from "@/components/LoadingBlock";
 
 function ClientOrdersList() {
   const session = useSession();
@@ -85,7 +86,9 @@ function ClientOrdersList() {
   return (
     <div className="relative block w-full overflow-x-auto max-w-full bg-backgroundPrimary h-full overflow-y-auto ">
       {dataIsLoading ? (
-        <></>
+        <>
+          <LoadingBlock />
+        </>
       ) : (
         <>
           <Table

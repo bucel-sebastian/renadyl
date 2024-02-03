@@ -1520,6 +1520,8 @@
                 }
             },
             "settings": {
+                "account-password-title": "Schimbă parola",
+                "account-settings-title": "Detalii cont",
                 "delete-shipping-confirm": "Sigur dorești să ștergi aceste date de livrare?",
                 "delete-billing-confirm": "Sigur dorești să ștergi aceste date de facturare?",
                 "delete-btn": "Șterge",
