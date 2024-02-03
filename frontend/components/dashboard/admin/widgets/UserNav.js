@@ -9,6 +9,7 @@ function UserNav() {
 
   const router = useRouter();
 
+  const [sessionData, setSessionData] = useState({});
   const [fnameInitial, setFnameInitial] = useState("");
 
   const t = useTranslations("Dashboard");
@@ -23,18 +24,18 @@ function UserNav() {
   };
 
   useEffect(() => {
-    // setSessionData(session);
-    console.log("nav user session.data ", session);
-    setFnameInitial(session?.data?.user?.f_name?.charAt(0));
+    setSessionData(JSON.parse(session.data.value));
+    console.log("nav user session.data ", sessionData);
+    setFnameInitial(sessionData?.data?.user?.f_name?.charAt(0));
 
-    // if (session?.status === "unauthenticated") {
-    //   router.replace("/");
-    // }
+    if (session?.status === "unauthenticated") {
+      router.replace("/");
+    }
   }, [session]);
 
   return (
     <>
-      {session?.data?.user ? (
+      {sessionData?.user ? (
         <>
           <div className="flex flex-row items-center content-center gap-3">
             <div className="w-[35px] flex justify-center align-center items-center aspect-square bg-gradientPurple text-backgroundPrimary font-bold rounded-full text-xl">
@@ -42,11 +43,11 @@ function UserNav() {
             </div>
             <div className="flex flex-col mr-4">
               <span className="w-full leading-none capitalize">
-                {session?.data?.user?.role === "doctor" ? "Dr. " : ""}
-                {session?.data?.user.f_name} {session?.data?.user.l_name}
+                {sessionData?.user?.role === "doctor" ? "Dr. " : ""}
+                {sessionData?.user.f_name} {sessionData?.user.l_name}
               </span>
               <span className="w-full leading-none capitalize">
-                {session?.data?.user?.role}
+                {sessionData?.user?.role}
               </span>
             </div>
             <button
