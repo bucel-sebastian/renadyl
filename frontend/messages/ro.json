@@ -344,7 +344,8 @@
             },
             "easybox": {
                 "label": "Selectează locul de livrare",
-                "button-text": "Deschide harta"
+                "button-text": "Deschide harta",
+                "change-button-text": "Schimbă punctul de livrare"
             },
             "provider-label": "Livrator"
         },

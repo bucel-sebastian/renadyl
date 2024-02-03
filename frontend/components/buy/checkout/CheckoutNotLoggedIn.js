@@ -884,7 +884,7 @@ function CheckoutNotLoggedIn({ locale }) {
 
                               <input
                                 type="text"
-                                value={checkoutData?.shipping?.locker?.id}
+                                value={checkoutData?.shipping?.locker?.lockerId}
                                 className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
                                 required
                                 readOnly
