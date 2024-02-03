@@ -24,7 +24,7 @@ function DashboardPageTitle() {
   }
   return (
     <div>
-      <h1 className="text-3xl font-bold max-lg:ml-2">{pathTranslate}</h1>
+      <h1 className="text-3xl font-bold ">{pathTranslate}</h1>
     </div>
   );
 }

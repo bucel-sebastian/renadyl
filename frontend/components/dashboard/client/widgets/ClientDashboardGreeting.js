@@ -22,7 +22,7 @@ function ClientDashboardGreeting() {
   }, [session]);
   return (
     <div>
-      <h2 className="text-xl mb-8">
+      <h2 className="text-xl mb-6 max-lg:mb-4">
         {t("dashboard-greetings")} {sessionData?.user?.f_name}
       </h2>
     </div>
