@@ -23,7 +23,7 @@ export default function Buy({ params: { locale } }) {
               src="/images/product_image_1.png"
               width={1000}
               height={1000}
-              className="w-full aspect-square"
+              className="w-full aspect-square max-md:max-w-[400px] max-md:mx-auto"
               alt=""
             />
           </div>
@@ -46,7 +46,7 @@ export default function Buy({ params: { locale } }) {
               src="/images/product_image_5.png"
               width={1000}
               height={1000}
-              className="w-full aspect-square"
+              className="w-full aspect-square max-md:max-w-[400px] max-md:mx-auto"
               alt=""
             />
           </div>

@@ -28,11 +28,11 @@ export default function ClientDashboard({ params: { locale } }) {
       <NextIntlClientProvider locale={locale} messages={messages}>
         <SessionProviderInClient session={session}>
           <ClientDashboardGreeting />
-          <div className="flex flex-row w-full gap-8">
-            <div className="w-1/2">
+          <div className="flex flex-row w-full gap-8 max-lg:flex-col">
+            <div className="w-1/2 max-lg:w-full">
               <ClientLastOrders />
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 max-lg:w-full">
               <ClientSubscriptionStatus locale={locale} />
             </div>
           </div>

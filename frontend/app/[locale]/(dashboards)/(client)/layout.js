@@ -30,12 +30,12 @@ export default function LocaleLayout({
       >
         <SessionProviderInClient session={session}>
           <StoreProvider>
-            <div className="flex flex-row bg-backgroundPrimary rounded-2xl h-full overflow-hidden max-lg:rounded-none max-lg:min-h-screen">
+            <div className="flex flex-row bg-backgroundPrimary rounded-2xl h-full overflow-hidden max-lg:rounded-none max-lg:min-h-screen w-full">
               <NextIntlClientProvider locale={locale} messages={messages}>
                 <Navbar />
               </NextIntlClientProvider>
 
-              <div className="flex flex-col px-8 py-6 w-5/6 h-full max-h-full overflow-x-hidden overflow-y-auto gap-4 max-lg:px-2">
+              <div className="flex flex-col px-8 py-6 w-5/6 h-full max-h-full overflow-x-hidden overflow-y-auto gap-4 max-lg:px-2 max-lg:w-full">
                 <NextIntlClientProvider locale={locale} messages={messages}>
                   <Header currentLocale={locale} params={id} />
                 </NextIntlClientProvider>
