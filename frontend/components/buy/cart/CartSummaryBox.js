@@ -70,7 +70,7 @@ function CartSummaryBox({ currentLocale }) {
           </>
         }
       >
-        {cart && cart?.length === 0 ? (
+        {cart && cart?.length === 0 && summaryData.orderTotal === 0 ? (
           <>
             <div className="w-full flex flex-row justify-center">
               <LoadingBlock />
