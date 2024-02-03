@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
+import LoadingBlock from "@/components/LoadingBlock";
 
 function DashboardAddToCartProduct({ product, currentLocale }) {
   const [countryCode, setCountryCode] = useState(null);
@@ -88,9 +89,9 @@ function DashboardAddToCartProduct({ product, currentLocale }) {
   return (
     <>
       {productDataIsLoading ? (
-        <div className="h-[200px] flex justify-center items-center content-center">
-          <span className="loader"></span>
-        </div>
+        <>
+          <LoadingBlock />
+        </>
       ) : (
         <>
           {productData.price !== "" ? (
