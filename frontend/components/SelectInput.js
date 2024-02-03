@@ -21,6 +21,10 @@ function SelectInput({
   const [isFocused, setIsFocused] = useState(false);
   const [inputFocused, setInputFocused] = useState(false);
 
+  useEffect(() => {
+    setInputValue(value); // Update the local state when the 'value' prop changes
+  }, [value]);
+
   const handleInputChange = (event) => {
     // console.log(event.target.value);
     setInputValue(event.target.value);
