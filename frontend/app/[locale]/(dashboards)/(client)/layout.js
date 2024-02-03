@@ -16,7 +16,8 @@ const locales = ["ro", "en", "de"];
 
 export default function LocaleLayout({
   children,
-  params: { locale, session },
+  params: { locale },
+  session,
 }) {
   let messages = useMessages();
 
