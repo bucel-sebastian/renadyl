@@ -19,8 +19,6 @@ function ClientDashboardGreeting() {
     } else {
       setSessionData(session.data.value);
     }
-
-    console.log("greetings session - ", session);
   }, [session]);
   return (
     <div>

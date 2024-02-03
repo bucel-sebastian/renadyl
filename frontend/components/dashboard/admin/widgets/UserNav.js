@@ -37,7 +37,6 @@ function UserNav() {
 
   useEffect(() => {
     setFnameInitial(sessionData?.user?.f_name?.charAt(0));
-    console.log("nav user session.data ", sessionData);
   }, [sessionData]);
 
   return (
