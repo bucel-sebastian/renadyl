@@ -16,7 +16,7 @@ function UserNav() {
 
   const handleSignOut = (e) => {
     e.preventDefault();
-    if (session.data.user.role === "admin") {
+    if (sessionData.user.role === "admin") {
       signOut({ callbackUrl: "/admin/login" });
     } else {
       signOut({ callbackUrl: "/login" });
