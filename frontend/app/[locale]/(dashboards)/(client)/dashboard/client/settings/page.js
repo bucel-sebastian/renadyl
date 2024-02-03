@@ -2,10 +2,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import SessionProviderInClient from "@/components/SessionProviderInClient";
 import BillingSettings from "@/components/dashboard/client/BillingSettings";
 import ClientEditInfo from "@/components/dashboard/client/ClientEditInfo";
-import NewBillingDetails from "@/components/dashboard/client/NewBillingDetails";
-import NewShippginDetails from "@/components/dashboard/client/NewShippginDetails";
-import SavedBillingDetails from "@/components/dashboard/client/SavedBillingDetails";
-import SavedShippingDetails from "@/components/dashboard/client/SavedShippingDetails";
+
 import ShippingSettings from "@/components/dashboard/client/ShippingSettings";
 import { getServerSession } from "next-auth";
 import { NextIntlClientProvider, useMessages } from "next-intl";
