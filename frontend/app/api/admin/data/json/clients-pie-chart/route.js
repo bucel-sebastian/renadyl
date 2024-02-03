@@ -1,6 +1,8 @@
 import Database from "@/utils/Database";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req, { params }) {
   const database = new Database();
 
@@ -9,7 +11,6 @@ export async function GET(req, { params }) {
   COUNT(client_id) AS clienti_autentificati,
   COUNT(*) - COUNT(client_id) AS clienti_anonimi
 FROM renadyl_orders`);
-
 
   return NextResponse.json({
     status: 200,

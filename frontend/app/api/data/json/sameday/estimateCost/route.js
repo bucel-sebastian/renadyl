@@ -1,5 +1,6 @@
 import { estimateSamedayCost } from "@/utils/sameday/estimateSamedayCost";
 import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
 
 export async function GET(req, { params }) {
   let data = null;

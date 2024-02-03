@@ -1,6 +1,8 @@
 import { getProductData } from "@/utils/frontpages/getProductData";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req, { params }) {
   const dataZone = params.countryCode === "RO" ? "nat" : "int";
 

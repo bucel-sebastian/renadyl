@@ -1,6 +1,8 @@
 import { estimateSamedayCost } from "@/utils/sameday/estimateSamedayCost";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req, { params }) {
   const { searchParams } = new URL(req.url);
   // console.log("payment meth ", searchParams);

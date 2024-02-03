@@ -18,7 +18,6 @@ export async function GET(req, { params }) {
     console.error(`Error - ${error}`);
   }
 
-  console.log("db data - ", data);
   return NextResponse.json({
     status: 200,
     body: data,

@@ -1,6 +1,8 @@
 import Database from "@/utils/Database";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req, { params }) {
   const database = new Database();
 
@@ -16,7 +18,6 @@ export async function GET(req, { params }) {
     console.error(`Error - ${error}`);
   }
 
-  console.log("db data - ", data);
   return NextResponse.json({
     status: 200,
     body: data,
