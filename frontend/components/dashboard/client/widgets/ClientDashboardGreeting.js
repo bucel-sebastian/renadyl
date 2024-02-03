@@ -1,10 +1,11 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function ClientDashboardGreeting() {
   const session = useSession();
+  const [sessionData, setSessionData] = useState({});
 
   const t = useTranslations("Dashboard.client");
 
@@ -13,12 +14,18 @@ function ClientDashboardGreeting() {
     //   getClientLastOrders(session?.data?.user?.id);
     // }
 
+    if (typeof session?.data?.value === "string") {
+      setSessionData(JSON.parse(session.data.value));
+    } else {
+      setSessionData(session.data.value);
+    }
+
     console.log("greetings session - ", session);
   }, [session]);
   return (
     <div>
       <h2 className="text-xl mb-8">
-        {t("dashboard-greetings")} {session?.data?.user?.f_name}
+        {t("dashboard-greetings")} {sessionData?.user?.f_name}
       </h2>
     </div>
   );
