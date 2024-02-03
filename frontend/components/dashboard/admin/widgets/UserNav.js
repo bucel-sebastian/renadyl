@@ -1,11 +1,12 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function UserNav() {
   const session = useSession();
-  const fnameInitial = session.data?.user?.f_name?.charAt(0);
+
+  const [fnameInitial, setFnameInitial] = useState("");
 
   const t = useTranslations("Dashboard");
 
@@ -20,6 +21,7 @@ function UserNav() {
 
   useEffect(() => {
     console.log("nav user session.data ", session.data);
+    setFnameInitial(session.data?.user?.f_name?.charAt(0));
   }, [session]);
 
   return (
