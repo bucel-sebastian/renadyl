@@ -87,25 +87,12 @@ CREATE TABLE IF NOT EXISTS renadyl_orders (
     id VARCHAR(50) NOT NULL PRIMARY KEY, date TIMESTAMP WITHOUT TIME ZONE NOT NULL, client_id VARCHAR(255), doctor jsonb, shipping_details TEXT NOT NULL, billing_details TEXT NOT NULL, cart TEXT NOT NULL, currency VARCHAR(10) NOT NULL, country_code VARCHAR(5) NOT NULL, payment varchar(10) NOT NULL, payment_status text, invoice TEXT, shipping_awb TEXT, promo_code TEXT, order_total DOUBLE NOT NULL, products_total DOUBLE NOT NULL, vat_procent DOUBLE NOT NULL, vat_total DOUBLE NOT NULL, shipping_total DOUBLE NOT NULL, promo_total DOUBLE NOT NULL, status VARCHAR(50) NOT NULL, logs TEXT, observations TEXT
 ) -- Invoices
 
-CREATE TABLE
-    IF NOT EXISTS renadyl_invoices (
-        id VARCHAR(50) NOT NULL PRIMARY KEY,
-        date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-        order_id VARCHAR(50) NOT NULL
-
-
+CREATE TABLE IF NOT EXISTS renadyl_invoices (
+    id VARCHAR(50) NOT NULL PRIMARY KEY, date TIMESTAMP WITHOUT TIME ZONE NOT NULL, order_id VARCHAR(50) NOT NULL
 ) -- promo codes
-CREATE TABLE
-    IF NOT EXISTS renadyl_promo_codes (
-        code VARCHAR(100) NOT NULL PRIMARY KEY,
-        user_id VARCHAR(255),
-        value VARCHAR(100) NOT NULL,
-        times_of_use INTEGER,
-        times_used INTEGER NOT NULL DEFAULT 0,
-        for_user_id VARCHAR(255),
-        create_date date
-    ) 
-
+CREATE TABLE IF NOT EXISTS renadyl_promo_codes (
+    code VARCHAR(100) NOT NULL PRIMARY KEY, user_id VARCHAR(255), value VARCHAR(100) NOT NULL, times_of_use INTEGER, times_used INTEGER NOT NULL DEFAULT 0, for_user_id VARCHAR(255), create_date date
+)
 -- Lots and exp DATABASE
 CREATE TABLE IF NOT EXISTS renadyl_lots (
     id serial, lot_number VARCHAR(100) NOT NULL PRIMARY KEY, exp_date DATE NOT NULL, added_date TIMESTAMP NOT NULL

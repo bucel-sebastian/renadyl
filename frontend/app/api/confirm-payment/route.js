@@ -20,7 +20,8 @@ export async function POST(req, res) {
     const decodedPaymentData = await decodeResponse(paymentData);
 
     console.log("decodde paymetn data", decodedPaymentData);
-    database.update(
+    console.log("Id", decodedPaymentData.order["$"].id);
+    await database.update(
       "renadyl_orders",
       {
         payment_status: {
