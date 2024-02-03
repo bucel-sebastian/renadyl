@@ -2,8 +2,8 @@ import { signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-function UserNav() {
-  const { data, update } = useSession();
+async function UserNav() {
+  const { data, update } = await useSession();
   const fnameInitial = data?.user?.f_name?.charAt(0);
 
   const t = useTranslations("Dashboard");
