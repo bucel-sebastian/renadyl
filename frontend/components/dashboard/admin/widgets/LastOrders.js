@@ -38,7 +38,9 @@ function LastOrders() {
   };
 
   const getOrdersList = async () => {
-    const response = await fetch("/api/admin/data/json/orders/last");
+    const response = await fetch("/api/admin/data/json/orders/last", {
+      cache: "no-store",
+    });
     const body = await response.json();
     setData(body.body);
     setDataIsLoading(false);

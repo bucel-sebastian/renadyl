@@ -100,7 +100,9 @@ function OrdersList() {
   };
 
   const getOrdersList = async () => {
-    const response = await fetch("/api/admin/data/json/orders");
+    const response = await fetch("/api/admin/data/json/orders", {
+      cache: "no-store",
+    });
     const body = await response.json();
     for (let i = 0; i < body.body.length; i++) {
       body.body[i].shipping_details = JSON.parse(body.body[i].shipping_details);
