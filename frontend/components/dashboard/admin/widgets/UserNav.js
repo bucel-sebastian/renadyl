@@ -1,6 +1,7 @@
+"use client";
 import { signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import React from "react";
+import React, { useEffect } from "react";
 
 async function UserNav() {
   const { data, update } = await useSession();
@@ -16,6 +17,10 @@ async function UserNav() {
       signOut({ callbackUrl: "/login" });
     }
   };
+
+  useEffect(() => {
+    console.log("nav user data ", data);
+  }, [data]);
 
   return (
     <div className="flex flex-row items-center content-center gap-3">
