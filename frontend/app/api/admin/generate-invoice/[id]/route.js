@@ -72,7 +72,7 @@ export async function GET(req, { params }) {
           : `Lot - ${item.lotNumber}, Expiration date - ${item.expDate}`,
       isDiscount: false,
       measuringUnitName: orderData.country_code === "RO" ? "buc" : "pcs",
-      currency: orderData.currency,
+      currency: orderData.currency === "EURO" ? "EUR" : "RON",
       quantity: item.quantity,
       price: item.price,
       isTaxIncluded: true,
