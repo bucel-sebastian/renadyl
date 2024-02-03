@@ -19,7 +19,7 @@ export async function GET(req, { params }) {
 
   const payment = orderData.payment;
   const orderTotal = orderData.order_total;
-  const currency = orderData.currency;
+  const currency = orderData.currency === "EURO" ? "EUR" : "RON";
   const shippingAwb = orderData.shipping_awb;
 
   const headers = new Headers({
@@ -87,7 +87,7 @@ export async function GET(req, { params }) {
       name: orderData.country_code === "RO" ? "Transport" : "Shipping",
       isDiscount: false,
       measuringUnitName: orderData.country_code === "RO" ? "buc" : "pcs",
-      currency: orderData.currency,
+      currency: orderData.currency === "EURO" ? "EUR" : "RON",
       quantity: 1,
       price: orderData.shipping_total,
       isTaxIncluded: true,
@@ -105,7 +105,7 @@ export async function GET(req, { params }) {
           : `Promocode sale - ${orderData.promo_code}`,
       isDiscount: true,
       measuringUnitName: orderData.country_code === "RO" ? "buc" : "pcs",
-      currency: orderData.currency,
+      currency: orderData.currency === "EURO" ? "EUR" : "RON",
       discountType: 1,
       discountValue: -orderData.promo_total,
       isTaxIncluded: true,
@@ -118,7 +118,7 @@ export async function GET(req, { params }) {
     client: requestClient,
     isDraft: false,
     seriesName: invoiceSeries,
-    currency: orderData.currency,
+    currency: orderData.currency === "EURO" ? "EUR" : "RON",
     language: orderData.country_code === "RO" ? "RO" : "EN",
     precision: 2,
     products: requestProducts,
