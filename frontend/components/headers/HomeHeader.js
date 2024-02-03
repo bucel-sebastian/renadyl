@@ -28,10 +28,6 @@ function HomeHeader({ currentLocale }) {
   const pathname = usePathname();
   const router = useRouter();
 
-  useEffect(() => {
-    signOut({ callbackUrl: "/login" });
-  }, []);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [headerWhite, setHeaderWhite] = useState(false);
 
