@@ -49,7 +49,7 @@ function getPayment(orderId, amount, currency, orderData, locale) {
       },
       invoice: {
         $: {
-          currency: currency,
+          currency: currency === "EURO" ? "EUR" : "RON",
           amount: amount,
         },
         details: "Plata Renadyl",
