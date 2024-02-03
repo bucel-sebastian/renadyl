@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveOrderData } from "@/redux/slices/cartSlice";
 import { useRouter } from "next-intl/client";
 import Link from "next-intl/link";
+import LoadingBlock from "@/components/LoadingBlock";
 
 function CartSummaryBox({ currentLocale }) {
   const router = useRouter();
@@ -60,9 +61,21 @@ function CartSummaryBox({ currentLocale }) {
 
   return (
     <>
-      <Suspense fallback={<></>}>
+      <Suspense
+        fallback={
+          <>
+            <div className="w-full flex flex-row justify-center">
+              <LoadingBlock />
+            </div>
+          </>
+        }
+      >
         {cart && cart?.length === 0 ? (
-          <></>
+          <>
+            <div className="w-full flex flex-row justify-center">
+              <LoadingBlock />
+            </div>
+          </>
         ) : (
           <>
             <table className="w-full">
