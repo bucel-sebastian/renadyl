@@ -176,7 +176,9 @@ function CartItem({ itemName, countryCode, lastItem, itemQuantity }) {
         </>
       ) : (
         <>
-          <LoadingBlock />
+          <div className="w-full flex flex-row justify-center">
+            <LoadingBlock />
+          </div>
         </>
       )}
     </div>
