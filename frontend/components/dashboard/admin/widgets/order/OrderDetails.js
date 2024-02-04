@@ -466,7 +466,7 @@ function OrderDetails({ orderId }) {
               theme: "colored",
             });
           } else {
-            toast.error(t("change-details-fail"), {
+            toast.error(t("invoice-reverse-fail"), {
               position: "bottom-right",
               autoClose: 2500,
               hideProgressBar: true,
@@ -478,7 +478,7 @@ function OrderDetails({ orderId }) {
             });
           }
         } else {
-          toast.error(t("change-details-fail"), {
+          toast.error(t("invoice-reverse-fail"), {
             position: "bottom-right",
             autoClose: 2500,
             hideProgressBar: true,
@@ -491,7 +491,7 @@ function OrderDetails({ orderId }) {
         }
       }
     } else {
-      toast.error(t("change-details-fail"), {
+      toast.error(t("invoice-reverse-day-fail"), {
         position: "bottom-right",
         autoClose: 2500,
         hideProgressBar: true,

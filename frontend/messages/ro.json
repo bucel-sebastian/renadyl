@@ -989,6 +989,37 @@
     },
     "Dashboard": {
         "sign-out-btn": "Ieși din cont",
+        "orders-list": {
+            "table-heads": {
+                "id": "ID",
+                "status": "Status",
+                "date": "Dată",
+                "client": "Client",
+                "payment-type": "Metodă de plată",
+                "payment-status": "Status plată",
+                "currency": "Monedă",
+                "value": "Valoare",
+                "transport": "Transport",
+                "actions": "Acțiuni"
+            },
+            "order-status": {
+                "cancelled": "Anulată",
+                "placed": "Plasată",
+                "processing": "În procesare",
+                "ready-to-ship": "Pregătită de expediere",
+                "shipped": "Expediată",
+                "finished": "Finalizată",
+                "refunded": "Plată returnată"
+            },
+            "filters": {
+                "order-id-label": "ID",
+                "dates-label": "Interval",
+                "awb-label": "AWB",
+                "status-label": "Status",
+                "status-ph": "Selectează statusul"
+            },
+            "details-btn": "Detalii"
+        },
         "admin": {
             "loading": "Se încarcă",
             "header": {
@@ -1078,6 +1109,8 @@
                     "renal-single-short-name": "Renadyl",
                     "renal-bundle-long-name": "Bundle 3x Renadyl - Supliment alimentar",
                     "renal-bundle-short-name": "Bundle 3x Renadyl",
+                    "invoice-reverse-fail": "A apărut o problema, încercați mai târziu",
+                    "invoice-reverse-day-fail": "Factura storno se poate genera doar la minim 24 de ore de la generarea facturii",
                     "order-status": {
                         "cancelled": "Anulată",
                         "placed": "Plasată",
