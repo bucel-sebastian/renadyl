@@ -69,6 +69,7 @@ const intlMiddleware = createIntlMiddleware({
   locales,
   localePrefix: "as-needed",
   defaultLocale: "ro",
+
   localeDetection: false,
 });
 
@@ -153,6 +154,9 @@ export default async function middleware(req) {
   const isPrivatePage =
     req.nextUrl.pathname.startsWith("/admin/dashboard") ||
     req.nextUrl.pathname.startsWith("/dashboard");
+
+  console.log("cookies", req.ip || req.headers.get("x-real-ip"));
+  // console.log("cookies", req.cookies.get("NEXT_LOCALE"));
 
   const isAdmin = req.nextUrl.pathname.startsWith("/admin/dashboard");
 
