@@ -1,6 +1,17 @@
-import { transporter } from "./Nodemailer";
+// import { transporter } from "./Nodemailer";
 
+const nodemailer = require("nodemailer");
 export const sendNewAccountEmail = async (data) => {
+  const transporter = nodemailer.createTransport({
+    host: "mail.renadyleurope.com",
+    port: "465",
+    secure: true,
+    auth: {
+      user: process.env.NODEMAILER_EMAIL,
+      pass: process.env.NODEMAILER_PW,
+    },
+  });
+
   try {
     console.log("se incearca sa se trimita");
     const mailOptions = {
