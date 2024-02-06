@@ -3,6 +3,8 @@ import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
 import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 import SelectInput from "@/components/SelectInput";
 
 import countriesData from "@/public/json/countriesData.json";
@@ -10,6 +12,13 @@ import { getSession } from "next-auth/react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { Sofia_Sans } from "next/font/google";
+
+const sofiaSans = Sofia_Sans({
+  variable: "--font-sofia-sans",
+  subsets: ["latin"],
+});
 
 function NewShippginDetails({ getUpdatedData }) {
   const [newShippingData, setNewShippingData] = useState({
@@ -197,7 +206,9 @@ function NewShippginDetails({ getUpdatedData }) {
   };
 
   const handlePhoneChange = (value, data, event, formattedValue) => {
-    handleChangeShippingData(event);
+    if (event.target.name) {
+      handleChangeShippingData(event);
+    }
   };
 
   return (
@@ -246,8 +257,35 @@ function NewShippginDetails({ getUpdatedData }) {
               required: true,
               autoFocus: true,
             }}
-            containerClass="w-full"
-            inputClass="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 w-full focus:border-foregroundPrimary py-1 px-1"
+            inputStyle={{
+              width: "100%",
+              padding: "0.25rem 0.25rem 0.25rem 48px",
+              height: "auto",
+              lineHeight: "28px",
+              background: "#fafafa",
+              borderTop: "none",
+              borderRight: "none",
+              borderLeft: "none",
+              borderBottom: "1px solid #1a1a1a66",
+              borderRadius: 0,
+              outline: "none",
+              fontSize: "18px",
+              fontWeight: "400",
+            }}
+            buttonStyle={{
+              backgroundColor: "transparent",
+              border: "none",
+            }}
+            dropdownStyle={{
+              borderRadius: "0.375rem",
+              border: "1px solid #1a1a1a66",
+              boxShadow:
+                "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+              overflow: "auto",
+              background: "#fafafa",
+            }}
+            containerClass="w-full z-40 "
+            inputClass={`w-full  duration-300 transition-all   focus:border-foregroundPrimary ${sofiaSans.className}`}
             specialLabel=""
           />
         </div>

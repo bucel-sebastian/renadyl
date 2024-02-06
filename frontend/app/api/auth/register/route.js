@@ -8,22 +8,21 @@ export async function POST(req) {
 
   let registerRes = null;
 
-  console.log("pre send email");
-  const emailRes = await sendNewAccountEmail({
-    sendTo: formData.email,
-    lang: "RO",
-  });
+  // const emailRes = await sendNewAccountEmail({
+  //   sendTo: formData.email,
+  //   lang: "RO",
+  // });
 
-  // try {
-  //   registerRes = await handleRegister(formData);
-  // } catch (e) {
-  //   console.error(`Error - ${e}`);
-  // }
+  try {
+    registerRes = await handleRegister(formData);
+  } catch (e) {
+    console.error(`Error - ${e}`);
+  }
 
-  // if (registerRes.status) {
-  return NextResponse.json({
-    status: 200,
-    body: emailRes,
-  });
-  // }
+  if (registerRes.status) {
+    return NextResponse.json({
+      status: 200,
+      body: emailRes,
+    });
+  }
 }

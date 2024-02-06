@@ -160,3 +160,11 @@ html{
       -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
     }
   }
+
+  .react-tel-input .selected-flag:hover,.react-tel-input .selected-flag:focus{
+    background: none !important;
+  }
+  
+  .react-tel-input .flag-dropdown.open .selected-flag {
+    background: none !important;
+  }

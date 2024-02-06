@@ -65,7 +65,9 @@ function CheckoutLoggedIn({ locale }) {
   };
 
   const handlePhoneChange = (value, data, event, formattedValue) => {
-    handleChangeCheckoutData(event);
+    if (event.target.name) {
+      handleChangeCheckoutData(event);
+    }
   };
 
   const handleCheckoutSubmit = (e) => {

@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 
 export const transporter = nodemailer.createTransport({
-  host: "mail.renadyleurope.com",
+  host: "mail.healthymedical.ro",
   port: "465",
   secure: true,
   auth: {
