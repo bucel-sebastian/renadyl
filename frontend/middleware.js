@@ -171,15 +171,15 @@ export default async function middleware(req) {
     const country = await fetch(`https://ipapi.co/${ip}/json`);
     const data = await country.json();
     if (data.country_code === "RO") {
-      req.cookie.set("NEXT_LOCALE", {
-        name: "NEXT_LOCALE",
-        value: "ro",
-      });
+      // req.cookie.set("NEXT_LOCALE", {
+      // name: "NEXT_LOCALE",
+      // value: "ro",
+      // });
     } else {
-      req.cookie.set("NEXT_LOCALE", {
-        name: "NEXT_LOCALE",
-        value: "en",
-      });
+      // req.cookie.set("NEXT_LOCALE", {
+      //   name: "NEXT_LOCALE",
+      //   value: "en",
+      // });
     }
   }
 
