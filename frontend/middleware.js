@@ -65,6 +65,8 @@ import { NextRequest } from "next/server";
 const locales = ["ro", "en", "de"];
 const publicPages = ["/", "/login"];
 
+const geoip = require("geoip-lite");
+
 const intlMiddleware = createIntlMiddleware({
   locales,
   localePrefix: "as-needed",
@@ -156,7 +158,17 @@ export default async function middleware(req) {
     req.nextUrl.pathname.startsWith("/dashboard");
 
   console.log("cookies", req.ip || req.headers.get("x-real-ip"));
+
+  const ip = req.ip || req.headers.get("x-real-ip");
   // console.log("cookies", req.cookies.get("NEXT_LOCALE"));
+
+  const country = geoip.lookup(ip);
+  console.log("country ", ip);
+  if (country === "RO") {
+    req.cookie.set("NEXT_LOCALE", { name: "NEXT_LOCALE", value: "ro" });
+  } else {
+    req.cookie.set("NEXT_LOCALE", { name: "NEXT_LOCALE", value: "en" });
+  }
 
   const isAdmin = req.nextUrl.pathname.startsWith("/admin/dashboard");
 
