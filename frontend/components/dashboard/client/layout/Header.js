@@ -33,7 +33,7 @@ function Header({ currentLocale }) {
         <DashboardPageTitle />
         <div className=" max-lg:hidden">
           <SessionProviderInClient session={session}>
-            <UserNav />
+            <UserNav currentLocale={currentLocale} />
           </SessionProviderInClient>
         </div>
       </div>

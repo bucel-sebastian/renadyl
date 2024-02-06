@@ -9,7 +9,7 @@ export default function page({ params: { locale } }) {
   if (!isValidLocale) notFound();
 
   return (
-    <div className="relative flex flex-col max-h-full overflow-hidden rounded-xl border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary">
+    <div className="relative flex flex-col max-h-full rounded-xl border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary">
       <NextIntlClientProvider locale={locale} messages={messages}>
         <OrdersList />
       </NextIntlClientProvider>

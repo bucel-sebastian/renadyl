@@ -1,16 +1,52 @@
 "use client";
 import { getSession, signOut, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next-intl/client";
+import { useRouter, usePathname } from "next-intl/client";
+
 import React, { useEffect, useState } from "react";
 
-function UserNav() {
+import roLocaleIcon from "@/public/images/ro-icon.svg";
+import enLocaleIcon from "@/public/images/en-icon.svg";
+import deLocaleIcon from "@/public/images/de-icon.svg";
+
+import Image from "next/image";
+import Link from "next-intl/link";
+
+function UserNav({ currentLocale }) {
   const session = useSession();
+
+  const pathname = usePathname();
 
   const router = useRouter();
 
   const [sessionData, setSessionData] = useState({});
   const [fnameInitial, setFnameInitial] = useState("");
+
+  const [languageSwitcherOpen, setLanguageSwitcherOpen] = useState(false);
+
+  const locales = {
+    ro: roLocaleIcon,
+    en: enLocaleIcon,
+    // de: deLocaleIcon
+  };
+
+  const filteredLocales = [];
+  for (const key in locales) {
+    if (key !== currentLocale) {
+      filteredLocales.push(locales[key]);
+    }
+  }
+  const localesDef = [];
+  for (const key in locales) {
+    if (key !== currentLocale) {
+      localesDef.push(key);
+    }
+  }
+
+  const allLocalesDef = [];
+  for (const key in locales) {
+    allLocalesDef.push(key);
+  }
 
   const t = useTranslations("Dashboard");
 
@@ -24,10 +60,12 @@ function UserNav() {
   };
 
   useEffect(() => {
+    console.log(session);
     if (typeof session?.data?.value === "string") {
       setSessionData(JSON.parse(session.data.value));
     } else {
-      setSessionData(session.data.value);
+      console.log("nu e string ", session);
+      setSessionData(session.data);
     }
 
     if (session?.status === "unauthenticated") {
@@ -36,8 +74,22 @@ function UserNav() {
   }, [session]);
 
   useEffect(() => {
+    console.log(sessionData?.user);
     setFnameInitial(sessionData?.user?.f_name?.charAt(0));
   }, [sessionData]);
+
+  const openLanguageSwitcher = () => {
+    setLanguageSwitcherOpen(true);
+  };
+
+  const closeLanguageSwitcher = () => {
+    setLanguageSwitcherOpen(false);
+  };
+
+  const switchLocale = (locale) => {
+    // console.log(pathname,locale);
+    router.replace(pathname, { locale: locale });
+  };
 
   return (
     <>
@@ -64,6 +116,43 @@ function UserNav() {
                 {t("sign-out-btn")}
               </div>
             </button>
+            <div
+              className="relative flex gap-[6px]"
+              onMouseOver={openLanguageSwitcher}
+              onMouseLeave={closeLanguageSwitcher}
+            >
+              <Link href="#">
+                <Image
+                  src={locales[currentLocale]}
+                  alt="Renadyl"
+                  className={`h-[35px] w-[35px] block rounded-full border-2 transition-all duration-300 
+                      border-foregroundPrimary`}
+                />
+              </Link>
+              <div
+                className={`relative block  ${
+                  languageSwitcherOpen ? "w-[76px]" : "w-[0px]"
+                } overflow-hidden   transition-all duration-500 ease-in-out`}
+              >
+                <div className="absolute top-0 left-0 flex flex-row gap-[6px] w-content">
+                  {filteredLocales.map((value, index) => (
+                    <button
+                      key={index}
+                      className="w-[35px]"
+                      onClick={() => switchLocale(localesDef[index])}
+                    >
+                      <Image
+                        src={value}
+                        alt="Renadyl"
+                        className={`h-[35px] w-[35px] rounded-full border-2  transition-all duration-300 
+                          border-foregroundPrimary
+                      `}
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </>
       ) : (

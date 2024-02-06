@@ -340,8 +340,8 @@
             "state-ph": "Select county",
             "city-label": "City",
             "city-ph": "Select city",
-            "postalcode-label": "Postal code",
-            "postalcode-ph": "Enter postal code",
+            "postal-code-label": "Postal code",
+            "postal-code-ph": "Enter postal code",
             "address-label": "Address",
             "address-ph": "Enter address",
             "pf-or-pj-label": "You are individual or company?",
@@ -581,5 +581,646 @@
         "page-title": "Reset password",
         "heading": "Reset password",
         "desc": ""
+    },
+    "Admin-Login": {
+        "page-title": "Login - Admin",
+        "heading": "Login - Admin",
+        "desc": "Enter your credentials to access the admin panel",
+        "login-form": {
+            "email-label": "Email address",
+            "email-ph": "Enter email address",
+            "password-label": "Password",
+            "password-ph": "Enter the password",
+            "password-forgot-link": "Forgotten password?",
+            "remember-label": "Remember me",
+            "submit-btn": "Login"
+        }
+    },
+    "Dashboard": {
+        "sign-out-btn": "Sign out",
+        "orders-list": {
+            "table-heads": {
+                "id": "ID",
+                "status": "Status",
+                "date": "Date",
+                "client": "Client",
+                "payment-type": "Payment method",
+                "payment-status": "Payment status",
+                "currency": "Currency",
+                "value": "Value",
+                "transport": "Shipping",
+                "actions": "Actions"
+            },
+            "order-status": {
+                "cancelled": "Cancelled",
+                "placed": "Placed",
+                "processing": "In processing",
+                "ready-to-ship": "Ready to ship",
+                "shipped": "Sent",
+                "finished": "Completed",
+                "refunded": "Refunded"
+            },
+            "filters": {
+                "order-id-label": "ID",
+                "dates-label": "Interval",
+                "awb-label": "AWB",
+                "status-label": "Status",
+                "status-ph": "Select status"
+            },
+            "details-btn": "Details"
+        },
+        "admin": {
+            "loading": "Loading",
+            "header": {
+                "/admin/dashboard": "General",
+                "/admin/dashboard/orders": "Orders",
+                "/admin/dashboard/cancel-requests": "Cancel requests",
+                "/admin/dashboard/subscriptions": "Subscriptions",
+                "/admin/dashboard/invoices": "invoices",
+                "/admin/dashboard/analytics": "Reports",
+                "/admin/dashboard/clients": "Clients",
+                "/admin/dashboard/medics": "Doctors",
+                "/admin/dashboard/distributors": "Distributors",
+                "/admin/dashboard/affiliates": "Affiliates",
+                "/admin/dashboard/contact": "Contact",
+                "/admin/dashboard/product": "Product",
+                "/admin/dashboard/settings": "Settings",
+                "order-title": "Order",
+                "medic-title": "Doctor",
+                "client-title": "Client",
+                "distributor-title": "Distributor",
+                "affiliate-title": "Affiliate"
+            },
+            "navbar": {
+                "general": "General",
+                "orders": "Orders",
+                "cancel-orders": "Cancel requests",
+                "subscriptions": "Subscriptions",
+                "invoices": "invoices",
+                "analytics": "Reports",
+                "clients": "Clients",
+                "medics": "Doctors",
+                "distributors": "Distributors",
+                "contact": "Contact",
+                "affiliates": "Affiliates",
+                "product": "Product",
+                "settings": "Settings"
+            },
+            "tables": {
+                "rows-per-page-label": "Rows per page",
+                "all-label": "All",
+                "of-label": "of",
+                "elements-label": "elements"
+            },
+            "orders": {
+                "last-orders": {
+                    "title": "Last orders",
+                    "table-heads": {
+                        "id": "ID",
+                        "status": "Status",
+                        "date": "Date",
+                        "value": "Value"
+                    }
+                },
+                "orders-list": {
+                    "table-heads": {
+                        "id": "ID",
+                        "status": "Status",
+                        "date": "Date",
+                        "client": "Client",
+                        "payment-type": "Payment method",
+                        "payment-status": "Payment status",
+                        "currency": "Currency",
+                        "value": "Value",
+                        "transport": "Shipping",
+                        "actions": "Actions"
+                    },
+                    "order-status": {
+                        "cancelled": "Cancelled",
+                        "placed": "Placed",
+                        "processing": "In processing",
+                        "ready-to-ship": "Ready to ship",
+                        "shipped": "Sent",
+                        "finished": "Completed",
+                        "refunded": "Refunded"
+                    },
+                    "filters": {
+                        "order-id-label": "ID",
+                        "dates-label": "Interval",
+                        "awb-label": "AWB",
+                        "status-label": "Status",
+                        "status-ph": "Select status"
+                    },
+                    "details-btn": "Details"
+                },
+                "order-page": {
+                    "renal-single-long-name": "Renadyl - Nutritional supplement",
+                    "renal-single-short-name": "Renadyl",
+                    "renal-bundle-long-name": "Bundle 3x Renadyl - Nutritional supplement",
+                    "renal-bundle-short-name": "Bundle 3x Renadyl",
+                    "invoice-reverse-fail": "There was a problem, please try again later",
+                    "invoice-reverse-day-fail": "The cancellation invoice can only be generated at least 24 hours after the invoice was generated",
+                    "order-status": {
+                        "cancelled": "Cancelled",
+                        "placed": "Placed",
+                        "processing": "In processing",
+                        "ready-to-ship": "Ready to ship",
+                        "shipped": "Sent",
+                        "finished": "Completed",
+                        "refunded": "Refunded"
+                    }
+                }
+            },
+            "invoices": {
+                "invoices-list": {
+                    "table-heads": {
+                        "order-id": "Order ID",
+                        "invoice-id": "Invoice number",
+                        "client": "Client",
+                        "value": "Value",
+                        "currency": "Currency",
+                        "status": "Status",
+                        "date": "Date",
+                        "actions": "Actions"
+                    }
+                }
+            },
+            "product": {
+                "edit-form": {
+                    "renal-single": {
+                        "title": "Setting up Renadyl Single",
+                        "base-price-label": "Base pricce",
+                        "vat-label": "VAT rate",
+                        "offer-label": "Offer value",
+                        "percentage-label": "Percentage offer",
+                        "offer-toggle": "Activate offer"
+                    },
+                    "renal-bundle": {
+                        "title": "Setting up Renadyl Bundle",
+                        "base-price-label": "Base prioce ",
+                        "vat-label": "VAT rate ",
+                        "offer-label": "Offer value",
+                        "percentage-label": "Percentage offer",
+                        "offer-toggle": "Activate offer "
+                    },
+                    "final-price": "Final price",
+                    "save-btn": "Save",
+                    "leave-btn": "Cancel",
+                    "loading": "Loading",
+                    "edit-product-success": "The product has been updated successfully",
+                    "edit-product-fail": "There was a problem, please try again later",
+                    "edit-product-under-zero-fail": "The final price must be positive"
+                },
+                "inputs-title": "Stock entries",
+                "new-input": {
+                    "quantity-label": "Quantity",
+                    "quantity-ph": "Enter quantity",
+                    "buy-price-label": "Buy price",
+                    "buy-price-ph": "Enter the purchase price",
+                    "shipping-price-label": "Shipping price",
+                    "shipping-price-ph": "Enter shipping price",
+                    "submit-btn": "Save",
+                    "add-success": "Entry added successfully",
+                    "add-fail": "There was a problem, please try again later"
+                },
+                "stocks-list": {
+                    "date": "Date",
+                    "quantity": "Quantity",
+                    "buy-price": "Buy price",
+                    "shipping-price": "Shipping price",
+                    "actions": "Actions"
+                }
+            },
+            "clients": {
+                "clients-list": {
+                    "id": "ID",
+                    "fname": "First name",
+                    "lname": "Last name",
+                    "orders": "Orders",
+                    "register-date": "Register date",
+                    "last-login-date": "Last login",
+                    "actions": "Actions",
+                    "status": "Status",
+                    "status-active": "Active",
+                    "status-inactive": "Inactive",
+                    "details-btn": "Details"
+                },
+                "client-page": {
+                    "client-details-title": "Details",
+                    "client-orders-title": "Client Orders",
+                    "client-subscription-title": "Subscription",
+                    "name": "Name",
+                    "email": "Email address",
+                    "phone": "Phone number",
+                    "status-account": "Account status",
+                    "register-date": "Registration date",
+                    "change-status": "Change status",
+                    "subscription-status": "Status",
+                    "change-status-success": "The status has been changed successfully!",
+                    "change-status-fail": "There was a problem, please try again later"
+                }
+            },
+            "doctors": {
+                "doctors-list": {
+                    "active-status": "Active",
+                    "status-inactive": "Inactive",
+                    "details-btn": "Details",
+                    "table-heads": {
+                        "id": "Order number",
+                        "name": "Name",
+                        "status": "Status",
+                        "email": "Email address",
+                        "phone": "Phone number",
+                        "orders": "Orders",
+                        "actions": "Actions"
+                    }
+                },
+                "doctors-page": {
+                    "doctors-details-title": "Details",
+                    "doctors-orders-title": "Orders assigned",
+                    "name": "Name",
+                    "email": "Email address",
+                    "phone": "Phone number",
+                    "status-account": "Account status",
+                    "status-doctor": "Doctor status",
+                    "specialization": "Specialization",
+                    "url_profile": "Profile link",
+                    "location": "Location",
+                    "state": "County",
+                    "city": "City",
+                    "promocode": "Promotional code",
+                    "work-unit": "Working unit",
+                    "attached-documents": "Attached documents",
+                    "change-doctor-status": "Change doctor status",
+                    "change-doctor-status-inactive": "Set as inactive",
+                    "change-doctor-status-active": "Set as active",
+                    "change-doctor-status-success": "The status was changed successfully",
+                    "change-doctor-status-fail": "There was a problem, please try again later",
+                    "change-role-client": "Client",
+                    "change-role-doctor": "Doctor",
+                    "change-role-distributor": "Distributor",
+                    "change-role-ph": "Select role",
+                    "change-role": "Change role",
+                    "change-role-submit-btn": "Save role",
+                    "change-promocode-value": "Promo code value",
+                    "change-promocode-value-submit-btn": "Save"
+                }
+            },
+            "distributors": {
+                "distributors-list": {
+                    "table-heads": {
+                        "id": "ID",
+                        "status": "Status",
+                        "dates": "Date",
+                        "name": "Name",
+                        "email": "Email address",
+                        "phone": "Phone number",
+                        "message": "Message",
+                        "actions": "Actions"
+                    }
+                }
+            },
+            "cancel-requests": {
+                "requests-list": {
+                    "actions": "Actions",
+                    "order-id": "Order ID",
+                    "reason": "Reason",
+                    "dates": "Date",
+                    "status": "Status",
+                    "status-waiting": "Waiting",
+                    "status-accepted": "Accepted",
+                    "status-denied": "Refused",
+                    "confirm-accept": "Are you sure you want to approve this request?",
+                    "confirm-deny": "Are you sure you want to deny this request?",
+                    "change-status-success": "The status has been changed successfully!",
+                    "change-status-fail": "There was a problem, please try again later"
+                }
+            },
+            "affiliates": {
+                "affiliates-list": {
+                    "id": "ID",
+                    "fname": "First name",
+                    "lname": "Last name",
+                    "actions": "Actions"
+                }
+            },
+            "analytics": {
+                "actual-month-sales": {
+                    "title": "Current Month Sales",
+                    "total": "Total"
+                },
+                "monthly-people": {
+                    "clients": "Clients",
+                    "medics": "Doctors",
+                    "distributors": "Distributors",
+                    "affiliates": "Affiliates"
+                },
+                "monthly-sales": {
+                    "title": "Sales in the last 6 months",
+                    "month": "Month",
+                    "total-sales": "Total Sales",
+                    "value-ron": "Total RON",
+                    "value-eur": "Total EUR"
+                },
+                "cart-pie": {
+                    "title": "Completed/Abandoned Carts Report"
+                },
+                "clients-pie": {
+                    "title": "Authenticated/Anonymous Clients Report"
+                }
+            },
+            "contact": {
+                "contact-list": {
+                    "table-heads": {
+                        "status": "Status",
+                        "dates": "Date",
+                        "name": "Name",
+                        "email": "Email address",
+                        "phone": "Phone number",
+                        "message": "Message",
+                        "actions": "Actions"
+                    },
+                    "mark-unread-btn": "Mark as unread",
+                    "mark-read-btn": "Mark as read",
+                    "status-read": "Read",
+                    "status-unread": "Unread",
+                    "change-status-fail": "There was a problem, please try again later",
+                    "change-status-success": "The status has been changed successfully!",
+                    "message-title": "Message",
+                    "phone-title": "Phone Number",
+                    "email-title": "Email address",
+                    "date-title": "Date",
+                    "reason-title": "Reason",
+                    "order-title": "Order Number",
+                    "name-title": "Name",
+                    "preview-btn": "Preview"
+                }
+            },
+            "settings": {
+                "website-settings-form": {
+                    "website-settings-title": "Website Settings",
+                    "vat-label": "Romanian VAT rate (%)",
+                    "vat-ph": "Enter Romania VAT rate (%)",
+                    "vat-int-label": "International VAT rate (%)",
+                    "vat-int-ph": "Enter international VAT rate (%)",
+                    "invoice-series-label": "Invoice Series",
+                    "invoice-series-ph": "Enter invoice series",
+                    "promotion-landing-page-label": "Promotional landing page",
+                    "submit-btn": "Save",
+                    "reset-btn": "Cancel",
+                    "change-settings-success": "Settings updated successfully",
+                    "change-settings-fail": "There was a problem, please try again later"
+                },
+                "admins-list": {
+                    "admins-list-title": "Administrators",
+                    "details-btn": "Details",
+                    "active-status": "Active",
+                    "status-inactive": "Inactive",
+                    "table-heads": {
+                        "id": "Order number",
+                        "name": "Name",
+                        "status": "Status",
+                        "email": "Email address",
+                        "phone": "Phone number",
+                        "orders": "Orders",
+                        "actions": "Actions"
+                    }
+                },
+                "new-admin-form": {
+                    "new-admin-title": "Add a new admin",
+                    "password-label": "Password",
+                    "password-ph": "Enter password",
+                    "re-password-label": "Confirm password",
+                    "re-password-ph": "Re-enter password",
+                    "fname-label": "First Name",
+                    "fname-ph": "Enter first name",
+                    "lname-label": "Name",
+                    "lname-ph": "Enter name",
+                    "email-label": "Email address",
+                    "email-ph": "Enter email address",
+                    "phone-label": "Phone number",
+                    "phone-ph": "Enter phone number",
+                    "submit-add-btn": "Add",
+                    "new-admin-success": "Administrator added successfully!",
+                    "new-admin-fail": "There was a problem, please try again later",
+                    "new-admin-fail-exists": "Email address already exists",
+                    "new-admin-fail-database": "There was a problem, please try again later"
+                },
+                "account-settings-form": {
+                    "account-settings-title": "Account Settings",
+                    "password-label": "Password",
+                    "password-ph": "Enter password",
+                    "re-password-label": "Confirm password",
+                    "re-password-ph": "Re-enter password",
+                    "fname-label": "First Name",
+                    "fname-ph": "Enter first name",
+                    "lname-label": "Name",
+                    "lname-ph": "Enter name",
+                    "email-label": "Email address",
+                    "email-ph": "Enter email address",
+                    "phone-label": "Phone number",
+                    "phone-ph": "Enter phone number",
+                    "submit-btn": "Save",
+                    "submit-password-btn": "Change password"
+                }
+            }
+        },
+        "client": {
+            "header": {
+                "/dashboard/client": "General",
+                "/dashboard/client/buy": "Buy",
+                "/dashboard/client/orders": "My orders",
+                "/dashboard/client/subscription": "Subscription",
+                "/dashboard/client/invoices": "Invoices",
+                "/dashboard/client/settings": "Settings",
+                "/dashboard/client/affiliates": "Affiliates",
+                "order-title": "Order"
+            },
+            "navbar": {
+                "general": "General",
+                "buy": "Buy",
+                "orders": "My orders",
+                "subscription": "Subscription",
+                "invoices": "Invoices",
+                "affiliates": "Affiliate",
+                "settings": "Settings",
+                "logout": "Sign out"
+            },
+            "dashboard-greetings": "Welcome, ",
+            "subscription-status": {
+                "title": "Monthly subscription",
+                "status": "Status",
+                "active": "Active",
+                "inactive": "Inactive",
+                "want-subscription": "I want monthly subscription",
+                "next-billing": "Next billing date",
+                "awb-actual-month": "AWB delivery current month"
+            },
+            "buy": {
+                "product-name-renal-single": "Renadyl - Nutritional supplement",
+                "product-name-renal-bundle": "Bundle 3x Renadyl - Nutritional supplement",
+                "product-desc-renal-single": "",
+                "product-desc-renal-bundle": ""
+            },
+            "orders": {
+                "orders-list": {
+                    "table-heads": {
+                        "id": "Order number",
+                        "dates": "Date",
+                        "status": "Status",
+                        "payment-type": "Payment method",
+                        "value": "Value",
+                        "carriage": "Carriage",
+                        "actions": "Actions"
+                    },
+                    "order-status": {
+                        "cancelled": "Cancelled",
+                        "placed": "Placed",
+                        "processing": "In processing",
+                        "ready-to-ship": "Ready to ship",
+                        "shipped": "Sent",
+                        "finished": "Completed",
+                        "refunded": "Refunded"
+                    }
+                },
+                "last-orders": {
+                    "title": "Last Orders",
+                    "no-orders": "There are currently no orders"
+                },
+                "order-page": {
+                    "orders-list": {
+                        "table-heads": {
+                            "id": "Order number",
+                            "dates": "Date",
+                            "status": "Status",
+                            "payment-type": "Payment method",
+                            "value": "Value",
+                            "carriage": "Carriage",
+                            "actions": "Actions"
+                        },
+                        "order-status": {
+                            "cancelled": "Cancelled",
+                            "placed": "Placed",
+                            "processing": "In processing",
+                            "ready-to-ship": "Ready to ship",
+                            "shipped": "Sent",
+                            "finished": "Completed",
+                            "refunded": "Refunded"
+                        }
+                    },
+                    "renal-single-long-name": "Renadyl - Nutritional supplement",
+                    "renal-single-short-name": "Renadyl",
+                    "renal-bundle-long-name": "Bundle 3x Renadyl -  Nutritional supplement",
+                    "renal-bundle-short-name": "Bundle 3x Renadyl"
+                },
+                "tables": {
+                    "rows-per-page-label": "Rows per page",
+                    "all-label": "All",
+                    "of-label": "of",
+                    "elements-label": "elements"
+                }
+            },
+            "invoices": {
+                "invoices-list": {
+                    "table-heads": {
+                        "invoice-id": "Invoice number",
+                        "order-id": "Order Number",
+                        "dates": "Date",
+                        "status": "Status",
+                        "payment-type": "Payment method",
+                        "value": "Value",
+                        "carriage": "Carriage",
+                        "actions": "Actions"
+                    }
+                },
+                "tables": {
+                    "rows-per-page-label": "Rows per page",
+                    "all-label": "All",
+                    "of-label": "of",
+                    "elements-label": "elements"
+                }
+            },
+            "affiliates": {
+                "promocode-copy-btn": "Copy",
+                "promocode-copy-success": "The code was copied successfully!",
+                "affiliate-code-title": "Your Affiliate Code",
+                "affiliate-code-stats-title": "Your code has been used in",
+                "affiliate-code-stats-subtitle": "commands",
+                "affiliate-promocode-title": "Your Promo Codes",
+                "promocodes-table-code": "Promo code",
+                "promocodes-table-value": "Value",
+                "promocodes-table-use-remainings": "Remaining uses",
+                "affiliate-join-title": "You are not currently part of the affiliate program",
+                "affiliate-join-btn": "Become Affiliate",
+                "affiliate-join-success": "You have successfully joined the affiliate program!",
+                "affiliate-join-fail": "There was a problem, please try again later",
+                "tables": {
+                    "rows-per-page-label": "Rows per page",
+                    "all-label": "All",
+                    "of-label": "of",
+                    "elements-label": "elements"
+                }
+            },
+            "settings": {
+                "account-password-title": "Change Password",
+                "account-settings-title": "Account details",
+                "delete-shipping-confirm": "Are you sure you want to delete this shipping data?",
+                "delete-billing-confirm": "Are you sure you want to delete this billing data?",
+                "delete-btn": "Delete",
+                "shipping-title-saved": "Shipping details saved",
+                "billing-title-saved": "Billing details saved",
+                "shipping-title-new": "New Shipping Details",
+                "billing-title-new": "New Billing Details",
+                "new-shipping-data-btn": "Add Shipping Details",
+                "new-billing-data-btn": "Add billing details",
+                "change-user-password-success": "Password changed successfully!",
+                "change-user-password-fail": "There was a problem, please try again later",
+                "password-no-match-fail": "Passwords do not match",
+                "change-user-details-success": "The details have been changed successfully!",
+                "change-user-details-fail": "There was a problem, please try again later",
+                "update-data-form": {
+                    "password-label": "Password",
+                    "password-ph": "Enter password",
+                    "re-password-label": "Confirm password",
+                    "re-password-ph": "Re-enter password",
+                    "fname-label": "First Name",
+                    "fname-ph": "Enter first name",
+                    "lname-label": "Name",
+                    "lname-ph": "Enter name",
+                    "email-label": "Email address",
+                    "email-ph": "Enter email address",
+                    "phone-label": "Phone number",
+                    "phone-ph": "Enter phone number",
+                    "submit-update-user-data-btn": "Save",
+                    "submit-update-user-password-btn": "Change password",
+                    "passwords-error": "Passwords do not match"
+                }
+            }
+        },
+        "doctor": {
+            "header": {
+                "/dashboard/doctor": "General",
+                "/dashboard/doctor/buy": "Cumpără",
+                "/dashboard/doctor/orders": "Comenzile mele",
+                "/dashboard/doctor/subscription": "Abonament",
+                "/dashboard/doctor/invoices": "Facturi",
+                "/dashboard/doctor/settings": "Setări",
+                "/dashboard/doctor/affiliates": "Afiliați",
+                "/dashboard/doctor/patients": "Pacienți",
+                "order-title": "Comanda"
+            },
+            "navbar": {
+                "general": "General",
+                "buy": "Cumpără",
+                "orders": "Comenzile mele",
+                "subscription": "Abonament",
+                "invoices": "Facturi",
+                "affiliates": "Afiliază-te",
+                "patients": "Pacienți",
+                "settings": "Setări",
+                "logout": "Deconectare"
+            },
+            "dashboard-greetings": "Bine ai venit, "
+        }
     }
 }

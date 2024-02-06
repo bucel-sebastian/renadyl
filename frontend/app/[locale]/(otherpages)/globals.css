@@ -281,3 +281,11 @@ body {
   z-index: 0;
   opacity: 0.1;
 }
+
+.react-tel-input .selected-flag:hover,.react-tel-input .selected-flag:focus{
+  background: none !important;
+}
+
+.react-tel-input .flag-dropdown.open .selected-flag {
+  background: none !important;
+}

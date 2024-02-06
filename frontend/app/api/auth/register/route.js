@@ -1,4 +1,5 @@
 import Database from "@/utils/Database";
+import { sendNewAccountEmail } from "@/utils/nodemailer/NewAccountMail";
 import { handleRegister } from "@/utils/user/auth/register";
 import { NextResponse } from "next/server";
 
@@ -7,16 +8,21 @@ export async function POST(req) {
 
   let registerRes = null;
 
-  try {
-    registerRes = await handleRegister(formData);
-  } catch (e) {
-    console.error(`Error - ${e}`);
-  }
+  const emailRes = await sendNewAccountEmail({
+    sendTo: formData.email,
+    lang: "RO",
+  });
 
-  if (registerRes.status) {
-    return NextResponse.json({
-      status: 200,
-      body: registerRes,
-    });
-  }
+  // try {
+  //   registerRes = await handleRegister(formData);
+  // } catch (e) {
+  //   console.error(`Error - ${e}`);
+  // }
+
+  // if (registerRes.status) {
+  return NextResponse.json({
+    status: 200,
+    body: emailRes,
+  });
+  // }
 }
