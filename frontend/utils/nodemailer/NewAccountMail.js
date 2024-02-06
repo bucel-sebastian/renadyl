@@ -22,6 +22,7 @@ export const sendNewAccountEmail = async (data) => {
     };
     console.log("optiuni configurate");
     transporter.sendMail(mailOptions, function (error, info) {
+      console.log(info, error);
       if (error) {
         console.log(error);
         return { status: "fail", error: error };
