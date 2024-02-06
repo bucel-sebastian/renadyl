@@ -160,10 +160,7 @@ export default async function middleware(req) {
 
   // const geoipLanguage = geoipdetector(req);
   // if (geoipLanguage !== null) {
-  req.cookie.set("NEXT_LOCALE", {
-    name: "NEXT_LOCALE",
-    value: geoipLanguage,
-  });
+
   // }
 
   if (!req.cookies.get("NEXT_LOCALE")) {
