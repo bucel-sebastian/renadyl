@@ -55,7 +55,8 @@
             "product-shippment": "Shpping",
             "product-shippment-green": "10 working days",
             "product-return-tc": "Termeni și condiții pentru",
-            "product-return-tc-btn": "retur"
+            "product-return-tc-btn": "retur",
+            "product-client-buy-btn": "Buy"
         },
         "about-section": {
             "title": "How Renadyl™ helps",
@@ -871,7 +872,7 @@
                     "table-heads": {
                         "id": "ID",
                         "status": "Status",
-                        "dates": "Date",
+                        "date": "Date",
                         "name": "Name",
                         "email": "Email address",
                         "phone": "Phone number",
@@ -885,7 +886,7 @@
                     "actions": "Actions",
                     "order-id": "Order ID",
                     "reason": "Reason",
-                    "dates": "Date",
+                    "date": "Date",
                     "status": "Status",
                     "status-waiting": "Waiting",
                     "status-accepted": "Accepted",
@@ -933,7 +934,7 @@
                 "contact-list": {
                     "table-heads": {
                         "status": "Status",
-                        "dates": "Date",
+                        "date": "Date",
                         "name": "Name",
                         "email": "Email address",
                         "phone": "Phone number",
@@ -1066,11 +1067,11 @@
                 "orders-list": {
                     "table-heads": {
                         "id": "Order number",
-                        "dates": "Date",
+                        "date": "Date",
                         "status": "Status",
                         "payment-type": "Payment method",
                         "value": "Value",
-                        "carriage": "Carriage",
+                        "transport": "Shipping",
                         "actions": "Actions"
                     },
                     "order-status": {
@@ -1091,7 +1092,7 @@
                     "orders-list": {
                         "table-heads": {
                             "id": "Order number",
-                            "dates": "Date",
+                            "date": "Date",
                             "status": "Status",
                             "payment-type": "Payment method",
                             "value": "Value",
@@ -1125,7 +1126,7 @@
                     "table-heads": {
                         "invoice-id": "Invoice number",
                         "order-id": "Order Number",
-                        "dates": "Date",
+                        "date": "Date",
                         "status": "Status",
                         "payment-type": "Payment method",
                         "value": "Value",
