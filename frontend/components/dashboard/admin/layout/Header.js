@@ -16,7 +16,7 @@ function Header({ currentLocale }) {
         <AdminDashboardPageTitle />
         <div>
           <SessionProviderInClient session={session}>
-            <UserNav />
+            <UserNav currentLocale={currentLocale} />
           </SessionProviderInClient>
         </div>
       </div>

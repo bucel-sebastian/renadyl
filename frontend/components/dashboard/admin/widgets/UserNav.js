@@ -91,6 +91,9 @@ function UserNav({ currentLocale }) {
     router.replace(pathname, { locale: locale });
   };
 
+  useEffect(() => {
+    console.log("filtred locales - ", filteredLocales);
+  }, [filteredLocales]);
   return (
     <>
       {sessionData?.user ? (

@@ -18,7 +18,6 @@ export const checkLoginDetails = async (email, password) => {
       delete user.passowrd;
       return await user;
     }
-    return { status: 1 };
   }
   return null;
 };

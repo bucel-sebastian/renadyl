@@ -7,6 +7,9 @@ import React, { useEffect, useState } from "react";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function AdminLoginForm() {
   const router = useRouter();
 
@@ -37,6 +40,30 @@ function AdminLoginForm() {
       if (session?.user?.role === "admin") {
         router.push(`/admin/dashboard`);
         router.refresh();
+      }
+    } else {
+      if (response.error === "not activated") {
+        toast.error(t("error-not-activated"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } else {
+        toast.error(t("error"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
     }
   };
@@ -99,6 +126,19 @@ function AdminLoginForm() {
                     
                 </div> */}
       </form>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }

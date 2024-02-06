@@ -73,10 +73,17 @@ export const authOptions = {
         const user = await response;
         user.role = "admin";
 
-        if (user !== null) {
-          return user;
-        }
+        // if (credentials.rememberMe === "on") {
+        //   user.maxAge = 30 * 24 * 60 * 60 * 1000;
+        // } else {
+        //   user.maxAge = 24 * 60 * 60 * 1000;
+        // }
 
+        if (user !== null && parseInt(user.status) === 1) {
+          return user;
+        } else if (user && parseInt(user.status) === 0) {
+          throw new Error("not activated");
+        }
         return null;
       },
     }),

@@ -977,6 +977,8 @@
         "page-title": "Autentificare - Admin",
         "heading": "Autentificare - Admin",
         "desc": "Introdu datele de autentificare pentru a accesa panoul de administrator",
+        "error": "Datele introduse sunt incorecte",
+        "error-not-activated": "Contul dvs. nu este activat",
         "login-form": {
             "email-label": "Adresa de email",
             "email-ph": "Introdu adresa de email",

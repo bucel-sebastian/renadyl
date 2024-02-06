@@ -587,6 +587,8 @@
         "page-title": "Login - Admin",
         "heading": "Login - Admin",
         "desc": "Enter your credentials to access the admin panel",
+        "error": "The data entered is incorrect",
+        "error-not-activated": "Your account is not activated",
         "login-form": {
             "email-label": "Email address",
             "email-ph": "Enter email address",
