@@ -8,6 +8,7 @@ export async function POST(req) {
 
   let registerRes = null;
 
+  console.log("pre send email");
   const emailRes = await sendNewAccountEmail({
     sendTo: formData.email,
     lang: "RO",
