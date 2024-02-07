@@ -160,22 +160,24 @@ export default async function middleware(req) {
   console.log("response", res);
   console.log("request", req);
 
-  // if (!req.cookies.get("NEXT_LOCALE")) {
-  //   const ip = req.ip || req.headers.get("x-real-ip");
-  //   const country = await fetch(`https://ipapi.co/${ip}/json`);
-  //   const data = await country.json();
-  //   if (data.country_code === "RO") {
-  //     req.cookie.set("NEXT_LOCALE", {
-  //       name: "NEXT_LOCALE",
-  //       value: "ro",
-  //     });
-  //   } else {
-  //     req.cookie.set("NEXT_LOCALE", {
-  //       name: "NEXT_LOCALE",
-  //       value: "en",
-  //     });
-  //   }
-  // }
+  console.log("geo", {
+    city: req.geo.city,
+    country: req.geo.country,
+    region: req.geo.region,
+    lat: req.geo.latitude,
+    lng: req.geo.longitude,
+  });
+
+  if (!req.cookies.get("NEXT_LOCALE")) {
+    const ip = req.ip || req.headers.get("x-real-ip");
+    const country = await fetch(`https://ipapi.co/${ip}/json`);
+    const data = await country.json();
+    if (data.country_code === "RO") {
+      req.cookie.set("NEXT_LOCALE", "ro");
+    } else {
+      req.cookie.set("NEXT_LOCALE", "en");
+    }
+  }
 
   const isAdmin = req.nextUrl.pathname.startsWith("/admin/dashboard");
 
