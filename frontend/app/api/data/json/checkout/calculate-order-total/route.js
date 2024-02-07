@@ -1,6 +1,7 @@
 import { checkPromocode } from "@/utils/frontpages/checkPromocode";
 import { getProductData } from "@/utils/frontpages/getProductData";
 import { estimateSamedayCost } from "@/utils/sameday/estimateSamedayCost";
+import { authUps } from "@/utils/ups/authUps";
 import { NextResponse } from "next/server";
 
 export async function POST(req, { params }) {
@@ -82,6 +83,10 @@ export async function POST(req, { params }) {
         console.log("Shipping data - ", shippingData);
 
         shippingTotal = shippingData.amount;
+      } else {
+        const shippingData = await authUps();
+
+        console.log("UPS - ", shippingData);
       }
     }
   }

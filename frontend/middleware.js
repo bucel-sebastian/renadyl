@@ -155,28 +155,20 @@ export default async function middleware(req) {
     req.nextUrl.pathname.startsWith("/admin/dashboard") ||
     req.nextUrl.pathname.startsWith("/dashboard");
 
-  // console.log("cookies", req.ip || req.headers.get("x-real-ip"));
-  // console.log("cookies", navigator);
-
-  // const geoipLanguage = geoipdetector(req);
-  // if (geoipLanguage !== null) {
-
-  // }
-
   if (!req.cookies.get("NEXT_LOCALE")) {
     const ip = req.ip || req.headers.get("x-real-ip");
     const country = await fetch(`https://ipapi.co/${ip}/json`);
     const data = await country.json();
     if (data.country_code === "RO") {
-      // req.cookie.set("NEXT_LOCALE", {
-      // name: "NEXT_LOCALE",
-      // value: "ro",
-      // });
+      req.cookie.set("NEXT_LOCALE", {
+        name: "NEXT_LOCALE",
+        value: "ro",
+      });
     } else {
-      // req.cookie.set("NEXT_LOCALE", {
-      //   name: "NEXT_LOCALE",
-      //   value: "en",
-      // });
+      req.cookie.set("NEXT_LOCALE", {
+        name: "NEXT_LOCALE",
+        value: "en",
+      });
     }
   }
 

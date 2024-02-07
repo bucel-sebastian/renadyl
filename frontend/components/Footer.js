@@ -27,6 +27,7 @@ function Footer() {
         <div className="w-1/4 max-lg:w-1/2 max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center">
           <h5>S.C. Healthy Medical S.R.L.</h5>
           <p>RO 43590495</p>
+          <p>J40/869/2021</p>
           <br />
           <p>
             Cal. Dorobanți nr. 111-131

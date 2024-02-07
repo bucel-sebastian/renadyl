@@ -295,7 +295,9 @@
             "remember-label": "Ține-mă minte",
             "submit-btn": "Autentifică-te",
             "other-options": "sau poți folosi",
-            "register-link": "Nu ai cont? Înregistrează-te"
+            "register-link": "Nu ai cont? Înregistrează-te",
+            "error": "Datele introduse sunt incorecte",
+            "error-not-activated": "Contul dvs. nu este activat"
         },
         "register-form": {
             "fname-label": "Prenume",

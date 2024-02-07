@@ -104,6 +104,30 @@ function CheckoutNotLoggedIn({ locale }) {
       if (session?.user?.role !== "admin") {
         router.refresh();
       }
+    } else {
+      if (response.error === "not activated") {
+        toast.error(t("login-form.error-not-activated"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } else {
+        toast.error(t("login-form.error"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
     }
   };
   //    Login - End
@@ -206,17 +230,21 @@ function CheckoutNotLoggedIn({ locale }) {
     dispatch(updateCheckoutData({ name: "billing.savedData", value: null }));
 
     checkShippingEmailInput();
-
-    if (window?.location?.hash) {
-      // console.log("Has #");
-      handleSetIsNotClient();
-      setTimeout(() => {
-        const elementId = window?.location?.hash.substring(1); // Remove the '#' character
-        const element = document.getElementById(elementId);
-        if (element) {
-          element.scrollIntoView();
-        }
-      }, 100);
+    if (typeof window !== undefined) {
+      if (window?.location?.hash) {
+        // console.log("Has #");
+        handleSetIsNotClient();
+        setTimeout(() => {
+          if (window?.location?.hash) {
+            const elementId = window?.location?.hash.substring(1); // Remove the '#' character
+            const element = document.getElementById(elementId);
+            console.log("element scroll - ", element);
+            if (element) {
+              element.scrollIntoView();
+            }
+          }
+        }, 100);
+      }
     }
   }, []);
 
@@ -526,6 +554,18 @@ function CheckoutNotLoggedIn({ locale }) {
     }
   };
 
+  useEffect(() => {
+    console.log("scroll to top");
+    if (!isClient && typeof window !== undefined) {
+      console.log("scroll to top 2");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [isClient]);
+
+  useEffect(() => {
+    // Logica cart abandonat
+  }, [checkoutData?.shipping?.email]);
+
   return (
     <>
       <section className="relative max-w-[1200px] w-full mx-auto border-foregroundSecondary20 mt-8  border-[1px] shadow-lg rounded-xl h-max overflow-hidden">
@@ -636,14 +676,14 @@ function CheckoutNotLoggedIn({ locale }) {
                       className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md p-[4px]"
                       onClick={handleFacebookLogin}
                     >
-                      <Image src={facebookLogo} />
+                      <Image src={facebookLogo} alt="Facebook Login" />
                     </button>
 
                     <button
                       className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md p-[4px]"
                       onClick={handleGoogleLogin}
                     >
-                      <Image src={googleLogo} />
+                      <Image src={googleLogo} alt="Google Login" />
                     </button>
 
                     {/* <button className="w-[40px] h-[40px] bg-foregroundSecondary10 rounded-md"></button> */}
