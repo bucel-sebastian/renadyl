@@ -60,7 +60,7 @@
 import { getToken } from "next-auth/jwt";
 import { withAuth } from "next-auth/middleware";
 import createIntlMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const locales = ["ro", "en", "de"];
 const publicPages = ["/", "/login"];
