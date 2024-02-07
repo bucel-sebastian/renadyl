@@ -169,13 +169,10 @@ export default async function middleware(req) {
   });
 
   if (!req.cookies.get("NEXT_LOCALE")) {
-    const ip = req.ip || req.headers.get("x-real-ip");
-    const country = await fetch(`https://ipapi.co/${ip}/json`);
-    const data = await country.json();
-    if (data.country_code === "RO") {
-      req.cookie.set("NEXT_LOCALE", "ro");
+    if (req.geo.country === "RO") {
+      req.cookies.set("NEXT_LOCALE", "ro");
     } else {
-      req.cookie.set("NEXT_LOCALE", "en");
+      req.cookies.set("NEXT_LOCALE", "en");
     }
   }
 
