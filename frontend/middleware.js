@@ -1,62 +1,3 @@
-// import createMiddleWare from "next-intl/middleware";
-// import { withAuth } from "next-auth/middleware";
-// import { NextRequest } from "next/server";
-
-// const locales = ["ro", "en", "de"];
-// const publicPages = [
-
-// ]
-
-// const intlMiddleware = createIntlMiddleware({
-//   locales,
-//   defaultLocale: "ro",
-//   localeDetection: false
-// });
-
-// const authMiddleware = withAuth(
-
-//   ()
-// )
-
-// export const locales = ["ro", "en", "de"];
-
-// const intlMiddleware = createMiddleWare({
-//   locales: locales,
-//   defaultLocale: "ro",
-//   localeDetection: false,
-// });
-
-// const authMiddleware = withAuth(
-//   function onSuccess(req) {
-//     return intlMiddleware(req);
-//   },
-//   {
-//     callbacks: {
-//       authorized: ({ token }) => token != null,
-//     },
-//   }
-// );
-
-// export default createMiddleWare({
-//   locales: ["ro", "en", "de"],
-//   defaultLocale: "ro",
-//   localeDetection: false,
-//   // domains: [
-//   //     {
-//   //         domain: 'renadyleurope.com',
-//   //         defaultLocale: 'en',
-//   //     },
-//   //     {
-//   //         domain: 'renadyl.ro',
-//   //         defaultLocale: 'ro',
-//   //     }
-//   // ]
-// });
-
-// export const config = {
-//   matcher: ["/((?!api|_next|.*\\..*).*)"],
-// };
-
 import { getToken } from "next-auth/jwt";
 import { withAuth } from "next-auth/middleware";
 import createIntlMiddleware from "next-intl/middleware";
@@ -168,10 +109,13 @@ export default async function middleware(req) {
     lng: req.geo.longitude,
   });
 
+  console.lop("Cookie", req.cookies.get("NEXT_LOCALE"));
   if (!req.cookies.get("NEXT_LOCALE")) {
-    if (req.geo.country === "RO") {
+    if (req?.geo?.country === "RO") {
+      console.log("set locale cookie to RO");
       req.cookies.set("NEXT_LOCALE", "ro");
     } else {
+      console.log("set locale cookie to EN");
       req.cookies.set("NEXT_LOCALE", "en");
     }
   }
