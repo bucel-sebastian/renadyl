@@ -109,7 +109,7 @@ export default async function middleware(req) {
     lng: req.geo.longitude,
   });
 
-  console.lop("Cookie", req.cookies.get("NEXT_LOCALE"));
+  console.log("Cookie", req.cookies.get("NEXT_LOCALE"));
   if (!req.cookies.get("NEXT_LOCALE")) {
     if (req?.geo?.country === "RO") {
       console.log("set locale cookie to RO");
