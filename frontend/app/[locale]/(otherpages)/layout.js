@@ -40,7 +40,7 @@ export default function LocaleLayout({ children, params: { locale } }) {
             </NextIntlClientProvider>
             {children}
             <NextIntlClientProvider locale={locale} messages={messages}>
-              <Footer />
+              <Footer locale={locale} />
             </NextIntlClientProvider>
           </StoreProvider>
         </Suspense>

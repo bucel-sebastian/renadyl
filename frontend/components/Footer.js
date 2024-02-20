@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
@@ -17,8 +16,11 @@ import {
   FaYoutube,
   FaTwitter,
 } from "react-icons/fa";
+import Link from "next-intl/link";
 
-function Footer() {
+import { FaUserGear } from "react-icons/fa6";
+
+function Footer({ locale }) {
   const t = useTranslations("Footer");
 
   return (
@@ -152,12 +154,21 @@ function Footer() {
         <div className="w-1/4 max-lg:w-2/2 gap-5 flex flex-col items-start max-sm:w-full max-sm:text-center max-sm:flex max-sm:flex-col max-sm:items-center max-sm:pt-10">
           <Image src={renadylLogoWhite} alt="Renadyl" className="" />
 
-          <Image
-            src="/images/kibow-logo-white.png"
-            width={200}
-            height={0}
-            alt="Renadyl"
-          />
+          <div className="w-full flex flex-row justify-between items-center content-center">
+            <Image
+              src="/images/kibow-logo-white.png"
+              width={200}
+              height={0}
+              alt="Renadyl"
+            />
+            <Link
+              href="/admin"
+              locale={locale}
+              className="w-max h-max text-4xl"
+            >
+              <FaUserGear />
+            </Link>
+          </div>
         </div>
       </div>
       <div className="flex flex-row justify-center gap-5 max-sm:flex-col max-sm:items-center">
