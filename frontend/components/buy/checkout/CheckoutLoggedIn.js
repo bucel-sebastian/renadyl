@@ -48,6 +48,29 @@ function CheckoutLoggedIn({ locale }) {
     vatTotal: 0,
   });
 
+  const invalidCharacters = [
+    "!",
+    "#",
+    "%",
+    "^",
+    "&",
+    "*",
+    "(",
+    ")",
+    "+",
+    "/",
+    "?",
+    "<",
+    ">",
+    "[",
+    "]",
+    "{",
+    "}",
+    "|",
+    "`",
+    "~",
+  ];
+
   const [savedShippingDatas, setSavedShippingDatas] = useState([]);
   const [newShippingData, setNewShippingData] = useState(false);
   const [savedShippingDatasFetched, setSavedShippingDatasFetched] =
@@ -61,7 +84,15 @@ function CheckoutLoggedIn({ locale }) {
 
   const handleChangeCheckoutData = (e) => {
     const { name, value } = e.target;
-    dispatch(updateCheckoutData({ name: name, value: value }));
+
+    const regex = new RegExp(`[${invalidCharacters.join("\\")}]`);
+    if (value === "") {
+      dispatch(updateCheckoutData({ name: name, value: value }));
+    } else {
+      if (!regex.test(value)) {
+        dispatch(updateCheckoutData({ name: name, value: value }));
+      }
+    }
   };
 
   const handlePhoneChange = (value, data, event, formattedValue) => {

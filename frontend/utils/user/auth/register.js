@@ -84,14 +84,15 @@ export const handleRegister = async (formData) => {
   registerData.id = await generateUniqID();
   registerData.activation_code = generateActivationCode();
 
+  let insertRes;
   try {
-    const insertRes = await database.insert("renadyl_users", registerData);
+    insertRes = await database.insert("renadyl_users", registerData);
   } catch (error) {
     console.error("Eroare: ", error);
     return { status: "fail", error: "error-3" };
   } finally {
     await database.pool.end();
-    return { status: "ok", clientId: registerData.id };
+    return { status: "ok", clientId: registerData.id, insert: insertRes[0] };
   }
 };
 
@@ -125,8 +126,9 @@ export const handleDoctorRegister = async (formData) => {
   const doctorDetails = new Object();
   doctorDetails.doctor_id = registerData.id;
 
+  let insertRes;
   try {
-    const insertRes = await database.insert("renadyl_users", registerData);
+    insertRes = await database.insert("renadyl_users", registerData);
     const insertDetailsRes = await database.insert(
       "renadyl_doctor_details",
       doctorDetails
@@ -136,7 +138,7 @@ export const handleDoctorRegister = async (formData) => {
     return { status: "fail", error: "error-3" };
   } finally {
     await database.pool.end();
-    return { status: "ok", clientId: registerData.id };
+    return { status: "ok", clientId: registerData.id, insert: insertRes[0] };
   }
 };
 

@@ -21,7 +21,6 @@ const adminAuthMiddleware = withAuth(
   {
     callbacks: {
       authorized: ({ req, token }) => {
-        // console.log("Callback req- ", req);
         if (
           token?.role === "admin" &&
           !req.nextUrl.pathname.startsWith("/admin/dashboard")
@@ -109,16 +108,23 @@ export default async function middleware(req) {
     lng: req.geo.longitude,
   });
 
+  let locale = req?.cookies?.get("NEXT_LOCALE");
   console.log("Cookie", req.cookies.get("NEXT_LOCALE"));
-  if (!req.cookies.get("NEXT_LOCALE")) {
-    if (req?.geo?.country === "RO") {
-      console.log("set locale cookie to RO");
-      req.cookies.set("NEXT_LOCALE", "ro");
-    } else {
-      console.log("set locale cookie to EN");
-      req.cookies.set("NEXT_LOCALE", "en");
-    }
-  }
+  // if (!req.cookies.get("NEXT_LOCALE")) {
+  //   if (req?.geo?.country === "RO") {
+  //     locale = "ro";
+  //     console.log("set locale cookie to RO");
+  //     req.cookies.set("NEXT_LOCALE", "ro");
+  //   } else {
+  //     console.log(req.url.includes("/en"));
+  //     if (!req.url.includes("/en")) {
+  //       locale = "en";
+  //       console.log("set locale cookie to EN");
+  //       req.cookies.set("NEXT_LOCALE", "en");
+  //       return NextResponse.redirect(new URL("/en", req.url));
+  //     }
+  //   }
+  // }
 
   const isAdmin = req.nextUrl.pathname.startsWith("/admin/dashboard");
 
@@ -134,7 +140,7 @@ export default async function middleware(req) {
       return await clientAuthMiddleware(req);
     }
   } else {
-    return intlMiddleware(req);
+    return intlMiddleware(req, { locale });
   }
 }
 

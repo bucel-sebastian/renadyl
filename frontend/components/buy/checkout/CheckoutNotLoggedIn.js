@@ -53,6 +53,29 @@ function CheckoutNotLoggedIn({ locale }) {
     vatTotal: 0,
   });
 
+  const invalidCharacters = [
+    "!",
+    "#",
+    "%",
+    "^",
+    "&",
+    "*",
+    "(",
+    ")",
+    "+",
+    "/",
+    "?",
+    "<",
+    ">",
+    "[",
+    "]",
+    "{",
+    "}",
+    "|",
+    "`",
+    "~",
+  ];
+
   const dispatch = useDispatch();
 
   const [isClient, setIsClient] = useState(true);
@@ -134,7 +157,15 @@ function CheckoutNotLoggedIn({ locale }) {
 
   const handleChangeCheckoutData = (e) => {
     const { name, value } = e.target;
-    dispatch(updateCheckoutData({ name: name, value: value }));
+
+    const regex = new RegExp(`[${invalidCharacters.join("\\")}]`);
+    if (value === "") {
+      dispatch(updateCheckoutData({ name: name, value: value }));
+    } else {
+      if (!regex.test(value)) {
+        dispatch(updateCheckoutData({ name: name, value: value }));
+      }
+    }
   };
 
   const handlePhoneChange = (value, data, event, formattedValue) => {
