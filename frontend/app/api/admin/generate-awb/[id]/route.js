@@ -18,7 +18,7 @@ export async function GET(req, { params }) {
   const shippingAwb = orderData.shipping_awb;
 
   let awbResponse = null;
-  let orderUpdateResponse = null;
+  let orderUpdateResponse;
   if (shippingDetails.provider === "Sameday") {
     awbResponse = await generateSamedayAwb({
       orderData: orderData,
@@ -60,6 +60,8 @@ export async function GET(req, { params }) {
     //   currency: currency,
     //   shippingAwb: shippingAwb,
     // });
+  } else {
+    orderUpdateResponse = null;
   }
 
   if (orderUpdateResponse !== null) {
