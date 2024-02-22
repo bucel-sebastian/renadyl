@@ -18,6 +18,7 @@ export async function GET(req, { params }) {
   const shippingAwb = orderData.shipping_awb;
 
   let awbResponse = null;
+  let orderUpdateResponse = null;
   if (shippingDetails.provider === "Sameday") {
     awbResponse = await generateSamedayAwb({
       orderData: orderData,
@@ -28,6 +29,17 @@ export async function GET(req, { params }) {
       currency: currency,
       shippingAwb: shippingAwb,
     });
+
+    if (awbResponse !== null) {
+      const databaseResponse = await database.update("renady_orders", {
+        shipping_awb: {
+          awbNumber: awbResponse.awbNumber,
+          cost: awbResponse.awbCost,
+          pdfLink: awbResponse.pdfLink,
+        },
+      });
+      orderUpdateResponse = databaseResponse[0];
+    }
   } else if (shippingDetails.provider === "UPS") {
     //    awbResponse = await ({
     //   orderData: orderData,
@@ -50,7 +62,7 @@ export async function GET(req, { params }) {
     // });
   }
 
-  if (awbResponse !== null) {
+  if (orderUpdateResponse !== null) {
     return NextResponse.json({
       status: 200,
       body: shippingDetails,
