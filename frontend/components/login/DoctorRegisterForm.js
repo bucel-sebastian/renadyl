@@ -10,7 +10,7 @@ import facebookLogo from "@/public/images/facebook_logo.svg";
 import googleLogo from "@/public/images/google_logo.svg";
 import Image from "next/image";
 
-function DoctorRegisterForm() {
+function DoctorRegisterForm({ locale }) {
   const t = useTranslations("Register");
 
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -30,6 +30,7 @@ function DoctorRegisterForm() {
       formDataJson[entry[0]] = entry[1];
     }
 
+    formDataJson["lang"] = locale;
     console.log(formDataJson);
     if (formDataJson["password"] === formDataJson["re_password"]) {
       const response = await fetch("/api/auth/doctor-register", {

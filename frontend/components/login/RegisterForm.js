@@ -36,6 +36,7 @@ function RegisterForm({ locale }) {
     for (let entry of formData) {
       formDataJson[entry[0]] = entry[1];
     }
+    formDataJson["lang"] = locale;
 
     console.log(formDataJson);
     if (formDataJson["password"] === formDataJson["re_password"]) {

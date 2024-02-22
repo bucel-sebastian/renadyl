@@ -276,6 +276,7 @@
         "is-new-client": "Sunt client nou",
         "promo-account": "Utilizatorii autentificati beneficiază de transport gratuit",
         "locker-not-selected-error": "Vă rugăm să selectați un punct de livrare",
+        "shipping-data-error": "Datele de livrare nu sunt valide",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",
@@ -598,6 +599,13 @@
             "tc-label": "",
             "tc-link": ""
         }
+    },
+    "Account-confirmation": {
+        "page-title": "Confirmare cont",
+        "heading": "Confirmare cont",
+        "account-activated": "Contul dvs. a fost activat cu succes",
+        "invalid-code": "Codul de activare este invalid",
+        "login-btn": "Autentificare"
     },
     "Forgot-pass": {
         "page-title": "Indisponibil",
