@@ -28,15 +28,18 @@ export async function GET(req, { params }) {
       shippingAwb: shippingAwb,
     });
 
-    console.log("Updating database with AWB details:", awbResponse);
     if (awbResponse !== null) {
-      const databaseResponse = await database.update("renady_orders", {
-        shipping_awb: JSON.stringify({
-          awbNumber: awbResponse.awbNumber,
-          cost: awbResponse.awbCost,
-          pdfLink: awbResponse.pdfLink,
-        }),
-      });
+      const databaseResponse = await database.update(
+        "renady_orders",
+        {
+          shipping_awb: {
+            awbNumber: awbResponse.awbNumber,
+            cost: awbResponse.awbCost,
+            pdfLink: awbResponse.pdfLink,
+          },
+        },
+        { id: id }
+      );
       return NextResponse.json({
         status: 200,
         body: databaseResponse[0],
