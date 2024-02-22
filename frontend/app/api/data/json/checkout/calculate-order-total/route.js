@@ -1,3 +1,4 @@
+import { estimateDhlCost } from "@/utils/dhl/estimateDhlCost";
 import { checkPromocode } from "@/utils/frontpages/checkPromocode";
 import { getProductData } from "@/utils/frontpages/getProductData";
 import { estimateSamedayCost } from "@/utils/sameday/estimateSamedayCost";
@@ -7,6 +8,8 @@ import { NextResponse } from "next/server";
 export async function POST(req, { params }) {
   const { cart, checkoutData } = await req.json();
   const countryCode = checkoutData.countryCode;
+
+  let checkoutIsValid = true;
 
   console.log("cart", cart);
   console.log("checkout", checkoutData);
@@ -84,9 +87,42 @@ export async function POST(req, { params }) {
 
         shippingTotal = shippingData.amount;
       } else {
-        const shippingData = await authUps();
-
-        console.log("UPS - ", shippingData);
+        if (checkoutData.shipping.provider === "DHL") {
+          const shippingData = await estimateDhlCost({
+            countryKey: checkoutData.shipping.countryKey,
+            postalCode: checkoutData.shipping.postalCode,
+            city: checkoutData.shipping.city,
+          });
+          if (shippingData !== null) {
+            if (countryCode === "RO") {
+              for (let i = 0; i < shippingData?.length; i++) {
+                if (
+                  shippingData[i]?.currencyType === "BASEC" ||
+                  shippingData[i]?.currencyType === "BILLC"
+                ) {
+                  if (shippingData[i]?.priceCurrency === "RON") {
+                    shippingTotal = shippingData[i].price;
+                  }
+                }
+              }
+            } else {
+              for (let i = 0; i < shippingData?.length; i++) {
+                if (
+                  shippingData[i]?.currencyType === "BASEC" ||
+                  shippingData[i]?.currencyType === "BILLC"
+                ) {
+                  if (shippingData[i]?.priceCurrency === "EUR") {
+                    shippingTotal = shippingData[i]?.price;
+                  }
+                }
+              }
+            }
+          } else {
+            checkoutIsValid = false;
+          }
+        } else if (checkoutData.shipping.provider === "UPS") {
+        }
+        // const shippingData = await authUps();
       }
     }
   }
@@ -120,5 +156,6 @@ export async function POST(req, { params }) {
       promoTotal: promoTotal,
       orderTotal: orderTotal,
     },
+    checkoutIsValid: checkoutIsValid
   });
 }
