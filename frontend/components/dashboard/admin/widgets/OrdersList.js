@@ -825,7 +825,11 @@ function OrdersList() {
                         color: "var(--foreground-primary)",
                       }}
                     >
-                      {row.shipping_awb}
+                      {row.shipping_awb !== null ? (
+                        <>{row.shipping_awb.awbNumber}</>
+                      ) : (
+                        <>-</>
+                      )}
                     </TableCell>
                     <TableCell
                       align="right"
