@@ -18,7 +18,6 @@ export async function GET(req, { params }) {
   const shippingAwb = orderData.shipping_awb;
 
   let awbResponse = null;
-  let orderUpdateResponse;
   if (shippingDetails.provider === "Sameday") {
     awbResponse = await generateSamedayAwb({
       orderData: orderData,
@@ -38,7 +37,10 @@ export async function GET(req, { params }) {
           pdfLink: awbResponse.pdfLink,
         },
       });
-      orderUpdateResponse = databaseResponse[0];
+      return NextResponse.json({
+        status: 200,
+        body: databaseResponse[0],
+      });
     }
   } else if (shippingDetails.provider === "UPS") {
     //    awbResponse = await ({
@@ -50,6 +52,10 @@ export async function GET(req, { params }) {
     //   currency: currency,
     //   shippingAwb: shippingAwb,
     // });
+    return NextResponse.json({
+      status: 200,
+      body: null,
+    });
   } else if (shippingDetails.provider === "DHL") {
     //    awbResponse = await ({
     //   orderData: orderData,
@@ -60,14 +66,9 @@ export async function GET(req, { params }) {
     //   currency: currency,
     //   shippingAwb: shippingAwb,
     // });
-  } else {
-    orderUpdateResponse = null;
-  }
-
-  if (orderUpdateResponse !== null) {
     return NextResponse.json({
       status: 200,
-      body: shippingDetails,
+      body: null,
     });
   }
 
