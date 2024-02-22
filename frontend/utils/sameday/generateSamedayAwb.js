@@ -67,7 +67,7 @@ const generateSamedayAwb = async (data) => {
   requestData.append("pickupPoint", process.env.SAMEDAY_API_PICKUP_POINT_ID);
   requestData.append("packageType", 0);
   requestData.append("packageWeight", 1);
-  requestData.append("service", shippingDetails.type === "courier" ? 7 : 16);
+  requestData.append("service", shippingDetails.type === "courier" ? 7 : 15);
   if (shippingDetails.type === "easybox") {
     requestData.append("lockerLastMile", shippingDetails.locker.lockerId);
   }
@@ -242,125 +242,117 @@ export default generateSamedayAwb;
 //   ]
 // }
 
-// AWB response -  {
-//   "code": 400,
-//   "message": "Validation Failed",
-//   "errors": {
-//     "children": {
-//       "pickupPoint": {},
-//       "returnLocationId": {},
-//       "contactPerson": {},
-//       "packageType": {},
-//       "packageNumber": {},
-//       "packageWeight": {},
-//       "service": {
-//         "errors": [
-//           "awb.sameday_service.metropolitan_area_mismatch"
-//         ]
-//       },
-//       "awbPayment": {},
-//       "cashOnDelivery": {},
-//       "cashOnDeliveryReturns": {},
-//       "insuredValue": {},
-//       "thirdPartyPickup": {},
-//       "thirdParty": {
-//         "children": {
-//           "name": {},
-//           "phoneNumber": {},
-//           "personType": {},
-//           "companyName": {},
-//           "companyCui": {},
-//           "companyOnrcNumber": {},
-//           "companyIban": {},
-//           "companyBank": {},
-//           "postalCode": {},
-//           "address": {},
-//           "county": {},
-//           "city": {},
-//           "contactEmail": {},
-//           "wantsInvoice": {},
-//           "service": {},
-//           "countyString": {},
-//           "cityString": {}
-//         }
-//       },
-//       "serviceTaxes": {},
-//       "deliveryInterval": {},
-//       "awbRecipient": {
-//         "children": {
-//           "name": {},
-//           "phoneNumber": {},
-//           "personType": {},
-//           "companyName": {},
-//           "companyCui": {},
-//           "companyOnrcNumber": {},
-//           "companyIban": {},
-//           "companyBank": {},
-//           "postalCode": {},
-//           "address": {},
-//           "county": {
-//             "errors": [
-//               "This value is not valid."
-//             ]
-//           },
-//           "city": {
-//             "errors": [
-//               "This value is not valid."
-//             ]
-//           },
-//           "email": {},
-//           "service": {},
-//           "countyString": {},
-//           "cityString": {}
-//         }
-//       },
-//       "clientInternalReference": {},
-//       "parcels": {
-//         "children": [
-//           {
-//             "children": {
-//               "weight": {},
-//               "width": {},
-//               "length": {},
-//               "height": {},
-//               "awbParcelNumber": {},
-//               "damageCheck": {},
-//               "forceOversized": {},
-//               "returnLocationId": {},
-//               "boxNumber": {},
-//               "isLast": {},
-//               "parcelSource": {}
-//             }
-//           }
-//         ]
-//       },
-//       "observation": {},
-//       "priceObservation": {},
-//       "currency": {},
-//       "lockerRedirectEligible": {},
-//       "lockerFirstMile": {},
-//       "lockerLastMile": {},
-//       "clientId": {},
-//       "orderNumber": {},
-//       "clientObservation": {},
-//       "awbNumber": {},
-//       "lockerId": {},
-//       "fulfillmentType": {},
-//       "bfOrder": {},
-//       "geniusOrder": {},
-//       "orderDate": {},
-//       "lateCutoff": {},
-//       "pickupStartDate": {},
-//       "pickupEndDate": {},
-//       "returnAwbs": {},
-//       "optionalPickupReturns": {},
-//       "forwardedTC": {
-//         "children": {
-//           "ip": {},
-//           "date": {}
-//         }
-//       },
-//       "standbyReturn": {}
-//     }
-//   }
-// }
+AWB response -  {
+  "code": 400,
+  "message": "Validation Failed",
+  "errors": {
+    "children": {
+      "pickupPoint": {},
+      "returnLocationId": {},
+      "contactPerson": {},
+      "packageType": {},
+      "packageNumber": {},
+      "packageWeight": {},
+      "service": {
+        "errors": [
+          "awb.sameday_service.metropolitan_area_mismatch"
+        ]
+      },
+      "awbPayment": {},
+      "cashOnDelivery": {},
+      "cashOnDeliveryReturns": {},
+      "insuredValue": {},
+      "thirdPartyPickup": {},
+      "thirdParty": {
+        "children": {
+          "name": {},
+          "phoneNumber": {},
+          "personType": {},
+          "companyName": {},
+          "companyCui": {},
+          "companyOnrcNumber": {},
+          "companyIban": {},
+          "companyBank": {},
+          "postalCode": {},
+          "address": {},
+          "county": {},
+          "city": {},
+          "contactEmail": {},
+          "wantsInvoice": {},
+          "service": {},
+          "countyString": {},
+          "cityString": {}
+        }
+      },
+      "serviceTaxes": {},
+      "deliveryInterval": {},
+      "awbRecipient": {
+        "children": {
+          "name": {},
+          "phoneNumber": {},
+          "personType": {},
+          "companyName": {},
+          "companyCui": {},
+          "companyOnrcNumber": {},
+          "companyIban": {},
+          "companyBank": {},
+          "postalCode": {},
+          "address": {},
+          "county": {},
+          "city": {},
+          "email": {},
+          "service": {},
+          "countyString": {},
+          "cityString": {}
+        }
+      },
+      "clientInternalReference": {},
+      "parcels": {
+        "children": [
+          {
+            "children": {
+              "weight": {},
+              "width": {},
+              "length": {},
+              "height": {},
+              "awbParcelNumber": {},
+              "damageCheck": {},
+              "forceOversized": {},
+              "returnLocationId": {},
+              "boxNumber": {},
+              "isLast": {},
+              "parcelSource": {}
+            }
+          }
+        ]
+      },
+      "observation": {},
+      "priceObservation": {},
+      "currency": {},
+      "lockerRedirectEligible": {},
+      "lockerFirstMile": {},
+      "lockerLastMile": {},
+      "clientId": {},
+      "orderNumber": {},
+      "clientObservation": {},
+      "awbNumber": {},
+      "lockerId": {},
+      "fulfillmentType": {},
+      "bfOrder": {},
+      "geniusOrder": {},
+      "orderDate": {},
+      "lateCutoff": {},
+      "pickupStartDate": {},
+      "pickupEndDate": {},
+      "returnAwbs": {},
+      "optionalPickupReturns": {},
+      "forwardedTC": {
+        "children": {
+          "ip": {},
+          "date": {}
+        }
+      },
+      "standbyReturn": {}
+    }
+  }
+}
