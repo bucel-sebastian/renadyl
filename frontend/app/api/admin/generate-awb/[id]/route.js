@@ -31,11 +31,11 @@ export async function GET(req, { params }) {
     console.log("Updating database with AWB details:", awbResponse);
     if (awbResponse !== null) {
       const databaseResponse = await database.update("renady_orders", {
-        shipping_awb: {
+        shipping_awb: JSON.stringify({
           awbNumber: awbResponse.awbNumber,
           cost: awbResponse.awbCost,
           pdfLink: awbResponse.pdfLink,
-        },
+        }),
       });
       return NextResponse.json({
         status: 200,
