@@ -79,6 +79,10 @@ export const sendOrderToDatabase = async (formData) => {
   values["country_code"] = formData.checkoutData.countryCode;
   values["payment"] = formData.checkoutData.payment;
 
+  console.log("order data - ", formData);
+
+  return;
+
   if (formData.checkoutData.shipping.savedData === null) {
     values["shipping_details"] = {
       address: formData.checkoutData.shipping.address,
