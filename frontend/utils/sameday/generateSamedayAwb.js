@@ -122,6 +122,8 @@ const generateSamedayAwb = async (data) => {
     body: requestData,
   };
 
+  console.log("Request data - ", requestData);
+
   const response = await fetch(
     process.env.NEXT_PUBLIC_SAMEDAY_API_GENERATE_AWB_URL,
     options
