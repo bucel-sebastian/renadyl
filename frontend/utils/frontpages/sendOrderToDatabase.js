@@ -149,6 +149,7 @@ export const sendOrderToDatabase = async (formData) => {
       state: savedShippingData.state,
       stateKey: savedShippingData.state_key,
       type: formData.checkoutData.shipping.type,
+      locker: formData.checkoutData.shipping.locker,
       provider: formData.checkoutData.shipping.provider,
     };
   }
@@ -386,9 +387,6 @@ const obj = {
     {
       productName: "renal_single",
       quantity: 1,
-      price: 460,
-      lotNumber: "",
-      expDate: "",
     },
   ],
   checkoutData: {
@@ -414,7 +412,17 @@ const obj = {
       save: false,
       savedData: null,
       type: "easybox",
-      locker: [Object],
+      locker: {
+        lockerId: 5099,
+        name: "easybox Kaufland Ion Roata",
+        address: "Str. Ion Roata, Nr. 3A",
+        cityId: 9384,
+        city: "Constanta",
+        countyId: 15,
+        county: "Constanta",
+        supportedPayment: 1,
+        postalCode: "900178",
+      },
       wantsAccount: false,
       provider: "Sameday",
     },
