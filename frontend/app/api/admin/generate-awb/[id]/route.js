@@ -17,9 +17,8 @@ export async function GET(req, { params }) {
   const currency = orderData.currency;
   const shippingAwb = orderData.shipping_awb;
 
-  let awbResponse = null;
   if (shippingDetails.provider === "Sameday") {
-    awbResponse = await generateSamedayAwb({
+    const awbResponse = await generateSamedayAwb({
       orderData: orderData,
       billingDetails: billingDetails,
       shippingDetails: shippingDetails,
@@ -29,6 +28,7 @@ export async function GET(req, { params }) {
       shippingAwb: shippingAwb,
     });
 
+    console.log("Updating database with AWB details:", awbResponse);
     if (awbResponse !== null) {
       const databaseResponse = await database.update("renady_orders", {
         shipping_awb: {
