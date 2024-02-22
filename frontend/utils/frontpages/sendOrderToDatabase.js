@@ -34,7 +34,7 @@ export const sendOrderToDatabase = async (formData) => {
   const database = new Database();
   const values = new Object();
 
-  console.log(formData);
+  console.log(jJSON.stringify(formData, null, 2));
 
   values["date"] = new Date().toISOString();
 
@@ -81,8 +81,6 @@ export const sendOrderToDatabase = async (formData) => {
 
   console.log("order data - ", formData);
 
-  return;
-
   if (formData.checkoutData.shipping.savedData === null) {
     values["shipping_details"] = {
       address: formData.checkoutData.shipping.address,
@@ -98,6 +96,7 @@ export const sendOrderToDatabase = async (formData) => {
       state: formData.checkoutData.shipping.state,
       stateKey: formData.checkoutData.shipping.stateKey,
       type: formData.checkoutData.shipping.type,
+      locker: formData.checkoutData.shipping.locker,
       provider: formData.checkoutData.shipping.provider,
     };
 
@@ -383,47 +382,61 @@ export const sendOrderToDatabase = async (formData) => {
 };
 
 const obj = {
-  cart: [{ productName: "renal_single", quantity: 1 }],
+  cart: [
+    {
+      productName: "renal_single",
+      quantity: 1,
+      price: 460,
+      lotNumber: "",
+      expDate: "",
+    },
+  ],
   checkoutData: {
     currency: "RON",
     countryCode: "RO",
     promocode: null,
     isLoggedIn: false,
     shipping: {
-      address: "str nr.",
-      city: "Constanţa",
-      cityKey: "93595",
+      address: "",
+      city: "",
+      cityKey: "",
       country: "Romania",
       countryKey: "RO",
       email: "bucel.ionsebastian@gmail.com",
       fname: "Ion-Sebastian",
-      lname: "Ion-Sebastian",
+      lname: "Bucel",
       password: "",
       phone: "+40 774 689 080",
       postalCode: "900294",
       rePassword: "",
-      state: "Constanța ",
-      stateKey: "CT",
-      type: "courier",
+      state: "",
+      stateKey: "",
+      save: false,
+      savedData: null,
+      type: "easybox",
+      locker: [Object],
+      wantsAccount: false,
       provider: "Sameday",
     },
     billing: {
-      asShipping: false,
-      address: "asdfasdf asdfadsf",
-      city: "Bucharest",
-      cityKey: "90347",
-      country: "Romania",
-      countryKey: "RO",
-      email: "bucel.ionsebastian@gmail.com",
-      entity: "pj",
-      fname: "Ion-Sebastian",
-      lname: "Bucel",
-      phone: "+40 774 689 080",
-      postalCode: "900294",
-      state: "Bucharest",
-      stateKey: "B",
-      companyCif: "48945873",
-      companyName: "sdfgsdfg",
+      asShipping: true,
+      address: "",
+      city: "",
+      cityKey: "",
+      country: "",
+      countryKey: "",
+      email: "",
+      entity: "",
+      fname: "",
+      lname: "",
+      phone: "",
+      save: false,
+      savedData: null,
+      postalCode: "",
+      state: "",
+      stateKey: "",
+      companyName: "",
+      companyCif: "",
     },
     doctor: "DR TESTESCU",
     payment: "card",
@@ -434,8 +447,10 @@ const obj = {
     productsSaleTotal: 130,
     vatProcent: 9,
     vatTotal: 41.4,
-    shippingTotal: 17,
+    shippingTotal: 12,
     promoTotal: 0,
-    orderTotal: 477,
+    orderTotal: 472,
   },
+  userData: null,
+  locale: "ro",
 };
