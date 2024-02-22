@@ -17,10 +17,11 @@ const getSamedayCounty = async (state, apiToken) => {
   if (response.ok) {
     const body = await response.json();
     console.log("county - ", body);
+
+    return body.data[0].id;
   } else {
     console.log("country error - ", await response.json());
   }
-  return;
 };
 
 const getSamedayCity = async (city, apiToken) => {
@@ -37,7 +38,9 @@ const getSamedayCity = async (city, apiToken) => {
   console.log(response);
   if (response.ok) {
     const body = await response.json();
+
     console.log("city - ", body);
+    return body.data[0].id;
   }
   return;
 };
@@ -177,3 +180,33 @@ export default generateSamedayAwb;
 //   deliveryLogisticLocationId: 27,
 //   pickupLogisticLocationId: 1,
 // };
+
+// Request data -  FormData {
+//   [Symbol(state)]: [
+//     { name: 'pickupPoint', value: '264543' },
+//     { name: 'packageType', value: '0' },
+//     { name: 'packageWeight', value: '1' },
+//     { name: 'service', value: '7' },
+//     { name: 'awbPayment', value: '1' },
+//     { name: 'cashOnDelivery', value: '0' },
+//     { name: 'insuredValue', value: '0' },
+//     { name: 'thirdPartyPickup', value: '0' },
+//     { name: 'geniusOrder', value: '0' },
+//     { name: 'awbRecipient[name]', value: 'Bucel Ion-Sebastian' },
+//     { name: 'awbRecipient[phoneNumber]', value: '+40 774 689 080' },
+//     { name: 'awbRecipient[personType]', value: '0' },
+//     { name: 'awbRecipient[postalCode]', value: '900294' },
+//     {
+//       name: 'awbRecipient[address]',
+//       value: 'Adresa cu strada si numar in alta parte'
+//     },
+//     { name: 'awbRecipient[county]', value: 'undefined' },
+//     { name: 'awbRecipient[city]', value: 'undefined' },
+//     {
+//       name: 'awbRecipient[email]',
+//       value: 'bucel.ionsebastian@gmail.com'
+//     },
+//     { name: 'parcels[0][weight]', value: '1' },
+//     { name: 'parcels[0][isLast]', value: '1' }
+//   ]
+// }
