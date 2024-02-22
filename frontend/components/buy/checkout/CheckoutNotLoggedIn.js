@@ -217,7 +217,6 @@ function CheckoutNotLoggedIn({ locale }) {
   };
 
   const calculateCartSummary = async () => {
-    console.log("se calc totalu");
     const requestBody = {
       cart: cart,
       checkoutData: checkoutData,
