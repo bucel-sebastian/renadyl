@@ -104,13 +104,13 @@ const generateSamedayAwb = async (data) => {
     "awbRecipient[county]",
     shippingDetails.type === "courier"
       ? await getSamedayCounty(shippingDetails.state, apiToken)
-      : shippingDetails.locker
+      : shippingDetails.locker.countyId
   );
   requestData.append(
     "awbRecipient[city]",
     shippingDetails.type === "courier"
       ? await getSamedayCity(shippingDetails.city, apiToken)
-      : shippingDetails.locker
+      : shippingDetails.locker.cityId
   );
   requestData.append("awbRecipient[email]", `${shippingDetails.email}`);
   requestData.append("parcels[0][weight]", 1);
@@ -240,4 +240,127 @@ export default generateSamedayAwb;
 //     { name: 'parcels[0][weight]', value: '1' },
 //     { name: 'parcels[0][isLast]', value: '1' }
 //   ]
+// }
+
+// AWB response -  {
+//   "code": 400,
+//   "message": "Validation Failed",
+//   "errors": {
+//     "children": {
+//       "pickupPoint": {},
+//       "returnLocationId": {},
+//       "contactPerson": {},
+//       "packageType": {},
+//       "packageNumber": {},
+//       "packageWeight": {},
+//       "service": {
+//         "errors": [
+//           "awb.sameday_service.metropolitan_area_mismatch"
+//         ]
+//       },
+//       "awbPayment": {},
+//       "cashOnDelivery": {},
+//       "cashOnDeliveryReturns": {},
+//       "insuredValue": {},
+//       "thirdPartyPickup": {},
+//       "thirdParty": {
+//         "children": {
+//           "name": {},
+//           "phoneNumber": {},
+//           "personType": {},
+//           "companyName": {},
+//           "companyCui": {},
+//           "companyOnrcNumber": {},
+//           "companyIban": {},
+//           "companyBank": {},
+//           "postalCode": {},
+//           "address": {},
+//           "county": {},
+//           "city": {},
+//           "contactEmail": {},
+//           "wantsInvoice": {},
+//           "service": {},
+//           "countyString": {},
+//           "cityString": {}
+//         }
+//       },
+//       "serviceTaxes": {},
+//       "deliveryInterval": {},
+//       "awbRecipient": {
+//         "children": {
+//           "name": {},
+//           "phoneNumber": {},
+//           "personType": {},
+//           "companyName": {},
+//           "companyCui": {},
+//           "companyOnrcNumber": {},
+//           "companyIban": {},
+//           "companyBank": {},
+//           "postalCode": {},
+//           "address": {},
+//           "county": {
+//             "errors": [
+//               "This value is not valid."
+//             ]
+//           },
+//           "city": {
+//             "errors": [
+//               "This value is not valid."
+//             ]
+//           },
+//           "email": {},
+//           "service": {},
+//           "countyString": {},
+//           "cityString": {}
+//         }
+//       },
+//       "clientInternalReference": {},
+//       "parcels": {
+//         "children": [
+//           {
+//             "children": {
+//               "weight": {},
+//               "width": {},
+//               "length": {},
+//               "height": {},
+//               "awbParcelNumber": {},
+//               "damageCheck": {},
+//               "forceOversized": {},
+//               "returnLocationId": {},
+//               "boxNumber": {},
+//               "isLast": {},
+//               "parcelSource": {}
+//             }
+//           }
+//         ]
+//       },
+//       "observation": {},
+//       "priceObservation": {},
+//       "currency": {},
+//       "lockerRedirectEligible": {},
+//       "lockerFirstMile": {},
+//       "lockerLastMile": {},
+//       "clientId": {},
+//       "orderNumber": {},
+//       "clientObservation": {},
+//       "awbNumber": {},
+//       "lockerId": {},
+//       "fulfillmentType": {},
+//       "bfOrder": {},
+//       "geniusOrder": {},
+//       "orderDate": {},
+//       "lateCutoff": {},
+//       "pickupStartDate": {},
+//       "pickupEndDate": {},
+//       "returnAwbs": {},
+//       "optionalPickupReturns": {},
+//       "forwardedTC": {
+//         "children": {
+//           "ip": {},
+//           "date": {}
+//         }
+//       },
+//       "standbyReturn": {}
+//     }
+//   }
 // }
