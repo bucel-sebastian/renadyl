@@ -83,6 +83,7 @@ function CheckoutNotLoggedIn({ locale }) {
   const [esxistsAccountWithEmail, setExistsAccountWithEmail] = useState(false);
 
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [shippingDataIsValid, setShippingDataIsValid] = useState(true);
 
   const handleSetIsClient = () => {
     setIsClient(true);
@@ -161,6 +162,8 @@ function CheckoutNotLoggedIn({ locale }) {
     const regex = new RegExp(`[${invalidCharacters.join("\\")}]`);
     if (value === "") {
       dispatch(updateCheckoutData({ name: name, value: value }));
+    } else if (name.includes("phone")) {
+      dispatch(updateCheckoutData({ name: name, value: value }));
     } else {
       if (!regex.test(value)) {
         dispatch(updateCheckoutData({ name: name, value: value }));
@@ -227,6 +230,22 @@ function CheckoutNotLoggedIn({ locale }) {
     );
     const data = await response.json();
 
+    if (data.checkoutIsValid === false) {
+      if (shippingDataIsValid !== false) {
+        toast.error(t("shipping-data-error"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    }
+
+    setShippingDataIsValid(data.checkoutIsValid);
     // console.log("summary data - ", data.body);
     setSummaryData(data.body);
   };
@@ -511,7 +530,7 @@ function CheckoutNotLoggedIn({ locale }) {
     checkoutData?.shipping?.type,
   ]);
   useEffect(() => {
-    // console.log(checkoutData);
+    console.log(checkoutData);
     calculateCartSummary();
   }, [checkoutData]);
 
@@ -798,6 +817,7 @@ function CheckoutNotLoggedIn({ locale }) {
                           required: true,
                           autoFocus: true,
                         }}
+                        autoFormat={true}
                         inputStyle={{
                           width: "100%",
                           padding: "0.25rem 0.25rem 0.25rem 48px",
@@ -1147,7 +1167,11 @@ function CheckoutNotLoggedIn({ locale }) {
                                 name="shipping.postalCode"
                                 onChange={handleChangeCheckoutData}
                                 value={checkoutData?.shipping?.postalCode}
-                                className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
+                                className={`bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] ${
+                                  shippingDataIsValid === true
+                                    ? "border-foregroundPrimary40 focus:border-foregroundPrimary"
+                                    : "border-dashboardRed"
+                                }  py-1 px-1 `}
                                 required
                               />
                             </div>
@@ -1222,7 +1246,11 @@ function CheckoutNotLoggedIn({ locale }) {
                             name="shipping.postalCode"
                             onChange={handleChangeCheckoutData}
                             value={checkoutData?.shipping?.postalCode}
-                            className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
+                            className={`bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] ${
+                              shippingDataIsValid === true
+                                ? "border-foregroundPrimary40 focus:border-foregroundPrimary"
+                                : "border-dashboardRed"
+                            }  py-1 px-1 `}
                             required
                           />
                         </div>
@@ -1419,6 +1447,7 @@ function CheckoutNotLoggedIn({ locale }) {
                                   required: true,
                                   autoFocus: true,
                                 }}
+                                autoFormat={true}
                                 inputStyle={{
                                   width: "100%",
                                   padding: "0.25rem 0.25rem 0.25rem 48px",
@@ -1596,6 +1625,7 @@ function CheckoutNotLoggedIn({ locale }) {
                                   required: true,
                                   autoFocus: true,
                                 }}
+                                autoFormat={true}
                                 inputStyle={{
                                   width: "100%",
                                   padding: "0.25rem 0.25rem 0.25rem 48px",
@@ -1832,7 +1862,7 @@ function CheckoutNotLoggedIn({ locale }) {
                   disabled={
                     checkoutData?.shipping?.wantsAccount === true
                       ? !passwordsMatch
-                      : false
+                      : !shippingDataIsValid
                   }
                 >
                   {t("next-step-btn")}

@@ -80,6 +80,8 @@ function CheckoutLoggedIn({ locale }) {
   const [savedBillingDatasFetched, setSavedBillingDatasFetched] =
     useState(false);
 
+  const [shippingDataIsValid, setShippingDataIsValid] = useState(true);
+
   const dispatch = useDispatch();
 
   const handleChangeCheckoutData = (e) => {
@@ -87,6 +89,8 @@ function CheckoutLoggedIn({ locale }) {
 
     const regex = new RegExp(`[${invalidCharacters.join("\\")}]`);
     if (value === "") {
+      dispatch(updateCheckoutData({ name: name, value: value }));
+    } else if (name.includes("phone")) {
       dispatch(updateCheckoutData({ name: name, value: value }));
     } else {
       if (!regex.test(value)) {
@@ -142,6 +146,23 @@ function CheckoutLoggedIn({ locale }) {
       }
     );
     const data = await response.json();
+
+    if (data.checkoutIsValid === false) {
+      if (shippingDataIsValid !== false) {
+        toast.error(t("shipping-data-error"), {
+          position: "bottom-right",
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    }
+
+    setShippingDataIsValid(data.checkoutIsValid);
 
     // console.log("summary data - ", data.body);
     setSummaryData(data.body);
@@ -693,6 +714,7 @@ function CheckoutLoggedIn({ locale }) {
                           required: true,
                           autoFocus: true,
                         }}
+                        autoFormat={true}
                         inputStyle={{
                           width: "100%",
                           padding: "0.25rem 0.25rem 0.25rem 48px",
@@ -893,7 +915,11 @@ function CheckoutLoggedIn({ locale }) {
                                   name="shipping.postalCode"
                                   onChange={handleChangeCheckoutData}
                                   value={checkoutData?.shipping?.postalCode}
-                                  className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
+                                  className={`bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] ${
+                                    shippingDataIsValid === true
+                                      ? "border-foregroundPrimary40 focus:border-foregroundPrimary"
+                                      : "border-dashboardRed"
+                                  }  py-1 px-1 `}
                                   required
                                 />
                               </div>
@@ -981,7 +1007,11 @@ function CheckoutLoggedIn({ locale }) {
                               name="shipping.postalCode"
                               onChange={handleChangeCheckoutData}
                               value={checkoutData?.shipping?.postalCode}
-                              className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
+                              className={`bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] ${
+                                shippingDataIsValid === true
+                                  ? "border-foregroundPrimary40 focus:border-foregroundPrimary"
+                                  : "border-dashboardRed"
+                              }  py-1 px-1 `}
                               required
                             />
                           </div>
@@ -1314,6 +1344,7 @@ function CheckoutLoggedIn({ locale }) {
                               required: true,
                               autoFocus: true,
                             }}
+                            autoFormat={true}
                             inputStyle={{
                               width: "100%",
                               padding: "0.25rem 0.25rem 0.25rem 48px",
@@ -1489,6 +1520,7 @@ function CheckoutLoggedIn({ locale }) {
                               required: true,
                               autoFocus: true,
                             }}
+                            autoFormat={true}
                             inputStyle={{
                               width: "100%",
                               padding: "0.25rem 0.25rem 0.25rem 48px",
@@ -1851,6 +1883,7 @@ function CheckoutLoggedIn({ locale }) {
               type="submit"
               // onClick={handleFormSubmit}
               className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
+              disabled={!shippingDataIsValid}
             >
               {t("next-step-btn")}
             </button>

@@ -1,28 +1,31 @@
 import Database from "../Database";
 import { authSameday } from "./authSameday";
 
-const getSamedayCounty = async (state) => {
-  const reqHeaders = new Headers();
-  reqHeaders.append("X-AUTH-TOKEN", await authSameday());
-
-  console.log("se cauta state");
+const getSamedayCounty = async (state, apiToken) => {
   const response = await fetch(
     `${process.env.SAMEDAY_API_GEOLOCATION_COUNTY_URL}?name=${state}`,
     {
       method: "GET",
-      headers: reqHeaders,
+      headers: {
+        "X-AUTH-TOKEN": apiToken,
+      },
     }
   );
+
+  console.log("County response - ", response);
+
   if (response.ok) {
     const body = await response.json();
     console.log("county - ", body);
+  } else {
+    console.log("country error - ", await response.json());
   }
   return;
 };
 
-const getSamedayCity = async (city) => {
+const getSamedayCity = async (city, apiToken) => {
   const reqHeaders = new Headers();
-  reqHeaders.append("X-AUTH-TOKEN", await authSameday());
+  reqHeaders.append("X-AUTH-TOKEN", apiToken);
 
   const response = await fetch(
     `${process.env.SAMEDAY_API_GEOLOCATION_CITY_URL}?name=${city}`,
@@ -41,6 +44,8 @@ const getSamedayCity = async (city) => {
 
 const generateSamedayAwb = async (data) => {
   const database = new Database();
+
+  const apiToken = await authSameday();
 
   const {
     orderData,
@@ -95,13 +100,13 @@ const generateSamedayAwb = async (data) => {
   requestData.append(
     "awbRecipient[county]",
     shippingDetails.type === "courier"
-      ? await getSamedayCounty(shippingDetails.state)
+      ? await getSamedayCounty(shippingDetails.state, apiToken)
       : shippingDetails.locker
   );
   requestData.append(
     "awbRecipient[city]",
     shippingDetails.type === "courier"
-      ? await getSamedayCity(shippingDetails.city)
+      ? await getSamedayCity(shippingDetails.city, apiToken)
       : shippingDetails.locker
   );
   requestData.append("awbRecipient[email]", `${shippingDetails.email}`);
@@ -109,7 +114,7 @@ const generateSamedayAwb = async (data) => {
   requestData.append("parcels[0][isLast]", 1);
 
   const reqHeaders = new Headers();
-  reqHeaders.append("X-AUTH-TOKEN", await authSameday());
+  reqHeaders.append("X-AUTH-TOKEN", apiToken);
 
   const options = {
     method: "POST",
@@ -117,15 +122,15 @@ const generateSamedayAwb = async (data) => {
     body: requestData,
   };
 
-  // const response = await fetch(
-  //   process.env.NEXT_PUBLIC_SAMEDAY_API_GENERATE_AWB_URL,
-  //   options
-  // );
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_SAMEDAY_API_GENERATE_AWB_URL,
+    options
+  );
 
-  // if (response.ok) {
-  //   const body = await response.json();
-  //   console.log("AWB - ", JSON.stringify(body, null, 2));
-  // }
+  if (response.ok) {
+    const body = await response.json();
+    console.log("AWB - ", JSON.stringify(body, null, 2));
+  }
 
   return null;
 };
