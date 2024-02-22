@@ -85,6 +85,10 @@ function CheckoutNotLoggedIn({ locale }) {
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [shippingDataIsValid, setShippingDataIsValid] = useState(true);
 
+  useEffect(() => {
+    console.log("is valid - ", shippingDataIsValid);
+  }, [shippingDataIsValid]);
+
   const handleSetIsClient = () => {
     setIsClient(true);
   };
@@ -213,6 +217,7 @@ function CheckoutNotLoggedIn({ locale }) {
   };
 
   const calculateCartSummary = async () => {
+    console.log("se calc totalu");
     const requestBody = {
       cart: cart,
       checkoutData: checkoutData,
@@ -246,7 +251,7 @@ function CheckoutNotLoggedIn({ locale }) {
     }
 
     setShippingDataIsValid(data.checkoutIsValid);
-    // console.log("summary data - ", data.body);
+    console.log("summary data - ", data);
     setSummaryData(data.body);
   };
 
