@@ -132,7 +132,10 @@ const generateSamedayAwb = async (data) => {
     options
   );
 
-  console.log("AWB response - ", await response.json());
+  console.log(
+    "AWB response - ",
+    JSON.stringify(await response.json(), null, 2)
+  );
   if (response.ok) {
     const body = await response.json();
     console.log("AWB - ", JSON.stringify(body, null, 2));
@@ -202,6 +205,34 @@ export default generateSamedayAwb;
 //     },
 //     { name: 'awbRecipient[county]', value: 'undefined' },
 //     { name: 'awbRecipient[city]', value: 'undefined' },
+//     {
+//       name: 'awbRecipient[email]',
+//       value: 'bucel.ionsebastian@gmail.com'
+//     },
+//     { name: 'parcels[0][weight]', value: '1' },
+//     { name: 'parcels[0][isLast]', value: '1' }
+//   ]
+// }
+
+// Request data -  FormData {
+//   [Symbol(state)]: [
+//     { name: 'pickupPoint', value: '264543' },
+//     { name: 'packageType', value: '0' },
+//     { name: 'packageWeight', value: '1' },
+//     { name: 'service', value: '16' },
+//     { name: 'lockerLastMile', value: '5099' },
+//     { name: 'awbPayment', value: '1' },
+//     { name: 'cashOnDelivery', value: '0' },
+//     { name: 'insuredValue', value: '0' },
+//     { name: 'thirdPartyPickup', value: '0' },
+//     { name: 'geniusOrder', value: '0' },
+//     { name: 'awbRecipient[name]', value: 'Bucel Ion-Sebastian' },
+//     { name: 'awbRecipient[phoneNumber]', value: '+40 774 689 080' },
+//     { name: 'awbRecipient[personType]', value: '0' },
+//     { name: 'awbRecipient[postalCode]', value: '900294' },
+//     { name: 'awbRecipient[address]', value: '' },
+//     { name: 'awbRecipient[county]', value: '[object Object]' },
+//     { name: 'awbRecipient[city]', value: '[object Object]' },
 //     {
 //       name: 'awbRecipient[email]',
 //       value: 'bucel.ionsebastian@gmail.com'
