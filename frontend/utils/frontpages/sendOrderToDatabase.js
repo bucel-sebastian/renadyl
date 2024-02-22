@@ -34,7 +34,7 @@ export const sendOrderToDatabase = async (formData) => {
   const database = new Database();
   const values = new Object();
 
-  console.log(jJSON.stringify(formData, null, 2));
+  console.log(JSON.stringify(formData, null, 2));
 
   values["date"] = new Date().toISOString();
 
