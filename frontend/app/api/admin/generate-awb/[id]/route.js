@@ -30,7 +30,7 @@ export async function GET(req, { params }) {
 
     if (awbResponse !== null) {
       const databaseResponse = await database.update(
-        "renady_orders",
+        "renadyl_orders",
         {
           shipping_awb: {
             awbNumber: awbResponse.awbNumber,
