@@ -242,117 +242,117 @@ export default generateSamedayAwb;
 //   ]
 // }
 
-AWB response -  {
-  "code": 400,
-  "message": "Validation Failed",
-  "errors": {
-    "children": {
-      "pickupPoint": {},
-      "returnLocationId": {},
-      "contactPerson": {},
-      "packageType": {},
-      "packageNumber": {},
-      "packageWeight": {},
-      "service": {
-        "errors": [
-          "awb.sameday_service.metropolitan_area_mismatch"
-        ]
-      },
-      "awbPayment": {},
-      "cashOnDelivery": {},
-      "cashOnDeliveryReturns": {},
-      "insuredValue": {},
-      "thirdPartyPickup": {},
-      "thirdParty": {
-        "children": {
-          "name": {},
-          "phoneNumber": {},
-          "personType": {},
-          "companyName": {},
-          "companyCui": {},
-          "companyOnrcNumber": {},
-          "companyIban": {},
-          "companyBank": {},
-          "postalCode": {},
-          "address": {},
-          "county": {},
-          "city": {},
-          "contactEmail": {},
-          "wantsInvoice": {},
-          "service": {},
-          "countyString": {},
-          "cityString": {}
-        }
-      },
-      "serviceTaxes": {},
-      "deliveryInterval": {},
-      "awbRecipient": {
-        "children": {
-          "name": {},
-          "phoneNumber": {},
-          "personType": {},
-          "companyName": {},
-          "companyCui": {},
-          "companyOnrcNumber": {},
-          "companyIban": {},
-          "companyBank": {},
-          "postalCode": {},
-          "address": {},
-          "county": {},
-          "city": {},
-          "email": {},
-          "service": {},
-          "countyString": {},
-          "cityString": {}
-        }
-      },
-      "clientInternalReference": {},
-      "parcels": {
-        "children": [
-          {
-            "children": {
-              "weight": {},
-              "width": {},
-              "length": {},
-              "height": {},
-              "awbParcelNumber": {},
-              "damageCheck": {},
-              "forceOversized": {},
-              "returnLocationId": {},
-              "boxNumber": {},
-              "isLast": {},
-              "parcelSource": {}
-            }
-          }
-        ]
-      },
-      "observation": {},
-      "priceObservation": {},
-      "currency": {},
-      "lockerRedirectEligible": {},
-      "lockerFirstMile": {},
-      "lockerLastMile": {},
-      "clientId": {},
-      "orderNumber": {},
-      "clientObservation": {},
-      "awbNumber": {},
-      "lockerId": {},
-      "fulfillmentType": {},
-      "bfOrder": {},
-      "geniusOrder": {},
-      "orderDate": {},
-      "lateCutoff": {},
-      "pickupStartDate": {},
-      "pickupEndDate": {},
-      "returnAwbs": {},
-      "optionalPickupReturns": {},
-      "forwardedTC": {
-        "children": {
-          "ip": {},
-          "date": {}
-        }
-      },
-      "standbyReturn": {}
-    }
-  }
-}
+// AWB response -  {
+//   "code": 400,
+//   "message": "Validation Failed",
+//   "errors": {
+//     "children": {
+//       "pickupPoint": {},
+//       "returnLocationId": {},
+//       "contactPerson": {},
+//       "packageType": {},
+//       "packageNumber": {},
+//       "packageWeight": {},
+//       "service": {
+//         "errors": [
+//           "awb.sameday_service.metropolitan_area_mismatch"
+//         ]
+//       },
+//       "awbPayment": {},
+//       "cashOnDelivery": {},
+//       "cashOnDeliveryReturns": {},
+//       "insuredValue": {},
+//       "thirdPartyPickup": {},
+//       "thirdParty": {
+//         "children": {
+//           "name": {},
+//           "phoneNumber": {},
+//           "personType": {},
+//           "companyName": {},
+//           "companyCui": {},
+//           "companyOnrcNumber": {},
+//           "companyIban": {},
+//           "companyBank": {},
+//           "postalCode": {},
+//           "address": {},
+//           "county": {},
+//           "city": {},
+//           "contactEmail": {},
+//           "wantsInvoice": {},
+//           "service": {},
+//           "countyString": {},
+//           "cityString": {}
+//         }
+//       },
+//       "serviceTaxes": {},
+//       "deliveryInterval": {},
+//       "awbRecipient": {
+//         "children": {
+//           "name": {},
+//           "phoneNumber": {},
+//           "personType": {},
+//           "companyName": {},
+//           "companyCui": {},
+//           "companyOnrcNumber": {},
+//           "companyIban": {},
+//           "companyBank": {},
+//           "postalCode": {},
+//           "address": {},
+//           "county": {},
+//           "city": {},
+//           "email": {},
+//           "service": {},
+//           "countyString": {},
+//           "cityString": {}
+//         }
+//       },
+//       "clientInternalReference": {},
+//       "parcels": {
+//         "children": [
+//           {
+//             "children": {
+//               "weight": {},
+//               "width": {},
+//               "length": {},
+//               "height": {},
+//               "awbParcelNumber": {},
+//               "damageCheck": {},
+//               "forceOversized": {},
+//               "returnLocationId": {},
+//               "boxNumber": {},
+//               "isLast": {},
+//               "parcelSource": {}
+//             }
+//           }
+//         ]
+//       },
+//       "observation": {},
+//       "priceObservation": {},
+//       "currency": {},
+//       "lockerRedirectEligible": {},
+//       "lockerFirstMile": {},
+//       "lockerLastMile": {},
+//       "clientId": {},
+//       "orderNumber": {},
+//       "clientObservation": {},
+//       "awbNumber": {},
+//       "lockerId": {},
+//       "fulfillmentType": {},
+//       "bfOrder": {},
+//       "geniusOrder": {},
+//       "orderDate": {},
+//       "lateCutoff": {},
+//       "pickupStartDate": {},
+//       "pickupEndDate": {},
+//       "returnAwbs": {},
+//       "optionalPickupReturns": {},
+//       "forwardedTC": {
+//         "children": {
+//           "ip": {},
+//           "date": {}
+//         }
+//       },
+//       "standbyReturn": {}
+//     }
+//   }
+// }
