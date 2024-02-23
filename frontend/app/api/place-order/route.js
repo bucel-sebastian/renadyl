@@ -14,7 +14,6 @@ export async function POST(req, res) {
     console.log("req  - ", requestBody);
 
     const emailRes = await sendOrderPlacedEmail({
-      email: "",
       lang: requestBody.locale,
       order_id: databaseResponse[0].id,
       order_date: databaseResponse[0].date,

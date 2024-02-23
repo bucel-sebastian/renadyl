@@ -1032,9 +1032,9 @@ export const sendOrderPlacedEmail = async (data) => {
                                           word-break: keep-all;
                                         "
                                       >
-                                        <a href="http://localhost:3000/order/${
-                                          data.order_id
-                                        }"
+                                        <a href="${
+                                          process.env.NEXT_PUBLIC_API_URL
+                                        }/order/${data.order_id}"
                                         style="color: #fafafa;"
                                         >
                                         <span
@@ -1244,7 +1244,7 @@ export const sendOrderPlacedEmail = async (data) => {
 
     attachments: [
       {
-        filename: "renadyl-logo.png", // The filename to be displayed in the email
+        filename: "renadyl-logo.png",
         path: imagePath,
         cid: "unique@logo",
       },
