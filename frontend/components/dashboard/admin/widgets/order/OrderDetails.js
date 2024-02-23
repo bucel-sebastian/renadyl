@@ -559,7 +559,7 @@ function OrderDetails({ orderId }) {
       //   }
       // );
       // if (response.ok) {
-      const responseBlob = response.blob();
+      const responseBlob = tokenResponse.blob();
       const url = window.URL.createObjectURL(new Blob([responseBlob]));
 
       const link = document.createElement("a");
