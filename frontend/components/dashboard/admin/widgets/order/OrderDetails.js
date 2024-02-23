@@ -545,49 +545,52 @@ function OrderDetails({ orderId }) {
 
   const downloadSamedayAwb = async (e) => {
     e.preventDefault();
-    const tokenResponse = await fetch("/api/admin/view-awb/sameday");
+    const tokenResponse = await fetch(
+      `/api/admin/view-awb/sameday/${updatedOrderData.shipping_awb.awbNumber}`
+    );
     if (tokenResponse.ok) {
       const tokenBody = await tokenResponse.json();
-      const token = tokenBody.token;
+      // const token = tokenBody.token;
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SAMEDAY_API_DOWNLOAD_AWB_URL}/${updatedOrderData.shipping_awb.awbNumber}`,
-        {
-          method: "GET",
-          headers: {
-            "X-AUTH-TOKEN": token,
-          },
-        }
-      );
-      if (response.ok) {
-        const responseBlob = response.blob();
-        const url = window.URL.createObjectURL(new Blob([responseBlob]));
+      console.log(tokenBody);
+      // const response = await fetch(
+      //   `${process.env.NEXT_PUBLIC_SAMEDAY_API_DOWNLOAD_AWB_URL}/${updatedOrderData.shipping_awb.awbNumber}`,
+      //   {
+      //     method: "GET",
+      //     headers: {
+      //       "X-AUTH-TOKEN": token,
+      //     },
+      //   }
+      // );
+      // if (response.ok) {
+      //   const responseBlob = response.blob();
+      //   const url = window.URL.createObjectURL(new Blob([responseBlob]));
 
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute(
-          "download",
-          `awb_${updatedOrderData.shipping_awb.awbNumber}.pdf`
-        );
+      //   const link = document.createElement("a");
+      //   link.href = url;
+      //   link.setAttribute(
+      //     "download",
+      //     `awb_${updatedOrderData.shipping_awb.awbNumber}.pdf`
+      //   );
 
-        link.style.display = "none";
+      //   link.style.display = "none";
 
-        document.body.appendChild(link);
-        link.click();
-        URL.revokeObjectURL(url);
-        document.body.removeChild(link);
-      } else {
-        toast.error(t("download-awb-fail"), {
-          position: "bottom-right",
-          autoClose: 2500,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      }
+      //   document.body.appendChild(link);
+      //   link.click();
+      //   URL.revokeObjectURL(url);
+      //   document.body.removeChild(link);
+      // } else {
+      //   toast.error(t("download-awb-fail"), {
+      //     position: "bottom-right",
+      //     autoClose: 2500,
+      //     hideProgressBar: true,
+      //     closeOnClick: true,
+      //     pauseOnHover: false,
+      //     draggable: true,
+      //     progress: undefined,
+      //     theme: "colored",
+      //   });
+      // }
     } else {
       toast.error(t("download-awb-fail"), {
         position: "bottom-right",
