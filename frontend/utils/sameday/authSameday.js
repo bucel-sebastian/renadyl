@@ -14,8 +14,8 @@ export const authSameday = async () => {
       method: "POST",
       headers: reqHeaders,
     });
-
     const body = await response.json();
+    console.log("auth sameday -", body);
     return body.token;
   } catch (error) {
     console.error(`Error - ${error}`);
