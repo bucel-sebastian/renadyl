@@ -569,7 +569,13 @@ function OrderDetails({ orderId }) {
           "download",
           `awb_${updatedOrderData.shipping_awb.awbNumber}.pdf`
         );
+
+        link.style.display = "none";
+
+        document.body.appendChild(link);
         link.click();
+        URL.revokeObjectURL(url);
+        document.body.removeChild(link);
       }
     }
   };
