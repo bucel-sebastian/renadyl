@@ -20,5 +20,6 @@ export async function GET(req, { params }) {
   return NextResponse.json({
     status: 200,
     body: body,
+    token: token,
   });
 }
