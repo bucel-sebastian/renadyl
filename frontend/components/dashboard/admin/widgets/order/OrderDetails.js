@@ -549,17 +549,7 @@ function OrderDetails({ orderId }) {
       `/api/admin/view-awb/sameday/${updatedOrderData.shipping_awb.awbNumber}`
     );
     if (tokenResponse.ok) {
-      // const response = await fetch(
-      //   `${process.env.NEXT_PUBLIC_SAMEDAY_API_DOWNLOAD_AWB_URL}/${updatedOrderData.shipping_awb.awbNumber}`,
-      //   {
-      //     method: "GET",
-      //     headers: {
-      //       "X-AUTH-TOKEN": token,
-      //     },
-      //   }
-      // );
-      // if (response.ok) {
-      const responseBlob = tokenResponse.blob();
+      const responseBlob = await tokenResponse.blob();
       const url = window.URL.createObjectURL(responseBlob);
 
       const link = document.createElement("a");
