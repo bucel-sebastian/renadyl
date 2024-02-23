@@ -1,6 +1,8 @@
-import { getTranslations, getTranslator } from "next-intl/server";
+import { getMessages, getTranslations, getTranslator } from "next-intl/server";
 import { notFound } from "next/navigation";
 import Link from "next-intl/link";
+import CancelOrderBtn from "@/components/CancelOrderBtn";
+import { NextIntlClientProvider } from "next-intl";
 
 export const dynamic = "force-dynamic";
 
@@ -29,8 +31,18 @@ async function getOrderDetails(orderId) {
   return body.body;
 }
 
+async function getIfOrderHasCancelRequest(orderId) {
+  const response = await fetch(
+    `/api/client/data/json/orders/check-cancel-request/${orderId}`
+  );
+
+  const body = await response.json();
+  return body.response;
+}
+
 export default async function PreviewOrder({ params: { orderId, locale } }) {
   const t = await getTranslations("Account-confirmation");
+  const messages = await getMessages();
 
   const locales = ["ro", "en", "de"];
 
@@ -38,6 +50,7 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
   if (!isValidLocale) notFound();
 
   const orderData = await getOrderDetails(orderId);
+  const orderHasCancelRequest = await getIfOrderHasCancelRequest(orderId);
 
   const datetimeOptions = {
     year: "numeric",
@@ -225,20 +238,12 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
                       </p>
                     ) : (
                       <>
-                        {orderData.status.toString() === "1" ||
-                        orderData.status.toString() === "2" ||
-                        orderData.status.toString() === "3" ? (
-                          <>
-                            <button
-                              className="text-backgroundPrimary bg-dashboardRed px-4 py-1 rounded-xl text-lg hover:bg-dashboardRed80 transition-all duration-[0.3s]"
-                              onClick={handleCancelOrder}
-                            >
-                              Cere anularea comenzii
-                            </button>
-                          </>
-                        ) : (
-                          <></>
-                        )}
+                        <NextIntlClientProvider
+                          locale={locale}
+                          messages={messages}
+                        >
+                          <CancelOrderBtn orderData={orderData} />
+                        </NextIntlClientProvider>
                       </>
                     )}
                   </>
