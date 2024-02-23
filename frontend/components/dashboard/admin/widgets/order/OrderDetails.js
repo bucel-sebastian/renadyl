@@ -790,7 +790,7 @@ function OrderDetails({ orderId }) {
                           >
                             {updatedOrderData?.shipping_awb?.awbNumber}
                           </Link>
-
+                          <br />
                           <button onClick={downloadSamedayAwb}>
                             Descarca AWB
                           </button>
