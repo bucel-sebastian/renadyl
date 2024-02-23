@@ -48,8 +48,8 @@ export async function POST(req, res) {
     console.error("Eroare - ", error);
   }
 
-  // return NextResponse.json({
-  //   status: 200,
-  //   body: responseBody,
-  // });
+  return NextResponse.json({
+    status: 200,
+    body: responseBody,
+  });
 }
