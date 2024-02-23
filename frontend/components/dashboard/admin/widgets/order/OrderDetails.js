@@ -545,6 +545,33 @@ function OrderDetails({ orderId }) {
 
   const downloadSamedayAwb = async (e) => {
     e.preventDefault();
+    const tokenResponse = await fetch("/api/admin/view-awb/sameday");
+    if (tokenResponse.ok) {
+      const tokenBody = await tokenResponse.json();
+      const token = tokenBody.token;
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SAMEDAY_API_DOWNLOAD_AWB_URL}/${updatedOrderData.shipping_awb.awbNumber}`,
+        {
+          method: "GET",
+          headers: {
+            "X-AUTH-TOKEN": token,
+          },
+        }
+      );
+      if (response.ok) {
+        const responseBlob = response.blob();
+        const url = window.URL.createObjectURL(new Blob([responseBlob]));
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute(
+          "download",
+          `awb_${updatedOrderData.shipping_awb.awbNumber}.pdf`
+        );
+        link.click();
+      }
+    }
   };
 
   return (
