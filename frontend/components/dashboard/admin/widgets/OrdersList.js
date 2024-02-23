@@ -108,6 +108,7 @@ function OrdersList() {
       body.body[i].shipping_details = JSON.parse(body.body[i].shipping_details);
       // body.body[i].client_details = JSON.parse(body.body[i].client_details);
       body.body[i].billing_details = JSON.parse(body.body[i].billing_details);
+      body.body[i].shipping_awb = JSON.parse(body.body[i].shipping_awb);
       //   body.body[i].cart = JSON.parse(body.body[i].cart);
     }
     console.log(body.body);
