@@ -132,6 +132,9 @@ const generateSamedayAwb = async (data) => {
     options
   );
 
+  console.log("response awb - ", response);
+  console.log("response awb json- ", await response.json());
+
   if (response.ok) {
     const body = await response.json();
     console.log("AWB - ", JSON.stringify(body, null, 2));
