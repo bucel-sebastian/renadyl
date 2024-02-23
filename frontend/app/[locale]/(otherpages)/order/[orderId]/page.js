@@ -1,3 +1,7 @@
+import { getTranslations, getTranslator } from "next-intl/server";
+import { notFound } from "next/navigation";
+import Link from "next-intl/link";
+
 export const dynamic = "force-dynamic";
 
 async function getOrderDetails(orderId) {
