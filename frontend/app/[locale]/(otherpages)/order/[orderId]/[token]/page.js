@@ -13,9 +13,9 @@ import { NextIntlClientProvider } from "next-intl";
 
 export const dynamic = "force-dynamic";
 
-async function getOrderDetails(orderId) {
+async function getOrderDetails(orderId, token) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/client/data/json/orders/${orderId}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/client/data/json/orders/${orderId}/${token}`
   );
   const body = await response.json();
 
@@ -47,9 +47,12 @@ async function getIfOrderHasCancelRequest(orderId) {
   return body.response;
 }
 
-export default async function PreviewOrder({ params: { orderId, locale } }) {
+export default async function PreviewOrder({
+  params: { orderId, token, locale },
+  request,
+}) {
   const t = await getTranslations("Preview-order");
-  console.log("locale -", locale);
+  console.log("context -", request);
   const messages = await getMessages(locale);
 
   const locales = ["ro", "en", "de"];
@@ -57,7 +60,7 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
 
-  const orderData = await getOrderDetails(orderId);
+  const orderData = await getOrderDetails(orderId, token);
   const orderHasCancelRequest = await getIfOrderHasCancelRequest(orderId);
 
   const datetimeOptions = {

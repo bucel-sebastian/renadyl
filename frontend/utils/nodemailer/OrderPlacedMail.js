@@ -1034,7 +1034,7 @@ export const sendOrderPlacedEmail = async (data) => {
                                       >
                                         <a href="${
                                           process.env.NEXT_PUBLIC_API_URL
-                                        }/order/${data.order_id}"
+                                        }/order/${data.order_id}/${data.token}"
                                         style="color: #fafafa;"
                                         >
                                         <span

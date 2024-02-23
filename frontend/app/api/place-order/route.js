@@ -16,6 +16,7 @@ export async function POST(req, res) {
     const emailRes = await sendOrderPlacedEmail({
       lang: requestBody.locale,
       order_id: databaseResponse[0].id,
+      token: databaseResponse[0].token,
       order_date: databaseResponse[0].date,
       order_total: databaseResponse[0].order_total,
       promo_total: databaseResponse[0].promo_total,

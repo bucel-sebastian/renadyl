@@ -78,6 +78,7 @@ export const sendOrderToDatabase = async (formData) => {
   values["currency"] = formData.checkoutData.currency;
   values["country_code"] = formData.checkoutData.countryCode;
   values["payment"] = formData.checkoutData.payment;
+  values["token"] = await generateRandomCode(12);
 
   console.log("order data - ", formData);
 
