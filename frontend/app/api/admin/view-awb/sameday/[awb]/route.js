@@ -20,7 +20,7 @@ export async function GET(req, { params }) {
   const fileType = blob.type;
   const fileName = `${awb}.pdf`;
 
-  console.log("blob", body);
+  console.log("blob", blob);
 
   return new Response(buffer, {
     status: 200,

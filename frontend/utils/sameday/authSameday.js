@@ -14,9 +14,7 @@ export const authSameday = async () => {
       method: "POST",
       headers: reqHeaders,
     });
-    console.log(
-      `user ${process.env.NEXT_PUBLIC_SAMEDAY_API_USERNAME} ---- pass ${process.env.NEXT_PUBLIC_SAMEDAY_API_PASSWORD}`
-    );
+
     const body = await response.json();
     return body.token;
   } catch (error) {
