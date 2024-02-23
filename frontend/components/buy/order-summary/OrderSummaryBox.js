@@ -2,6 +2,7 @@
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { persistor } from "@/redux/store";
 import RedirectToPayment from "../RedirectToPayment";
 
 import { getSession } from "next-auth/react";
@@ -64,8 +65,9 @@ function OrderSummaryBox({ locale }) {
       console.log("order response - ", body);
 
       if (body.paymentType === "cash") {
+        persistor.purge();
         router.push(`/order-placed?orderId=${body.databaseResponse[0].id}`, {
-          locale: currentLocale,
+          locale: locale,
         });
       } else {
         const { env_key, data } = await body.paymentData;
