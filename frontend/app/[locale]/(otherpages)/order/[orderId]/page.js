@@ -37,7 +37,7 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
   const isValidLocale = locales.some((cur) => cur === locale);
   if (!isValidLocale) notFound();
 
-  const orderDetails = await getOrderDetails(orderId);
+  const orderData = await getOrderDetails(orderId);
 
   const datetimeOptions = {
     year: "numeric",
@@ -73,7 +73,7 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
 
   return (
     <main className="relative block pt-[90px] text-lg min-h-screen h-full checkout-background">
-      {JSON.stringify(orderDetails, null, 4)}
+      {JSON.stringify(orderData, null, 4)}
       <div className="w-full border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4 mt-4">
         <div className="flex flex-row justify-between">
           <h2 className="text-xl font-bold">Detalii comandă</h2>
