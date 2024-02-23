@@ -38,6 +38,39 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
   if (!isValidLocale) notFound();
 
   const orderDetails = await getOrderDetails(orderId);
+
+  const datetimeOptions = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+
+  const formatter = new Intl.DateTimeFormat("ro-RO", datetimeOptions);
+
+  const orderStatus = [
+    { name: t("orders-list.order-status.cancelled"), color: "#e74d3d" },
+    { name: t("orders-list.order-status.placed"), color: "#f1c40d" },
+    { name: t("orders-list.order-status.processing"), color: "#e77e22" },
+    { name: t("orders-list.order-status.ready-to-ship"), color: "#3397dc" },
+    { name: t("orders-list.order-status.shipped"), color: "#2980b9" },
+    { name: t("orders-list.order-status.finished"), color: "#2ecd70" },
+    { name: t("orders-list.order-status.refunded"), color: "#e74d3d" },
+  ];
+
+  const statusData = {
+    "status-0": t("orders-list.order-status.cancelled"),
+    "status-1": t("orders-list.order-status.placed"),
+    "status-2": t("orders-list.order-status.processing"),
+    "status-3": t("orders-list.order-status.ready-to-ship"),
+    "status-4": t("orders-list.order-status.shipped"),
+    "status-5": t("orders-list.order-status.finished"),
+    "status-6": t("orders-list.order-status.refunded"),
+  };
+
   return (
     <main className="relative block pt-[90px] text-lg min-h-screen h-full checkout-background">
       {JSON.stringify(orderDetails, null, 4)}
