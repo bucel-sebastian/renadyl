@@ -821,6 +821,7 @@ function CheckoutNotLoggedIn({ locale }) {
                           required: true,
                           autoFocus: true,
                         }}
+                        country={locale}
                         autoFormat={true}
                         inputStyle={{
                           width: "100%",
@@ -1451,6 +1452,7 @@ function CheckoutNotLoggedIn({ locale }) {
                                   required: true,
                                   autoFocus: true,
                                 }}
+                                country={locale}
                                 autoFormat={true}
                                 inputStyle={{
                                   width: "100%",
@@ -1629,6 +1631,7 @@ function CheckoutNotLoggedIn({ locale }) {
                                   required: true,
                                   autoFocus: true,
                                 }}
+                                country={locale}
                                 autoFormat={true}
                                 inputStyle={{
                                   width: "100%",
