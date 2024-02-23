@@ -62,12 +62,16 @@ function OrderSummaryBox({ locale }) {
       console.log(responseJson);
       const body = await responseJson.body;
 
-      const { env_key, data } = await body.paymentData;
+      if (body.payment === "cash") {
+        // router.push(`/order-placed?orderId=${}`, { locale: currentLocale });
+      } else {
+        const { env_key, data } = await body.paymentData;
 
-      if (env_key !== null && data !== null) {
-        setNetopiaEnvKey(env_key);
-        setNetopiaData(data);
-        setHavePaymentData(true);
+        if (env_key !== null && data !== null) {
+          setNetopiaEnvKey(env_key);
+          setNetopiaData(data);
+          setHavePaymentData(true);
+        }
       }
     }
   };
