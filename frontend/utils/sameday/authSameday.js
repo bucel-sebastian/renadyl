@@ -17,10 +17,7 @@ export const authSameday = async () => {
     console.log(
       `user ${process.env.NEXT_PUBLIC_SAMEDAY_API_USERNAME} ---- pass ${process.env.NEXT_PUBLIC_SAMEDAY_API_PASSWORD}`
     );
-    console.log(response);
     const body = await response.json();
-    console.log(body);
-    console.log("Authenitcated - ", body.token);
     return body.token;
   } catch (error) {
     console.error(`Error - ${error}`);
