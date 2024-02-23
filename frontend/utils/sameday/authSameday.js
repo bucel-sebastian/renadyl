@@ -9,6 +9,7 @@ export const authSameday = async () => {
       "X-Auth-Password",
       process.env.NEXT_PUBLIC_SAMEDAY_API_PASSWORD
     );
+    reqHeaders.append("cache-control", "no-cache");
     const response = await fetch(process.env.NEXT_PUBLIC_SAMEDAY_API_AUTH_URL, {
       method: "POST",
       headers: reqHeaders,
