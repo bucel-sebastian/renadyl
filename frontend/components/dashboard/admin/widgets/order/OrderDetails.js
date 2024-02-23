@@ -560,7 +560,7 @@ function OrderDetails({ orderId }) {
       // );
       // if (response.ok) {
       const responseBlob = tokenResponse.blob();
-      const url = URL.createObjectURL(responseBlob);
+      const url = window.URL.createObjectURL(responseBlob);
 
       const link = document.createElement("a");
       link.href = url;
