@@ -15,7 +15,7 @@ export async function GET(req, { params }) {
     }
   );
 
-  const body = await response.blob();
+  const blob = await response.blob();
   const buffer = await blob.arrayBuffer();
   const fileType = blob.type;
   const fileName = `${awb}.pdf`;
