@@ -3,10 +3,8 @@ import { useTranslations } from "next-intl";
 import React from "react";
 import { useState } from "react";
 
-function CancelOrderBtn({ orderData }) {
+function CancelOrderBtn({ orderData, t }) {
   const [openCancelRequestModal, setOpenCancelRequestModal] = useState(false);
-
-  const t = useTranslations("Dashboard.client.orders.order-page");
 
   const handleCancelOrder = (e) => {
     e.preventDefault();

@@ -238,12 +238,7 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
                       </p>
                     ) : (
                       <>
-                        <NextIntlClientProvider
-                          locale={locale}
-                          messages={messages}
-                        >
-                          <CancelOrderBtn orderData={orderData} />
-                        </NextIntlClientProvider>
+                        <CancelOrderBtn orderData={orderData} t={t} />
                       </>
                     )}
                   </>
