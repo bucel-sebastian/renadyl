@@ -783,7 +783,7 @@ function OrderDetails({ orderId }) {
                   ) : (
                     <>
                       {updatedOrderData?.shipping_details?.provider ===
-                      "sameday" ? (
+                      "Sameday" ? (
                         <>
                           <Link
                             href={`https://sameday.ro/#awb=${updatedOrderData?.shipping_awb?.awbNumber}`}
