@@ -63,6 +63,9 @@ function ClientOrderDetails({ orderId }) {
     body.body.billing_details = JSON.parse(body.body.billing_details);
     body.body.cart = JSON.parse(body.body.cart);
     body.body.shipping_details = JSON.parse(body.body.shipping_details);
+    if (body.body.shipping_awb !== null) {
+      body.body.shipping_awb = JSON.parse(body.body.shipping_awb);
+    }
     if (body.body?.doctor !== null) {
       body.body.doctor = body.body?.doctor;
     }
