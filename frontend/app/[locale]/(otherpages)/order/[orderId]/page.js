@@ -1,4 +1,11 @@
 import { getMessages, getTranslations, getTranslator } from "next-intl/server";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { notFound } from "next/navigation";
 import Link from "next-intl/link";
 import CancelOrderBtn from "@/components/CancelOrderBtn";
@@ -33,7 +40,7 @@ async function getOrderDetails(orderId) {
 
 async function getIfOrderHasCancelRequest(orderId) {
   const response = await fetch(
-    `/api/client/data/json/orders/check-cancel-request/${orderId}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/client/data/json/orders/check-cancel-request/${orderId}`
   );
 
   const body = await response.json();
@@ -41,8 +48,9 @@ async function getIfOrderHasCancelRequest(orderId) {
 }
 
 export default async function PreviewOrder({ params: { orderId, locale } }) {
-  const t = await getTranslations("Account-confirmation");
-  const messages = await getMessages();
+  const t = await getTranslations("Preview-order");
+  console.log("locale -", locale);
+  const messages = await getMessages(locale);
 
   const locales = ["ro", "en", "de"];
 
@@ -85,28 +93,33 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
   };
 
   return (
-    <main className="relative block pt-[90px] text-lg min-h-screen h-full checkout-background">
-      {JSON.stringify(orderData, null, 4)}
-      <div className="w-full border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4 mt-4">
-        <div className="flex flex-row justify-between">
-          <h2 className="text-xl font-bold">Detalii comandă</h2>
-        </div>
-        <div>
-          <div className="flex flex-row gap-8">
-            <div className="w-1/2">
-              <div>
-                <h4 className="font-bold">Data crearii</h4>
-                <p>{formatter.format(new Date(orderData?.date))}</p>
-              </div>
+    <main className="relative block pt-[90px] text-lg min-h-screen h-full checkout-background pb-12">
+      <section className="block relative max-w-[1200px] w-full mx-auto z-10 max-[1200px]:px-2">
+        <div className="w-full border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4 mt-4 relative z-20">
+          <h1 className="text-3xl font-bold ">
+            {t("title")} #{orderId}
+          </h1>
+          <div className="flex flex-row justify-between">
+            <h2 className="text-xl font-bold">{t("order-details.title")}</h2>
+          </div>
+          <div>
+            <div className="flex flex-row gap-8">
+              <div className="w-1/2">
+                <div>
+                  <h4 className="font-bold">
+                    {t("order-details.creation-date")}
+                  </h4>
+                  <p>{formatter.format(new Date(orderData?.date))}</p>
+                </div>
 
-              <div>
-                <h4 className="font-bold">Status actual</h4>
-                <p>{orderStatus[orderData?.status].name}</p>
-              </div>
-              <div>
-                <div className="flex flex-row gap-2 ">
-                  <div className="w-2/3">
-                    {/* <SelectInput
+                <div>
+                  <h4 className="font-bold">{t("order-details.status")}</h4>
+                  <p>{orderStatus[orderData?.status].name}</p>
+                </div>
+                <div>
+                  <div className="flex flex-row gap-2 ">
+                    <div className="w-2/3">
+                      {/* <SelectInput
                           data={statusData}
                           value={newStatus}
                           name="status-selector"
@@ -114,376 +127,400 @@ export default async function PreviewOrder({ params: { orderId, locale } }) {
                           onChange={handleStatusInputChange}
                           required={true}
                         /> */}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div>
-                <h4 className="font-bold">Doctor</h4>
-                <p>
-                  {orderData?.doctor?.id
-                    ? orderData?.doctor?.doctor_name
-                    : orderData?.doctor?.client}
-                </p>
+                <div>
+                  <h4 className="font-bold">{t("order-details.medic")}</h4>
+                  <p>
+                    {orderData?.doctor?.id
+                      ? orderData?.doctor?.doctor_name
+                      : orderData?.doctor?.client}
+                  </p>
+                </div>
+                <br />
+                <div>
+                  <h4 className="font-bold">
+                    {t("order-details.shipping-provider")}
+                  </h4>
+                  <p>
+                    {orderData?.shipping_details.provider} -{" "}
+                    {orderData?.shipping_details.type}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold">AWB</h4>
+                  <p>
+                    {orderData?.shipping_awb === null ? (
+                      <>{t("order-details.awb-not-created")}</>
+                    ) : (
+                      <></>
+                    )}
+                  </p>
+                </div>
               </div>
-              <br />
-              <div>
-                <h4 className="font-bold">Serviciu de curierat</h4>
-                <p>
-                  {orderData?.shipping_details.provider} -{" "}
-                  {orderData?.shipping_details.type}
-                </p>
-              </div>
-              <div>
-                <h4 className="font-bold">AWB</h4>
-                <p>
-                  {orderData?.shipping_awb === null ? (
-                    <>AWB-ul nu a fost generat</>
-                  ) : (
-                    <></>
-                  )}
-                </p>
-              </div>
-            </div>
-            <div className="w-1/2">
-              <div>
-                <h4 className="font-bold">Tip plată</h4>
-                <p>{orderData?.payment}</p>
-              </div>
-              <div>
-                <h4 className="font-bold">Status plată</h4>
-                <p>
-                  {orderData?.payment_status === null ? (
-                    <>În așteptare</>
+              <div className="w-1/2">
+                <div>
+                  <h4 className="font-bold">
+                    {t("order-details.payment-type")}
+                  </h4>
+                  <p>{orderData?.payment}</p>
+                </div>
+                <div>
+                  <h4 className="font-bold">
+                    {t("order-details.payment-status")}
+                  </h4>
+                  <p>
+                    {orderData?.payment_status === null ? (
+                      <>{t("order-details.payment-pending")}</>
+                    ) : (
+                      <>
+                        {orderData?.payment_status.status === "confirmed" ? (
+                          <>{t("order-details.payment-confirmed")}</>
+                        ) : (
+                          <></>
+                        )}
+                      </>
+                    )}
+                  </p>
+                </div>
+                <div>
+                  {orderData?.invoice?.reverse ? (
+                    <>
+                      <h4 className="font-bold">
+                        {t("order-details.invoice")}
+                      </h4>
+                      <p>
+                        <button
+                          onClick={(e) =>
+                            handleViewInvoice(
+                              e,
+                              orderData.invoice.series,
+                              orderData.invoice.number
+                            )
+                          }
+                        >
+                          {orderData.invoice.series} {orderData.invoice.number}
+                        </button>
+                      </p>
+                      <h4 className="font-bold">
+                        {t("order-details.reverse-invoice")}
+                      </h4>
+                      <p>
+                        <button
+                          onClick={(e) =>
+                            handleViewInvoice(
+                              e,
+                              orderData.invoice.reverse.series,
+                              orderData.invoice.reverse.number
+                            )
+                          }
+                        >
+                          {orderData.invoice.reverse.series}{" "}
+                          {orderData.invoice.reverse.number}
+                        </button>
+                      </p>
+                    </>
                   ) : (
                     <>
-                      {orderData?.payment_status.status === "confirmed" ? (
-                        <>Confirmata</>
+                      <h4 className="font-bold">
+                        {t("order-details.invoice")}
+                      </h4>
+                      <p>
+                        {orderData?.invoice !== null ? (
+                          <>
+                            <button
+                              onClick={(e) =>
+                                handleViewInvoice(
+                                  e,
+                                  orderData.invoice.series,
+                                  orderData.invoice.number
+                                )
+                              }
+                            >
+                              {orderData.invoice.series}{" "}
+                              {orderData.invoice.number}
+                            </button>
+                          </>
+                        ) : (
+                          <>{t("order-details.invoice-not-created")}</>
+                        )}
+                      </p>
+                    </>
+                  )}
+                </div>
+                <br />
+                <br />
+                <div className="z-20">
+                  {orderData.status.toString() === "0" ? (
+                    <></>
+                  ) : (
+                    <>
+                      {orderHasCancelRequest ? (
+                        <p className="text-dashboardRed font-bold">
+                          {t("order-details.cancel-order-sent")}
+                        </p>
                       ) : (
-                        <></>
+                        <>
+                          <NextIntlClientProvider
+                            locale={locale}
+                            messages={messages}
+                          >
+                            <CancelOrderBtn orderData={orderData} />
+                          </NextIntlClientProvider>
+                        </>
                       )}
                     </>
                   )}
-                </p>
-              </div>
-              <div>
-                {orderData?.invoice?.reverse ? (
-                  <>
-                    <h4 className="font-bold">Factura</h4>
-                    <p>
-                      <button
-                        onClick={(e) =>
-                          handleViewInvoice(
-                            e,
-                            orderData.invoice.series,
-                            orderData.invoice.number
-                          )
-                        }
-                      >
-                        {orderData.invoice.series} {orderData.invoice.number}
-                      </button>
-                    </p>
-                    <h4 className="font-bold">Factura storno</h4>
-                    <p>
-                      <button
-                        onClick={(e) =>
-                          handleViewInvoice(
-                            e,
-                            orderData.invoice.reverse.series,
-                            orderData.invoice.reverse.number
-                          )
-                        }
-                      >
-                        {orderData.invoice.reverse.series}{" "}
-                        {orderData.invoice.reverse.number}
-                      </button>
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <h4 className="font-bold">Factura</h4>
-                    <p>
-                      {orderData?.invoice !== null ? (
-                        <>
-                          <button
-                            onClick={(e) =>
-                              handleViewInvoice(
-                                e,
-                                orderData.invoice.series,
-                                orderData.invoice.number
-                              )
-                            }
-                          >
-                            {orderData.invoice.series}{" "}
-                            {orderData.invoice.number}
-                          </button>
-                        </>
-                      ) : (
-                        <>Factura nu a fost generată</>
-                      )}
-                    </p>
-                  </>
-                )}
-              </div>
-              <br />
-              <br />
-              <div>
-                {orderData.status.toString() === "0" ? (
-                  <></>
-                ) : (
-                  <>
-                    {orderHasCancelRequest ? (
-                      <p className="text-dashboardRed font-bold">
-                        Cererea de anulare comanda a fost trimisa!
-                      </p>
-                    ) : (
-                      <>
-                        <CancelOrderBtn orderData={orderData} t={t} />
-                      </>
-                    )}
-                  </>
-                )}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-row gap-4">
-        <div className="w-1/2 border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
-          <h2 className="text-xl font-bold">Livrare</h2>
+        <div className="flex flex-row gap-4 relative z-10">
+          <div className="w-1/2 border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
+            <h2 className="text-xl font-bold">{t("shipping-title")}</h2>
 
-          <div>
-            <p>
-              {orderData.shipping_details.fname}{" "}
-              {orderData.shipping_details.lname}
-            </p>
-            <p>{orderData.shipping_details.address}</p>
-            <p>{orderData.shipping_details.city}</p>
-            <p>{orderData.shipping_details.state}</p>
-            <p>{orderData.shipping_details.country}</p>
-            <p>{orderData.shipping_details.postalCode}</p>
+            <div>
+              <p>
+                {orderData.shipping_details.fname}{" "}
+                {orderData.shipping_details.lname}
+              </p>
+              <p>{orderData.shipping_details.phone}</p>
+              <p>{orderData.shipping_details.email}</p>
+              <p>{orderData.shipping_details.address}</p>
+              <p>{orderData.shipping_details.city}</p>
+              <p>{orderData.shipping_details.state}</p>
+              <p>{orderData.shipping_details.country}</p>
+              <p>{orderData.shipping_details.postalCode}</p>
+            </div>
+          </div>
+          <div className="w-1/2 border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
+            <h2 className="text-xl font-bold">{t("billing-title")}</h2>
+            <div>
+              {orderData.billing_details.entity === "pf" ? (
+                <>
+                  <p>
+                    {orderData.billing_details.fname}{" "}
+                    {orderData.billing_details.lname}
+                  </p>
+                  <p>{orderData.billing_details.phone}</p>
+                  <p>{orderData.billing_details.email}</p>
+                  <p>{orderData.billing_details.address}</p>
+                  <p>{orderData.billing_details.city}</p>
+                  <p>{orderData.billing_details.state}</p>
+                  <p>{orderData.billing_details.country}</p>
+                  <p>{orderData.billing_details.postalCode}</p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    {orderData.billing_details.companyName}
+                    {" - "}
+                    {orderData.billing_details.companyCif}
+                  </p>
+                  <p>{orderData.billing_details.address}</p>
+                  <p>{orderData.billing_details.city}</p>
+                  <p>{orderData.billing_details.state}</p>
+                  <p>{orderData.billing_details.country}</p>
+                  <p>{orderData.billing_details.postalCode}</p>
+                </>
+              )}
+            </div>
           </div>
         </div>
-        <div className="w-1/2 border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
-          <h2 className="text-xl font-bold">Facturare</h2>
-          <div>
-            {orderData.billing_details.entity === "pf" ? (
-              <>
-                <p>
-                  {orderData.billing_details.fname}{" "}
-                  {orderData.billing_details.lname}
-                </p>
-                <p>{orderData.billing_details.address}</p>
-                <p>{orderData.billing_details.city}</p>
-                <p>{orderData.billing_details.state}</p>
-                <p>{orderData.billing_details.country}</p>
-                <p>{orderData.billing_details.postalCode}</p>
-              </>
-            ) : (
-              <>
-                <p>
-                  {orderData.billing_details.companyName}
-                  {" - "}
-                  {orderData.billing_details.companyCif}
-                </p>
-                <p>{orderData.billing_details.address}</p>
-                <p>{orderData.billing_details.city}</p>
-                <p>{orderData.billing_details.state}</p>
-                <p>{orderData.billing_details.country}</p>
-                <p>{orderData.billing_details.postalCode}</p>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="w-full border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4">
-        <h2 className="text-xl font-bold">Cos de cumparaturi</h2>
-        <Table
-          sx={{
-            backgroundColor: "var(--background-primary)",
-            color: "var(--foreground-primary)",
-          }}
-        >
-          <TableHead
+        <div className="w-full border-foregroundPrimary10 border-[1px] rounded-xl shadow-xl py-6 px-8 bg-backgroundPrimary mb-4 relative z-10">
+          <h2 className="text-xl font-bold">{t("cart-details.title")}</h2>
+          <Table
             sx={{
               backgroundColor: "var(--background-primary)",
               color: "var(--foreground-primary)",
             }}
           >
-            <TableRow
+            <TableHead
               sx={{
                 backgroundColor: "var(--background-primary)",
                 color: "var(--foreground-primary)",
               }}
             >
-              <TableCell
+              <TableRow
                 sx={{
                   backgroundColor: "var(--background-primary)",
                   color: "var(--foreground-primary)",
-                  fontWeight: 600,
                 }}
               >
-                Produs
-              </TableCell>
-              <TableCell
-                sx={{
-                  backgroundColor: "var(--background-primary)",
-                  color: "var(--foreground-primary)",
-                  fontWeight: 600,
-                }}
-              >
-                Lot
-              </TableCell>
-              <TableCell
-                sx={{
-                  backgroundColor: "var(--background-primary)",
-                  color: "var(--foreground-primary)",
-                  fontWeight: 600,
-                }}
-              >
-                Data expirării
-              </TableCell>
-              <TableCell
-                sx={{
-                  backgroundColor: "var(--background-primary)",
-                  color: "var(--foreground-primary)",
-                  fontWeight: 600,
-                }}
-              >
-                Pret unitar
-              </TableCell>
-              <TableCell
-                sx={{
-                  backgroundColor: "var(--background-primary)",
-                  color: "var(--foreground-primary)",
-                  fontWeight: 600,
-                }}
-              >
-                Cantitate
-              </TableCell>
-              <TableCell
-                align="right"
-                sx={{
-                  backgroundColor: "var(--background-primary)",
-                  color: "var(--foreground-primary)",
-                  fontWeight: 600,
-                }}
-              >
-                Total
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {orderData?.cart ? (
-              <>
-                {orderData.cart.map((row) => (
-                  <TableRow key={row.productName}>
-                    <TableCell
-                      sx={{
-                        backgroundColor: "var(--background-primary)",
-                        color: "var(--foreground-primary)",
-                      }}
-                    >
-                      {row.productName === "renal_single"
-                        ? t("renal-single-short-name")
-                        : t("renal-bundle-short-name")}
-                    </TableCell>
-                    <TableCell
-                      sx={{
-                        backgroundColor: "var(--background-primary)",
-                        color: "var(--foreground-primary)",
-                      }}
-                    >
-                      {row.lotNumber}
-                    </TableCell>
-                    <TableCell
-                      sx={{
-                        backgroundColor: "var(--background-primary)",
-                        color: "var(--foreground-primary)",
-                      }}
-                    >
-                      {row.expDate}
-                    </TableCell>
+                <TableCell
+                  sx={{
+                    backgroundColor: "var(--background-primary)",
+                    color: "var(--foreground-primary)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {t("cart-details.table-heads.product")}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    backgroundColor: "var(--background-primary)",
+                    color: "var(--foreground-primary)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {t("cart-details.table-heads.lot")}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    backgroundColor: "var(--background-primary)",
+                    color: "var(--foreground-primary)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {t("cart-details.table-heads.expire-date")}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    backgroundColor: "var(--background-primary)",
+                    color: "var(--foreground-primary)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {t("cart-details.table-heads.unit-price")}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    backgroundColor: "var(--background-primary)",
+                    color: "var(--foreground-primary)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {t("cart-details.table-heads.quantity")}
+                </TableCell>
+                <TableCell
+                  align="right"
+                  sx={{
+                    backgroundColor: "var(--background-primary)",
+                    color: "var(--foreground-primary)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {t("cart-details.table-heads.total")}
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {orderData?.cart ? (
+                <>
+                  {orderData.cart.map((row) => (
+                    <TableRow key={row.productName}>
+                      <TableCell
+                        sx={{
+                          backgroundColor: "var(--background-primary)",
+                          color: "var(--foreground-primary)",
+                        }}
+                      >
+                        {row.productName === "renal_single"
+                          ? t("renal-single-short-name")
+                          : t("renal-bundle-short-name")}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          backgroundColor: "var(--background-primary)",
+                          color: "var(--foreground-primary)",
+                        }}
+                      >
+                        {row.lotNumber}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          backgroundColor: "var(--background-primary)",
+                          color: "var(--foreground-primary)",
+                        }}
+                      >
+                        {row.expDate}
+                      </TableCell>
 
-                    <TableCell
-                      sx={{
-                        backgroundColor: "var(--background-primary)",
-                        color: "var(--foreground-primary)",
-                      }}
-                    >
-                      {row.price} {orderData.currency}
+                      <TableCell
+                        sx={{
+                          backgroundColor: "var(--background-primary)",
+                          color: "var(--foreground-primary)",
+                        }}
+                      >
+                        {row.price} {orderData.currency}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          backgroundColor: "var(--background-primary)",
+                          color: "var(--foreground-primary)",
+                        }}
+                      >
+                        x{row.quantity}
+                      </TableCell>
+                      <TableCell
+                        align="right"
+                        sx={{
+                          backgroundColor: "var(--background-primary)",
+                          color: "var(--foreground-primary)",
+                        }}
+                      >
+                        {row.price * row.quantity} {orderData.currency}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </>
+              ) : (
+                <></>
+              )}
+              {orderData?.order_total ? (
+                <>
+                  <TableRow>
+                    <TableCell colSpan={2} align="left"></TableCell>
+                    <TableCell colSpan={2} align="right">
+                      <div>{t("cart-details.summary.products-total")}</div>
+                      <div>{t("cart-details.summary.shipping-total")}</div>
+                      {orderData.promo_total === 0 ? (
+                        <></>
+                      ) : (
+                        <>
+                          <div>{t("cart-details.summary.promocode-total")}</div>
+                        </>
+                      )}
+                      <div className="text-xl">
+                        {t("cart-details.summary.total")}
+                      </div>
+                      <div>{t("cart-details.summary.included-vat")}</div>
                     </TableCell>
-                    <TableCell
-                      sx={{
-                        backgroundColor: "var(--background-primary)",
-                        color: "var(--foreground-primary)",
-                      }}
-                    >
-                      x{row.quantity}
-                    </TableCell>
-                    <TableCell
-                      align="right"
-                      sx={{
-                        backgroundColor: "var(--background-primary)",
-                        color: "var(--foreground-primary)",
-                      }}
-                    >
-                      {row.price * row.quantity} {orderData.currency}
+                    <TableCell colSpan={2} align="right">
+                      <div>
+                        {orderData.products_total} {orderData.currency}
+                      </div>
+                      <div>
+                        {orderData.shipping_total} {orderData.currency}
+                      </div>
+                      {orderData.promo_total === 0 ? (
+                        <></>
+                      ) : (
+                        <>
+                          <div>
+                            -{orderData.promo_total} {orderData.currency}
+                          </div>
+                        </>
+                      )}
+                      <div className="text-xl">
+                        {orderData.order_total} {orderData.currency}
+                      </div>
+                      <div>
+                        {orderData.vat_total} {orderData.currency}
+                      </div>
                     </TableCell>
                   </TableRow>
-                ))}
-              </>
-            ) : (
-              <></>
-            )}
-            {orderData?.order_total ? (
-              <>
-                <TableRow>
-                  <TableCell colSpan={2} align="left"></TableCell>
-                  <TableCell colSpan={2} align="right">
-                    <div>Total produse</div>
-                    <div>Transport</div>
-                    {orderData.promo_total === 0 ? (
-                      <></>
-                    ) : (
-                      <>
-                        <div>Reducere cod promotional</div>
-                      </>
-                    )}
-                    <div className="text-xl">Total</div>
-                    <div>TVA inclus</div>
-                  </TableCell>
-                  <TableCell colSpan={2} align="right">
-                    <div>
-                      {orderData.products_total} {orderData.currency}
-                    </div>
-                    <div>
-                      {orderData.shipping_total} {orderData.currency}
-                    </div>
-                    {orderData.promo_total === 0 ? (
-                      <></>
-                    ) : (
-                      <>
-                        <div>
-                          -{orderData.promo_total} {orderData.currency}
-                        </div>
-                      </>
-                    )}
-                    <div className="text-xl">
-                      {orderData.order_total} {orderData.currency}
-                    </div>
-                    <div>
-                      {orderData.vat_total} {orderData.currency}
-                    </div>
-                  </TableCell>
-                </TableRow>
-              </>
-            ) : (
-              <></>
-            )}
-          </TableBody>
-        </Table>
-      </div>
+                </>
+              ) : (
+                <></>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </section>
     </main>
   );
 }

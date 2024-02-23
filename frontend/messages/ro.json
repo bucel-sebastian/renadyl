@@ -436,6 +436,68 @@
         "p-2": "Detaliile legate de comandă au fost trimise pe email.",
         "back-home": "Înapoi acasă"
     },
+    "Preview-order": {
+        "page-title": "Vizualizare comandă",
+        "title": "Comanda",
+        "orders-list": {
+            "order-status": {
+                "cancelled": "Anulată",
+                "placed": "Plasată",
+                "processing": "În procesare",
+                "ready-to-ship": "Pregătită de expediere",
+                "shipped": "Expediată",
+                "finished": "Finalizată",
+                "refunded": "Plată returnată"
+            }
+        },
+        "request-cancel-order-fail": "A apărut o problema, încercați mai târziu",
+        "request-cancel-order-success": "Cererea de anulare a comenzi a fost trimisă cu succes!",
+        "order-details": {
+            "title": "Detalii comandă",
+            "creation-date": "Data crearii",
+            "status": "Status",
+            "medic": "Doctor",
+            "shipping-provider": "Serviciu de curierat",
+            "awb-not-created": "AWB-ul nu a fost generat",
+            "payment-type": "Tip plată",
+            "payment-status": "Status plată",
+            "payment-pending": "În așteptare",
+            "payment-confirmed": "Confirmata",
+            "invoice": "Factura",
+            "reverse-invoice": "Factura Storno",
+            "invoice-not-created": "Factura nu a fost generată",
+            "cancel-order-sent": "Cererea de anulare comanda a fost trimisa!",
+            "cancel-order-btn": "Cere anularea comenzi",
+            "cancel-order-modal": {
+                "title": "Cerere de anulare comandă",
+                "reason-label": "Motivul pentru care doriti sa anulati comanda",
+                "cancel-btn": "Anuleaza",
+                "submit-btn": "Trimite"
+            }
+        },
+        "renal-single-short-name": "Renadyl",
+        "renal-bundle-short-name": "Bundle 3x Renadyl",
+        "shipping-title": "Livrare",
+        "billing-title": "Facturare",
+        "cart-details": {
+            "title": "Coș de cumpărături",
+            "table-heads": {
+                "product": "Produs",
+                "lot": "Lot",
+                "expire-date": "Data expirării",
+                "unit-price": "Preț unitar",
+                "quantity": "Cantitate",
+                "total": "Total"
+            },
+            "summary": {
+                "products-total": "Cost produse",
+                "shipping-total": "Taxa de transport",
+                "promocode-total": "Reducere cod promoțional",
+                "total": "Total",
+                "included-vat": "TVA inclus"
+            }
+        }
+    },
     "Buy": {
         "product-name": "Renadyl™ - Supliment alimentar",
         "product-desc": "Renadyl™ este o opțiune naturală pentru menținerea funcției sănătoase a rinichilor și pentru îmbunătățirea calității vieții",
