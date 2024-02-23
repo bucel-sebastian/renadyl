@@ -31,7 +31,7 @@ export const sendOrderPlacedEmail = async (data) => {
       `SELECT email FROM renadyl_users WHERE id = $1`,
       [data.client_id]
     );
-    client_email = dbemail[0].email;
+    client_email = dbemail[0]?.email;
   } else {
     client_email = data.shipping.email;
   }
