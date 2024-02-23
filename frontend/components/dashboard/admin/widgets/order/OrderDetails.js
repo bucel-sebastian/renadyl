@@ -872,14 +872,18 @@ function OrderDetails({ orderId }) {
                   {updatedOrderData.shipping_details.fname}{" "}
                   {updatedOrderData.shipping_details.lname}
                 </p>
-                <Link href={`tel:${updatedOrderData.shipping_details.phone}`}>
-                  {updatedOrderData.shipping_details.phone}
-                </Link>
-                <Link
-                  href={`mailto:${updatedOrderData.shipping_details.email}`}
-                >
-                  {updatedOrderData.shipping_details.email}
-                </Link>
+                <p className="text-gradientPurple">
+                  <Link href={`tel:${updatedOrderData.shipping_details.phone}`}>
+                    {updatedOrderData.shipping_details.phone}
+                  </Link>
+                </p>
+                <p className="text-gradientPurple">
+                  <Link
+                    href={`mailto:${updatedOrderData.shipping_details.email}`}
+                  >
+                    {updatedOrderData.shipping_details.email}
+                  </Link>
+                </p>
                 <p>{updatedOrderData.shipping_details.address}</p>
                 <p>{updatedOrderData.shipping_details.city}</p>
                 <p>{updatedOrderData.shipping_details.state}</p>
@@ -896,16 +900,20 @@ function OrderDetails({ orderId }) {
                       {updatedOrderData.billing_details.fname}{" "}
                       {updatedOrderData.billing_details.lname}
                     </p>
-                    <Link
-                      href={`tel:${updatedOrderData.billing_details.phone}`}
-                    >
-                      {updatedOrderData.billing_details.phone}
-                    </Link>
-                    <Link
-                      href={`mailto:${updatedOrderData.billing_details.email}`}
-                    >
-                      {updatedOrderData.billing_details.email}
-                    </Link>
+                    <p className="text-gradientPurple">
+                      <Link
+                        href={`tel:${updatedOrderData.billing_details.phone}`}
+                      >
+                        {updatedOrderData.billing_details.phone}
+                      </Link>
+                    </p>
+                    <p className="text-gradientPurple">
+                      <Link
+                        href={`mailto:${updatedOrderData.billing_details.email}`}
+                      >
+                        {updatedOrderData.billing_details.email}
+                      </Link>
+                    </p>
                     <p>{updatedOrderData.billing_details.address}</p>
                     <p>{updatedOrderData.billing_details.city}</p>
                     <p>{updatedOrderData.billing_details.state}</p>
