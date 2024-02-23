@@ -17,7 +17,7 @@ export async function GET(req, { params }) {
 
   const body = await response.blob();
 
-  console.log("blob", blob);
+  console.log("blob", body);
 
   return NextResponse.json({
     status: 200,
