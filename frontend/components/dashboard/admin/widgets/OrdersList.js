@@ -825,6 +825,7 @@ function OrdersList() {
                         backgroundColor: "var(--background-primary)",
                         color: "var(--foreground-primary)",
                       }}
+                      align="center"
                     >
                       {row.shipping_awb !== null ? (
                         <>{row.shipping_awb.awbNumber}</>

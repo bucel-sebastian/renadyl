@@ -96,6 +96,9 @@ function OrderDetails({ orderId }) {
     if (body.body.payment_status !== null) {
       body.body.payment_status = JSON.parse(body.body.payment_status);
     }
+    if (body.body.shipping_awb !== null) {
+      body.body.shipping_awb = JSON.parse(body.body.shipping_awb);
+    }
     if (body.body.invoice !== null) {
       body.body.invoice = JSON.parse(body.body.invoice);
     }
@@ -540,6 +543,10 @@ function OrderDetails({ orderId }) {
     if (updatedOrderData !== null) verifyIfProductDetailsAreModified();
   }, [updatedOrderData]);
 
+  const downloadSamedayAwb = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       {updatedOrderData !== null ? (
@@ -774,7 +781,24 @@ function OrderDetails({ orderId }) {
                       </button>
                     </>
                   ) : (
-                    <></>
+                    <>
+                      {updatedOrderData?.shipping_details?.provider ===
+                      "sameday" ? (
+                        <>
+                          <Link
+                            href={`https://sameday.ro/#awb=${updatedOrderData?.shipping_awb?.awbNumber}`}
+                          >
+                            {updatedOrderData?.shipping_awb?.awbNumber}
+                          </Link>
+
+                          <button onClick={downloadSamedayAwb}>
+                            Descarca AWB
+                          </button>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
                   )}
                 </p>
               </div>
