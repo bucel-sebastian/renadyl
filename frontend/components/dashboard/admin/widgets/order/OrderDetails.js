@@ -565,18 +565,6 @@ function OrderDetails({ orderId }) {
       link.click();
       URL.revokeObjectURL(url);
       document.body.removeChild(link);
-      // } else {
-      //   toast.error(t("download-awb-fail"), {
-      //     position: "bottom-right",
-      //     autoClose: 2500,
-      //     hideProgressBar: true,
-      //     closeOnClick: true,
-      //     pauseOnHover: false,
-      //     draggable: true,
-      //     progress: undefined,
-      //     theme: "colored",
-      //   });
-      // }
     } else {
       toast.error(t("download-awb-fail"), {
         position: "bottom-right",

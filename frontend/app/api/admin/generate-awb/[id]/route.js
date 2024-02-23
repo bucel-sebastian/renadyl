@@ -1,4 +1,5 @@
 import Database from "@/utils/Database";
+import { sendSamedayAwbEmail } from "@/utils/nodemailer/AwbGeneratedMail";
 import generateSamedayAwb from "@/utils/sameday/generateSamedayAwb";
 import { NextResponse } from "next/server";
 
@@ -40,9 +41,18 @@ export async function GET(req, { params }) {
         },
         { id: id }
       );
+
+      const emailResponse = await sendSamedayAwbEmail({
+        lang: "ro",
+        order_id: id,
+        shipping: JSON.parse(databaseResponse[0].shipping_details),
+        client_id: databaseResponse[0].client_id,
+      });
+
       return NextResponse.json({
         status: 200,
         body: databaseResponse[0],
+        email: emailResponse,
       });
     }
   } else if (shippingDetails.provider === "UPS") {
