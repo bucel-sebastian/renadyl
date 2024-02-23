@@ -42,12 +42,21 @@ export async function GET(req, { params }) {
         { id: id }
       );
 
+      console.log("db response - ", databaseResponse[0]);
+
       const emailResponse = await sendSamedayAwbEmail({
         lang: "ro",
         order_id: id,
+        shipping_awb: {
+          awbNumber: awbResponse.awbNumber,
+          cost: awbResponse.awbCost,
+          pdfLink: awbResponse.pdfLink,
+        },
         shipping: JSON.parse(databaseResponse[0].shipping_details),
         client_id: databaseResponse[0].client_id,
       });
+
+      console.log("email response - ", emailResponse);
 
       return NextResponse.json({
         status: 200,
