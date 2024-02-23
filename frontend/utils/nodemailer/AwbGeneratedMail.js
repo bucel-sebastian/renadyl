@@ -536,7 +536,7 @@ export const sendSamedayAwbEmail = async (data) => {
                                             word-break: keep-all;
                                           "
                                         >
-                                          <a href="https://sameday.ro/#awb=/${
+                                          <a href="https://sameday.ro/#awb=${
                                             data.shipping_awb.awbNumber
                                           }"
                                           style="color: #fafafa;"
