@@ -16,12 +16,17 @@ export async function GET(req, { params }) {
   );
 
   const body = await response.blob();
+  const buffer = await blob.arrayBuffer();
+  const fileType = blob.type;
+  const fileName = `${awb}.pdf`;
 
   console.log("blob", body);
 
-  return NextResponse.json({
+  return new Response(buffer, {
     status: 200,
-    body: body,
-    token: token,
+    headers: {
+      "Content-Type": fileType,
+      "Content-Disposition": `attachment; filename="${fileName}"`,
+    },
   });
 }
