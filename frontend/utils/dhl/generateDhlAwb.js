@@ -23,6 +23,45 @@ const generateDhlAwb = async (data) => {
 
   var formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}GMT${timeZoneSign}${timeZoneHours}:${timeZoneMinutes}`;
 
+  const formData = {
+    accountNumber: process.env.DHL_CUSTOMER_CODE,
+    originCountryCode: "RO",
+    originPostalCode: "010562",
+    originCityName: "Bucharest",
+    destinationCountryCode: data.shippingDetails.countryKey,
+    destinationPostalCode: "92132",
+    destinationCityName: data.shippingDetails.city,
+    weight: 1,
+    length: 10,
+    width: 10,
+    height: 5,
+    plannedShippingDate: `${year}-${month}-${day}`,
+    isCustomsDeclarable: false,
+    unitOfMeasurement: "metric",
+  };
+
+  const url = new URL(process.env.DHL_API_PRODUCTS_URL);
+
+  Object.keys(formData).forEach((key) => {
+    if (formData[key] !== "") {
+      url.searchParams.append(key, formData[key]);
+    }
+  });
+
+  const dhlProducts = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Webstore-Platform-Name": "Renadyl Europe",
+      Authorization: basic(
+        process.env.NEXT_PUBLIC_DHL_API_KEY,
+        process.env.NEXT_PUBLIC_DHL_API_SECRET
+      ),
+    },
+  });
+
+  console.log("Products response - ", dhlProducts);
+  console.log("Products body - ", await dhlProducts.json());
+
   const options = {
     method: "POST",
     headers: {
@@ -33,10 +72,10 @@ const generateDhlAwb = async (data) => {
         process.env.NEXT_PUBLIC_DHL_API_SECRET
       ),
     },
-    body: {
+    body: JSON.stringify({
       plannedShippingDateAndTime: formattedDate,
       pickup: {
-        isRequested: true,
+        isRequested: false,
         pickupDetails: {
           postalAddress: {
             postalCode: "010562",
@@ -47,23 +86,27 @@ const generateDhlAwb = async (data) => {
             countryName: "Romania",
           },
           contactInformation: {
-            email: "",
             phone: "+40733566000",
             companyName: "HEALTHY MEDICAL S.R.L.",
             fullName: "Cristian Tanasescu",
           },
-          registrationNumbers: {
-            typeCode: "VAT",
-            number: "43590495",
-            issuerCountryCode: "RO",
-          },
+          registrationNumbers: [
+            {
+              number: "43590495",
+              typeCode: "VAT",
+              issuerCountryCode: "RO",
+            },
+          ],
         },
       },
       productCode: "U",
-      accounts: {
-        typeCode: "shipper",
-        number: process.env.DHL_CUSTOMER_CODE,
-      },
+      getRateEstimates: false,
+      accounts: [
+        {
+          typeCode: "shipper",
+          number: process.env.DHL_CUSTOMER_CODE,
+        },
+      ],
       customerDetails: {
         shipperDetails: {
           postalAddress: {
@@ -75,45 +118,51 @@ const generateDhlAwb = async (data) => {
             countryName: "Romania",
           },
           contactInformation: {
-            email: "",
             phone: "+40733566000",
             companyName: "HEALTHY MEDICAL S.R.L.",
             fullName: "Cristian Tanasescu",
           },
-          registrationNumbers: {
-            typeCode: "VAT",
-            number: "43590495",
-            issuerCountryCode: "RO",
-          },
+          registrationNumbers: [
+            {
+              number: "43590495",
+              typeCode: "VAT",
+              issuerCountryCode: "RO",
+            },
+          ],
         },
         receiverDetails: {
           postalAddress: {
-            postalCode: "900294",
-            cityName: "Constanta",
-            countryCode: "Ro",
-            addressLine1: "Alee. Solidaritatii nr. 9 bl.c, sc.a, ap. 10",
-            countyName: "Constanta",
-            countryName: "Romania",
+            postalCode: data.shippingDetails.postalCode,
+            cityName: data.shippingDetails.city,
+            countryCode: data.shippingDetails.countryKey,
+            addressLine1: data.shippingDetails.address,
+            countyName: data.shippingDetails.state,
+            countryName: data.shippingDetails.country,
           },
           contactInformation: {
-            email: "",
-            phone: "0774689080",
-            companyName: "Seqbyte Solutions",
-            fullName: "Ion Sebastian Bucel",
+            email: data.billingDetails.email,
+            phone: data.billingDetails.phone,
+            companyName: data.billingDetails.companyName,
+            fullName: `${data.billingDetails.lname} ${data.billingDetails.fname}`,
           },
         },
       },
       content: {
-        packages: {
-          weight: 1,
-          dimensions: {
-            length: 1,
-            width: 1,
-            height: 1,
+        packages: [
+          {
+            weight: 1,
+            dimensions: {
+              length: 10,
+              width: 10,
+              height: 5,
+            },
           },
-        },
+        ],
+        isCustomsDeclarable: false,
+        description: `Order no. ${data.orderData.id} shipping package`,
+        unitOfMeasurement: "metric",
       },
-    },
+    }),
   };
 
   console.log("options - ", options);
