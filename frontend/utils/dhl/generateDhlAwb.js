@@ -69,7 +69,7 @@ const generateDhlAwb = async (data) => {
       outputImageProperties: {
         imageOptions: [
           {
-            typeCode: "label",
+            typeCode: "waybill",
             fitLabelsToA4: true,
           },
         ],
