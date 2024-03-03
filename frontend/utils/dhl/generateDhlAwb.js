@@ -142,7 +142,10 @@ const generateDhlAwb = async (data) => {
           contactInformation: {
             email: data.billingDetails.email,
             phone: data.billingDetails.phone,
-            companyName: data.billingDetails.companyName,
+            companyName:
+              data.billingDetails.companyName.length === 0
+                ? "-"
+                : data.billingDetails.companyName,
             fullName: `${data.billingDetails.lname} ${data.billingDetails.fname}`,
           },
         },
