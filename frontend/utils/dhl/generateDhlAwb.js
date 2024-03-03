@@ -105,6 +105,14 @@ const generateDhlAwb = async (data) => {
           number: process.env.DHL_CUSTOMER_CODE,
         },
       ],
+      outputImageProperties: {
+        imageOptions: [
+          {
+            typeCode: "label",
+            fitLabelsToA4: true,
+          },
+        ],
+      },
       customerDetails: {
         shipperDetails: {
           postalAddress: {
