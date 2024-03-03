@@ -21,45 +21,6 @@ const generateDhlAwb = async (data) => {
 
   var formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}GMT${timeZoneSign}${timeZoneHours}:${timeZoneMinutes}`;
 
-  const formData = {
-    accountNumber: process.env.DHL_CUSTOMER_CODE,
-    originCountryCode: "RO",
-    originPostalCode: "010562",
-    originCityName: "Bucharest",
-    destinationCountryCode: data.shippingDetails.countryKey,
-    destinationPostalCode: "92132",
-    destinationCityName: data.shippingDetails.city,
-    weight: 1,
-    length: 10,
-    width: 10,
-    height: 5,
-    plannedShippingDate: `${year}-${month}-${day}`,
-    isCustomsDeclarable: false,
-    unitOfMeasurement: "metric",
-  };
-
-  const url = new URL(process.env.DHL_API_PRODUCTS_URL);
-
-  Object.keys(formData).forEach((key) => {
-    if (formData[key] !== "") {
-      url.searchParams.append(key, formData[key]);
-    }
-  });
-
-  const dhlProducts = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Webstore-Platform-Name": "Renadyl Europe",
-      Authorization: basic(
-        process.env.NEXT_PUBLIC_DHL_API_KEY,
-        process.env.NEXT_PUBLIC_DHL_API_SECRET
-      ),
-    },
-  });
-
-  console.log("Products response - ", dhlProducts);
-  console.log("Products body - ", await dhlProducts.json());
-
   const options = {
     method: "POST",
     headers: {
