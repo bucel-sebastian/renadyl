@@ -4,8 +4,6 @@ const basic = require("basic-authorization-header");
 const generateDhlAwb = async (data) => {
   const database = new Database();
 
-  console.log("awb data ", data);
-
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
@@ -100,7 +98,7 @@ const generateDhlAwb = async (data) => {
         },
       },
       productCode: "U",
-      getRateEstimates: false,
+      getRateEstimates: true,
       accounts: [
         {
           typeCode: "shipper",
@@ -168,14 +166,12 @@ const generateDhlAwb = async (data) => {
     }),
   };
 
-  console.log("options - ", options);
-
   const response = await fetch(process.env.DHL_API_GENERATE_AWB_URL, options);
   console.log("response - ", response);
-  const body = await response.json();
-  console.log("body - ", body);
   if (response.ok) {
-    //   return body;
+    const body = await response.json();
+    console.log("body - ", body);
+    return body;
   }
   return null;
 };

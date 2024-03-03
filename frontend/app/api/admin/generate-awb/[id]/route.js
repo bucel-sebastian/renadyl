@@ -101,10 +101,42 @@ export async function GET(req, { params }) {
       shippingAwb: shippingAwb,
     });
 
-    return NextResponse.json({
-      status: 200,
-      body: null,
-    });
+    if (awbResponse !== null) {
+      const databaseResponse = await database.update(
+        "renadyl_orders",
+        {
+          shipping_awb: {
+            awbNumber: awbResponse.shipmentTrackingNumber,
+            cost: awbResponse.awbCost,
+            pdfLink: awbResponse.documents,
+          },
+        },
+        { id: id }
+      );
+
+      console.log("db response - ", databaseResponse[0]);
+
+      // const emailResponse = await sendSamedayAwbEmail({
+      //   lang: "ro",
+      //   order_id: id,
+      //   shipping_awb: {
+      //     awbNumber: awbResponse.awbNumber,
+      //     cost: awbResponse.awbCost,
+      //     pdfLink: awbResponse.documents,
+      //   },
+      //   shipping: JSON.parse(databaseResponse[0].shipping_details),
+      //   client_id: databaseResponse[0].client_id,
+      // });
+
+      console.log("email response - ", emailResponse);
+
+      return NextResponse.json({
+        status: 200,
+        body: databaseResponse[0],
+        email: null,
+        // email: emailResponse,
+      });
+    }
   }
 
   return NextResponse.json({
