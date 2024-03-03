@@ -579,6 +579,10 @@ function OrderDetails({ orderId }) {
     }
   };
 
+  const downloadDhlAwb = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       {updatedOrderData !== null ? (
@@ -828,7 +832,24 @@ function OrderDetails({ orderId }) {
                           </button>
                         </>
                       ) : (
-                        <></>
+                        <>
+                          {updatedOrderData?.shipping_details?.provider ===
+                          "DHL" ? (
+                            <>
+                              <Link
+                                href={`https://www.dhl.com/ro-en/home/tracking/tracking-express.html?submit=1&tracking-id=${updatedOrderData?.shipping_awb?.awbNumber}`}
+                              >
+                                {updatedOrderData?.shipping_awb?.awbNumber}
+                              </Link>
+                              <br />
+                              <button onClick={downloadDhlAwb}>
+                                Descarca AWB
+                              </button>
+                            </>
+                          ) : (
+                            <></>
+                          )}
+                        </>
                       )}
                     </>
                   )}

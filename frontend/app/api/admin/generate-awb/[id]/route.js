@@ -104,6 +104,8 @@ export async function GET(req, { params }) {
     if (awbResponse !== null) {
       let estimatedCost;
 
+      console.log("Charges - ", awbResponse?.shipmentCharges);
+
       if (currency === "RON") {
         for (let i = 0; i < awbResponse?.shipmentCharges?.length; i++) {
           if (
@@ -131,11 +133,12 @@ export async function GET(req, { params }) {
       const databaseResponse = await database.update(
         "renadyl_orders",
         {
-          shipping_awb: {
-            awbNumber: awbResponse.shipmentTrackingNumber,
-            cost: estimatedCost,
-            pdfLink: awbResponse.documents,
-          },
+          shipping_awb: awbResponse,
+          // {
+          //   awbNumber: awbResponse.shipmentTrackingNumber,
+          //   cost: estimatedCost,
+          //   pdfLink: awbResponse.documents,
+          // },
         },
         { id: id }
       );
