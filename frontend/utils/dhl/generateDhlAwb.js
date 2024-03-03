@@ -62,7 +62,7 @@ const generateDhlAwb = async (data) => {
       productCode: "U",
       accounts: {
         typeCode: "shipper",
-        number: "410968613",
+        number: process.env.DHL_CUSTOMER_CODE,
       },
       customerDetails: {
         shipperDetails: {
