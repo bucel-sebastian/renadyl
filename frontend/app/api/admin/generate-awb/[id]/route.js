@@ -1,4 +1,5 @@
 import Database from "@/utils/Database";
+import generateDhlAwb from "@/utils/dhl/generateDhlAwb";
 import { sendSamedayAwbEmail } from "@/utils/nodemailer/AwbGeneratedMail";
 import generateSamedayAwb from "@/utils/sameday/generateSamedayAwb";
 import { NextResponse } from "next/server";
@@ -74,6 +75,7 @@ export async function GET(req, { params }) {
     //   currency: currency,
     //   shippingAwb: shippingAwb,
     // });
+
     return NextResponse.json({
       status: 200,
       body: null,
@@ -88,6 +90,17 @@ export async function GET(req, { params }) {
     //   currency: currency,
     //   shippingAwb: shippingAwb,
     // });
+
+    const awbResponse = await generateDhlAwb({
+      orderData: orderData,
+      billingDetails: billingDetails,
+      shippingDetails: shippingDetails,
+      payment: payment,
+      orderTotal: orderTotal,
+      currency: currency,
+      shippingAwb: shippingAwb,
+    });
+
     return NextResponse.json({
       status: 200,
       body: null,
