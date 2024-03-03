@@ -137,9 +137,9 @@ const generateDhlAwb = async (data) => {
 
   const response = await fetch(process.env.DHL_API_GENERATE_AWB_URL, options);
   console.log("response - ", response);
+  const body = await response.json();
+  console.log("body - ", body);
   if (response.ok) {
-    const body = await response.json();
-    console.log("body - ", body);
     return body;
   }
   return null;
