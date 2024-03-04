@@ -581,6 +581,7 @@ function OrderDetails({ orderId }) {
 
   const downloadDhlAwb = async (e) => {
     e.preventDefault();
+    console.log("AWB", updatedOrderData.shipping_awb);
   };
 
   return (
