@@ -239,7 +239,33 @@ function ClientOrderDetails({ orderId }) {
                       {orderData?.shipping_awb === null ? (
                         <>AWB-ul nu a fost generat</>
                       ) : (
-                        <></>
+                        <>
+                          {orderData?.shipping_details?.provider ===
+                          "Sameday" ? (
+                            <>
+                              <Link
+                                href={`https://sameday.ro/#awb=${orderData?.shipping_awb?.awbNumber}`}
+                              >
+                                {orderData?.shipping_awb?.awbNumber}
+                              </Link>
+                            </>
+                          ) : (
+                            <>
+                              {orderData?.shipping_details?.provider ===
+                              "DHL" ? (
+                                <>
+                                  <Link
+                                    href={`https://www.dhl.com/ro-en/home/tracking/tracking-express.html?submit=1&tracking-id=${orderData?.shipping_awb?.awbNumber}`}
+                                  >
+                                    {orderData?.shipping_awb?.awbNumber}
+                                  </Link>
+                                </>
+                              ) : (
+                                <></>
+                              )}
+                            </>
+                          )}
+                        </>
                       )}
                     </p>
                   </div>

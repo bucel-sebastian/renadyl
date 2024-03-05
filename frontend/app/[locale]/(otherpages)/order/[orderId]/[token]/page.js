@@ -158,7 +158,31 @@ export default async function PreviewOrder({
                     {orderData?.shipping_awb === null ? (
                       <>{t("order-details.awb-not-created")}</>
                     ) : (
-                      <></>
+                      <>
+                        {orderData?.shipping_details?.provider === "Sameday" ? (
+                          <>
+                            <Link
+                              href={`https://sameday.ro/#awb=${orderData?.shipping_awb?.awbNumber}`}
+                            >
+                              {orderData?.shipping_awb?.awbNumber}
+                            </Link>
+                          </>
+                        ) : (
+                          <>
+                            {orderData?.shipping_details?.provider === "DHL" ? (
+                              <>
+                                <Link
+                                  href={`https://www.dhl.com/ro-en/home/tracking/tracking-express.html?submit=1&tracking-id=${orderData?.shipping_awb?.awbNumber}`}
+                                >
+                                  {orderData?.shipping_awb?.awbNumber}
+                                </Link>
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </>
+                        )}
+                      </>
                     )}
                   </p>
                 </div>
