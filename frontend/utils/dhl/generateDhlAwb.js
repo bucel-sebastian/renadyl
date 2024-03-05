@@ -129,7 +129,7 @@ const generateDhlAwb = async (data) => {
           },
         ],
         isCustomsDeclarable: false,
-        description: `Order no. ${data.orderData.id} shipping package`,
+        description: `Supplement - Order no. ${data.orderData.id} shipping package`,
         unitOfMeasurement: "metric",
       },
     }),
