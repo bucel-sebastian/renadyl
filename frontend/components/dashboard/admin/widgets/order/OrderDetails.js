@@ -584,6 +584,29 @@ function OrderDetails({ orderId }) {
     console.log("AWB", updatedOrderData.shipping_awb.pdfLink.content);
 
     const binaryData = atob(updatedOrderData.shipping_awb.pdfLink.content);
+    const arrayBuffer = new ArrayBuffer(binaryData.length);
+    const byteArray = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < binaryData.length; i++) {
+      byteArray[i] = binaryData.charCodeAt(i);
+    }
+
+    const blob = new Blob([arrayBuffer], { type: "application/pdf" });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute(
+      "download",
+      `awb_${updatedOrderData.shipping_awb.awbNumber}.pdf`
+    );
+
+    link.style.display = "none";
+
+    document.body.appendChild(link);
+    link.click();
+    URL.revokeObjectURL(url);
+    document.body.removeChild(link);
   };
 
   return (
