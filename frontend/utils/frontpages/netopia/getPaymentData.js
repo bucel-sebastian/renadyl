@@ -180,6 +180,8 @@ function getRequest(orderId, amount, currency, orderData, locale) {
 
   let xml = builder.buildObject(result.data);
 
+  console.log("payment xml", xml);
+
   let xmlWithoutDiacritics = removeDiacritics(xml);
   return rc4.encrypt(publicKey, xmlWithoutDiacritics, result.algorithm);
 }
