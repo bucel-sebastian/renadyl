@@ -44,9 +44,9 @@ function getPayment(orderId, amount, currency, orderData, locale) {
       url: {
         return:
           locale === "ro"
-            ? `https://renadyleurope.com/order-placed`
-            : `https://renadyleurope.com/${locale}/order-placed`,
-        confirm: "https://renadyleurope.com/api/confirm-payment",
+            ? `https://renadyleurope.com/order-placed/`
+            : `https://renadyleurope.com/${locale}/order-placed/`,
+        confirm: "https://renadyleurope.com/api/confirm-payment/",
       },
       invoice: {
         $: {
