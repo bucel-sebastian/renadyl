@@ -97,19 +97,19 @@ export default async function middleware(req) {
 
   const res = NextResponse.next();
 
-  console.log("response", res);
-  console.log("request", req);
+  // console.log("response", res);
+  // console.log("request", req);
 
-  console.log("geo", {
-    city: req.geo.city,
-    country: req.geo.country,
-    region: req.geo.region,
-    lat: req.geo.latitude,
-    lng: req.geo.longitude,
-  });
+  // console.log("geo", {
+  //   city: req.geo.city,
+  //   country: req.geo.country,
+  //   region: req.geo.region,
+  //   lat: req.geo.latitude,
+  //   lng: req.geo.longitude,
+  // });
 
   let locale = req?.cookies?.get("NEXT_LOCALE");
-  console.log("Cookie", req.cookies.get("NEXT_LOCALE"));
+  // console.log("Cookie", req.cookies.get("NEXT_LOCALE"));
   // if (!req.cookies.get("NEXT_LOCALE")) {
   //   if (req?.geo?.country === "RO") {
   //     locale = "ro";
