@@ -44,7 +44,7 @@ export async function POST(req, res) {
 
   return NextResponse.json({
     status: 200,
-    body: "ok",
+    body: "Accesare confirm payment",
   });
 }
 
