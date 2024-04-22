@@ -30,6 +30,16 @@
         "linkIg": "https://www.instagram.com/renadylromania/",
         "linkTw": "https://twitter.com/RenadylEurope"
     },
+    "Shop-off-popup": {
+        "title": "Momentan indisponibil",
+        "text": "Ne pare rău să vă informăm că vânzările noastre sunt temporar suspendate, deoarece stocurile noastre sunt epuizate.",
+        "close-btn": "Am înțeles"
+    },
+    "Cookies-consent": {
+        "title": "Cookies",
+        "text": "Acest site utilizează cookie-uri pentru a vă oferi cea mai bună experiență de navigare. Continuând să utilizați site-ul nostru, sunteți de acord cu utilizarea cookie-urilor conform Politicii noastre de Confidențialitate și Cookie-uri.",
+        "close-btn": "Închide"
+    },
     "Index": {
         "page-title": "Acasă",
         "add-to-cart-success": "Produsul a fost adăugat în coș!",
@@ -40,11 +50,13 @@
             "3": "sanatate"
         },
         "buy-btn": "Cumpără",
+        "buy-button-shop-off": "Momentan indisponibil",
         "about-btn": "Despre produs"
     },
     "Product": {
         "page-title": "Produs",
         "buy-btn": "Adaugă în coș",
+        "buy-button-shop-off": "Momentan indisponibil",
         "subscription-btn": "Abonament",
         "add-to-cart-success": "Produsul a fost adăugat în coș!",
         "hero-section": {
@@ -250,7 +262,8 @@
         "add-to-cart-success": "Produsul a fost adăugat în coș!",
         "our-products": "Produsele noastre",
         "bundle-offer-1": "Profită acum de oferta noastră și poți cumpăra pachetul de 3 buc. Renadyl pentru doar",
-        "bundle-offer-2": "buc"
+        "bundle-offer-2": "buc",
+        "buy-button-shop-off": "Momentan indisponibil"
     },
     "Checkout": {
         "page-title": "Checkout",
@@ -277,6 +290,7 @@
         "promo-account": "Utilizatorii autentificati beneficiază de transport gratuit",
         "locker-not-selected-error": "Vă rugăm să selectați un punct de livrare",
         "shipping-data-error": "Datele de livrare nu sunt valide",
+        "buy-button-shop-off": "Momentan indisponibil",
         "order-steps": {
             "step-1": "Coșul meu",
             "step-2": "Detalii comandă",
@@ -403,6 +417,7 @@
             "step-3": "Sumar comandă",
             "step-4": "Comandă plasată"
         },
+        "buy-button-shop-off": "Momentan indisponibil",
         "promocode-label": "Cod de reducere",
         "promocode-ph": "Introdu codul de reducere",
         "promocode-btn": "Aplică",
@@ -1430,7 +1445,9 @@
                     "vat-int-ph": "Introdu cota TVA internațional (%)",
                     "invoice-series-label": "Serie factură",
                     "invoice-series-ph": "Introdu serie factură",
-                    "promotion-landing-page-label": "Landing page promoțional",
+                    "shop-status-label": "Stare magazin",
+                    "turn-off-shop": "Oprit",
+                    "turn-on-shop": "Pornit",
                     "submit-btn": "Salvează",
                     "reset-btn": "Anulează",
                     "change-settings-success": "Setările au fost actualizate cu succes",
@@ -1685,7 +1702,21 @@
                 "settings": "Setări",
                 "logout": "Deconectare"
             },
-            "dashboard-greetings": "Bine ai venit, "
+            "dashboard-greetings": "Bine ai venit, ",
+            "patients": {
+                "tables": {
+                    "rows-per-page-label": "Rânduri per pagină",
+                    "all-label": "Toate",
+                    "of-label": "din",
+                    "elements-label": "elemente"
+                },
+                "table-heads": {
+                    "index": "Nr. crt.",
+                    "id": "ID",
+                    "name": "Nume",
+                    "phone": "Număr de telefon"
+                }
+            }
         }
     }
 }

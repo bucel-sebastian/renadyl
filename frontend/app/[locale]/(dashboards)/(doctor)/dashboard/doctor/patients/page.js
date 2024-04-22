@@ -1,5 +1,6 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import SessionProviderInClient from "@/components/SessionProviderInClient";
+import DoctorPatientsList from "@/components/dashboard/doctor/DoctorPatientsList";
 import { getServerSession } from "next-auth";
 import {
   NextIntlClientProvider,
@@ -20,7 +21,9 @@ export default function Page({ params: { locale } }) {
   return (
     <>
       <NextIntlClientProvider locale={locale} messages={messages}>
-        <SessionProviderInClient session={session}></SessionProviderInClient>
+        <SessionProviderInClient session={session}>
+          <DoctorPatientsList />
+        </SessionProviderInClient>
       </NextIntlClientProvider>
     </>
   );

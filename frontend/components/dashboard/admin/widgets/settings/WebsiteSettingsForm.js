@@ -1,12 +1,14 @@
 "use client";
 import LoadingBlock from "@/components/LoadingBlock";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function WebsiteSettingsForm() {
+  const router = useRouter();
   const [dataIsLoading, setDataIsLoading] = useState(true);
 
   const [initialData, setInitialData] = useState([]);
@@ -19,7 +21,7 @@ function WebsiteSettingsForm() {
 
     if (response.ok) {
       const body = await response.json();
-
+      console.log("website settings -", body);
       const data = body.body.reduce((accumulator, { name, value }) => {
         accumulator[name] = value;
         return accumulator;
@@ -90,9 +92,43 @@ function WebsiteSettingsForm() {
     setUpdatedData(initialData);
   };
 
+  const handleSetStopSaleOff = (e) => {
+    setUpdatedData((prevData) => ({ ...prevData, ["stop_sales"]: "0" }));
+  };
+  const handleSetStopSaleOn = (e) => {
+    setUpdatedData((prevData) => ({ ...prevData, ["stop_sales"]: "1" }));
+  };
+
   useEffect(() => {
     getWebsiteSettingsData();
   }, []);
+
+  // useEffect(() => {
+  //   const handleBeforeUnload = (event) => {
+  //     if (initialData !== updatedData) {
+  //       // Dacă datele nu sunt la fel, cere confirmare înainte de a părăsi pagina
+  //       event.preventDefault();
+  //       const leaveConfirmation = window.confirm(
+  //         "Sigur dorești să părăsești pagina?"
+  //       );
+  //       if (leaveConfirmation) {
+  //         // Dacă utilizatorul confirmă, continuă să părăsească pagina
+  //         const nextPage = determineNextPage(); // determină ruta către pagina următoare
+  //         router.push(nextPage);
+  //       }
+  //     }
+  //   };
+
+  //   window.addEventListener("beforeunload", handleBeforeUnload);
+
+  //   return () => {
+  //     window.removeEventListener("beforeunload", handleBeforeUnload);
+  //   };
+  // }, [initialData, updatedData, router]);
+
+  useEffect(() => {
+    console.log("initial data - ", initialData);
+  }, [initialData]);
 
   return (
     <>
@@ -149,9 +185,42 @@ function WebsiteSettingsForm() {
               </div>
               <div className="w-full flex flex-col mb-2 max-md:w-full">
                 <label className="px-1 text-foregroundPrimary70">
-                  {t("promotion-landing-page-label")}
+                  {t("shop-status-label")}
                 </label>
-                <input
+                <div className="relative w-full mx-auto border-foregroundSecondary20  border-[1px] shadow-lg rounded-xl h-max overflow-hidden">
+                  <div className="relative w-full flex flex-row bg-backgroundPrimary">
+                    <div
+                      className={`absolute w-1/2 top-0 left-0 ${
+                        updatedData.stop_sales === "0"
+                          ? "translate-x-0 bg-left rounded-r-lg"
+                          : "translate-x-full bg-right rounded-l-lg"
+                      }  h-full bg-gradient-to-r from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%]  transition-all duration-300`}
+                    ></div>
+                    <button
+                      onClick={handleSetStopSaleOff}
+                      type="button"
+                      className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
+                        updatedData.stop_sales === "0"
+                          ? "text-backgroundPrimary"
+                          : "text-foregroundPrimary"
+                      }`}
+                    >
+                      {t("turn-on-shop")}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleSetStopSaleOn}
+                      className={`w-1/2 text-xl py-3 z-10 transition-all duration-300 ${
+                        updatedData.stop_sales === "1"
+                          ? "text-backgroundPrimary"
+                          : "text-foregroundPrimary"
+                      }`}
+                    >
+                      {t("turn-off-shop")}
+                    </button>
+                  </div>
+                </div>
+                {/* <input
                   // placeholder={t("promotion-landing-page-ph")}
                   type="text"
                   name="promotion_landing_page"
@@ -160,7 +229,7 @@ function WebsiteSettingsForm() {
                   className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
                   required
                   readOnly={true}
-                />
+                /> */}
               </div>
             </div>
             <div className="flex flex-row gap-4 ">

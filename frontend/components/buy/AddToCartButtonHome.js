@@ -8,13 +8,26 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function AddToCartButtonHome({ currentLocale }) {
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [shopIsOn, setShopIsOn] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const t = useTranslations("Index");
 
   const router = useRouter();
 
   const dispatch = useDispatch();
+
+  const getIfShopIsOn = async () => {
+    const response = await fetch("/api/data/json/shop-status", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    await setShopIsOn(data?.body?.shopStatus === "1" ? false : true);
+    setIsDisabled(false);
+  };
 
   const handleAddToCart = () => {
     setIsDisabled(true);
@@ -32,28 +45,44 @@ function AddToCartButtonHome({ currentLocale }) {
     router.push("/cart", { locale: currentLocale });
   };
 
+  useEffect(() => {
+    getIfShopIsOn();
+  }, []);
+
   return (
     <>
-      <button
-        onClick={handleAddToCart}
-        className="block bg-gradient-to-r w-[300px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-3xl text-backgroundPrimary rounded-2xl py-3 cursor-pointer"
-        disabled={isDisabled}
-      >
-        {t("buy-btn")}
-      </button>
+      {shopIsOn === true ? (
+        <>
+          <button
+            onClick={handleAddToCart}
+            className="block bg-gradient-to-r w-[300px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-3xl text-backgroundPrimary rounded-2xl py-3 cursor-pointer flex justify-center items-center content-center"
+            disabled={isDisabled}
+          >
+            {t("buy-btn")}
+          </button>
 
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </>
+      ) : (
+        <>
+          <div className="block bg-gradient-to-r w-[300px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl rounded-2xl p-1 cursor-pointer">
+            <div className="bg-backgroundPrimary rounded-xl text-foregroundPrimary h-full flex justify-center items-center content-center py-2">
+              {t("buy-button-shop-off")}
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }

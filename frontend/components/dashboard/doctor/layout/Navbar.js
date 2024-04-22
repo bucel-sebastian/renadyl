@@ -126,7 +126,7 @@ function Navbar({ currentLocale }) {
               </Link>
             </li>
 
-            <li className="list-none">
+            {/* <li className="list-none">
               <button
                 className={` w-full flex flex-row items-center content-center gap-4 text-lg px-3 py-2 rounded-lg ${
                   pathname === "/dashboard/client/settings"
@@ -135,11 +135,11 @@ function Navbar({ currentLocale }) {
                 } `}
                 onClick={handleSignOut}
               >
-                {/* <FaGear className="text-2xl" /> */}
+                
                 <FaArrowRightFromBracket className="text-2xl" />
                 {t("doctor.navbar.logout")}
               </button>
-            </li>
+            </li> */}
           </nav>
         </div>
         <div className="h-1/5"></div>

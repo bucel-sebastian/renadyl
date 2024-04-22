@@ -49,44 +49,44 @@ function BillingBox() {
               {billing.asShipping === true ? (
                 <>
                   <h3 className="text-center">{t("entity-pf")}</h3>
-                  {shipping.type === "courier" ? (
+                  {shipping?.type === "courier" ? (
                     <>
                       <p className="text-center">
-                        {shipping.address}, {shipping.postalCode},{" "}
-                        {shipping.city}, {shipping.state}, {shipping.country}
+                        {shipping?.address}, {shipping?.postalCode},{" "}
+                        {shipping?.city}, {shipping?.state}, {shipping?.country}
                       </p>
                     </>
                   ) : (
                     <>
                       <p className="text-center">
-                        {shipping.locker.city}, {shipping.locker.county},{" "}
-                        {shipping.country}
+                        {shipping?.locker?.city}, {shipping?.locker?.county},{" "}
+                        {shipping?.country}
                       </p>
                     </>
                   )}
                 </>
               ) : (
                 <>
-                  {billing.entity === "pf" ? (
+                  {billing?.entity === "pf" ? (
                     <>
                       <h3 className="text-center">{t("entity-pf")}</h3>
                       <p className="text-center">
-                        {billing.fname} {billing.lname}
+                        {billing?.fname} {billing?.lname}
                       </p>
                       <p className="text-center">
-                        {billing.address}, {billing.postalCode}, {billing.city},{" "}
-                        {billing.state}, {billing.country}
+                        {billing?.address}, {billing?.postalCode},{" "}
+                        {billing?.city}, {billing?.state}, {billing?.country}
                       </p>
                     </>
                   ) : (
                     <>
                       <h3 className="text-center">{t("entity-pj")}</h3>
                       <p className="text-center">
-                        {billing.companyName} {billing.companyCif}
+                        {billing?.companyName} {billing?.companyCif}
                       </p>
                       <p className="text-center">
-                        {billing.address}, {billing.postalCode}, {billing.city},{" "}
-                        {billing.state}, {billing.country}
+                        {billing?.address}, {billing?.postalCode},{" "}
+                        {billing?.city}, {billing?.state}, {billing?.country}
                       </p>
                     </>
                   )}

@@ -22,12 +22,11 @@ function OrderSummaryBox({ locale }) {
 
   const slice = useSelector((state) => state);
 
+  const [shopIsOn, setShopIsOn] = useState(true);
+
   const [havePaymentData, setHavePaymentData] = useState(false);
   const [netopiaEnvKey, setNetopiaEnvKey] = useState(null);
   const [netopiaData, setNetopiaData] = useState(null);
-
-  console.log("CART - ", cart);
-  console.log("SLICE - ", slice);
 
   const [summaryData, setSummaryData] = useState({
     orderTotal: 0,
@@ -62,7 +61,6 @@ function OrderSummaryBox({ locale }) {
       const responseJson = await response.json();
       console.log(responseJson);
       const body = await responseJson.body;
-      console.log("order response - ", body);
 
       if (body.paymentType === "cash") {
         persistor.purge();
@@ -99,13 +97,101 @@ function OrderSummaryBox({ locale }) {
     );
     const data = await response.json();
 
-    console.log("SUMMARY ", data.body);
     setSummaryData(data.body);
   };
 
   useEffect(() => {
     calculateCartSummary();
   }, [cart, checkoutData]);
+
+  const getIfShopIsOn = async () => {
+    const response = await fetch("/api/data/json/shop-status", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    await setShopIsOn(data?.body?.shopStatus === "1" ? false : true);
+  };
+
+  useEffect(() => {
+    getIfShopIsOn();
+  }, []);
+
+  const checkOrderData = async () => {
+    console.log("Checkout data", checkoutData);
+    let redirectToCart = false;
+    if (checkoutData?.payment === "null") {
+      redirectToCart = true;
+    }
+    if (checkoutData?.shipping?.savedData === null) {
+      if (checkoutData?.shipping?.type === "easybox") {
+        if (
+          checkoutData?.shipping?.locker === null ||
+          checkoutData?.shipping?.locker === ""
+        ) {
+          redirectToCart = true;
+        }
+      } else {
+        if (
+          checkoutData?.shipping?.address === "" ||
+          checkoutData?.shipping?.city === "" ||
+          checkoutData?.shipping?.country === "" ||
+          checkoutData?.shipping?.email === "" ||
+          checkoutData?.shipping?.fname === "" ||
+          checkoutData?.shipping?.lname === "" ||
+          checkoutData?.shipping?.state === ""
+        ) {
+          redirectToCart = true;
+        }
+      }
+    }
+    if (checkoutData?.billing?.savedData === null) {
+      if (checkoutData?.billing?.asShipping === false) {
+        if (checkoutData?.billing?.entity === "") {
+          redirectToCart = true;
+        } else {
+          if (checkoutData?.billing?.entity === "pf") {
+            if (
+              checkoutData?.billing?.address === "" ||
+              checkoutData?.billing?.city === "" ||
+              checkoutData?.billing?.country === "" ||
+              checkoutData?.billing?.email === "" ||
+              checkoutData?.billing?.fname === "" ||
+              checkoutData?.billing?.lname === "" ||
+              checkoutData?.billing?.state === ""
+            ) {
+              redirectToCart = true;
+            }
+          } else {
+            if (
+              checkoutData?.billing?.address === "" ||
+              checkoutData?.billing?.city === "" ||
+              checkoutData?.billing?.country === "" ||
+              checkoutData?.billing?.email === "" ||
+              checkoutData?.billing?.companyName === "" ||
+              checkoutData?.billing?.companyCif === "" ||
+              checkoutData?.billing?.state === ""
+            ) {
+              redirectToCart = true;
+            }
+          }
+        }
+      }
+    }
+    if (checkoutData?.currency === "") {
+      redirectToCart = true;
+    }
+
+    if (redirectToCart === true) {
+      router.replace("/cart", { locale: locale });
+    }
+  };
+
+  useEffect(() => {
+    checkOrderData();
+  }, []);
 
   return (
     <div>
@@ -153,13 +239,25 @@ function OrderSummaryBox({ locale }) {
           </h2>
         </div>
       </div>
-      <button
-        type="submit"
-        onClick={handleFormSubmit}
-        className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
-      >
-        {t("place-order")}
-      </button>
+      {shopIsOn === true ? (
+        <>
+          <button
+            type="submit"
+            onClick={handleFormSubmit}
+            className="block  bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-3"
+          >
+            {t("place-order")}
+          </button>
+        </>
+      ) : (
+        <>
+          <div className="block bg-gradient-to-r w-full from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl rounded-2xl p-1 cursor-pointer">
+            <div className="bg-backgroundPrimary rounded-xl text-foregroundPrimary h-full flex justify-center items-center content-center py-2">
+              {t("buy-button-shop-off")}
+            </div>
+          </div>
+        </>
+      )}
 
       {havePaymentData ? (
         <>

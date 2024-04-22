@@ -9,6 +9,8 @@ import HomeHeader from "@/components/headers/HomeHeader";
 import Footer from "@/components/Footer";
 import Loading from "./loading";
 import { StoreProvider } from "@/redux/StoreProvider";
+import CookiesConsent from "@/components/CookiesConsent";
+import ShopOffPopup from "@/components/ShopOffPopup";
 
 // export function generateStaticParams() {
 //     return [
@@ -41,6 +43,8 @@ export default function LocaleLayout({ children, params: { locale } }) {
             </NextIntlClientProvider>
             {children}
             <NextIntlClientProvider locale={locale} messages={messages}>
+              <CookiesConsent locale={locale} />
+              <ShopOffPopup locale={locale} />
               <Footer locale={locale} />
             </NextIntlClientProvider>
           </StoreProvider>

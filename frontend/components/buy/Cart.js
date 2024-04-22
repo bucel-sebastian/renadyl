@@ -9,6 +9,8 @@ import { addToCart, removeFromCart } from "@/redux/slices/cartSlice";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
 function Cart() {
+  const [shopIsOn, setShopIsOn] = useState(true);
+
   const { cart } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
@@ -28,6 +30,22 @@ function Cart() {
     event.preventDefault();
     dispatch(removeFromCart(cartQuantity));
   };
+
+  const getIfShopIsOn = async () => {
+    const response = await fetch("/api/data/json/shop-status", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    await setShopIsOn(data?.body?.shopStatus === "1" ? false : true);
+    setIsDisabled(false);
+  };
+  useEffect(() => {
+    getIfShopIsOn();
+  }, []);
+
   return (
     <>
       <div className="w-full flex flex-row">

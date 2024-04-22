@@ -13,8 +13,6 @@ import LoadingBlock from "@/components/LoadingBlock";
 function AdminAccountSettings({ getUpdatedData }) {
   const { data, update } = useSession();
 
-  console.log("ses data", data);
-
   const [initialAccountSettings, setInitialAccountSettings] = useState({
     f_name: data?.user?.f_name,
     l_name: data?.user?.l_name,

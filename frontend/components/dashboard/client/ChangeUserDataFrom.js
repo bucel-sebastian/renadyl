@@ -122,7 +122,7 @@ function ChangeUserDataFrom({ userInitialData, getUserData }) {
         </div>
         <div className="w-full flex flex-col mb-2 max-md:w-full">
           <label className="px-1 text-foregroundPrimary70">
-            {t("update-data-form.email-label")}*
+            {t("update-data-form.email-label")}
           </label>
           <input
             placeholder={t("update-data-form.email-ph")}
@@ -132,6 +132,7 @@ function ChangeUserDataFrom({ userInitialData, getUserData }) {
             value={updatedData?.email}
             className="bg-backgroundPrimary duration-300 transition-all outline-none border-b-[1px] border-foregroundPrimary40 focus:border-foregroundPrimary py-1 px-1 "
             required
+            readOnly
           />
         </div>
         <div className="w-full flex flex-col mb-2 max-md:w-full">

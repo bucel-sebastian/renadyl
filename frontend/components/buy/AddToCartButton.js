@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function AddToCartButton() {
+  const [shopIsOn, setShopIsOn] = useState(true);
   const [countryCode, setCountryCode] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
   const [productDataIsLoading, setProductDataIsLoading] = useState(true);
@@ -50,6 +51,17 @@ function AddToCartButton() {
     });
   };
 
+  const getIfShopIsOn = async () => {
+    const response = await fetch("/api/data/json/shop-status", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    await setShopIsOn(data?.body?.shopStatus === "1" ? false : true);
+  };
+
   const getProductData = async (countryCode) => {
     const response = await fetch(
       `/api/data/json/product/${countryCode}/renal_single`,
@@ -76,7 +88,12 @@ function AddToCartButton() {
 
   useEffect(() => {
     getIpCountry();
+    getIfShopIsOn();
   }, []);
+
+  useEffect(() => {
+    console.log("shop is on - ", shopIsOn);
+  }, [shopIsOn]);
 
   useEffect(() => {
     if (countryCode !== null) getProductData(countryCode);
@@ -93,63 +110,75 @@ function AddToCartButton() {
         </div>
       ) : (
         <>
-          {productData.price !== "" ? (
-            <div className="max-md:mb-4 w-max max-md:mx-auto">
-              <div className="text-3xl mb-4 w-max flex items-end">
-                <span className="mb-[1px]">
-                  {t("hero-section.product-price")}:
-                </span>
-                &nbsp;
-                <div>
-                  {productData.onSale ? (
-                    <div className="flex justify-between items-center content-center text-lg">
-                      <span>
-                        <del>
-                          {productData.price} {productData.currency}
-                        </del>
-                      </span>
-                      <span className="bg-gradient-to-r from-gradientGreen to-gradientPurple text-backgroundPrimary ml-2 rounded-full px-4">
-                        - {productData.saleValue}{" "}
-                        {productData.salePercentage
-                          ? "%"
-                          : productData.currency}
-                      </span>
-                    </div>
-                  ) : (
-                    ""
-                  )}
+          {shopIsOn === true ? (
+            <>
+              {productData.price !== "" ? (
+                <div className="max-md:mb-4 w-max max-md:mx-auto">
+                  <div className="text-3xl mb-4 w-max flex items-end">
+                    <span className="mb-[1px]">
+                      {t("hero-section.product-price")}:
+                    </span>
+                    &nbsp;
+                    <div>
+                      {productData.onSale ? (
+                        <div className="flex justify-between items-center content-center text-lg">
+                          <span>
+                            <del>
+                              {productData.price} {productData.currency}
+                            </del>
+                          </span>
+                          <span className="bg-gradient-to-r from-gradientGreen to-gradientPurple text-backgroundPrimary ml-2 rounded-full px-4">
+                            - {productData.saleValue}{" "}
+                            {productData.salePercentage
+                              ? "%"
+                              : productData.currency}
+                          </span>
+                        </div>
+                      ) : (
+                        ""
+                      )}
 
-                  <div>
-                    <span className="font-extrabold">
-                      {productData.onSale
-                        ? productData.salePrice
-                        : productData.price}{" "}
-                      {productData.currency}
-                    </span>{" "}
-                    /&nbsp;
-                    <span>{t("hero-section.product-unit")}</span>
+                      <div>
+                        <span className="font-extrabold">
+                          {productData.onSale
+                            ? productData.salePrice
+                            : productData.price}{" "}
+                          {productData.currency}
+                        </span>{" "}
+                        /&nbsp;
+                        <span>{t("hero-section.product-unit")}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="flex flex-row gap-5 max-md:justify-center max-md:gap-2">
-                <button
-                  onClick={handleAddToCart}
-                  // href="/buy"
-                  // href="https://www.emag.ro/renadyl-pentru-insuficienta-renala-60-comprimate-rnd/pd/D1D5C3YBM/?cmpid=101143&gclid=CjwKCAjwsKqoBhBPEiwALrrqiI6-RpbKtsr_0UzHmEIo-6DLzegwvfrY7Lsg0TlhXC7_rcIdUbQIihoCoPgQAvD_BwE"
-                  className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2.5"
-                  disabled={isDisabled}
-                >
-                  {t("hero-section.product-buy-btn")}
-                </button>
-                {/* <button className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-gradientGreen hover:text-gradientPurple rounded-2xl p-[3px]">
+                  <div className="flex flex-row gap-5 max-md:justify-center max-md:gap-2">
+                    <button
+                      onClick={handleAddToCart}
+                      // href="/buy"
+                      // href="https://www.emag.ro/renadyl-pentru-insuficienta-renala-60-comprimate-rnd/pd/D1D5C3YBM/?cmpid=101143&gclid=CjwKCAjwsKqoBhBPEiwALrrqiI6-RpbKtsr_0UzHmEIo-6DLzegwvfrY7Lsg0TlhXC7_rcIdUbQIihoCoPgQAvD_BwE"
+                      className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-backgroundPrimary rounded-2xl py-2.5"
+                      disabled={isDisabled}
+                    >
+                      {t("hero-section.product-buy-btn")}
+                    </button>
+                    {/* <button className="block bg-gradient-to-r w-[250px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl text-gradientGreen hover:text-gradientPurple rounded-2xl p-[3px]">
               <div className="bg-backgroundPrimary rounded-xl py-2.5 ">
                   {t("hero-section.product-subscription-btn")}
               </div>
           </button> */}
-              </div>
-            </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+            </>
           ) : (
-            ""
+            <>
+              <div className="block bg-gradient-to-r w-[300px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-2xl rounded-2xl p-1 cursor-pointer">
+                <div className="bg-backgroundPrimary rounded-xl text-foregroundPrimary h-full flex justify-center items-center content-center py-2">
+                  {t("buy-button-shop-off")}
+                </div>
+              </div>
+            </>
           )}
         </>
       )}

@@ -53,7 +53,7 @@ export default function Index({ params: { locale } }) {
         <Link
           href="/product"
           locale={locale}
-          className="block bg-gradient-to-r w-[300px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-3xl text-backgroundPrimary rounded-2xl py-3"
+          className="block bg-gradient-to-r w-[300px] from-gradientGreen via-gradientPurple to-gradientGreen bg-[length:200%] bg-left hover:bg-right duration-500 ease transition-all text-center text-3xl text-backgroundPrimary rounded-2xl py-3 flex justify-center items-center content-center"
         >
           {t("about-btn")}
         </Link>

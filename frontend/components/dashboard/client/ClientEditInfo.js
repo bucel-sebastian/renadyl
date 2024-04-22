@@ -48,7 +48,9 @@ function ClientEditInfo() {
         </>
       ) : (
         <>
-          <LoadingBlock />
+          <div className="mx-auto">
+            <LoadingBlock />
+          </div>
         </>
       )}
     </div>

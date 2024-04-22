@@ -1,6 +1,8 @@
 import Database from "@/utils/Database";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req, res) {
   const database = new Database();
 

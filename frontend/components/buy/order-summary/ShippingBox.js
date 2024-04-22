@@ -52,27 +52,27 @@ function ShippingBox() {
               </>
             }
           >
-            {shipping.savedData === null ? (
+            {shipping?.savedData === null ? (
               <>
                 <h3 className="text-center">
-                  {shipping.type === "courier" ? (
+                  {shipping?.type === "courier" ? (
                     <>{t("delivery-courier")}</>
                   ) : (
                     <>{t("delivery-easybox")}</>
                   )}
                 </h3>
-                {shipping.type === "courier" ? (
+                {shipping?.type === "courier" ? (
                   <>
                     <p className="text-center">
-                      {shipping.address}, {shipping.postalCode}, {shipping.city}
-                      , {shipping.state}, {shipping.country}
+                      {shipping?.address}, {shipping?.postalCode},{" "}
+                      {shipping?.city}, {shipping?.state}, {shipping?.country}
                     </p>
                   </>
                 ) : (
                   <>
                     <p className="text-center">
-                      {shipping.locker.name}, {shipping.locker.address},{" "}
-                      {shipping.locker.city}, {shipping.locker.county}
+                      {shipping?.locker?.name}, {shipping?.locker?.address},{" "}
+                      {shipping?.locker?.city}, {shipping?.locker?.county}
                     </p>
                   </>
                 )}
