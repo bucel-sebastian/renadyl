@@ -14,6 +14,11 @@ const nextConfig = {
         permanent: true,
         locale: false,
       },
+      {
+        source: "/api/v2/confirm",
+        destination: "/api/v2/confirm", // Aceasta ar trebui să fie destinația corectă
+        permanent: true,
+      },
     ];
   },
   async headers() {
