@@ -70,15 +70,14 @@ function OrderSummaryBox({ locale }) {
           locale: locale,
         });
       } else {
-        console.log("payment data - ", body.paymentData);
-        const { env_key, data } = await body.paymentData;
+        const { env_key, data, cipher, iv } = await body.paymentData;
 
         if (env_key !== null && data !== null) {
           setNetopiaEnvKey(env_key);
           setNetopiaData(data);
           setNetopiaCipher(cipher);
-          setNetopiaIv();
-          setHavePaymentData(false);
+          setNetopiaIv(iv);
+          setHavePaymentData(true);
         }
       }
     }

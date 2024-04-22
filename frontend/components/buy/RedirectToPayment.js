@@ -3,7 +3,12 @@ import { persistor } from "@/redux/store";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-function RedirectToPayment({ netopiaEnvKey, netopiaData }) {
+function RedirectToPayment({
+  netopiaEnvKey,
+  netopiaData,
+  netopiaCipher,
+  netopiaIv,
+}) {
   const { cart } = useSelector((state) => state.cart);
   const { checkoutData } = useSelector((state) => state.cart);
 
@@ -24,6 +29,8 @@ function RedirectToPayment({ netopiaEnvKey, netopiaData }) {
       >
         <input type="hidden" name="env_key" value={netopiaEnvKey} />
         <input type="hidden" name="data" value={netopiaData} />
+        <input type="hidden" name="cipher" value={netopiaCipher} />
+        <input type="hidden" name="iv" value={netopiaIv} />
       </form>
     </>
   );
