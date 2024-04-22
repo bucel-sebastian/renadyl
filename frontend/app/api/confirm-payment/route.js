@@ -6,7 +6,12 @@ export const dynamic = "force-dynamic";
 export async function POST(req, res) {
   const database = new Database();
 
+  console.log("Accesare confirm payment");
+
   const reqData = await req.text();
+
+  console.log("request data - ", reqData);
+
   const reqParams = new URLSearchParams(reqData);
   try {
     const paymentData = {
