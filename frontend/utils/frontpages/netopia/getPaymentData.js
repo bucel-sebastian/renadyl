@@ -95,6 +95,51 @@ function getPayment(orderId, amount, currency, orderData, locale) {
     },
   };
 
+  // const data = {
+  //   order: {
+  //     $: {
+  //       id: orderId,
+  //       timestamp: date.getTime(),
+  //       type: "card",
+  //     },
+  //     signature: "2VZR-GOQH-7A8W-VLRB-UOOW",
+  //     url: {
+  //       return: "<your_return_URL>",
+  //       confirm: "<your_confirm_URL>",
+  //     },
+  //     invoice: {
+  //       $: {
+  //         currency: currency,
+  //         amount: amount,
+  //       },
+  //       details: "test plata",
+  //       contact_info: {
+  //         billing: {
+  //           $: {
+  //             type: "person",
+  //           },
+  //           first_name: "Test",
+  //           last_name: "Test",
+  //           address: "strada",
+  //           email: "test@mobilpay.ro",
+  //           mobile_phone: "mobilePhone",
+  //         },
+  //         shipping: {
+  //           $: {
+  //             type: "person",
+  //           },
+  //           first_name: "Test",
+  //           last_name: "Test",
+  //           address: "strada",
+  //           email: "test@mobilpay.ro",
+  //           mobile_phone: "mobilePhone",
+  //         },
+  //       },
+  //     },
+  //     ipn_cipher: "aes-256-cbc",
+  //   },
+  // };
+
   return { data, algorithm: "aes-256-cbc" };
 }
 
@@ -132,8 +177,9 @@ function removeDiacritics(input) {
 
 function getRequest(orderId, amount, currency, orderData, locale) {
   const result = getPayment(orderId, amount, currency, orderData, locale);
+
   let xml = builder.buildObject(result.data);
-  // console.log(removeDiacritics(xml));
+
   let xmlWithoutDiacritics = removeDiacritics(xml);
   return rc4.encrypt(publicKey, xmlWithoutDiacritics, result.algorithm);
 }

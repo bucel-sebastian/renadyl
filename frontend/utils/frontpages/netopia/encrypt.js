@@ -28,8 +28,8 @@ function encrypt(publicKey, data, algorithm) {
 
   return {
     iv: iv.toString("base64"),
-    envKey: envKey.toString("base64"),
-    envData: encrypted,
+    env_key: envKey.toString("base64"),
+    data: encrypted,
     cipher: algorithm,
   };
 

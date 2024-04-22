@@ -47,3 +47,11 @@ export async function POST(req, res) {
     body: "ok",
   });
 }
+
+export async function GET(req, res) {
+  console.log("Getting a get request from confirm payment");
+  return NextResponse.json({
+    status: 200,
+    body: "ok",
+  });
+}
