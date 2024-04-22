@@ -32,7 +32,8 @@ var parser = new xml2js.Parser({
 function getPayment(orderId, amount, currency, orderData, locale) {
   let date = new Date();
   console.log("Order data - ", orderData);
-  return {
+
+  const data = {
     order: {
       $: {
         id: orderId,
@@ -90,8 +91,11 @@ function getPayment(orderId, amount, currency, orderData, locale) {
           },
         },
       },
+      ipn_cipher: "aes-256-cbc",
     },
   };
+
+  return { data, algorithm: "aes-256-cbc" };
 }
 
 function removeDiacritics(input) {
@@ -127,18 +131,17 @@ function removeDiacritics(input) {
 }
 
 function getRequest(orderId, amount, currency, orderData, locale) {
-  let xml = builder.buildObject(
-    getPayment(orderId, amount, currency, orderData, locale)
-  );
+  const result = getPayment(orderId, amount, currency, orderData, locale);
+  let xml = builder.buildObject(result.data);
   // console.log(removeDiacritics(xml));
   let xmlWithoutDiacritics = removeDiacritics(xml);
-  return rc4.encrypt(publicKey, xmlWithoutDiacritics);
+  return rc4.encrypt(publicKey, xmlWithoutDiacritics, result.algorithm);
 }
 
 function decodeResponse(data) {
   return new Promise(function (resolve, reject) {
     parser.parseString(
-      rc4.decrypt(privateKey, data.env_key, data.data),
+      rc4.decrypt(privateKey, data.iv, data.env_key, data.data, data.cipher),
       function (err, result) {
         if (err) {
           reject(err);

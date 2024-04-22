@@ -27,6 +27,8 @@ function OrderSummaryBox({ locale }) {
   const [havePaymentData, setHavePaymentData] = useState(false);
   const [netopiaEnvKey, setNetopiaEnvKey] = useState(null);
   const [netopiaData, setNetopiaData] = useState(null);
+  const [netopiaCipher, setNetopiaCipher] = useState(null);
+  const [netopiaIv, setNetopiaIv] = useState(null);
 
   const [summaryData, setSummaryData] = useState({
     orderTotal: 0,
@@ -68,12 +70,15 @@ function OrderSummaryBox({ locale }) {
           locale: locale,
         });
       } else {
+        console.log("payment data - ", body.paymentData);
         const { env_key, data } = await body.paymentData;
 
         if (env_key !== null && data !== null) {
           setNetopiaEnvKey(env_key);
           setNetopiaData(data);
-          setHavePaymentData(true);
+          setNetopiaCipher(cipher);
+          setNetopiaIv();
+          setHavePaymentData(false);
         }
       }
     }
@@ -264,6 +269,8 @@ function OrderSummaryBox({ locale }) {
           <RedirectToPayment
             netopiaEnvKey={netopiaEnvKey}
             netopiaData={netopiaData}
+            netopiaCipher={netopiaCipher}
+            netopiaIv={netopiaIv}
           />
         </>
       ) : (
