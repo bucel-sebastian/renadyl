@@ -129,7 +129,7 @@ export default async function middleware(req) {
   const campaignResponse = await fetch(`${BASE_URL}/api/data/json/campaign`);
 
   const campaignDataText = await campaignResponse.text();
-  console.log(campaignDataText);
+  console.log(" text", campaignDataText);
 
   const campaignData = await campaignResponse.json();
   const campaignCookie = req?.cookies?.get("campaign-closed");
