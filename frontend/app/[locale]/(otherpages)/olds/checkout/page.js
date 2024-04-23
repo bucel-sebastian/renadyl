@@ -14,7 +14,7 @@ import Checkout from "@/components/buy/checkout/Checkout";
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Checkout");
   return {
-    title: `Renadyl™ -  ${t("page-title")}`,
+    title: `${t("page-title")} - Renadyl™`,
     desc: "",
   };
 }

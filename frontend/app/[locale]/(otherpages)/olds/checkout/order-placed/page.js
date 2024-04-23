@@ -8,7 +8,7 @@ import { getTranslator } from "next-intl/server";
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Order-placed");
   return {
-    title: `Renadyl™ -  ${t("page-title")}`,
+    title: `${t("page-title")} - Renadyl™`,
     desc: "",
   };
 }

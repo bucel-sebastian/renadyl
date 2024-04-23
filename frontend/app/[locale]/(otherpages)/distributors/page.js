@@ -10,7 +10,7 @@ export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Distributors");
 
   return {
-    title: `Renadyl™ -  ${t("page-title")}`,
+    title: `${t("page-title")} - Renadyl™`,
   };
 }
 

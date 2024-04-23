@@ -17,7 +17,7 @@ export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Index");
 
   return {
-    title: `Renadyl™ -  ${t("page-title")}`,
+    title: `${t("page-title")} - Renadyl™`,
     description: `${t("page-desc")}`,
     keywords: [
       t("page-keywords.1"),

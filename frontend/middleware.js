@@ -98,7 +98,7 @@ export default async function middleware(req) {
   const res = NextResponse.next();
 
   // console.log("response", res);
-  // console.log("request", req);
+  console.log("request", req);
 
   // console.log("geo", {
   //   city: req.geo.city,
@@ -125,6 +125,13 @@ export default async function middleware(req) {
   //     }
   //   }
   // }
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const campaignResponse = await fetch(`${BASE_URL}/api/data/json/campaign`);
+  const campaignData = await campaignResponse.json();
+  const campaignCookie = req?.cookies?.get("campaign-closed");
+  const isCampaignPage = req.nextUrl.pathname.startsWith("/campaign");
+
+  const isCampaign = campaignData.value === "null" ? false : true;
 
   const isAdmin = req.nextUrl.pathname.startsWith("/admin/dashboard");
 
@@ -140,6 +147,11 @@ export default async function middleware(req) {
       return await clientAuthMiddleware(req);
     }
   } else {
+    if (!campaignCookie && isCampaign && !isCampaignPage) {
+      return NextResponse.redirect(
+        new URL(`/campaign/${campaignData.value}`, req.url)
+      );
+    }
     return intlMiddleware(req, { locale });
   }
 }

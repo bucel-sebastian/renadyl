@@ -5,7 +5,7 @@ export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Return-and-warranty-policy");
 
   return {
-    title: `Renadyl™ -  ${t("page-title")}`,
+    title: `${t("page-title")} - Renadyl™`,
   };
 }
 

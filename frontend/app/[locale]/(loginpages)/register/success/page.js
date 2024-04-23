@@ -11,7 +11,7 @@ export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Register-success");
 
   return {
-    title: `Renadyl™ -  ${t("page-title")}`,
+    title: `${t("page-title")} - Renadyl™`,
   };
 }
 

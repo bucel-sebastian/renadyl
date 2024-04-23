@@ -19,7 +19,7 @@ import OrderSummaryBox from "@/components/buy/order-summary/OrderSummaryBox";
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Order-summary");
   return {
-    title: `Renadyl™ -  ${t("page-title")}`,
+    title: `${t("page-title")} - Renadyl™`,
     desc: "",
   };
 }

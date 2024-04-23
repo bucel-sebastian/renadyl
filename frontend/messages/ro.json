@@ -40,6 +40,17 @@
         "text": "Acest site utilizează cookie-uri pentru a vă oferi cea mai bună experiență de navigare. Continuând să utilizați site-ul nostru, sunteți de acord cu utilizarea cookie-urilor conform Politicii noastre de Confidențialitate și Cookie-uri.",
         "close-btn": "Închide"
     },
+    "Campaign": {
+        "christmas": {
+            "page-title": ""
+        },
+        "black-friday": {
+            "page-title": ""
+        },
+        "easter": {
+            "page-title": ""
+        }
+    },
     "Index": {
         "page-title": "Acasă",
         "add-to-cart-success": "Produsul a fost adăugat în coș!",

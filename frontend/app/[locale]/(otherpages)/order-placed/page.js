@@ -16,7 +16,7 @@ import OrderPlacedId from "@/components/buy/OrderPlacedId";
 export async function generateMetadata({ params: { locale } }) {
   const t = await getTranslator(locale, "Order-summary");
   return {
-    title: `Renadyl™ -  ${t("page-title")}`,
+    title: `${t("page-title")} - Renadyl™`,
     desc: "",
   };
 }
