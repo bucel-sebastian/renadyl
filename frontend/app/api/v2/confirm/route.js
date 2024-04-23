@@ -11,8 +11,7 @@ export async function POST(req, res) {
   console.log("Confirm payment db response - ", response);
   return NextResponse.json(
     `<?xml version="1.0" encoding="utf-8" ?>
-  <crc error_type=”1|2” error_code=”0”>Recived</crc>
-  `,
+  <crc error_type=”1|2” error_code=”0”>Recived</crc>`,
     { status: 200 }
   );
   return NextResponse.json({
