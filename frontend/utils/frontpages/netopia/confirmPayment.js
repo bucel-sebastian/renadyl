@@ -19,6 +19,7 @@ export const confirmPayment = async (data) => {
   } = require("@/utils/frontpages/netopia/getPaymentData");
 
   let dbResponse;
+  let requestResponse;
 
   try {
     const decodedPaymentData = await decodeResponse(paymentData);
