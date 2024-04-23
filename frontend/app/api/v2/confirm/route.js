@@ -6,13 +6,13 @@ export async function POST(req, res) {
   console.log("Request confirm post");
   return NextResponse.json({
     status: 200,
-    body: "Accesare confirm payment",
+    body: "Accesare confirm payment NEW",
   });
 }
 export async function GET(req, res) {
   console.log("Request confirm GET");
   return NextResponse.json({
     status: 200,
-    body: "Accesare confirm payment GET",
+    body: "Accesare confirm payment GET NEW",
   });
 }
