@@ -23,6 +23,8 @@ export const confirmPayment = async (data) => {
   try {
     const decodedPaymentData = await decodeResponse(paymentData);
 
+    console.log("decoded payment - ", decodedPaymentData);
+
     dbResponse = await database.update(
       "renadyl_orders",
       {
