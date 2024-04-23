@@ -128,7 +128,7 @@ export default async function middleware(req) {
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   const campaignResponse = await fetch(`${BASE_URL}/api/data/json/campaign`);
 
-  const campaignDataText = await campaignData.text();
+  const campaignDataText = await campaignResponse.text();
   console.log(campaignDataText);
 
   const campaignData = await campaignResponse.json();
