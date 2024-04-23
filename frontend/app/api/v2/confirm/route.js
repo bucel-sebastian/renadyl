@@ -10,13 +10,9 @@ export async function POST(req, res) {
 
   console.log("Confirm payment db response - ", response);
 
-  return new Response(
-    `<?xml version="1.0" encoding="utf-8" ?>
-  <crc error_type=”1|2” error_code=”0”>Recived</crc>`,
-    {
-      status: 200,
-    }
-  );
+  return new Response(response, {
+    status: 200,
+  });
 }
 export async function GET(req, res) {
   console.log("Request confirm GET");
