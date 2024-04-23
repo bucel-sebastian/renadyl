@@ -1,5 +1,7 @@
 import Database from "@/utils/Database";
 
+export const dynamic = "force-dynamic";
+
 export const confirmPayment = async (data) => {
   const database = new Database();
 
@@ -16,10 +18,25 @@ export const confirmPayment = async (data) => {
     decodeResponse,
   } = require("@/utils/frontpages/netopia/getPaymentData");
 
+  let dbResponse;
+
   try {
     const decodedPaymentData = await decodeResponse(paymentData);
     console.log("decodde paymetn data", decodedPaymentData);
+
+    dbResponse = await database.update(
+      "renadyl_orders",
+      {
+        payment_status: {
+          status: decodedPaymentData.order.mobilpay.action,
+          timestamp: decodedPaymentData.order["$"].timestamp,
+        },
+      },
+      { id: decodedPaymentData.order["$"].id }
+    );
   } catch (error) {
     console.log("ERROR - ", error);
   }
+
+  return dbResponse;
 };
